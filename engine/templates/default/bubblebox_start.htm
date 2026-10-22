@@ -1,0 +1,40 @@
+<div id="fmsgbox{$bbox_id}" style="display:none">
+
+<!--构建半透明外缘-->
+<div class="bubblebox_positioner" style="z-index:calc({$bbox_z_index_base} + 3);">
+	<div class="bubblebox_positioner_inner" style="z-index:calc({$bbox_z_index_base} + 4); 
+		margin-top:{$bbox_positioner_inner_margin_top}px; 
+		margin-left:{$bbox_positioner_inner_margin_left}px;
+		min-width:{$bbox_positioner_inner_min_width}px; 
+		max-width:{$bbox_positioner_inner_max_width}px; 
+		min-height:{$bbox_positioner_inner_min_height}px;
+		max-height:{$bbox_positioner_inner_max_height}px;">
+	</div>
+</div>
+<!--END-->
+
+<!--构建文本框-->
+<!--全屏背景降低+跳出点击区-->
+<div class="bubblebox_positioner bubblebox_screen_fader" style="z-index:calc({$bbox_z_index_base} + 3);" 
+	<!--{if !empty($bbox_change_to)}--> onclick="bubblebox_show('{$bbox_change_to}');bubblebox_hide('{$bbox_id}');"<!--{elseif !empty($bbox_cancellable)}--> onclick="bubblebox_hide('{$bbox_id}');"<!--{/if}-->>
+	<div class="bubblebox_screen_fader_inner" style="z-index:calc({$bbox_z_index_base} + 5);
+		margin-top:{$bbox_screen_fader_inner_margin_top}px; 
+		margin-left:{$bbox_screen_fader_inner_margin_left}px;
+		min-width:{$bbox_screen_fader_inner_min_width}px;
+		max-width:{$bbox_screen_fader_inner_max_width}px;
+		min-height:{$bbox_screen_fader_inner_min_height}px;
+		max-height:{$bbox_screen_fader_inner_max_height}px;
+		filter:alpha(opacity=<!--{eval echo round($bbox_opacity*100);}-->);
+		opacity:{$bbox_opacity};" 
+		onclick="if (event.stopPropagation) event.stopPropagation(); else event.cancelBubble = true; "
+	>
+		<div class="bubblebox_container" style="z-index:calc({$bbox_z_index_base} + 6);
+			margin-left:{$bbox_margin_left}px;
+			margin-top:{$bbox_margin_top}px;
+			margin-right:0px;
+			margin-bottom:{$bbox_margin_bottom}px;
+			min-height:{$bubblebox_container_min_height}px;
+			max-height:{$bubblebox_container_max_height}px;"
+		>
+			<div class="bubblebox_container_inner gscroll <!--{if $bbox_scroll_bar}-->scroll-pane{$bbox_id}<!--{/if}-->" style="max-height:{$bbox_height}px;width:{$bbox_width}px; ">
+<!--END-->

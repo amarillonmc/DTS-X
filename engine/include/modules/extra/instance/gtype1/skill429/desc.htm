@@ -1,0 +1,30 @@
+<!--{eval eval(import_module('skill429'));}-->
+<!--{eval $___TEMP_SKILL_ID=429;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+谨慎
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+<!--{eval $clv = (int)\skillbase\skill_getvalue(429,'lvl'); }-->
+<!--{eval $totlv = count($upgradecost)-1; }-->
+<span class="lime b">当前级别$clv/$totlv</span>&nbsp;
+<!--{if $upgradecost[$clv] !== -1}-->消耗<span class="lime b">$upgradecost[$clv]</span>点技能点升至下一级<!--{/if}--><br>
+你受到的陷阱伤害减少<span class="yellow b">$trapdmgdown[$clv]%</span><br>
+你接收其他玩家的道具时有<span class="yellow b">$refuse_senditem_odds[$clv]%</span>概率拒绝
+</span></td>
+<td class="skilldesc_right b3">
+<!--{if $upgradecost[$clv] !== -1}-->
+<!--{if $skillpoint>=$upgradecost[$clv]}-->
+<input type="button" style="width:46px" onclick="$('mode').value='special';$('command').value='skill429_special';$('subcmd').value='upgrade';postCmd('gamecmd','command.php');this.disabled=true;" value="升级">
+<!--{else}-->
+<input type="button" style="width:46px" disabled="true" value="升级">
+<!--{/if}-->
+<!--{/if}-->
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

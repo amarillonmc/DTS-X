@@ -1,0 +1,55 @@
+{template header}
+<br><br>
+<center>
+<input type="button" class="b_button bc_white" style="width:198" value="抽卡系统" onclick="window.location.href='kujilist.php'">
+<input type="button" class="b_button bc_white" style="width:198" value="卡片商店" onclick="window.location.href='logistics.php?type=1'">
+<input type="button" class="b_button bc_white" style="width:198" value="道具商店" onclick="window.location.href='logistics.php?type=2'">
+<input type="button" class="b_button bc_white" style="width:198" value="道具仓库" onclick="window.location.href='logistics.php?type=3'">
+<input type="button" class="b_button bc_white" style="width:198" value="道具展柜" onclick="window.location.href='logistics.php?type=4'">
+</center>
+<br>
+
+<div class="subtitle" align="center">卡片商店</div>
+<center>
+<br>
+<div style="width:600px;text-align:center;font-size:14px;">
+	<!--{if empty($notice)}-->
+	在这里可以用切糕交换卡片。可交换的卡片列表每天0点更新。
+	<!--{else}-->
+	<span class="yellow b">$notice</span>
+	<!--{/if}-->
+</div>
+<br>
+<div style="width:600px;text-align:center;">当前的切糕数量：<span class="evergreen b">$cg</span><br></div>
+<br>
+<center>
+	<form method="post" name="cardshop">
+	<input type="hidden" id="cardchoice" name="cardchoice" value="">
+	<!--{eval $showpack=1;}-->
+	<ul style="width:1000px;list-style-type:none;">
+		<!--{loop $cardshop_list $k $nowcard}-->
+		<!--{eval $price=\logistics\get_card_price($nowcard); $o_blink = \logistics\card_check_o_blink($nowcard['id'], $udata);}-->
+		<li style="float:left;margin:5px;margin-bottom:10px">
+			<!--{eval $desc_skills=!empty($nowcard['desc_skills'])?$nowcard['desc_skills']:'';}-->
+			<div title="{$desc_skills}">
+			{template MOD_CARDBASE_CARD_FRAME}
+			</div>
+			<br><div style="height:20px;">价格：{$price}<!--{if isset($nowcard['discount'])}--> <span class="L5 b">(-{$nowcard['discount']}%)</span><!--{/if}--></div>
+			<!--{if $o_blink>=$nowcard['blink']}-->
+				<input type="button" class="b_button" style="width:120" value="已持有" disabled />
+			<!--{elseif $cg<$price}-->
+				<input type="button" class="b_button" style="width:120" value="切糕不足" disabled />
+			<!--{else}-->
+				<input type="button" class="b_button" style="width:120" value="购买" onclick="$('cardchoice').value='$k'; document.cardshop.submit();" />
+			<!--{/if}-->
+			
+		</li>
+		<!--{/loop}-->
+		<div style="clear:both;"></div>
+	</ul>
+	</form>
+</center>
+<br>
+</center>
+
+{template footer}

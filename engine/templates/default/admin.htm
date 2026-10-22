@@ -1,0 +1,17 @@
+{template header}
+<center>
+<div class="subtitle" >{lang admin}</div>
+<div><span class="yellow b">$lang['mygroup'] $mygroup</span></div>
+<div style="margin:12px 0;"><span class="yellow b">$cmd_info</span></div>
+<!--{if $showdata}-->
+	$showdata
+	<div>
+		<form method="post" name="goto_menu" action="admin.php">
+			<input type="submit" name="enter" value="$lang['goto_menu']">
+		</form>
+	</div>
+<!--{else}-->
+	{template admin_menu}
+<!--{/if}-->
+</center>
+{template footer}

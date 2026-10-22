@@ -1,0 +1,27 @@
+<!--{eval eval(import_module('skill555','sys','bufficons'));}-->
+<!--{eval $___TEMP_SKILL_ID=555;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+$clubskillname[$___TEMP_SKILL_ID]
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+发动后，主动探索时不会遇到任何敌人和尸体，效果持续<span class="yellow b">{$skill555_act_time}</span>秒，<br>
+冷却时间<span class="cyan b">{$skill555_cd}</span>秒。
+<!--{eval $st = \bufficons\bufficons_check_buff_state(555,$who);$rm=$tmp_totsec-$tmp_nowsec;}-->
+<!--{if 1 == $st}-->
+<br><span class="yellow b">技能发动中！持续时间还剩<span>{$rm}</span>秒</span>
+<!--{elseif 2 == $st}-->
+<br><span class="cyan b">技能冷却中，冷却时间还剩<span>{$rm}</span>秒</span>
+<!--{elseif 3 == $st}-->
+<br><span class="cyan b">技能冷却完毕，可以使用</span>
+<!--{/if}-->
+</span></td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

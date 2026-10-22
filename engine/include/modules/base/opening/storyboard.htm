@@ -1,0 +1,27 @@
+<!--标准剧情：标准局、自选卡片、随机卡片、荣耀模式-->
+<!--{if 0==$gametype || 4==$gametype || 6==$gametype}-->
+{template MOD_OPENING_STORYBOARD_GT0}
+<!--除错模式-->
+<!--{elseif 1==$gametype}-->
+{template MOD_OPENING_STORYBOARD_GT1}
+<!--荣耀模式-->
+<!--{elseif 18==$gametype}-->
+{template MOD_OPENING_STORYBOARD_GT18}
+<!--极速模式-->
+<!--{elseif 19==$gametype}-->
+{template MOD_OPENING_STORYBOARD_GT19}
+<!--幻界叫唤-->
+<!--{elseif 5==$gametype}-->
+<div id="op_sht_0" class="shootings">
+	可以点击视觉小说界面下方的进入战场按钮跳过剧情直接进入游戏。<br>
+	<iframe src="http://nmforce.net/Special/dtsex1/" height="350" width="700" style="border:none;"></iframe>
+</div>
+<!--试炼模式-->
+<!--{elseif 13==$gametype}-->
+{template MOD_OPENING_STORYBOARD_GT13}
+<!--{else}-->
+<div id="op_sht_0" class="shootings">
+	咦？剧情可能被冴冴吃掉了。<br>
+	这应该是一个BUG，请联系管理员。
+</div>
+<!--{/if}-->

@@ -1,0 +1,34 @@
+<!--{eval eval(import_module('skill500','sys','bufficons'));}-->
+<!--{eval $___TEMP_SKILL_ID=500;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+时停
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+	<span class="ltpurple b">时间能力</span> 
+<!--{eval $st = \bufficons\bufficons_check_buff_state(500,$who);$rm=$tmp_totsec-$tmp_nowsec;}-->
+消耗<span class="yellow b">{$skill500_rage}</span>怒气，让所有NPC和当前地图其他玩家<span class="cyan b">时间停止{$skill500_act_time}秒</span>。<br>
+在时间停止中，你不会遭遇任何陷阱，命中率变为原来的<span class="yellow b">150%</span>，不会被其他角色发现、先制、反击，但对同样拥有时间能力的角色无效。<br>
+CD时间<span class="yellow b">{$skill500_cd}秒</span>
+<!--{if 1 == $st}-->
+<br><span class="cyan b">时间停止中！</span>
+<!--{elseif 2 == $st}-->
+<br><span class="yellow b">技能冷却中，冷却时间还剩{$rm}秒。</span>
+<!--{elseif 3 == $st}-->
+<br><span class="cyan b">技能冷却完毕，可以使用。</span>
+<!--{/if}-->
+</span></td>
+<td class="skilldesc_right b3">
+<!--{if 3 == $st}-->
+<input type="button" style="width:46px" onclick="$('mode').value='special';$('command').value='skill500_special';$('subcmd').value='activate';postCmd('gamecmd','command.php',this);" value="发动">
+<!--{else}-->
+<input type="button" style="width:46px" disabled="true" value="发动">
+<!--{/if}-->
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

@@ -1,0 +1,17 @@
+<!--{eval bubblebox_start('id:persistent-newroombox;height:350;width:200;scroll-bar:0;cancellable:1;');}-->
+<div id="loading"></div>
+<div style="text-align:center;">
+	<span style="line-height:32px;">创建新房间：</span>
+	<!--{eval global $roomtypelist;}-->
+	<!--{loop $roomtypelist $i $value}-->
+		<!--{if check_room_available($value) && empty($value['soleroom'])}-->
+			<div>
+			<!--{eval $bname=str_replace('"',"'",$value['name']);}-->
+			<a class="b_button bc_black" onclick="
+			window.location.href='roomcmd.php?command=newroom&para1='+$i;
+			$('loading').style.display='block'" style="margin:3px;width:85px">$bname</a>
+			</div>
+		<!--{/if}-->
+	<!--{/loop}-->
+</div>
+<!--{eval bubblebox_end();}-->

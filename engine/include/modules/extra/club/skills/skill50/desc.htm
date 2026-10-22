@@ -1,0 +1,19 @@
+<!--{eval eval(import_module('skill50'));}-->
+<!--{eval $___TEMP_SKILL_ID=50;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+枭眼
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+如果你的武器射程不小于敌人，你对其先制攻击率<span class="yellow b">+10%</span>，<br>其攻击你时命中率<span class="yellow b">-12%</span>，连击命中率惩罚<span class="yellow b">+8%</span>
+</span></td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+9级时解锁
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

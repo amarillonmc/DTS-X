@@ -1,0 +1,43 @@
+{template header}
+<div class="subtitle" style="text-align:center">{lang user}</div>
+
+<p class="linen b" style="text-align:center">
+	<span id="notice"></span><br />
+	<span id="info" class="yellow b"></span>
+</p>
+<p style="text-align:center">
+	<form method="post" action="user.php" name="userdata">
+		<input type="hidden" name="mode" value="edit">
+		<input type="hidden" id="newCardChoice" name="card" value="$cardChosen">
+		<div style="vertical-align:top;">
+			<div style="display:inline-block;">
+				<span class ="yellow b">{lang basicdata}</span>
+				{template userbasicdata}
+			</div>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<div style="display:inline-block;">
+				<span class ="yellow b">{lang advanceddata}</span>
+				{template useradvdata}
+			</div>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<div style="display:inline-block;">
+				<span class ="yellow b">{lang usersettings}</span>
+				{template usersettings}
+			</div>
+		</div>
+		<div id="postdata" style="height:60px">
+			<br />
+			<input type="submit" class="b_button bc_black" id="post" onClick="$('newCardChoice').value=chosen_card_id; postCmd('userdata','user.php');return false;" value="{lang submit}">
+			<input type="reset" class="b_button bc_black" id="reset" value="{lang reset}">
+		</div>
+		<!--{if defined('MOD_CARDBASE')}-->
+		<!--{eval $hideDisableButton=0; $showCardUnavailableHint=0;}-->
+			<span class ="yellow b">身份卡选择</span><br>
+			<div style="height:3px">&nbsp;</div>
+		
+			{template MOD_CARDBASE_SELECTCARD}
+		<!--{/if}-->
+	</form>
+</p>
+
+{template footer} 

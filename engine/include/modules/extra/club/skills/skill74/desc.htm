@@ -1,0 +1,21 @@
+<!--{eval eval(import_module('skill74'));}-->
+<!--{eval $ragecost = \skill74\get_rage_cost74();}-->
+<!--{eval $___TEMP_SKILL_ID=74;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+心火
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+<!--{eval $sk74_coef=($club==9?2:1.7);}-->
+<span class="yellow b">战斗技</span>&nbsp;&nbsp;本次攻击造成的最终伤害<span class="yellow b">×$sk74_coef</span>，消耗<span class="yellow b">$ragecost</span>点怒气
+</span></td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+19级时解锁
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

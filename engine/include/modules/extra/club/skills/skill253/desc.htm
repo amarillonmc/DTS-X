@@ -1,0 +1,21 @@
+<!--{eval eval(import_module('skill253'));}-->
+<!--{eval $___TEMP_SKILL_ID=253;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+天威
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+<span class="yellow b">战斗技</span>&nbsp;&nbsp;计算武器熟练度时额外增加<span class="yellow b">(怒气×等级/6)</span>点<br>
+(最高220点)，发动消耗<span class="yellow b">25</span>点怒气<br>
+若击杀敌人且伤害不超过其生命值1.5倍，则返还<span class="yellow b">25</span>点怒气
+</span></td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+5级时解锁
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

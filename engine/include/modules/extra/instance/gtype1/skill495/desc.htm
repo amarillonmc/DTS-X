@@ -1,0 +1,32 @@
+<!--{eval eval(import_module('skill495'));}-->
+<!--{eval $___TEMP_SKILL_ID=495;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+额度
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+<!--{eval $clv = (int)\skillbase\skill_getvalue(495,'lvl');$rmtlv = count($upgradecost) -1 - $clv; }-->
+<!--{if $rmtlv}-->
+你已被限额了！只有在拾取后总金钱数不超过<span class="yellow b">$moneylimit[$clv]</span>时才能拾取金钱<br>
+<span class="yellow b">当前还需还款{$rmtlv}次</span>&nbsp;
+消耗<span class="yellow b">$upgradecost[$clv]</span>点技能点还款
+<!--{else}-->
+<span class="lime b">您的欠款已还清，谢谢惠顾！</span>
+<!--{/if}-->
+</span></td>
+<td class="skilldesc_right b3">
+<!--{if $upgradecost[$clv] !== -1}-->
+<!--{if $skillpoint>=$upgradecost[$clv]}-->
+<input type="button" style="width:46px" onclick="$('mode').value='special';$('command').value='skill495_special';$('subcmd').value='upgrade';postCmd('gamecmd','command.php');this.disabled=true;" value="还款">
+<!--{else}-->
+<input type="button" style="width:46px" disabled="true" value="还款">
+<!--{/if}-->
+<!--{/if}-->
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

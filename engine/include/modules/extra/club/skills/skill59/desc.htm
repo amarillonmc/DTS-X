@@ -1,0 +1,20 @@
+<!--{eval eval(import_module('skill59'));}-->
+<!--{eval $___TEMP_SKILL_ID=59;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+新生
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+立即获得<span class="yellow b">2×等级</span>点生命上限和<span class="yellow b">5×等级</span>点基础防御
+</span>
+</td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+(复活时自动发动)
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

@@ -1,0 +1,18 @@
+<!--{eval $___TEMP_SKILL_ID=486;}-->
+<!--{eval $skill486prob=\skill486\get_skill486prob($who);}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+无垠
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+如果你在战斗中死亡，有{$skill486prob}%概率复活。每发动1次，概率就会减半
+</span></td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

@@ -1,0 +1,14 @@
+.git
+.env
+node_modules
+.npm-cache
+var
+artifacts
+upstream.zip
+public/modern/test-tools
+public/modern/test-output
+public/modern/*-test.mjs
+public/modern/fixture.html
+public/modern/*.png
+runtime/probe
+tests

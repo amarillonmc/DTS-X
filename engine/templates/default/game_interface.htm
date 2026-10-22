@@ -1,0 +1,22 @@
+<div id="notice"></div>
+<table id="game_interface" border="0" cellspacing="10" cellpadding="0" align="center">
+	<tr valign=top>
+		<td>
+			<div id="main" style="width:720px">
+				<!--{if !empty($main)}-->
+					{template $main}
+				<!--{else}-->
+					{template profile}
+				<!--{/if}-->
+			</div>
+			<div style="margin-top:10px">
+				{template chat}
+			</div>
+		</td>
+		<td valign="top">
+			<div id="cmd_interface">
+				{template cmd_interface}
+			</div>
+		</td>
+	</tr>
+</table> 

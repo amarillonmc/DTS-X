@@ -1,0 +1,86 @@
+{template header}
+
+<div class="subtitle" align="center">卡册</div>
+<center>
+	<div>
+		<!--{loop $packlist $packname}-->
+			<!--{if $pname == $packname}-->
+				&nbsp;&nbsp;<h2 class="evergreen b" style="display:inline">$packname</h2>&nbsp;&nbsp;
+			<!--{else}-->
+				<!--{if $curuser}-->
+					&nbsp;&nbsp;<a href="cardbook.php?packName={$packname}">{$packname}</a>&nbsp;&nbsp;
+				<!--{else}-->
+					<a href="cardbook.php?packName={$packname}&playerID={$n}">{$packname}</a>&nbsp;&nbsp;
+				<!--{/if}-->
+			<!--{/if}-->
+		<!--{/loop}-->
+	</div>
+	
+</center>
+<!--{if $pname}-->
+<center>
+<div style="width:600px;height:160px;position: relative;">
+	<!--{eval $packname = $pname; }-->
+	<div style="position: absolute;top:0px;left:0px;">
+		{template MOD_CARDBASE_PACK_FRAME}
+	</div>
+	<div style="text-align:left;position: absolute;top:40px;left:160px; width: 440px;">
+		<span>当前卡集：<span class="evergreen b" style="font-size:24px; font-weight: bold;">$pname</span></span>
+		<br>
+		<br>
+		<span>$packdesc[$pname]</span>
+		<br>
+		<br>
+		<span>拥有卡数：{$unlock_num}/{$pack_num}</span>
+	</div>
+</div>
+<!--{if $unlock_cards}-->
+<p>下面是你拥有的卡片和未解锁的卡片：</p>
+<!--{else}-->
+<p>一张卡都没有呢……</p>
+<!--{/if}-->
+</center>
+<!--{loop $card_data_fetched $ci $cv}-->
+<!--{eval if(0 && !empty($cv['blink'])) echo $cards[$ci]['name'].' ';}-->
+<!--{/loop}-->
+<center>
+	<ul style="width:1000px;list-style-type:none;">
+		<!--{loop $unlock_cards $nowcard}-->
+		<!--{eval $lockcard=0;$card_achieved=in_array($nowcard['id'],$card_achieved_list);}-->
+		<!--{eval $nowcard['blink']=!empty($card_data_fetched[$nowcard['id']]['blink'])?$card_data_fetched[$nowcard['id']]['blink']:0;}-->
+		<li style="float:left;margin:5px;margin-bottom:10px"
+			<!--{eval $desc_skills=!empty($cards[$nowcard['id']]['desc_skills'])?$cards[$nowcard['id']]['desc_skills'].'<br><br>':'';}-->
+			title="{$desc_skills}
+			<!--{if $card_energy[$nowcard['id']]<$nowcard['energy']}-->
+			<!--{eval $t=($nowcard['energy']-$card_energy[$nowcard['id']])/$energy_recover_rate[$nowcard['rare']];$now_energy_show=floor($card_energy[$nowcard['id']]);$ddl=convert_tm($t);}-->
+			这张卡片目前处于蓄能状态<br>需要{$nowcard['energy']}点能量，目前已蓄积了{$now_energy_show}点能量<br>预计在{$ddl}后蓄能完成
+			<!--{elseif $nowcard['energy']}-->
+			这张卡片需要蓄积{$nowcard['energy']}点能量方可使用<br>目前已蓄能完成，可以使用
+			<!--{else}-->
+			这张卡片不需要蓄能，可以使用
+			<!--{/if}-->
+			">
+			{template MOD_CARDBASE_CARD_FRAME}
+		</li>
+		<!--{/loop}-->
+		<!--{loop $lock_cards $nowcard}-->
+		<!--{eval $nowcard["desc"]=$nowcard["effect"]='???';$lockcard=1;$card_achieved=0;}-->
+		<!--{eval $gaining = '你尚未获得这张卡片'; if(!empty($card_gaining_method[$nowcard['id']])) $gaining .= '<br>'.implode('<br>',$card_gaining_method[$nowcard['id']]);}-->
+		<li class="lockcard" style="float:left;margin:5px;margin-bottom:10px" title="$gaining">
+			{template MOD_CARDBASE_CARD_FRAME}
+		</li>
+		<!--{/loop}-->
+		<div style="clear:both;"></div>
+	</ul>
+</center>
+<!--{else}-->
+<center>
+<p>选择一个卡册</p>
+</center>
+<!--{/if}-->
+<form method="post" name="backindex" action="index.php">
+	<input type="submit" name="enter" value="{lang backindex}">
+</form>
+
+{template footer}
+

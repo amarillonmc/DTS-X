@@ -1,0 +1,129 @@
+/* The launcher is the only element styled in classic mode. Everything else is opt-in. */
+#dts-toolbar { position: fixed; top: 12px; right: 16px; z-index: 20000; font: 13px/1.4 "Segoe UI", "Microsoft YaHei", sans-serif; }
+#dts-toolbar .dts-brand, #dts-toolbar .dts-terminal-note, #dts-toolbar .dts-tool { display: none; }
+#dts-toolbar button { font: inherit; cursor: pointer; }
+.dts-mode-toggle { color: #e4f3fa; background: #162b38; border: 1px solid #5c849b; border-radius: 6px; padding: 8px 14px; box-shadow: 0 3px 16px #0005; }
+#dts-workspace[hidden], .dts-panel[hidden], .dts-dock[hidden], .dts-dock-item[hidden] { display: none !important; }
+.dts-sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip-path: inset(50%); white-space: nowrap !important; border: 0 !important; }
+
+html.dts-modern { color-scheme: dark; --dts-bg: #0c141b; --dts-surface: #111e28; --dts-line: #334a59; --dts-muted: #8ba1b1; --dts-ink: #e1ebf2; --dts-accent: #8ed9dd; overflow: auto; }
+html.dts-modern body { position: relative; width: auto; min-width: 320px; min-height: 100vh; margin: 0; padding: 82px 24px 82px; box-sizing: border-box; overflow: visible; color: var(--dts-ink); cursor: auto; font: 13px/1.55 "Segoe UI", "Microsoft YaHei", sans-serif; background-color: var(--dts-bg); background-image: linear-gradient(180deg, #0b141bea, #0b141bf5), url('/img/PB.gif'); background-size: cover; background-position: center; background-attachment: fixed; }
+html.dts-modern body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(#8ed9dd04 1px, transparent 1px), linear-gradient(90deg, #8ed9dd04 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: -1; }
+html.dts-modern * { scrollbar-width: thin; scrollbar-color: #476374 #101c24; }
+html.dts-modern a { cursor: pointer; color: #bfdbe8; }
+html.dts-modern a:hover { color: #a4e6e5; text-decoration: none; }
+html.dts-modern :is(button, input, select, textarea) { font-family: inherit; }
+html.dts-modern input, html.dts-modern select, html.dts-modern textarea { cursor: auto; }
+html.dts-modern :is(button, input[type="button"], input[type="submit"], a):focus-visible { outline: 2px solid #a5e5e7; outline-offset: 3px; }
+html.dts-modern :is(input[type="button"], input[type="submit"], select) { cursor: pointer; }
+html.dts-modern .title { color: #dae7ec; text-decoration: none; font: 700 24px/1.5 "Segoe UI", "Microsoft YaHei", sans-serif; margin: 4px 0 14px; }
+html.dts-modern .headerlink { line-height: 2.4; }
+html.dts-modern .b1, html.dts-modern .b2 { background-color: #34556891; border-color: #223a49; }
+html.dts-modern .b3, html.dts-modern .b8 { background-color: #101e28b0; }
+html.dts-modern :is(.b1, .b2, .b3, .b8) { color: var(--dts-ink); }
+html.dts-modern .map { background-color: #0c1821aa; }
+html.dts-modern #hoverHintMsg { z-index: 22000 !important; }
+html.dts-modern #fmsgbox-container, html.dts-modern #hidden-persistent-fmsgbox-container { position: relative; z-index: 21000; }
+
+html.dts-modern #dts-toolbar { inset: 0 0 auto; height: 62px; display: flex; align-items: center; gap: 24px; padding: 0 24px; box-sizing: border-box; background: #0c1720f2; border-bottom: 1px solid #334c5c; box-shadow: 0 8px 28px #0003; backdrop-filter: blur(14px); }
+html.dts-modern #dts-toolbar .dts-brand { display: flex; align-items: center; gap: 11px; white-space: nowrap; }
+html.dts-modern .dts-brand-symbol { display: inline-grid; place-items: center; width: 29px; height: 29px; color: #b5e9ec; border: 1px solid #557d91; background: #203743; font: 24px/1 monospace; transform: skew(-7deg); }
+html.dts-modern .dts-brand strong { font: 700 23px/1 monospace; letter-spacing: .1em; }
+html.dts-modern .dts-brand-label { color: #9cb6c5; border-left: 1px solid #405767; padding-left: 12px; font-size: 13px; }
+html.dts-modern #dts-toolbar .dts-terminal-note { display: block; font: 10px/1.4 monospace; letter-spacing: .12em; color: #839eae; }
+html.dts-modern .dts-terminal-note::before { content: ''; display: inline-block; width: 5px; height: 5px; margin-right: 7px; background: #8ed9dd; border-radius: 50%; }
+html.dts-modern .dts-toolbar-controls { margin-left: auto; display: flex; align-items: center; gap: 7px; }
+html.dts-modern #dts-toolbar .dts-tool { display: inline-block; }
+html.dts-modern .dts-tool, html.dts-modern .dts-mode-toggle { padding: 7px 12px; border-radius: 4px; color: #bfd0da; background: #162834; border: 1px solid #365264; font: 12px/1.4 "Segoe UI", "Microsoft YaHei", sans-serif; box-shadow: none; }
+html.dts-modern .dts-mode-toggle { color: #a9e0e2; border-color: #54848b; }
+html.dts-modern .dts-tool:hover, html.dts-modern .dts-mode-toggle:hover { background: #284451; border-color: #7babb8; }
+html.dts-modern #dts-toolbar [hidden] { display: none !important; }
+
+html.dts-modern.dts-game body > .title, html.dts-modern.dts-game #game_interface { display: none !important; }
+html.dts-modern .dts-workspace { position: relative; width: 100%; min-height: 480px; text-align: left; }
+html.dts-modern .dts-panel { position: absolute; display: flex; flex-direction: column; min-width: 280px; min-height: 110px; border: 1px solid var(--dts-line); border-radius: 7px; box-sizing: border-box; overflow: hidden; background: #111f29f2; box-shadow: 0 8px 28px #0004, 0 1px 0 #7eafbf08 inset; }
+html.dts-modern .dts-panel:hover { border-color: #526e80; }
+html.dts-modern .dts-panel.is-dragging { border-color: #9bdae1; box-shadow: 0 12px 40px #0007; opacity: .93; }
+html.dts-modern .dts-panel-header { display: flex; flex: 0 0 36px; min-height: 36px; border-bottom: 1px solid #334a59; background: linear-gradient(100deg, #233a48, #172a36); }
+html.dts-modern .dts-panel-handle { display: flex; flex: 1; align-items: center; gap: 10px; text-align: left; border: 0; border-radius: 6px 0 0; color: #dcebf2; background: transparent; cursor: grab; padding: 0 12px; touch-action: none; min-width: 0; }
+html.dts-modern .dts-panel-handle:active { cursor: grabbing; }
+html.dts-modern .dts-panel-index { color: #7f9aa9; font: 10px/1 monospace; letter-spacing: .05em; }
+html.dts-modern .dts-panel-title { font: 600 12px/1.3 "Segoe UI", "Microsoft YaHei", sans-serif; letter-spacing: .06em; }
+html.dts-modern .dts-drag-mark { margin-left: auto; color: #698697; font: 19px/1 monospace; }
+html.dts-modern .dts-panel-minimize { flex: 0 0 36px; border: 0; background: transparent; color: #aac0ce; font-size: 21px; cursor: pointer; }
+html.dts-modern .dts-panel-minimize:hover { background: #45616e; color: white; }
+html.dts-modern .dts-panel-body { flex: 1 1 auto; min-height: 0; padding: 10px; overflow: auto; overscroll-behavior: contain; position: relative; }
+html.dts-modern .dts-panel-body > table { width: 100%; }
+html.dts-modern .dts-panel-resize { position: absolute; bottom: 0; right: 0; z-index: 2; border: 0; background: #162b36df; color: #7897a6; width: 20px; height: 20px; line-height: 20px; padding: 0; cursor: nwse-resize; touch-action: none; }
+html.dts-modern.dts-drag-active iframe { pointer-events: none !important; }
+html.dts-modern .dts-dock { position: fixed; z-index: 20000; bottom: 0; left: 0; right: 0; min-height: 48px; display: flex; align-items: center; gap: 6px; padding: 7px 24px; box-sizing: border-box; background: #0c1720f5; border-top: 1px solid #314a5c; overflow-x: auto; backdrop-filter: blur(14px); }
+html.dts-modern .dts-dock::before { content: 'WINDOWS'; font: 10px/1 monospace; letter-spacing: .08em; color: #6b8899; margin-right: 12px; }
+html.dts-modern .dts-dock-item { color: #bacdd8; background: #213644; border: 1px solid #446071; border-radius: 4px; padding: 6px 12px; white-space: nowrap; cursor: pointer; font: 12px/1.4 "Segoe UI", "Microsoft YaHei", sans-serif; }
+html.dts-modern .dts-dock-item::before { content: ''; display: inline-block; width: 4px; height: 4px; background: #88c7cf; margin-right: 7px; border-radius: 50%; vertical-align: middle; }
+html.dts-modern .dts-dock-item.is-minimized { color: #7892a3; background: #121f29; border-color: #2a4352; }
+html.dts-modern .dts-dock-item.is-minimized::before { background: #496271; }
+html.dts-modern .dts-dock-item:hover { border-color: #91c1ce; }
+
+/* Retain all game color classes and original controls; only remove fixed outer dimensions. */
+html.dts-modern .dts-panel #main { width: auto !important; min-width: 0; text-align: left; }
+html.dts-modern .dts-panel #profile_container { margin-bottom: 0 !important; zoom: var(--dts-profile-scale, 1); }
+html.dts-modern .dts-panel.has-split-packs #packs_container { display: none; }
+html.dts-modern .dts-panel #cmd_interface > table, html.dts-modern .dts-panel #cmd_interface > div > table { width: 100% !important; height: auto !important; }
+html.dts-modern .dts-panel #cmd_container { min-height: 0 !important; max-height: none !important; overflow: visible !important; }
+html.dts-modern .dts-panel .command_box { position: relative; width: auto; height: auto; }
+html.dts-modern .dts-panel #log { height: auto !important; min-height: 0 !important; width: auto; line-height: 1.6; }
+html.dts-modern .dts-panel #log:empty::after { content: '等待下一次行动…'; color: #7c96a7; font-size: 12px; }
+html.dts-modern .dts-panel #notice:not(:empty) { color: #ffd298; background: #62452155; padding: 8px; margin-bottom: 8px; border-left: 2px solid #d3a863; }
+html.dts-modern .dts-panel #chat { width: 100% !important; height: auto !important; position: relative !important; }
+html.dts-modern .dts-panel #chat td { height: auto !important; }
+html.dts-modern .dts-panel #chatlist, html.dts-modern .dts-panel #newslist { display: block !important; height: auto; min-height: 90px; width: 100%; overflow: visible; box-sizing: border-box; font-size: 12px; line-height: 1.6; }
+html.dts-modern .dts-panel #chatlist { max-height: 330px; overflow-y: auto; }
+html.dts-modern .dts-panel #chattitle, html.dts-modern .dts-panel #switch { display: none !important; }
+html.dts-modern .dts-panel #sendchat { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 10px 0 0; }
+html.dts-modern .dts-panel #chatmsg { flex: 1 1 160px; width: auto !important; min-width: 80px; background: #09151e; border: 1px solid #446074; border-radius: 3px; padding: 3px 7px; color: #e5eff4; }
+html.dts-modern .dts-panel #sendchat input[type="hidden"] { display: none; }
+html.dts-modern .dts-panel #chatfloatbox { position: fixed !important; top: auto !important; left: 16px !important; bottom: 62px !important; z-index: 19000; max-width: calc(100vw - 32px); overflow: auto; box-shadow: 0 8px 40px #000b; }
+html.dts-modern .dts-panel #chat_floating_banner { position: relative !important; left: auto !important; top: auto !important; width: auto !important; }
+html.dts-modern .dts-panel[data-panel="navigation"] .headerlink { text-align: left; display: flex; flex-wrap: wrap; align-content: start; gap: 2px 13px; }
+html.dts-modern .dts-panel[data-panel="navigation"] a { font-size: 12px; }
+html.dts-modern .dts-panel[data-panel="map"] .dts-panel-body { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+html.dts-modern .dts-map-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 7px 9px; border-bottom: 1px solid #293e4e; }
+html.dts-modern .dts-map-tools > span { color: #8fa8b7; font-size: 10px; }
+html.dts-modern .dts-map-tools .dts-tool { margin-left: auto; padding: 3px 7px; cursor: pointer; }
+html.dts-modern .dts-map-tools a { font-size: 10px; }
+html.dts-modern .dts-map-frame { display: block; flex: 1; width: 100%; min-height: 170px; border: 0; background: #101b24; }
+
+html.dts-modern.dts-compact .dts-workspace { display: flex; flex-direction: column; gap: 14px; }
+html.dts-modern.dts-compact .dts-panel { position: relative; top: auto !important; left: auto !important; width: 100% !important; height: auto !important; max-height: 640px; flex: none; }
+html.dts-modern.dts-compact .dts-panel-body { max-height: 550px; }
+html.dts-modern.dts-compact .dts-panel[data-panel="map"] { height: 400px !important; }
+html.dts-modern.dts-compact .dts-panel-resize { display: none; }
+
+/* map.php remains a real, independently authorized game page inside the iframe. */
+html[data-dts-embed="map"] { color-scheme: dark; overflow: auto; }
+html[data-dts-embed="map"] body { position: relative; width: max-content; min-width: 100%; margin: 0; padding: 12px; box-sizing: border-box; overflow: visible; color: #d5e2ed; background: #101b24; cursor: auto; }
+html[data-dts-embed="map"] .title, html[data-dts-embed="map"] .headerlink, html[data-dts-embed="map"] .subtitle { display: none !important; }
+html[data-dts-embed="map"] [data-dts-map-footer] { display: none; }
+
+@media (max-width: 1000px) {
+  html.dts-modern #dts-toolbar .dts-terminal-note { display: none; }
+  html.dts-modern #dts-toolbar { padding: 0 16px; gap: 10px; }
+  html.dts-modern body { padding: 76px 16px 74px; }
+  html.dts-modern .dts-dock { padding-left: 16px; padding-right: 16px; }
+}
+@media (max-width: 600px) {
+  html.dts-modern #dts-toolbar { height: 62px; gap: 8px; padding: 0 10px; }
+  html.dts-modern .dts-brand-label, html.dts-modern .dts-brand-symbol { display: none; }
+  html.dts-modern .dts-brand strong { font-size: 19px; }
+  html.dts-modern #dts-toolbar .dts-tool, html.dts-modern #dts-toolbar .dts-mode-toggle { padding: 8px 7px; font-size: 11px; }
+  html.dts-modern .dts-toolbar-controls { gap: 4px; }
+  html.dts-modern body { padding: 74px 10px 74px; }
+  html.dts-modern .dts-panel-header { min-height: 42px; }
+  html.dts-modern .dts-panel-minimize { flex-basis: 42px; }
+  html.dts-modern .dts-dock { padding: 8px 10px; }
+  html.dts-modern .dts-dock::before { display: none; }
+  html.dts-modern .dts-dock-item { padding: 9px 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dts-modern * { scroll-behavior: auto !important; }
+}

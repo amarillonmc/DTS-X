@@ -1,0 +1,128 @@
+<!--{if $roomdata['readystat']!=2}-->
+<table CellSpacing=0 CellPadding=0 width=100%>
+<tr>
+	<td class="b3" height=40px colspan=2>
+	<span style="font-size:30px; line-height:40px;">房间{$room_id}&nbsp;-&nbsp; <!--{eval echo room_get_vars($roomdata, 'name');}--></span>
+	<!--{if $upos==0}-->
+	<div style="position:absolute; top:14px; right: 120px;">
+		<div class="glow_buttons" onclick="bubblebox_show('persistent-rmeditbox');">修改模式</div>
+	</div>
+	<!--{/if}-->
+	<div style="position:absolute; top:14px; right: 16px;">
+		<div class="glow_buttons red" onclick="$('command').value='leave';postCmd('roomcmd','roomcmd.php');">离开房间</div>
+	</div>
+	</td>
+</tr>
+<tr>
+	<td class="b3" height=8px colspan=2>
+	</td>
+</tr>
+<tr>
+	<td width=515px>
+	{template roomteam}
+	</td>
+	<td class="b3" width=85px>
+	<!--{if room_get_vars($roomdata,'without-ready')}-->
+		<!--{if $upos==0}-->
+			<div class="glow_buttons h50 yellow" onclick="$('command').value='start';postCmd('roomcmd','roomcmd.php');">开始</div>
+		<!--{else}-->
+			<div class="glow_buttons h50 grey forbidden">开始</div>
+		<!--{/if}-->
+	<!--{else}-->
+		<!--{if $roomdata['readystat']==1 && $upos>=0 && !$roomdata['player'][$upos]['ready']}-->
+			<div class="glow_buttons h50 yellow" onclick="$('command').value='ready';postCmd('roomcmd','roomcmd.php');">准备</div>
+		<!--{else}-->
+			<!--{if $roomdata['readystat']==1 && $upos>=0 && $roomdata['player'][$upos]['ready']}-->
+				<div class="glow_buttons h50 lime forbidden">准备</div>
+			<!--{else}-->
+				<div class="glow_buttons h50 grey forbidden">准备</div>
+			<!--{/if}-->
+		<!--{/if}-->
+	<!--{/if}-->
+	</td>
+</tr>
+<tr>
+	<td class="b3" height=7px colspan=2>
+	</td>
+</tr>
+<tr>
+	<td class="b3" height=20px colspan=2>
+	<!--{if room_get_vars($roomdata,'pnum') > 2 && (room_creater_check($upos) || $upos == room_team_leader_check($roomdata,$upos))}-->
+	<div class="glow_buttons" style="float:left;left:25px;width:90px;" onclick="$('command').value='pos_disable';$('para1').value='all';postCmd('roomcmd','roomcmd.php');">
+		<!--{if room_creater_check($upos)}-->禁用所有空位<!--{else}-->禁用本队空位<!--{/if}-->
+	</div>
+	<!--{/if}-->
+	<span style="20px" id="room_banner">
+	<!--{if $roomdata['readystat']!=1}-->
+		<!--{if $upos == -1}-->
+		<span class="yellow b">请点击一个空位置以进入。</span>
+		<!--{else}-->
+		请等待人满后点击“准备”按钮。点击空位置可以移动到那里。
+		<!--{/if}-->
+	<!--{else}-->
+		<!--{eval $kicktimeleft = $roomdata['kicktime']-time()+1;}-->
+		<!--{if $upos>=0}-->
+			<!--{if !$roomdata['player'][$upos]['ready']}-->
+			<span class="yellow b">请点击“准备”按钮，<span id="roomkick_timer">$kicktimeleft</span>秒后没有准备的玩家将被自动踢出房间。</span>
+			<!--{else}-->
+			请等待其他人准备，<span id="roomkick_timer">$kicktimeleft</span>秒后没有准备的玩家将被自动踢出房间。
+			<!--{/if}-->
+		<!--{else}-->
+			<span id="roomkick_timer">$kicktimeleft</span>秒后没有准备的玩家将被自动踢出房间。
+		<!--{/if}-->
+	<!--{/if}-->
+	</span>
+	</td>
+</tr>
+<tr>
+	<td height=15px colspan=2>
+	</td>
+</tr>
+<tr>
+	<td class="b3" colspan="2">
+		<!--{if NULL !== room_get_vars($roomdata, 'game-option')}-->
+		<!--{eval $game_option=room_get_vars($roomdata, 'game-option');}-->
+		<!--{loop $game_option $gokey $goval}-->
+		<div>
+			<span class="white b">$goval['title']</span> 
+			<!--{if $goval['type']=='number'}-->
+				<!--{eval $current_go=room_get_vars($roomdata, 'current_game_option');$nval=(int)$current_go[$gokey];}-->
+				<input type="number" name="{$gokey}" id="{$gokey}" value="{$nval}" min="{$goval['min']}" max="{$goval['max']}" style="width:50px"
+					<!--{if !$goval['tip-need-ok']}-->
+					onclick="$('command').value='game-option';$('para1').value='$gokey';$('para2').value=document.getElementById('$gokey').value;postCmd('roomcmd','roomcmd.php');"
+					<!--{/if}-->>
+				<!--{if $goval['tip-need-ok']}-->
+					&nbsp;&nbsp;&nbsp;<input type="button" value="确认" onclick="$('command').value='game-option';$('para1').value='$gokey';$('para2').value=document.getElementById('$gokey').value;postCmd('roomcmd','roomcmd.php');">
+					&nbsp;&nbsp;&nbsp;当前{$goval['title']}已设置为<span class="yellow b">$nval</span>
+				<!--{/if}-->
+			<!--{else}-->
+				<!--{loop $goval['options'] $oval}-->
+					<input type="{$goval['type']}" name="{$gokey}" id="{$gokey}_{$oval['value']}"
+						onchange="$('command').value='game-option';$('para1').value='$gokey';$('para2').value='{$oval['value']}';postCmd('roomcmd','roomcmd.php');"
+						<!--{if $oval['value']==$roomdata['current_game_option'][$gokey]}-->checked<!--{/if}-->>
+					<a onclick="$('{$gokey}_{$oval['value']}').click();" title="{$oval['title']}">$oval['name']</a>&nbsp;&nbsp;&nbsp;
+				<!--{/loop}-->
+			<!--{/if}-->
+			<!--{if !empty($goval['tip-function']) && function_exists($goval['tip-function'])}-->
+				<!--{eval $tip_box_height = !empty($goval['tip-box-height']) ? $goval['tip-box-height'] : '50px';}-->
+				<div class="gscroll" style="padding:5px 0; text-align:center;overflow-x:hidden; overflow-y:auto;height:{$tip_box_height}">
+					<!--{eval echo $goval['tip-function']((int)room_get_vars($roomdata, 'current_game_option')['lvl']);}-->
+				</div>
+			<!--{/if}-->
+		</div>
+		<!--{/loop}-->
+		<!--{/if}-->
+	</td>
+</tr>
+<tr>
+	<td height=15px colspan=5>
+	</td>
+</tr>
+</table>
+<!--{else}-->
+<table CellSpacing=0 CellPadding=0 width=100% height=398px>
+<tr><td height=398px class="b3">
+<span class="yellow b">游戏即将开始，请等待几秒钟，页面将自动跳转至游戏界面<br>
+如果页面很久都没有跳转，请手动 <a href="game.php">点击这里</a> 进入游戏<br></span>
+</td></tr></table>
+<!--{/if}-->

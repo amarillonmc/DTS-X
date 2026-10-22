@@ -1,0 +1,18 @@
+<!--{eval $___TEMP_SKILL_ID=713;}-->
+{template MOD_CLUBBASE_SKILLDESC_START}
+<span>
+$clubskillname[$___TEMP_SKILL_ID]
+</span>
+{template MOD_CLUBBASE_SKILLDESC_MID1}
+<td class="skilldesc_left b3"><span class="skilldesc">
+<!--{eval $sk713_lvl = \skillbase\skill_getvalue(713,'lvl',$who);}-->
+只要你采取探物姿态，探索发现物品时可能额外发现道具（最多<span class="yellow b">$sk713_lvl</span>个）
+</span></td>
+<td class="skilldesc_right b3">
+</td>
+{template MOD_CLUBBASE_SKILLDESC_MID2}
+<!--{if empty($___TEMP_THIS_SKILL_ACQUIRED)}-->
+<span class="yellow b">
+</span>
+<!--{/if}-->
+{template MOD_CLUBBASE_SKILLDESC_END}

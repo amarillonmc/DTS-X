@@ -1,0 +1,43 @@
+<!--{eval eval(import_module('sys','achievement_base'));}-->
+<!--{eval \achievement_base\ach_show_init();}-->
+<table>
+	<!--{loop $ach_list $k $v}-->
+		{template achievement_row}
+	<!--{/loop}-->
+</table>
+
+<!--{if !empty($ach_expired_list)}-->
+<div style="height:60px;">
+	<button type="button" class="b_button bc_black" style="width:300px;margin:15px;" onclick="$('ach_expired_list').style.display='block';this.style.display='none'">点击查看既往活动成就</button>
+</div>
+<div id="ach_expired_list" style="display:none">
+<table>
+	<!--{loop $ach_expired_list $k $v}-->
+		{template achievement_row}
+	<!--{/loop}-->
+</table>
+</div>
+<!--{/if}-->
+
+<!--{if $refdaily_flag}-->
+<!--{eval bubblebox_start('id:newdailyquest;height:200;width:1060;cancellable:1;');}-->
+<div class="subtitle">获得的每日任务：</div>
+<div>
+<!--{eval $showarr = \achievement_base\show_achievements_single_type($u_acharr,20);}-->
+<!--{loop $showarr $si $sv}-->
+	<!--{if $si % $ach_show_num_per_row == 0}-->
+	<div>
+	<!--{/if}-->
+		<div class="<!--{if $sv}-->ach_box<!--{else}-->ach_box_empty<!--{/if}-->" align="left" valign="top">
+			<div>$sv</div>
+		</div>
+	<!--{if $si % $ach_show_num_per_row == $ach_show_num_per_row - 1}-->
+	</div>
+	<!--{/if}-->
+<!--{/loop}-->
+</div>
+<br>
+<button type="button" onclick="bubblebox_hide_all();">关闭</button> 点击气泡框外任意位置也可关闭窗口
+<!--{eval bubblebox_end();}-->
+<script>bubblebox_show('newdailyquest');</script>
+<!--{/if}-->
