@@ -38,6 +38,18 @@ function scenarios(){const cases=[],add=(label,calls,values={})=>cases.push({lab
  for(const list of [[1,2],[2,1],[1,1],[1],[1,3]])add('mix '+list,[['itemmix',list]],{itemmix:{mixinfo:[recipe]}});
  add('miss',[['itemmix',[1,2]]],{itemmix:{mixinfo:[]}});
  const choices=[recipe,{...recipe,result:['另一个','WP',30,5]}];
+ // Real HTTP requests start with sys.uip=null. PHP creates the array only on
+ // its first write; failed validation must also tolerate an absent scratchpad.
+ for(const [label,calls,extra] of [
+  ['success',[['itemmix',[1,2]]],{}],
+  ['no recipe',[['itemmix',[1,2]]],{itemmix:{mixinfo:[]}}],
+  ['options',[['itemmix',[1,2]]],{itemmix:{mixinfo:choices}}],
+  ['direct proc',[['itemmix_proc',[1,2],{...recipe,type:'normal'}]],{}],
+  ['direct success',[['itemmix_success']],{player:{itm0:'成品',itmk0:'WP',itme0:10,itms0:1}}],
+  ['no materials',[['act']],{}],
+  ['one material',[['act']],{input:{mitm1:1}}],
+  ['selected result',[['act']],{input:{mixmask:3,itemselect:1},itemmix:{mixinfo:choices}}],
+ ])add('fresh request '+label,calls,{...extra,sys:{uip:null},itemmix:extra.itemmix??{mixinfo:[recipe]}});
  for(const selected of [-1,0,1,3,'0','1','bad'])add('choose '+selected,[['itemmix',[1,2],selected]],{itemmix:{mixinfo:choices}});
  for(const [mode,command,input] of [['command','itemmain',{itemcmd:'itemmix'}],['command','other',{}],['itemmain','other',{}],['itemmain','itemmix',{itemselect:999}],['itemmain','itemmix',{mitm1:1,mitm2:1}],['itemmain','itemmix',{mixmask:'3',itemselect:'1'}],['itemmain','itemmix',{mixmask:'3'}],['itemmain','itemmix',{mixmask:'3',itemselect:0}]])add('dispatch '+mode+'/'+command+'/'+JSON.stringify(input),[['act']],{sys:{mode,command},input,itemmix:{mixinfo:choices}});
  add('start mutates cmd',[['act']],{input:{mixmask:3},startMutation:true,itemmix:{mixinfo:choices}});

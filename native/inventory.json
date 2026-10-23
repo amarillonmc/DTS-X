@@ -21,7 +21,7 @@
   },
   "migration": {
     "statusFile": "native/migration-status.json",
-    "statusSha256": "823574958b7b803c60f141202450de8765264b7bdf352c0e402a8983fd557f60",
+    "statusSha256": "8cafe120e6be68a1d867d3835efcee444dcc794d90a386bf1518a03c9a18d791",
     "nativeGameReady": true,
     "note": "Readiness is an explicitly recorded acceptance result, not inferred from static inventory or file counts. This command does not rerun behavioral tests.",
     "counts": {
@@ -4223,12 +4223,17 @@
         "evidence": [
           {
             "test": "tests/native-base-extra-itemmix.test.mjs",
-            "scope": "原PHP真实规则、资源、持久化及模板差分，覆盖测试所列场景。",
+            "scope": "676个原PHP7.4差分场景，含全部473配方，以及新增八组请求级uip=null下的成功、失败、多结果选择和直接调用；保留材料、数值类型及调用链。",
             "result": "passed"
           },
           {
             "test": "tests/native-full-gameplay.test.mjs",
             "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-itemmix-http.test.mjs",
+            "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
             "result": "passed"
           }
         ],
@@ -52801,6 +52806,11 @@
             "test": "tests/native-tutorial-http.test.mjs",
             "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
             "result": "passed"
+          },
+          {
+            "test": "tests/native-itemmix-http.test.mjs",
+            "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
+            "result": "passed"
           }
         ],
         "remaining": [
@@ -66396,6 +66406,11 @@
             "test": "tests/native-tutorial-http.test.mjs",
             "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
             "result": "passed"
+          },
+          {
+            "test": "tests/native-itemmix-http.test.mjs",
+            "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
+            "result": "passed"
           }
         ],
         "remaining": [
@@ -75934,6 +75949,11 @@
           {
             "test": "tests/native-full-gameplay.test.mjs",
             "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-itemmix-http.test.mjs",
+            "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
             "result": "passed"
           }
         ],

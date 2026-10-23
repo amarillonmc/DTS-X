@@ -23,8 +23,8 @@ export const itemmixModule = {
   functions: {
     async get_mixinfo(ctx) { return copy(ctx.state().mixinfo); },
     async itemmix_success(ctx) {
-      const sys = ctx.state('sys'), player = ctx.state('player'), state = ctx.state(), type = !present(sys.uip.mixtp) || eq(sys.uip.mixtp, get(state.mix_type, 'normal')) ? '' : get(state.mix_type, sys.uip.mixtp);
-      appendLog(ctx, `<span class="yellow b">${text(sys.uip.itmstr)}</span>${text(type)}合成了<span class="yellow b">${text(player.itm0)}</span><br>`);
+      const sys = ctx.state('sys'), player = ctx.state('player'), state = ctx.state(), type = !present(sys.uip?.mixtp) || eq(sys.uip.mixtp, get(state.mix_type, 'normal')) ? '' : get(state.mix_type, sys.uip.mixtp);
+      appendLog(ctx, `<span class="yellow b">${text(sys.uip?.itmstr)}</span>${text(type)}合成了<span class="yellow b">${text(player.itm0)}</span><br>`);
       await ctx.call('sys', 'addnews', sys.now, 'itemmix', player.name, player.itm0, type, '', ''); player.wd = n(player.wd) + 1;
       if (text(player.itmk0).startsWith('H') && eq(player.club, 16) && player.itms0 !== sys.nosta) player.itms0 = Math.ceil(n(player.itms0) * 2);
       else if ((eq(player.itmk0, 'EE') || eq(player.itmk0, 'ER')) && eq(player.club, 7)) player.itme0 = n(player.itme0) * 5;
@@ -56,6 +56,9 @@ export const itemmixModule = {
     async itemmix(ctx, list, selected = -1) {
       list = copy(list); const sys = ctx.state('sys'), player = ctx.state('player'); if (!present(await call(ctx, 'itemmix_place_check', copy(list)))) return;
       const results = await call(ctx, 'itemmix_get_result', copy(list)), names = values(list).map(slot => player['itm' + text(slot)]);
+      // Each HTTP request starts with uip=null. The source's array assignment
+      // creates it here; rendering a previous page does not initialize this one.
+      sys.uip ??= {};
       sys.uip.itmstr = names.map(text).join(' '); sys.uip.mixmask = await call(ctx, 'calc_mixmask', copy(list));
       if (!values(results).length) { appendLog(ctx, `<span class="yellow b">${text(sys.uip.itmstr)}</span>不能合成！<br>`); await replaceCommand(ctx, await call(ctx, 'get_itemmix_filename'), ctx.importInto({ mlist: list, itemselect: selected, mix_res: results, mixitemname: names }, 'sys', 'player', 'logger', 'itemmix')); }
       else if (values(results).length > 1) {
@@ -67,6 +70,7 @@ export const itemmixModule = {
       const player = ctx.state('player'), sys = ctx.state('sys'); for (const slot of values(list)) await call(ctx, 'itemmix_reduce', 'itm' + text(slot));
       const result = get(info, 'result');
       Object.assign(player, { itm0: get(result, 0) ?? null, itmk0: get(result, 1) ?? null, itme0: get(result, 2) ?? null, itms0: get(result, 3) ?? null, itmsk0: get(result, 4) ?? '' });
+      sys.uip ??= {};
       sys.uip.mixcls = present(get(info, 'class')) ? get(info, 'class') : ''; sys.uip.mixtp = get(info, 'type') ?? null; await call(ctx, 'itemmix_success');
     },
     async get_itemmix_filename(ctx) { return templateName(ctx, 'MOD_ITEMMIX_ITEMMIX'); },
@@ -85,7 +89,7 @@ export const itemmixModule = {
           else {
             const list = []; for (let slot = 1; slot <= 6; slot++) if (mask === null ? present(input['mitm' + slot]) : integer(mask) & (1 << (slot - 1))) list.push(slot);
             if (selected !== null) await call(ctx, 'itemmix', list, selected); else await call(ctx, 'itemmix', list);
-            if (present(sys.uip.itemmix_option_show)) {
+            if (present(sys.uip?.itemmix_option_show)) {
               const scope = ctx.importInto({ itemcmd, itemselect: selected, mixmask: mask, mixlist: list }, 'sys', 'player');
               const start = await render(ctx, templateName(ctx, 'MOD_ITEMMIX_ITEMMIX_OPTION_START'), scope), middle = text(player.cmd), end = await render(ctx, templateName(ctx, 'MOD_ITEMMIX_ITEMMIX_OPTION_END'), scope); player.cmd = start + middle + end;
             }

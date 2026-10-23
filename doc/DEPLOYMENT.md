@@ -119,6 +119,8 @@ docker compose start app
 
 更新现代界面脚本后，在浏览器用 Ctrl+F5 强制刷新；若自行配置了代理或 CDN 静态资源缓存，也需刷新对应的 `/modern/modern.js` 缓存。2026-10-23 的教学疗伤与移动下拉框修复不需要数据库迁移：保留现有 `.env`、数据库与状态目录，更新代码、停服校验、重启即可，已保存的教程进度可继续使用。
 
+同日的合成提交 500 修复位于 `native/gameplay/base-extra/itemmix.mjs`，教学与普通游戏共用。每次请求的界面临时状态从空值开始，原生实现现按原 PHP 行为在首次写入时建立该状态，并允许读取尚不存在的合成选项。更新后停服运行 `npm run compile`、`npm run doctor` 并重启 Node；无需清空数据库、重开教学或调整反代设置。回归时既检查“道具合成”入口，也要实际选择材料并提交。
+
 默认开发修改 `native/`。部分规则、页面和模板是由开发期工具生成的静态 JavaScript；运行 `scripts/native-compiler/build-*.mjs` 会覆盖相应生成文件，不能当作日常启动/编译步骤。维护方式见 [ARCHITECTURE.md](ARCHITECTURE.md) 与 [DEVELOPMENT.md](DEVELOPMENT.md)。
 
 上线前仍需在目标环境验证首次安装、非空库保护、重复启动、反代 IP、跨服回调、SIGTERM、完整备份和隔离恢复。当前真实 MySQL、OS 锁、原生 HTTP 和原 PHP 差分测试的结果，不能替代未执行的 Docker、Linux 或目标并发容量验收。

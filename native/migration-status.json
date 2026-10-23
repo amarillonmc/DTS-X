@@ -1200,12 +1200,17 @@
       "evidence": [
         {
           "test": "tests/native-base-extra-itemmix.test.mjs",
-          "scope": "原PHP真实规则、资源、持久化及模板差分，覆盖测试所列场景。",
+          "scope": "676个原PHP7.4差分场景，含全部473配方，以及新增八组请求级uip=null下的成功、失败、多结果选择和直接调用；保留材料、数值类型及调用链。",
           "result": "passed"
         },
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-itemmix-http.test.mjs",
+          "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
           "result": "passed"
         }
       ],
@@ -8037,6 +8042,11 @@
         {
           "test": "tests/native-tutorial-http.test.mjs",
           "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-itemmix-http.test.mjs",
+          "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
           "result": "passed"
         }
       ],
@@ -15813,6 +15823,11 @@
           "test": "tests/native-tutorial-http.test.mjs",
           "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-itemmix-http.test.mjs",
+          "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -16001,6 +16016,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-itemmix-http.test.mjs",
+          "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
           "result": "passed"
         }
       ],
@@ -16593,6 +16613,27 @@
         "failed": 1,
         "skipped": 0,
         "scope": "交互修复复核：全部原生测试通过，唯一失败为旧runtime生命周期临时server.config.php原子重命名EPERM；该项单独复测通过。完整日志见var/tests/interaction-full-suite-2.log；不宣称完整套件全绿。"
+      },
+      {
+        "command": "node --test tests/native-base-extra-itemmix.test.mjs",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "本轮合成修复，676个PHP7.4场景，日志var/tests/itemmix-parity.log。"
+      },
+      {
+        "command": "node --test --test-concurrency=1 tests/native-random-gameplay.test.mjs tests/native-full-host.test.mjs tests/native-full-gameplay.test.mjs",
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "本轮合成修复相关回归：随机合成及数组随机语义差分、770模块宿主、整局持久化和原Edge录像播放器；日志var/tests/itemmix-related.log。"
+      },
+      {
+        "command": "node --test --test-reporter=tap tests/native-itemmix-http.test.mjs",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。日志var/tests/itemmix-http.log。本轮未重新执行完整npm test。"
       }
     ],
     "limits": [
