@@ -89,16 +89,20 @@ function put(target, name, value) {
   return value;
 }
 export function copy(value) {
+  if (value === null || typeof value !== 'object') return value;
   if (Buffer.isBuffer(value)) return Buffer.from(value);
   if (!isArray(value)) return value;
-  if (value instanceof Map) { const result = new Map([...value].map(([name, child]) => [name, copy(child)])); if (value[ORDER]) Object.defineProperty(result, ORDER, { value: [...value[ORDER]] }); return result; }
+  if (value instanceof Map) { const result = new Map(); for (const [name, child] of value) result.set(name, copy(child)); if (value[ORDER]) Object.defineProperty(result, ORDER, { value: [...value[ORDER]] }); return result; }
   const result = Array.isArray(value) ? [] : Object.create(null);
   if (value[ORDER]) Object.defineProperty(result, ORDER, { value: [...value[ORDER]] });
   if (value[LAYOUT]) Object.defineProperty(result, LAYOUT, { value: { ...value[LAYOUT] } });
-  for (const [name, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) {
-    if (!descriptor.enumerable) continue;
+  // Most fields are scalar data. Avoid building a descriptor table and
+  // defining every copied field, but retain accessors that bind PHP references.
+  for (const name of Object.keys(value)) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, name);
     if (descriptor.get && descriptor.set) Object.defineProperty(result, name, descriptor);
-    else Object.defineProperty(result, name, { value: copy(descriptor.value), writable: true, configurable: true, enumerable: true });
+    else if (name === '__proto__') Object.defineProperty(result, name, { value: copy(descriptor.value), writable: true, configurable: true, enumerable: true });
+    else result[name] = copy(descriptor.value);
   }
   return result;
 }

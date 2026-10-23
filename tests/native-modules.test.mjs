@@ -115,6 +115,14 @@ test('module initialization and import aliases preserve ordering, input isset, a
   assert.equal(one.state('base').value, 100);
   one.state('base').addedLater = 9;
   assert.equal(own(one.importInto({}, 'base'), 'addedLater'), false);
+  const again = one.importInto({}, 'base'), separate = two.importInto({}, 'base');
+  again.value = 101;
+  assert.equal(scope.value, 101); assert.equal(separate.value, 4);
+  two.state('base').value = 6;
+  assert.equal(separate.value, 6); assert.equal(again.value, 101);
+  // Rebinding an existing scope must not retain another session's accessor.
+  two.importInto(again, 'base'); again.value = 8;
+  assert.equal(separate.value, 8); assert.equal(scope.value, 101);
   const number = { score: 7 };
   one.call('base', 'change', reference(number, 'score'));
   assert.equal(number.score, 8);

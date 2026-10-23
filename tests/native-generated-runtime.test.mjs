@@ -18,6 +18,23 @@ const oracle = (source, input) => {
   assert.equal(run.status, 0, run.stderr); return run.stdout;
 };
 const canonical = value => values.isArray(value) ? { entries: values.entries(value).map(([key, child]) => [key, canonical(child)]) } : value;
+
+test('generated contexts share value helpers but isolate overrides, globals, clocks and output', async () => {
+  const contexts = [100, 200].map(time => {
+    const output = createOutput(), generated = createGeneratedServices({ globals: { time }, clock: { nowSeconds: () => time }, output });
+    return { output, r: createModuleContext({ services: { generated } }, 'fixture') };
+  });
+  const [first, second] = contexts;
+  assert.equal(first.r.copy, values.copy); assert.equal(second.r.copy, values.copy);
+  first.r.copy = () => 'local override';
+  assert.equal(first.r.copy([]), 'local override'); assert.deepEqual(second.r.copy([]), []);
+  first.r.globals.time = 999;
+  assert.equal(second.r.globals.time, 200);
+  for (const [index, { output, r }] of contexts.entries()) {
+    assert.equal(await r.call('time'), (index + 1) * 100);
+    r.write(String(index)); assert.equal(output.peek(), String(index));
+  }
+});
 async function temporary(t) {
   const parent = path.resolve('var/tests'); await mkdir(parent, { recursive: true }); const root = await mkdtemp(path.join(parent, 'generated-runtime-'));
   t.after(async () => { assert.ok(root.startsWith(parent + path.sep)); await rm(root, { recursive: true, force: true }); }); return root;

@@ -126,6 +126,7 @@ class ModuleSession {
   #services;
   #states = new Map();
   #exports = new Map();
+  #imports = new Map();
   #chains = new Map();
   #definitions = new Map();
   #initializing = null;
@@ -188,14 +189,22 @@ class ModuleSession {
       const state = this.state(name);
       const names = this.#exports.get(name);
       if (!names) throw new Error(`Module ${name} has not completed initialization`);
-      for (const key of names) {
-        // INPUT uses PHP isset: null is not set; 0, false and '' are set.
-        if (name === 'input' && own(scope, key) && scope[key] !== null && scope[key] !== undefined) continue;
-        Object.defineProperty(scope, key, {
+      // Accessors bind this session's fixed state object, not the importing
+      // scope. Reuse them within the session instead of allocating closures
+      // for every invocation of every hook; never share them across requests.
+      let bindings = this.#imports.get(name);
+      if (!bindings) {
+        bindings = names.map(key => [key, {
           configurable: true, enumerable: true,
           get: () => state[key],
           set: value => { state[key] = value; },
-        });
+        }]);
+        this.#imports.set(name, bindings);
+      }
+      for (const [key, descriptor] of bindings) {
+        // INPUT uses PHP isset: null is not set; 0, false and '' are set.
+        if (name === 'input' && own(scope, key) && scope[key] !== null && scope[key] !== undefined) continue;
+        Object.defineProperty(scope, key, descriptor);
       }
     }
     return scope;

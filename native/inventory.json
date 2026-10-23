@@ -21,7 +21,7 @@
   },
   "migration": {
     "statusFile": "native/migration-status.json",
-    "statusSha256": "8cafe120e6be68a1d867d3835efcee444dcc794d90a386bf1518a03c9a18d791",
+    "statusSha256": "74aa732f822498853c3459e112f557eae5ba6545ae7a83518f06333ed071e128",
     "nativeGameReady": true,
     "note": "Readiness is an explicitly recorded acceptance result, not inferred from static inventory or file counts. This command does not rerun behavioral tests.",
     "counts": {
@@ -1588,7 +1588,7 @@
           },
           {
             "test": "tests/native-player-assets.test.mjs",
-            "scope": "679个原GIF/PNG/JPEG尺寸逐一与PHP getimagesize对照；只读资源与路径边界。",
+            "scope": "679个原GIF/PNG/JPEG尺寸逐一与PHP getimagesize对照；请求内缺失文件索引、跨请求新增图片可见、删除文件重查、大小写与目录/符号链接边界。",
             "result": "passed"
           },
           {

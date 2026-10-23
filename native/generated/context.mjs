@@ -11,6 +11,10 @@ import { derivedFilePath } from '../templates/derived.mjs';
 
 const REF = Symbol('native generated reference');
 const servicesByHost = new WeakMap();
+// ESM namespace spreading is expensive at every rule call. Share the stateless
+// value functions through an ordinary prototype; request bindings stay own
+// properties, and a caller can still override a helper on its own context.
+const valueHelpers = { ...v };
 const own = (object, key) => Object.hasOwn(object, key);
 const isRef = value => !!value && typeof value === 'object' && (value[REF] || (() => { const d = Object.getOwnPropertyDescriptor(value, 'value'); return !!d?.get && !!d?.set; })());
 const readReference = value => isRef(value) ? value.value : value;
@@ -65,7 +69,7 @@ export function createModuleContext(ctx, module, phase = 'function') {
     if (own(templates?.names ?? {}, name)) return templates.names[name];
     return name;
   };
-  const r = { ...v, argument, alias, readReference, globals: host.globals,
+  const r = { __proto__: valueHelpers, argument, alias, readReference, globals: host.globals,
     capability: name => host.capabilities?.[name] === true,
     parameter(scope, name, value, byref) {
       if (byref && isRef(value)) alias(v.slot(scope, [name]), value);

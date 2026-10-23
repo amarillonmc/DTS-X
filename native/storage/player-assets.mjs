@@ -1,4 +1,4 @@
-import { readFile, realpath, stat } from 'node:fs/promises';
+import { readFile, readdir, realpath, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 function size(bytes) {
@@ -33,16 +33,25 @@ function size(bytes) {
  * dimensions. No image bytes are rewritten and no external image process runs.
  * dimensions() reports a missing/unsupported resource instead of fabricating
  * a size. The validated root prevents filenames from escaping the asset tree.
+ * Request hosts opt into a directory-name snapshot to reject missing numbered
+ * icons without thousands of failed filesystem calls. Existing files still
+ * go through realpath/stat, and a fresh request sees newly installed images.
  */
-export async function createPlayerAssets(imageRoot) {
+export async function createPlayerAssets(imageRoot, { indexNames = false } = {}) {
   if (!path.isAbsolute(imageRoot)) throw new TypeError('Player image root must be absolute');
   const root = await realpath(imageRoot);
   if (!(await stat(root)).isDirectory()) throw new TypeError('Player image root must be a directory');
-  async function resolve(name) {
+  const indexedName = name => process.platform === 'win32' ? name.toLowerCase() : name;
+  let names;
+  function candidatePath(name) {
     if (typeof name !== 'string' || !name || name.includes('\0') || name.includes(':') || path.isAbsolute(name)) throw new TypeError('Invalid relative player image name');
     const normalized = name.replaceAll('\\', '/');
     if (normalized.split('/').some(part => part === '..')) throw new TypeError('Player image path escapes its root');
     const candidate = path.resolve(root, normalized);
+    if (candidate === root) throw new TypeError('Player image path escapes its root');
+    return candidate;
+  }
+  async function resolve(candidate) {
     const resolved = await realpath(candidate);
     const relative = path.relative(root, resolved);
     if (!relative || relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) throw new TypeError('Player image path escapes its root');
@@ -50,9 +59,24 @@ export async function createPlayerAssets(imageRoot) {
   }
   return Object.freeze({
     async exists(name) {
-      try { return (await stat(await resolve(name))).isFile(); }
+      try {
+        const candidate = candidatePath(name), filename = path.basename(candidate);
+        // Limit the fast negative lookup to simple root filenames. Unusual
+        // names and nested paths retain the filesystem's own matching rules.
+        if (indexNames && path.dirname(candidate) === root && /^[a-z0-9_-]+(?:\.[a-z0-9_-]+)*$/i.test(filename)) {
+          names ??= readdir(root).then(entries => new Set(entries.map(indexedName))).catch(error => {
+            // A searchable but non-listable directory can still serve known
+            // filenames. In that case retain the original per-file lookup.
+            if (error.code === 'EACCES' || error.code === 'EPERM') return null;
+            throw error;
+          });
+          const index = await names;
+          if (index && !index.has(indexedName(filename))) return false;
+        }
+        return (await stat(await resolve(candidate))).isFile();
+      }
       catch (error) { if (error.code === 'ENOENT' || error.code === 'ENOTDIR') return false; throw error; }
     },
-    async dimensions(name) { return size(await readFile(await resolve(name))); },
+    async dimensions(name) { return size(await readFile(await resolve(candidatePath(name)))); },
   });
 }

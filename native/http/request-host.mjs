@@ -187,7 +187,7 @@ export async function createNativeRequestHost({ configuration, additionalModules
       clear_dir: (value,keep,expire) => files.clear(value,{keepRoot:!!keep,expireSeconds:n(expire)}),
     });
     const services = host.services = { input: request.input, database, output, templates: host.templates, random, files, inCommand: true,
-      playerLocks: locks.playerLocks, playerAssets: await createPlayerAssets(path.join(sourceRoot,'img')), skills: createSkillCatalog(selected,infoById),
+      playerLocks: locks.playerLocks, playerAssets: await createPlayerAssets(path.join(sourceRoot,'img'),{indexNames:true}), skills: createSkillCatalog(selected,infoById),
       system: { config: systemConfig, request: { cookies: request.input.cookies, post: request.input.post, script, page, pageStartTime: request.pageStartTime, daemon: false },
         files, locks: locks.locks, users, rooms: host.rooms, messages: host.messages, clock } };
     services.system.config = { ...effectiveSystem, server_address: config.server_address };

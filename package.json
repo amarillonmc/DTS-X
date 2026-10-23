@@ -17,6 +17,7 @@
     "test:native": "node --test tests/native-*.test.mjs",
     "native:inventory": "node scripts/native-inventory.mjs",
     "native:status": "node scripts/native-status.mjs",
+    "benchmark:native": "node scripts/benchmark-native.mjs",
     "verify:native": "node scripts/native-inventory.mjs --check",
     "verify:source": "node scripts/verify-source.mjs",
     "doctor": "node --env-file-if-exists=.env native/doctor.mjs"

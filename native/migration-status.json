@@ -448,7 +448,7 @@
         },
         {
           "test": "tests/native-player-assets.test.mjs",
-          "scope": "679个原GIF/PNG/JPEG尺寸逐一与PHP getimagesize对照；只读资源与路径边界。",
+          "scope": "679个原GIF/PNG/JPEG尺寸逐一与PHP getimagesize对照；请求内缺失文件索引、跨请求新增图片可见、删除文件重查、大小写与目录/符号链接边界。",
           "result": "passed"
         },
         {
@@ -16636,10 +16636,53 @@
         "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。日志var/tests/itemmix-http.log。本轮未重新执行完整npm test。"
       }
     ],
+    "performanceValidation": [
+      {
+        "command": "npm test -- --test-concurrency=2",
+        "passed": 1242,
+        "failed": 5,
+        "skipped": 0,
+        "scope": "2026-10-23 请求性能优化，全量390.4秒；五项均为Codex沙箱内Edge Runtime.enable超时，其余项目通过；日志var/tests/performance-full-suite.log。"
+      },
+      {
+        "command": "node --test --test-reporter=tap tests/native-full-http.test.mjs",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "在Codex沙箱外、保留Edge自身沙箱和独立profile复测双账号真实HTTP通过；日志var/tests/performance-http-outside-sandbox.log。"
+      },
+      {
+        "command": "node --test --test-concurrency=2 --test-reporter=tap tests/native-full-gameplay.test.mjs tests/native-itemmix-http.test.mjs tests/native-tutorial-http.test.mjs",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "另四项相同Edge启动问题在Codex沙箱外复测通过：普通局移动/物品/战斗/存储/原录像，教学与普通合成八组合，教学疗伤四组合；日志var/tests/performance-browser-recheck.log。不将分组复测描述为单次全套全绿。"
+      },
+      {
+        "command": "node --test tests/native-value-copy.test.mjs tests/native-player-assets.test.mjs tests/native-generated-runtime.test.mjs tests/native-modules.test.mjs",
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "数组引用与深复制隔离、删除桶与特殊键、独立请求的导入访问器/辅助函数/输出/时钟、请求内头像目录索引；后续目录不可列举时降级处理的图像服务另3/3通过。日志var/tests/performance-final-focused.log、performance-assets-final.log。"
+      },
+      {
+        "command": "npm run benchmark:native -- --samples=20 --label=after-final",
+        "requests": 40,
+        "errors": 0,
+        "scope": "Windows/Node26.5.0/独立MariaDB/770模块/真实HTTP与录像写入，每类预热3次；无CPU采样器和后台调度。基线8edb385源码隔离副本使用相同脚本参数：普通指令P50/P95 784/797→326/361ms，合成菜单1478/1525→503/533ms；报告var/tests/performance-before-final.json与performance-after-final.json。"
+      },
+      {
+        "command": "npm run benchmark:native -- --samples=20 --label=after-scheduler --scheduler-ms=1000",
+        "requests": 40,
+        "errors": 0,
+        "scope": "改动后开启每秒后台调度：普通指令P50/P95 445/519ms、合成菜单516/670ms；报告var/tests/performance-after-scheduler.json。不含公网、Cloudflare、浏览器渲染和多人并发。"
+      }
+    ],
     "limits": [
       "未穷举技能组合、随机种子、竞态和全部结局。",
       "本机为Windows/Node26.5.0/PHP7.4.33/Edge，Docker与Linux未实际验证。",
-      "交互修复本轮全量测试存在未稳定复现的HTTP地图500、PHP对照超时和旧runtime Windows原子重命名EPERM；单独复测通过，来源尚未全部确认，详见doc/NATIVE-MIGRATION.md。"
+      "此前交互修复全量测试存在未稳定复现的HTTP地图500、PHP对照超时和旧runtime Windows原子重命名EPERM；单独复测通过，来源尚未全部确认，详见doc/NATIVE-MIGRATION.md。",
+      "请求性能数据来自本机独立普通局单用户回环基准，不保证目标服务器、公网或多人负载下的容量和延迟。"
     ]
   }
 }
