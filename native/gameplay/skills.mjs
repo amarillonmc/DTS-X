@@ -1,8 +1,9 @@
+import { isReferenceDescriptor } from '../templates/values.mjs';
 import { number as n, present, sameDurability, text } from './numbers.mjs';
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-';
 const call = (ctx, name, ...args) => ctx.call('skillbase', name, ...args);
-const emptyPlayer = pa => pa == null || (typeof pa === 'object' && Object.keys(pa).length === 0);
+const emptyPlayer = pa => pa == null || (typeof pa === 'object' && !Object.prototype.propertyIsEnumerable.call(pa, 'pid') && Object.keys(pa).length === 0);
 const filled = value => value instanceof Map ? value.size !== 0
   : present(value) && (typeof value !== 'object' || Object.keys(value).length !== 0);
 const id = value => Math.trunc(n(value));
@@ -24,7 +25,7 @@ const list = (owner, name, write = false) => {
 function parameterCopy(value) {
   const result = structuredClone(value);
   for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) {
-    if (descriptor.get && descriptor.set) Object.defineProperty(result, key, descriptor);
+    if (isReferenceDescriptor(descriptor)) Object.defineProperty(result, key, descriptor);
   }
   return result;
 }
@@ -33,7 +34,7 @@ function parameterCopy(value) {
 // Regular player objects still carry their ordinary field/reference aliases.
 function playerArgument(value) {
   const descriptor = value && Object.getOwnPropertyDescriptor(value, 'value');
-  return descriptor?.get && descriptor?.set
+  return isReferenceDescriptor(descriptor)
     ? { value: value.value, replace: replacement => { value.value = replacement; } }
     : { value, replace: replacement => {
       if (value != null && typeof value === 'object') Object.defineProperties(value, Object.getOwnPropertyDescriptors(replacement));

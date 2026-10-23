@@ -64,8 +64,8 @@ function stripTags(value) {
 export function builtinFunctions({ now = () => Math.floor(Date.now() / 1000), timezoneOffset = 0 } = {}) {
   const find = (needle, haystack, strict = false) => v.entries(haystack).find(([, item]) => (v.truth(strict) ? v.identical : v.equal)(needle, item));
   return {
-    count: value => value == null ? 0 : v.isArray(value) ? v.entries(value).length : 1,
-    sizeof: value => value == null ? 0 : v.isArray(value) ? v.entries(value).length : 1,
+    count: value => value == null ? 0 : v.isArray(value) ? v.arrayCount(value) : 1,
+    sizeof: value => value == null ? 0 : v.isArray(value) ? v.arrayCount(value) : 1,
     is_array: v.isArray, is_numeric: v.numeric, is_string: value => typeof value === 'string' || Buffer.isBuffer(value),
     strlen: value => bytes(value).length, mb_strlen: value => [...v.text(value)].length,
     substr: substring, strpos: (value, needle, offset = 0) => { const target = typeof needle === 'string' || Buffer.isBuffer(needle) ? bytes(needle) : Buffer.from([v.int(needle) & 255]); if (!target.length) return false; const pos = bytes(value).indexOf(target, v.int(offset)); return pos < 0 ? false : pos; },
@@ -80,7 +80,7 @@ export function builtinFunctions({ now = () => Math.floor(Date.now() / 1000), ti
     implode: (separator, items) => items === undefined ? values(separator).map(v.text).join('') : values(items).map(v.text).join(v.text(separator)),
     in_array: (needle, items, strict = false) => !!find(needle, items, strict),
     array_search: (needle, items, strict = false) => find(needle, items, strict)?.[0] ?? false,
-    array_keys: items => v.entries(items).map(([name]) => name),
+    array_keys: v.arrayKeys,
     array_flip: items => v.array(v.entries(items).filter(([, value]) => typeof value === 'string' || Number.isInteger(value)).map(([name, value]) => [v.key(value), name])),
     array_merge: (...arrays) => v.array(arrays.flatMap(items => v.entries(items).map(([name, value]) => [typeof name === 'number' ? v.APPEND : name, value]))),
     range, round: (value, precision = 0) => { if (v.int(precision) !== 0) throw new Error('Template round precision requires an explicit native implementation'); return v.round(v.number(value)); },

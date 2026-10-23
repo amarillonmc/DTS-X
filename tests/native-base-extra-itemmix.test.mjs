@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ModuleRegistry } from '../native/modules/registry.mjs';
 import { itemmixModule } from '../native/gameplay/base-extra/itemmix.mjs';
+import itemmixConfig from '../native/gameplay/base-extra/itemmix-config.json' with { type: 'json' };
 import { itemModule } from '../native/gameplay/items.mjs';
 import { createTemplateServices, createOutput } from '../native/templates/index.mjs';
 
@@ -21,6 +22,21 @@ function boundaries(input, trace) { return Object.entries(states(input)).map(([n
 }})); }
 const fixture = trace => ({name:'mixfixture',dependencies:['itemmix'],functions:{async itemmix_name_proc(ctx,name){trace.push(['name',name]);return await ctx.next(name);}}});
 const constants = { MOD_ITEMMIX_ITEMMIX: 'itemmix', MOD_ITEMMIX_ITEMMIX_OPTIONS: 'options', MOD_ITEMMIX_ITEMMIX_OPTION_START: 'start', MOD_ITEMMIX_ITEMMIX_OPTION_END: 'end' };
+test('default recipe templates isolate requests and return values while honoring explicit configuration', async () => {
+  const registry = new ModuleRegistry([...boundaries({}, []), itemmixModule]);
+  const first = await registry.createSession(), second = await registry.createSession();
+  const returned = await first.call('itemmix', 'get_mixinfo');
+  returned[0].stuff[0] = 'caller only';
+  assert.notEqual(first.state('itemmix').mixinfo[0].stuff[0], 'caller only');
+  first.state('itemmix').mixinfo[0].result[0] = 'request only';
+  assert.notEqual(second.state('itemmix').mixinfo[0].result[0], 'request only');
+  const custom = [recipe], configured = await registry.createSession({ states: { itemmix: { mixinfo: custom } } });
+  assert.deepEqual(structuredClone(await configured.call('itemmix', 'get_mixinfo')), custom);
+  configured.state('itemmix').mixinfo[0].stuff[0] = 'configured only';
+  assert.equal(custom[0].stuff[0], '素材甲');
+  const disabled = await registry.createSession({ states: { itemmix: { mixinfo: null } } });
+  assert.equal(await disabled.call('itemmix', 'get_mixinfo'), null);
+});
 async function actual(input) { const trace=[], registry=new ModuleRegistry([...boundaries(input,trace),itemmixModule,fixture(trace)]); let buffer='PRIOR';
  const session=await registry.createSession({states:{itemmix:input.itemmix??{}},services:{templates:{names:constants,async render(name,scope){trace.push(['render',name,copy(scope.mix_res??null),scope.itemselect??null]);if(name==='start'&&input.startMutation)scope.cmd='START-MUTATED';return '<fixture:'+name+'>'; }},output:{async take(){const value=buffer;buffer='';return value;}}}});
  const returns=[];for(const [fn,...args] of input.calls) returns.push(await session.call('itemmix',fn,...copy(args))??null);
@@ -28,7 +44,7 @@ async function actual(input) { const trace=[], registry=new ModuleRegistry([...b
 }
 function scenarios(){const cases=[],add=(label,calls,values={})=>cases.push({label,calls,...values});
  add('whole catalog',[['get_mixinfo']]);
- for(const [index,entry] of itemmixModule.state().mixinfo.entries())add('recipe '+index,[['itemmix_recipe_check',entry.stuff.map(itm=>({itm}))]]);
+ for(const [index,entry] of itemmixConfig.values.mixinfo.entries())add('recipe '+index,[['itemmix_recipe_check',entry.stuff.map(itm=>({itm}))]]);
  for(const name of [' 锋利的电气毒性钉棍棒-改 ','小黄的棍棒[+999]','棍棒[+99]','\t\n棍棒\r\n','\f棍棒\f','\0棍棒\0'])add('name '+name,[['itemmix_name_proc',name]]);
  for(const list of [[],[1],[1,1],[1,'1'],[1,2],[2,1],[1,3],[1,2,3]])add('place '+list,[['itemmix_place_check',list],['calc_mixmask',list]]);
  add('mask prefix',[['calc_mixmask',[0,1,2,3,4,5,6,7,'2x','5.9','bad']]]);
@@ -82,4 +98,15 @@ test('generated ordered-array recipe overrides retain normal selection and consu
  const map=value=>value&&typeof value==='object'?new Map(Object.entries(value).map(([key,child])=>[/^(?:0|-?[1-9]\d*)$/.test(key)?Number(key):key,map(child)])):value;
  const input={calls:[['itemmix',[2,1],1]],itemmix:{mixinfo:[recipe,{...recipe,result:['第二成品','WP',20,5]}]}};
  const expected=await actual(input);const mapped={...input,itemmix:{mixinfo:map(input.itemmix.mixinfo)},calls:[['itemmix',new Map([[0,2],[1,1]]),1]]};assert.deepEqual(await actual(mapped),expected);
+});
+
+test('deferred recipe defaults preserve export order and explicit injected overrides', async () => {
+  const registry = new ModuleRegistry([...boundaries({}, []), itemmixModule]);
+  for (const override of [{ extra: 1 }, { extra: 1, mixinfo: null }, { extra: 1, mixinfo: undefined }, { extra: 1, mixinfo: [] }]) {
+    const session = await registry.createSession({ states: { itemmix: override } });
+    const scope = session.importInto({}, 'itemmix');
+    assert.deepEqual(Object.keys(scope), ['mix_type', 'itmname_ignore', 'mixinfo', 'extra']);
+    if (Object.hasOwn(override, 'mixinfo')) assert.deepEqual(scope.mixinfo, override.mixinfo);
+    else assert.equal(scope.mixinfo.length, 473);
+  }
 });

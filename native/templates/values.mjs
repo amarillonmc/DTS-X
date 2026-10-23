@@ -1,5 +1,6 @@
 import { floatText, integerText, round } from '../gameplay/numbers.mjs';
 import { JsonObject, jsonObjectEntries } from '../protocol/json.mjs';
+import { types } from 'node:util';
 
 // Native value boundaries used by generated template functions. These helpers
 // operate on data only; they never parse source, ASTs or executable strings.
@@ -9,9 +10,72 @@ const DELETED = Symbol('deleted source array bucket');
 const LAYOUT = Symbol('source array numeric layout');
 const capacity = count => 2 ** Math.ceil(Math.log2(Math.max(8, count)));
 const opaqueValues = new WeakSet();
+const immutableArrays = new WeakMap();
+const lazyCopies = new WeakMap();
+const sealedLazyValues = new WeakMap();
+// PHP reference aliases and lazy *value* fields are both JS accessors. Every
+// boundary retaining PHP aliases must exclude these private lazy getters.
+export const isReferenceDescriptor = descriptor => !!descriptor?.get && !!descriptor?.set && !lazyCopies.has(descriptor.get);
+
+/** Build-time selected array literals are inert templates, never request state.
+ * Preparing them once lets a value copy defer untouched nested tables without
+ * proxies (the resulting values still support structuredClone/JSON normally). */
+export function immutableArray(value) {
+  if (value === null || typeof value !== 'object') return value;
+  if (immutableArrays.has(value)) return value;
+  if (!isArray(value) || value instanceof Map) throw new TypeError('An immutable native literal must contain only scalar values and arrays');
+  const fields = Object.keys(value).map(name => {
+    const descriptor = Object.getOwnPropertyDescriptor(value, name);
+    if (!Object.hasOwn(descriptor, 'value')) {
+      const source = lazyCopies.get(descriptor.get);
+      if (!source || sealedLazyValues.get(value)?.has(name)) throw new TypeError('An immutable native literal cannot contain references');
+      // A literal may contain already prepared literals. Retain their frozen
+      // value directly, without materializing a temporary mutable subtree.
+      Object.defineProperty(value, name, { value: source, writable: true, enumerable: true, configurable: true });
+      return [name, source];
+    }
+    return [name, immutableArray(descriptor.value)];
+  });
+  if (value[ORDER]) Object.freeze(value[ORDER]);
+  if (value[LAYOUT]) Object.freeze(value[LAYOUT]);
+  immutableArrays.set(value, { fields, descriptors: new Map() });
+  return Object.freeze(value);
+}
+
+function lazyField(target, name, source) {
+  name = String(name);
+  const cached = immutableArrays.get(source).descriptors;
+  let descriptor = cached.get(name);
+  if (!descriptor) {
+    const store = (target, value) => {
+      if (!Reflect.defineProperty(target, name, { value, writable: true, configurable: true, enumerable: true })) {
+        // A caller may seal/freeze a copied array. Accessor reads (and its
+        // existing setter) still work; keep only that exceptional state here.
+        let values = sealedLazyValues.get(target);
+        if (!values) sealedLazyValues.set(target, values = new Map());
+        values.set(name, value);
+      }
+      return value;
+    };
+    const get = function () {
+      const sealed = sealedLazyValues.get(this);
+      return sealed?.has(name) ? sealed.get(name) : store(this, copy(source));
+    };
+    descriptor = { enumerable: true, configurable: true, get, set(value) { store(this, value); } };
+    lazyCopies.set(get, source);
+    // Dynamic array keys may reuse a static child. Bound process-lifetime
+    // descriptor metadata; uncached fields retain exactly the same behavior.
+    if (cached.size < 256) cached.set(name, descriptor);
+  }
+  Object.defineProperty(target, name, descriptor);
+}
+function dataField(target, name, value) {
+  if (name === '__proto__') Object.defineProperty(target, name, { value, writable: true, configurable: true, enumerable: true });
+  else target[name] = value;
+}
 export const opaque = value => { if (value && typeof value === 'object') opaqueValues.add(value); return value; };
 export const isArray = value => !opaqueValues.has(value) && (value instanceof Map || Array.isArray(value) || (value !== null && typeof value === 'object' && [Object.prototype, null].includes(Object.getPrototypeOf(value))));
-export const truth = value => value != null && value !== false && value !== 0 && value !== 0n && value !== '' && value !== '0' && (!Buffer.isBuffer(value) || value.length > 0 && !(value.length === 1 && value[0] === 48)) && (!isArray(value) || entries(value).length !== 0);
+export const truth = value => value != null && value !== false && value !== 0 && value !== 0n && value !== '' && value !== '0' && (!Buffer.isBuffer(value) || value.length > 0 && !(value.length === 1 && value[0] === 48)) && (!isArray(value) || arrayCount(value) !== 0);
 export function number(value) {
   if (value == null || value === false) return 0;
   if (value === true) return 1;
@@ -44,16 +108,28 @@ export const key = value => {
   if (typeof value === 'string' && /^(?:0|-?[1-9]\d*)$/.test(value) && Number.isSafeInteger(Number(value))) return Number(value);
   return value;
 };
+export function arrayKeys(value) {
+  if (value instanceof Map) return [...value.keys()];
+  if (value instanceof JsonObject) return jsonObjectEntries(value).map(([name]) => name);
+  if (!isArray(value)) return [];
+  if (value[ORDER]) {
+    const known = value[ORDER].filter(name => Object.hasOwn(value, name));
+    const seen = new Set(known);
+    for (const name of Object.keys(value).map(key)) if (!seen.has(name)) { known.push(name); seen.add(name); }
+    return known;
+  }
+  return Object.keys(value).map(key);
+}
 export function entries(value) {
   if (value instanceof Map) return [...value];
   if (value instanceof JsonObject) return jsonObjectEntries(value);
   if (!isArray(value)) return [];
-  if (value[ORDER]) {
-    const known = value[ORDER].filter(name => Object.hasOwn(value, name));
-    for (const name of Object.keys(value).map(key)) if (!known.includes(name)) known.push(name);
-    return known.map(name => [name, value[name]]);
-  }
-  return Object.entries(value).map(([name, item]) => [key(name), item]);
+  return value[ORDER] ? arrayKeys(value).map(name => [name, value[name]]) : Object.entries(value).map(([name, child]) => [key(name), child]);
+}
+export function arrayCount(value) {
+  if (value instanceof Map) return value.size;
+  if (value instanceof JsonObject) return jsonObjectEntries(value).length;
+  return !isArray(value) ? 0 : value[ORDER] ? arrayKeys(value).length : Object.keys(value).length;
 }
 export function get(value, name) {
   name = key(name);
@@ -65,7 +141,7 @@ export function get(value, name) {
   }
   return value != null && Object.hasOwn(value, name) ? value[name] ?? null : null;
 }
-function put(target, name, value) {
+function put(target, name, value, knownKeys) {
   name = key(name);
   if (!(target instanceof Map ? target.has(name) : Object.hasOwn(target, name))) {
     // The song table starts at 1 and remains packed, whereas NPC skill IDs
@@ -74,7 +150,7 @@ function put(target, name, value) {
     if (Array.isArray(target) && !target[LAYOUT] && !target[ORDER]) Object.defineProperty(target, LAYOUT, { value: { packed: true, size: capacity(target.length) } });
     const layout = target[LAYOUT];
     if (layout?.packed) {
-      const names = entries(target).map(([name]) => name), used = names.length ? names.at(-1) + 1 : 0;
+      const names = knownKeys ?? arrayKeys(target), used = names.length ? names.at(-1) + 1 : 0;
       if (typeof name !== 'number' || name < used || name < 0 || name >= layout.size && !(name < 2 * layout.size && names.length > layout.size / 2)) {
         layout.packed = false;
         if (target[ORDER]) target[ORDER].splice(0, target[ORDER].length, ...names);
@@ -96,13 +172,59 @@ export function copy(value) {
   const result = Array.isArray(value) ? [] : Object.create(null);
   if (value[ORDER]) Object.defineProperty(result, ORDER, { value: [...value[ORDER]] });
   if (value[LAYOUT]) Object.defineProperty(result, LAYOUT, { value: { ...value[LAYOUT] } });
+  const immutable = immutableArrays.get(value);
+  if (immutable) {
+    for (const [name, child] of immutable.fields) {
+      if (immutableArrays.has(child)) lazyField(result, name, child);
+      else dataField(result, name, child);
+    }
+    return result;
+  }
   // Most fields are scalar data. Avoid building a descriptor table and
   // defining every copied field, but retain accessors that bind PHP references.
   for (const name of Object.keys(value)) {
     const descriptor = Object.getOwnPropertyDescriptor(value, name);
-    if (descriptor.get && descriptor.set) Object.defineProperty(result, name, descriptor);
+    const lazy = descriptor.get && lazyCopies.get(descriptor.get);
+    if (lazy) {
+      const sealed = sealedLazyValues.get(value);
+      if (sealed?.has(name)) dataField(result, name, copy(sealed.get(name)));
+      else lazyField(result, name, lazy);
+    }
+    else if (descriptor.get && descriptor.set) Object.defineProperty(result, name, descriptor);
     else if (name === '__proto__') Object.defineProperty(result, name, { value: copy(descriptor.value), writable: true, configurable: true, enumerable: true });
     else result[name] = copy(descriptor.value);
+  }
+  return result;
+}
+
+/** A compiler-proved table with unique constant keys and a few runtime rows.
+ * Evaluate those rows at the original call site, then replace their placeholders
+ * in a fresh copy. Order, numeric buckets and all value-copy boundaries remain. */
+export function arrayPatch(template, items) {
+  if (!immutableArrays.has(template)) throw new TypeError('Runtime rows require an immutable native literal');
+  const result = copy(template);
+  for (const [name, value] of items) {
+    if (!Object.hasOwn(template, key(name))) throw new TypeError('Runtime row key is absent from its native literal');
+    put(result, name, copy(value));
+  }
+  return result;
+}
+
+/** Internal read-only scan: private lazy value fields can expose their frozen
+ * source instead of allocating an unused mutable subtree. Ordinary getters
+ * still run in Object.values order. Consumers must copy any returned value
+ * before modifying it or passing it to an extension hook. */
+export function readonlyValues(value) {
+  if (value instanceof Map) return [...value.values()];
+  if (value == null) return [];
+  if (types.isProxy(value)) return Object.values(value);
+  const object = Object(value), result = [];
+  for (const name of Reflect.ownKeys(object)) {
+    if (typeof name !== 'string') continue;
+    const descriptor = Object.getOwnPropertyDescriptor(object, name);
+    if (!descriptor?.enumerable) continue;
+    const source = descriptor?.get && lazyCopies.get(descriptor.get);
+    result.push(source && !sealedLazyValues.get(object)?.has(name) ? source : object[name]);
   }
   return result;
 }
@@ -114,7 +236,7 @@ export function unset(ref) {
   const target = ref.target, name = key(ref.key);
   if (!(target instanceof Map ? target.has(name) : Object.hasOwn(target, name))) return;
   if (!Array.isArray(target) || target[ORDER]) {
-    if (!target[ORDER]) Object.defineProperty(target, ORDER, { value: entries(target).map(([name]) => name) });
+    if (!target[ORDER]) Object.defineProperty(target, ORDER, { value: arrayKeys(target) });
     const position = target[ORDER].indexOf(name);
     if (position >= 0) target[ORDER][position] = DELETED;
     // Zend trims deleted trailing buckets immediately, so a later insertion
@@ -126,14 +248,14 @@ export function unset(ref) {
 export function arrayBucketKeys(value) {
   if (value?.[LAYOUT]?.packed || Array.isArray(value) && !value[ORDER]) {
     const result = [];
-    for (const [name] of entries(value)) {
-      if (typeof name !== 'number' || name < 0) return entries(value).map(([name]) => name);
+    for (const name of arrayKeys(value)) {
+      if (typeof name !== 'number' || name < 0) return arrayKeys(value);
       result[name] = name;
     }
     return result;
   }
   const order = value?.[ORDER];
-  if (!order) return entries(value).map(([name]) => name);
+  if (!order) return arrayKeys(value);
   const result = [];
   order.forEach((name, position) => {
     if (name !== DELETED && (value instanceof Map ? value.has(name) : Object.hasOwn(value, name))) result[position] = name;
@@ -142,7 +264,11 @@ export function arrayBucketKeys(value) {
 }
 export function array(items, reserve = items.length) {
   if (items.every(([name], index) => name === APPEND || key(name) === index)) {
-    const result = items.map(([, value]) => copy(value));
+    const result = [];
+    for (const [index, [, value]] of items.entries()) {
+      if (immutableArrays.has(value)) lazyField(result, index, value);
+      else result[index] = copy(value);
+    }
     Object.defineProperty(result, LAYOUT, { value: { packed: true, size: capacity(Math.max(reserve, items.length)) } });
     return result;
   }
@@ -152,12 +278,17 @@ export function array(items, reserve = items.length) {
   Object.defineProperty(record, LAYOUT, { value: { packed: true, size: capacity(reserve) } });
   for (let [name, value] of items) {
     if (name === APPEND) name = next;
-    name = key(name); put(record, name, copy(value));
+    name = key(name);
+    if (immutableArrays.has(value)) { put(record, name, null, record[ORDER]); lazyField(record, name, value); }
+    else put(record, name, copy(value), record[ORDER]);
     if (typeof name === 'number' && name >= next) next = name + 1;
   }
-  const list = entries(record);
-  if (list.every(([name], index) => name === index)) {
-    const result = list.map(([, value]) => value);
+  const names = record[ORDER].filter(name => Object.hasOwn(record, name));
+  if (names.every((name, index) => name === index)) {
+    const result = [];
+    // The temporary record is not exposed. Moving its descriptors retains
+    // lazy value children without materializing them merely to inspect keys.
+    for (const name of names) Object.defineProperty(result, name, Object.getOwnPropertyDescriptor(record, name));
     Object.defineProperty(result, LAYOUT, { value: { ...record[LAYOUT] } });
     if (!record[LAYOUT].packed) Object.defineProperty(result, ORDER, { value: [...record[ORDER]] });
     return result;
@@ -165,6 +296,13 @@ export function array(items, reserve = items.length) {
   return record;
 }
 export function slot(root, keys) {
+  if (keys.length === 1) {
+    let name = keys[0];
+    if (name === APPEND) name = Math.max(-1, ...arrayKeys(root).map(entry => typeof entry === 'number' ? entry : -1)) + 1;
+    name = key(name);
+    if (root instanceof Map ? !root.has(name) : !Object.hasOwn(root, name)) put(root, name, null);
+    return { target: root, key: name };
+  }
   let target = root;
   for (const [index, name] of keys.slice(0, -1).entries()) {
     let child = get(target, name);
@@ -174,7 +312,7 @@ export function slot(root, keys) {
     target = child;
   }
   let name = keys.at(-1);
-  if (name === APPEND) name = Math.max(-1, ...entries(target).map(([entry]) => typeof entry === 'number' ? entry : -1)) + 1;
+  if (name === APPEND) name = Math.max(-1, ...arrayKeys(target).map(entry => typeof entry === 'number' ? entry : -1)) + 1;
   // PHP reserves the left-hand slot before evaluating the right-hand side.
   // This is observable in $a = $b = 0 and array key insertion order.
   if (keys.length === 1 && (target instanceof Map ? !target.has(key(name)) : !Object.hasOwn(target, key(name)))) put(target, name, null);
@@ -183,6 +321,10 @@ export function slot(root, keys) {
 export function assign(ref, value) {
   if (ref.byteOffset !== undefined) { const current = get(ref.target, ref.key), before = Buffer.isBuffer(current) ? current : Buffer.from(text(current)), offset = ref.byteOffset < 0 ? before.length + ref.byteOffset : ref.byteOffset; if (offset < 0) return value; const source = Buffer.isBuffer(value) ? value : Buffer.from(text(value)); if (!source.length) return value; const bytes = Buffer.alloc(Math.max(before.length, offset + 1), 32); before.copy(bytes); bytes[offset] = source[0]; const decoded = bytes.toString(); put(ref.target, ref.key, Buffer.from(decoded).equals(bytes) ? decoded : bytes); return value; }
   return put(ref.target, ref.key, copy(value));
+}
+export function assignOwned(ref, value) {
+  // Byte-offset assignment retains its string conversion/padding semantics.
+  return ref.byteOffset !== undefined ? assign(ref, value) : put(ref.target, ref.key, value);
 }
 export function bind(ref, target, name) {
   if (ref.target instanceof Map) throw new TypeError('A template foreach variable must be in a lexical scope');

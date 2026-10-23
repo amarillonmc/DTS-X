@@ -1,3 +1,4 @@
+import { isReferenceDescriptor } from '../../templates/values.mjs';
 import { number as n, text, present, appendLog } from '../numbers.mjs';
 import { call, eq } from './helpers.mjs';
 import config from './npc-config.json' with { type: 'json' };
@@ -8,7 +9,7 @@ const lookup = (value, key) => value instanceof Map ? value.get(key) ?? value.ge
 const populated = value => present(value) && (typeof value !== 'object' || entries(value).length > 0);
 function parameterCopy(value) {
   const result = structuredClone(value);
-  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (descriptor.get && descriptor.set) Object.defineProperty(result, key, descriptor);
+  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (isReferenceDescriptor(descriptor)) Object.defineProperty(result, key, descriptor);
   return result;
 }
 function database(ctx) { if (!ctx.services.database) throw new Error('Native npc requires services.database.'); return ctx.services.database; }
@@ -21,7 +22,7 @@ function pick(ctx, values) {
 function merge(...records) { return Object.assign({}, ...records); }
 
 export const npcModule = {
-  name: 'npc', dependencies: ['sys', 'map', 'player', 'lvlctl'], optionalDependencies: [], templates: [], state: () => structuredClone(config.values),
+  name: 'npc', dependencies: ['sys', 'map', 'player', 'lvlctl'], optionalDependencies: [], templates: [], state: () => config.values,
   initialize(ctx) {
     const player = ctx.state('player'), npc = ctx.state();
     for (const [field, source] of [['typeinfo', 'npc_typeinfo'], ['killmsginfo', 'npc_killmsginfo'], ['lwinfo', 'npc_lwinfo']]) for (const [key, value] of entries(npc[source])) if (player[field][key] === undefined) player[field][key] = structuredClone(value);
@@ -100,7 +101,7 @@ export const npcModule = {
 };
 
 export const npcchatModule = {
-  name: 'npcchat', dependencies: ['sys', 'player', 'battle', 'attack', 'logger', 'npc'], optionalDependencies: [], templates: [], state: () => structuredClone(chatConfig.values),
+  name: 'npcchat', dependencies: ['sys', 'player', 'battle', 'attack', 'logger', 'npc'], optionalDependencies: [], templates: [], state: () => chatConfig.values,
   functions: {
     async npcchat(ctx, pa, pd, active, situation, print = 1) {
       const state = ctx.state(); if (!present(state.npcchaton) || (!present(pa.type) && !present(pd.type))) return;

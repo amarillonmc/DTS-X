@@ -1,3 +1,4 @@
+import { isReferenceDescriptor } from '../templates/values.mjs';
 import { appendLog, number as n, present, text } from './numbers.mjs';
 
 const call = (ctx, name, ...args) => ctx.call('enemy', name, ...args);
@@ -11,7 +12,7 @@ function templateName(ctx, constant) {
 function parameterCopy(data) {
   const copy = structuredClone(data);
   for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(data))) {
-    if (descriptor.get && descriptor.set) Object.defineProperty(copy, key, descriptor);
+    if (isReferenceDescriptor(descriptor)) Object.defineProperty(copy, key, descriptor);
   }
   return copy;
 }

@@ -164,6 +164,99 @@ test('shared configuration and state factory objects are copied for every reques
   assert.equal(service.calls, 1);
 });
 
+test('reused function contexts retain live per-call backtraces during concurrent awaits', async () => {
+  const seen = [];
+  const leaf = async ctx => {
+    const before = ctx.backtrace(); await new Promise(resolve => setImmediate(resolve));
+    assert.deepEqual(ctx.backtrace(), before); seen.push(ctx); return before.map(frame => frame.function);
+  };
+  const session = await new ModuleRegistry([{name:'base',functions:{leaf,
+    left: ctx => ctx.call('base','leaf'), right: ctx => ctx.call('base','leaf'),
+  }}]).createSession();
+  assert.deepEqual(await Promise.all([session.call('base','left'),session.call('base','right')]),
+    [['base\\leaf','base\\left'],['base\\leaf','base\\right']]);
+  assert.equal(seen[0], seen[1]);
+  assert.equal(session.isUnhookedFunction('BASE','LEAF',leaf), true);
+  assert.equal(session.isUnhookedFunction('base','leaf',() => {}), false);
+});
+
+test('compiled hook plans publish each session independently after its own initializer', async () => {
+  let release, ready;
+  const paused = new Promise(resolve => { release = resolve; });
+  const reached = new Promise(resolve => { ready = resolve; });
+  const registry = new ModuleRegistry([
+    {name:'base', functions:{work: () => ['base']}},
+    {name:'middle',dependencies:['base'], async initialize(ctx) {
+      assert.deepEqual(ctx.call('base','work'),['base']);
+      assert.equal(ctx.hasModule('middle'),false); assert.equal(ctx.hasFunction('top','work'),false);
+      if (ctx.services.pause) { ready(); await paused; }
+    },functions:{work: ctx => ['middle',...ctx.next()]}},
+    {name:'top',dependencies:['middle'], initialize(ctx) {
+      assert.deepEqual(ctx.call('base','work'),['middle','base']);
+      assert.deepEqual(ctx.call('top','work'),['top'], 'own function is callable before hook publication with no next');
+    },functions:{work: ctx => ['top',...(ctx.next() ?? [])]}},
+  ]);
+  let first;
+  const pending = registry.createSession({services:{pause:true},onCreate: session => { first = session; }});
+  await reached;
+  const second = await registry.createSession();
+  assert.deepEqual(first.chain('work'),['base']);
+  assert.deepEqual(first.call('base','work'),['base']);
+  assert.deepEqual(second.call('base','work'),['top','middle','base']);
+  release(); await pending;
+  assert.deepEqual(first.chain('work'),['base','middle','top']);
+  assert.deepEqual(first.call('base','work'),second.call('base','work'));
+});
+
+test('nested sessions keep independent backtraces across asynchronous callbacks and failures', async () => {
+  const registry = new ModuleRegistry([{ name: 'base', functions: {
+    async work(ctx, callback) {
+      const before = ctx.backtrace();
+      await new Promise(resolve => setImmediate(resolve));
+      if (callback) await callback();
+      assert.deepEqual(ctx.backtrace(), before);
+      return before.map(frame => frame.function);
+    },
+    leaf(ctx) { return ctx.backtrace().map(frame => frame.function); },
+  } }]);
+  const one = await registry.createSession(), two = await registry.createSession();
+  await one.call('base', 'work', async () => {
+    assert.deepEqual(await two.call('base', 'work', () => {
+      assert.deepEqual(one.call('base', 'leaf'), ['base\\leaf', 'base\\work']);
+      assert.deepEqual(two.call('base', 'leaf'), ['base\\leaf', 'base\\work']);
+    }), ['base\\work']);
+    await assert.rejects(two.call('base', 'work', () => { throw new Error('capture failure'); }), /capture failure/);
+    assert.deepEqual(two.call('base', 'leaf'), ['base\\leaf']);
+    assert.deepEqual(one.call('base', 'leaf'), ['base\\leaf', 'base\\work']);
+  });
+  assert.deepEqual(one.call('base', 'leaf'), ['base\\leaf']);
+  assert.deepEqual(await Promise.all([one.call('base', 'work'), two.call('base', 'work')]), [['base\\work'], ['base\\work']]);
+});
+
+test('selected imports retain references, module checks, field order and INPUT isset', async () => {
+  const registry = new ModuleRegistry([
+    {name:'input',state:{value:9,empty:'input',nil:8,ignored:'secret'}},
+    {name:'base',state:{a:1,b:2,value:3,___PRIVATE_hidden:4},initialize(ctx){
+      assert.throws(() => ctx.importSelectedInto({},[],'base'), /has not completed initialization/);
+    },functions:{selected: (ctx,scope,fields,...names) => ctx.importSelectedInto(scope,fields,...names)}},
+    {name:'other',state:{a:10,c:30}},
+  ]);
+  const one = await registry.createSession(), two = await registry.createSession();
+  const scope = {value:0,empty:'',nil:null};
+  one.importSelectedInto(scope,['value','empty','nil'],'input');
+  assert.deepEqual({...scope},{value:0,empty:'',nil:8});
+  scope.nil=81; assert.equal(one.state('input').nil,81); assert.equal(two.state('input').nil,8);
+  one.call('base','selected',scope,['value','a','___PRIVATE_hidden','a'],'base','other');
+  assert.equal(scope.value,3); assert.equal(scope.a,10); assert.equal(Object.hasOwn(scope,'b'),false);
+  assert.equal(Object.hasOwn(scope,'___PRIVATE_hidden'),false);
+  scope.a=11; assert.equal(one.state('base').a,1); assert.equal(one.state('other').a,11);
+  const nonconfigurable = {}; Object.defineProperty(nonconfigurable,'b',{value:0});
+  assert.throws(() => one.importSelectedInto(nonconfigurable,['b','a'],'base'),TypeError);
+  assert.equal(nonconfigurable.a,1,'definition order wins over selection order before the failing field');
+  assert.throws(() => one.importSelectedInto({},[],'missing'),/not initialized/);
+  assert.throws(() => one.importSelectedInto({},[1],'base'),/array of strings/);
+});
+
 test('native dispatch matches actual upstream __MAGIC__ and hook_register on PHP 7.4', async t => {
   const executable = process.env.DTS_REFERENCE_PHP || 'php';
   const version = spawnSync(executable, ['-r', 'echo PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;'], { encoding: 'utf8', windowsHide: true });

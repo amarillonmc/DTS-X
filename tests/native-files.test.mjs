@@ -16,6 +16,15 @@ test('native data files preserve bytes, lock writes, retain source assets and co
   const files=await createFileServices({stateRoot:state,sourceRoot:source,locks:locks.locks,clock:()=>2000});
   const other=await createFileServices({stateRoot:state,sourceRoot:source,locks:otherLocks.locks,clock:()=>2000});
   assert.equal(await files.read('gamedata/sql/reset.sql'),'SELECT 1;');
+  for (const name of ['gamedata/tmp/absent/file', 'gamedata/sql/absent']) {
+    assert.equal(await files.exists(name), false); assert.equal(await files.mtime(name), false);
+    assert.equal(await files.isDirectory(name), false); await assert.rejects(files.size(name), { code: 'ENOENT' });
+  }
+  await mkdir(path.join(source, 'gamedata/tmp'), { recursive: true });
+  await writeFile(path.join(source, 'gamedata/tmp/fallback'), 'source');
+  assert.equal(await files.size('gamedata/tmp/fallback'), 6);
+  await files.write('gamedata/tmp/fallback', 'state'); assert.equal(await files.size('gamedata/tmp/fallback'), 5);
+  await files.remove('gamedata/tmp/fallback'); assert.equal(await files.size('gamedata/tmp/fallback'), 6);
   await assert.rejects(files.write('gamedata/sql/reset.sql','DROP'),/read-only/);
   await files.write('gamedata/tmp/news/one.dat','long original');await files.write('gamedata/tmp/news/one.dat','new');
   assert.equal(await files.read('gamedata/tmp/news/one.dat'),'new');
@@ -43,6 +52,7 @@ test('native data files preserve bytes, lock writes, retain source assets and co
   for(const name of ['../source/gamedata/sql/reset.sql','gamedata/tmp/../../native-install.json','C:/secret','gamedata/tmp/x:stream'])await assert.rejects(files.read(name));
   await symlink(source,path.join(state,'gamedata/tmp/outside'),'junction');
   await assert.rejects(files.read('gamedata/tmp/outside/gamedata/sql/reset.sql'),/symlink/);
+  for (const method of ['exists', 'mtime', 'size', 'isDirectory']) await assert.rejects(files[method]('gamedata/tmp/outside/gamedata/sql/reset.sql'), /symlink/);
   await assert.rejects(files.write('gamedata/tmp/outside/new.dat','bad'),/symlink/);
   await assert.rejects(files.clear('gamedata/tmp/outside'),/symlink/);
   assert.equal(await readFile(path.join(source,'gamedata/sql/reset.sql'),'utf8'),'SELECT 1;');

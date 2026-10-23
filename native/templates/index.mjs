@@ -7,6 +7,47 @@ import { derivedTemplatePath, derivedHtml } from './derived.mjs';
 export { createOutput };
 const own = (object, key) => Object.hasOwn(object, key);
 const identifier = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
+const valueHelpers = { ...values };
+const renderers = new Map();
+function templateRenderer(file) {
+  const loader = loaders[file];
+  let entry = renderers.get(file);
+  if (entry?.loader === loader) return entry.renderer ?? entry.pending;
+  if (typeof loader !== 'function') throw new Error(`Native template is missing: ${file}`);
+  entry = { loader };
+  entry.pending = Promise.resolve().then(loader).then(module => {
+    if (typeof module.default !== 'function') throw new TypeError(`Invalid native template renderer: ${file}`);
+    entry.renderer = module.default;
+    return entry.renderer;
+  });
+  renderers.set(file, entry);
+  entry.pending.catch(() => { if (renderers.get(file) === entry) renderers.delete(file); });
+  return entry.pending;
+}
+
+/** Load static function code before accepting HTTP. No renderer, module hook,
+ * request, random source, database operation or derived data file is executed. */
+export async function preloadNativeTemplates() {
+  const files = Object.keys(loaders); let next = 0;
+  await Promise.all(Array.from({ length: 16 }, async () => {
+    while (next < files.length) await templateRenderer(files[next++]);
+  }));
+  return files.length;
+}
+const plans = new Map();
+function templatePlan(enabledModules) {
+  const key = JSON.stringify(enabledModules);
+  let plan = plans.get(key);
+  if (!plan) {
+    const enabled = new Set(enabledModules), names = Object.create(null), definitions = Object.create(null);
+    for (const name of enabled) definitions[`MOD_${name.toUpperCase()}`] = true;
+    for (const [constant, binding] of Object.entries(sourceNames)) if (enabled.has(binding.module)) names[constant] = definitions[constant] = binding.name;
+    plan = { names: Object.freeze(names), definitions: Object.freeze(definitions) };
+    if (plans.size >= 16) plans.delete(plans.keys().next().value);
+    plans.set(key, plan);
+  }
+  return plan;
+}
 
 /** Create one request's native renderer. Only generated, source-manifest-bound
  * JavaScript can be loaded. source.mjs and php-parser are build-only and are
@@ -21,11 +62,9 @@ const identifier = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
  */
 export function createTemplateServices({ session, enabledModules = [], templateId = 1, constants = {}, globals = Object.create(null), functions = {}, files, output = createOutput(), random, clock, timezoneOffset = 0 } = {}) {
   if (typeof output.capture !== 'function' || typeof output.write !== 'function') throw new TypeError('Native templates require output.capture() and output.write()');
-  const enabled = new Set(enabledModules), names = Object.create(null), definitions = Object.assign(Object.create(null), { IN_GAME: true, TEMPLATEID: 1, TPLDIR: 'templates/default' }, constants);
+  const plan = templatePlan(enabledModules), names = Object.assign(Object.create(null), plan.names), definitions = Object.assign(Object.create(null), { IN_GAME: true, TEMPLATEID: 1, TPLDIR: 'templates/default' }, constants, plan.definitions);
   const hasConstant = name => own(constants, name) || own(definitions, name);
   const constant = name => own(constants, name) ? constants[name] : own(definitions, name) ? definitions[name] : name;
-  for (const name of enabled) definitions[`MOD_${name.toUpperCase()}`] = true;
-  for (const [constant, binding] of Object.entries(sourceNames)) if (enabled.has(binding.module)) names[constant] = definitions[constant] = binding.name;
   const builtin = builtinFunctions({ now: clock?.nowSeconds?.bind(clock), timezoneOffset });
   const getSession = () => {
     const current = typeof session === 'function' ? session() : session;
@@ -73,7 +112,7 @@ export function createTemplateServices({ session, enabledModules = [], templateI
     return own(builtin, name.toLowerCase()) || own(functions, name.toLowerCase());
   };
   async function context(selected) {
-    const r = { ...values, globals,
+    const r = { __proto__: valueHelpers, globals,
       write: value => output.write(value),
       exit: message => { throw new Error(`Template exited: ${values.text(message)}`); },
       constant,
@@ -88,8 +127,8 @@ export function createTemplateServices({ session, enabledModules = [], templateI
         if (target === null || typeof target !== 'object' || !own(target, 'name')) throw new TypeError('Generated template include requires a resolved template request');
         const file = resolve(target.name, target.templateId);
         if (file.startsWith('gamedata/templates/')) { output.write(await renderDerived(file)); return; }
-        const renderer = await loaders[file]();
-        return renderer.default(r, scope);
+        const renderer = await templateRenderer(file);
+        return renderer(r, scope);
       },
       async namedCall(name, ...args) {
         name = values.text(name).replace(/^\\/, '');
@@ -127,8 +166,8 @@ export function createTemplateServices({ session, enabledModules = [], templateI
       if (!scope || typeof scope !== 'object') throw new TypeError('Template scope must be an object with live bindings');
       const file = resolve(name, selected);
       if (file.startsWith('gamedata/templates/')) return renderDerived(file);
-      const renderer = await loaders[file](), r = await context(selected);
-      return output.capture(() => renderer.default(r, scope));
+      const renderer = await templateRenderer(file), r = await context(selected);
+      return output.capture(() => renderer(r, scope));
     },
     // A build-time test or explicit native controller can use the same context
     // with an imported generated JS function. No code string is accepted.

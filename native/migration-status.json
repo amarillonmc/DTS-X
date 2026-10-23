@@ -433,7 +433,9 @@
     "player": {
       "status": "code_ported",
       "implementation": [
-        "native/gameplay/player.mjs"
+        "native/gameplay/player.mjs",
+        "native/storage/player-icon-catalog.mjs",
+        "native/storage/player-schema.mjs"
       ],
       "evidence": [
         {
@@ -454,6 +456,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-player-schema.test.mjs",
+          "scope": "玩家表列定义缓存的失败重试、失效竞态、请求和应用隔离；两个真实HTTP应用对不同元数据的行为。",
           "result": "passed"
         }
       ],
@@ -1211,6 +1218,11 @@
         {
           "test": "tests/native-itemmix-http.test.mjs",
           "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-base-extra-itemmix.test.mjs",
+          "scope": "676个PHP差分场景及惰性默认配方、显式空值覆盖、导出字段顺序、真实模板和库存引用边界。",
           "result": "passed"
         }
       ],
@@ -16676,13 +16688,376 @@
         "requests": 40,
         "errors": 0,
         "scope": "改动后开启每秒后台调度：普通指令P50/P95 445/519ms、合成菜单516/670ms；报告var/tests/performance-after-scheduler.json。不含公网、Cloudflare、浏览器渲染和多人并发。"
+      },
+      {
+        "command": "npm test -- --test-concurrency=2",
+        "passed": 1277,
+        "failed": 2,
+        "skipped": 0,
+        "scope": "50/120ms目标优化首轮全量：旧兼容层原子重命名EPERM和教程注入时钟不一致；修复时钟后四文件21/21通过。 日志var/tests/latency-full-suite.log。"
+      },
+      {
+        "command": "npm test -- --test-concurrency=2",
+        "passed": 698,
+        "failed": 2,
+        "skipped": 0,
+        "scope": "后续全量：582技能PHP配置子进程30秒、882模板PHP源码子进程45秒超时；技能子场景未展开计数。没有增加超时或放宽断言。 日志var/tests/latency-final-suite.log。"
+      },
+      {
+        "command": "node --test --test-concurrency=1 tests/native-generated-config.test.mjs tests/native-templates-source.test.mjs tests/native-templates.test.mjs tests/native-modules.test.mjs tests/native-maintenance.test.mjs tests/native-immutable-arrays.test.mjs tests/native-performance-semantics.test.mjs",
+        "passed": 793,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "两个超时项及上下文/数组/模板预载的串行复测。 日志var/tests/latency-final-recheck.log。"
+      },
+      {
+        "command": "npm test -- --test-concurrency=1",
+        "passed": 1285,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "最终完整套件，含真实数据库、OS锁、经典/现代Edge、教学及普通合成、完整玩法持久化、原录像、全部模式、安装重启、PHP差分。发现旧npm脚本把参数放在文件后，这轮实际使用默认并发而非串行；历史npm test附加并发参数同样未生效。仍未穷举所有技能组合。 日志var/tests/latency-serial-suite.log。"
+      },
+      {
+        "command": "npm test -- --test-concurrency=1 -- tests/test-runner.test.mjs",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "修正npm test/test:native参数转发后，实际子进程验证串行文件执行、名称筛选、显式文件选择和失败退出码。 日志var/tests/latency-runner-recheck.log。"
+      },
+      {
+        "command": "npm run benchmark:native -- --samples=50 --actions=all --label=latency-verified-serial",
+        "requests": 300,
+        "errors": 0,
+        "scope": "Windows/Node26.5.0/i7-7700/独立MariaDB/770模块/真实HTTP及录像；不含公网、Cloudflare或浏览器渲染，首次HTTP之前已在同一进程创建对局。报告var/tests/performance-latency-verified-serial.json。50ms/120ms目标未达到。"
+      },
+      {
+        "command": "npm run benchmark:native -- --samples=50 --actions=all --scheduler-ms=1000 --label=latency-verified-scheduler",
+        "requests": 300,
+        "errors": 0,
+        "scope": "Windows/Node26.5.0/i7-7700/独立MariaDB/770模块/真实HTTP及录像；不含公网、Cloudflare或浏览器渲染，首次HTTP之前已在同一进程创建对局。报告var/tests/performance-latency-verified-scheduler.json。50ms/120ms目标未达到。"
+      },
+      {
+        "command": "npm run benchmark:native -- --samples=20 --actions=all --concurrency=4 --label=latency-verified-concurrent",
+        "requests": 200,
+        "errors": 0,
+        "scope": "Windows/Node26.5.0/i7-7700/独立MariaDB/770模块/真实HTTP及录像；不含公网、Cloudflare或浏览器渲染，首次HTTP之前已在同一进程创建对局。报告var/tests/performance-latency-verified-concurrent.json。50ms/120ms目标未达到。"
       }
     ],
     "limits": [
       "未穷举技能组合、随机种子、竞态和全部结局。",
       "本机为Windows/Node26.5.0/PHP7.4.33/Edge，Docker与Linux未实际验证。",
       "此前交互修复全量测试存在未稳定复现的HTTP地图500、PHP对照超时和旧runtime Windows原子重命名EPERM；单独复测通过，来源尚未全部确认，详见doc/NATIVE-MIGRATION.md。",
-      "请求性能数据来自本机独立普通局单用户回环基准，不保证目标服务器、公网或多人负载下的容量和延迟。"
-    ]
+      "请求性能数据来自本机独立普通局单用户回环基准，不保证目标服务器、公网或多人负载下的容量和延迟。",
+      "50ms常规操作、120ms最大值目标未达到；最终连续300请求的P50为83–98ms、20次超过120ms、最大211ms；较早一轮曾有1068ms长尾，不能宣称根除。"
+    ],
+    "performanceTarget": {
+      "typicalMs": 50,
+      "maximumMs": 120,
+      "status": "not_met",
+      "date": "2026-10-23",
+      "scope": "本机真实HTTP；50ms常规延迟与120ms测量最大值未达到。四路突发为同玩家，包含玩家锁等待，不能替代不同玩家容量。",
+      "measurements": [
+        {
+          "label": "serial",
+          "firstHttpMs": 217.09699999999975,
+          "groups": {
+            "menu": {
+              "count": 50,
+              "minMs": 76.1994999999988,
+              "p50Ms": 85.85690000000068,
+              "p95Ms": 104.60459999999875,
+              "p99Ms": 125.17979999999989,
+              "maxMs": 125.17979999999989,
+              "sessionMs": 23.122465999999896,
+              "connectMs": 1.7523159999998097,
+              "sqlMs": 5.61234000000064,
+              "sqlCount": 14,
+              "cpuMs": 92.48,
+              "above50Ms": 50,
+              "above120Ms": 1
+            },
+            "itemmix": {
+              "count": 50,
+              "minMs": 84.47920000000158,
+              "p50Ms": 92.09970000000249,
+              "p95Ms": 126.55059999999867,
+              "p99Ms": 131.60399999999936,
+              "maxMs": 131.60399999999936,
+              "sessionMs": 22.67175600000028,
+              "connectMs": 1.3778900000000796,
+              "sqlMs": 5.8892040000009365,
+              "sqlCount": 14,
+              "cpuMs": 100.34,
+              "above50Ms": 50,
+              "above120Ms": 4
+            },
+            "move": {
+              "count": 50,
+              "minMs": 70.95130000000063,
+              "p50Ms": 83.40450000000055,
+              "p95Ms": 122.13330000000133,
+              "p99Ms": 131.1420999999973,
+              "maxMs": 131.1420999999973,
+              "sessionMs": 23.141563999999924,
+              "connectMs": 1.3752360000005865,
+              "sqlMs": 10.259504000000526,
+              "sqlCount": 20,
+              "cpuMs": 95.98,
+              "above50Ms": 50,
+              "above120Ms": 3
+            },
+            "search": {
+              "count": 50,
+              "minMs": 80.51559999999881,
+              "p50Ms": 95.77019999999902,
+              "p95Ms": 116.03470000000016,
+              "p99Ms": 137.34340000000157,
+              "maxMs": 137.34340000000157,
+              "sessionMs": 24.941358,
+              "connectMs": 1.3752860000001237,
+              "sqlMs": 10.742234000000899,
+              "sqlCount": 19,
+              "cpuMs": 95.42,
+              "above50Ms": 50,
+              "above120Ms": 2
+            },
+            "itemuse": {
+              "count": 50,
+              "minMs": 79.0007000000005,
+              "p50Ms": 92.70890000000145,
+              "p95Ms": 128.5577000000012,
+              "p99Ms": 134.01120000000083,
+              "maxMs": 134.01120000000083,
+              "sessionMs": 23.56685599999997,
+              "connectMs": 1.4199019999999656,
+              "sqlMs": 6.005023999999939,
+              "sqlCount": 14,
+              "cpuMs": 106.54,
+              "above50Ms": 50,
+              "above120Ms": 3
+            },
+            "mixsubmit": {
+              "count": 50,
+              "minMs": 85.09749999999985,
+              "p50Ms": 97.89960000000065,
+              "p95Ms": 132.95760000000155,
+              "p99Ms": 211.48359999999957,
+              "maxMs": 211.48359999999957,
+              "sessionMs": 22.774784000000253,
+              "connectMs": 1.3876179999997111,
+              "sqlMs": 8.52463000000018,
+              "sqlCount": 15,
+              "cpuMs": 108.96,
+              "above50Ms": 50,
+              "above120Ms": 7
+            }
+          },
+          "concurrent": null
+        },
+        {
+          "label": "scheduler",
+          "firstHttpMs": 218.17889999999989,
+          "groups": {
+            "menu": {
+              "count": 50,
+              "minMs": 75.66029999999955,
+              "p50Ms": 84.33719999999994,
+              "p95Ms": 123.2505000000001,
+              "p99Ms": 129.70200000000477,
+              "maxMs": 129.70200000000477,
+              "sessionMs": 26.48499799999985,
+              "connectMs": 1.6979179999998633,
+              "sqlMs": 6.902081999998863,
+              "sqlCount": 14.6,
+              "cpuMs": 100.3,
+              "above50Ms": 50,
+              "above120Ms": 4
+            },
+            "itemmix": {
+              "count": 50,
+              "minMs": 85.18119999999908,
+              "p50Ms": 94.4551999999967,
+              "p95Ms": 129.4728000000032,
+              "p99Ms": 138.16650000000118,
+              "maxMs": 138.16650000000118,
+              "sessionMs": 25.51698800000002,
+              "connectMs": 1.6734600000005593,
+              "sqlMs": 8.498604000000123,
+              "sqlCount": 14.5,
+              "cpuMs": 99.7,
+              "above50Ms": 50,
+              "above120Ms": 7
+            },
+            "move": {
+              "count": 50,
+              "minMs": 71.3292999999976,
+              "p50Ms": 81.7576999999983,
+              "p95Ms": 118.5526000000009,
+              "p99Ms": 132.05609999999797,
+              "maxMs": 132.05609999999797,
+              "sessionMs": 24.769086000000208,
+              "connectMs": 2.3317040000000633,
+              "sqlMs": 11.751686000000591,
+              "sqlCount": 20.48,
+              "cpuMs": 86.94,
+              "above50Ms": 50,
+              "above120Ms": 2
+            },
+            "search": {
+              "count": 50,
+              "minMs": 79.35479999999734,
+              "p50Ms": 89.47459999999955,
+              "p95Ms": 129.5674999999992,
+              "p99Ms": 178.193299999999,
+              "maxMs": 178.193299999999,
+              "sessionMs": 25.93388400000036,
+              "connectMs": 2.3616439999996874,
+              "sqlMs": 11.535610000000087,
+              "sqlCount": 19.5,
+              "cpuMs": 103.32,
+              "above50Ms": 50,
+              "above120Ms": 4
+            },
+            "itemuse": {
+              "count": 50,
+              "minMs": 80.09380000000237,
+              "p50Ms": 91.74259999999776,
+              "p95Ms": 111.1172000000006,
+              "p99Ms": 173.08740000000034,
+              "maxMs": 173.08740000000034,
+              "sessionMs": 24.35884400000039,
+              "connectMs": 1.5636820000003353,
+              "sqlMs": 6.315528000000122,
+              "sqlCount": 14.3,
+              "cpuMs": 95.72,
+              "above50Ms": 50,
+              "above120Ms": 2
+            },
+            "mixsubmit": {
+              "count": 50,
+              "minMs": 84.53310000000056,
+              "p50Ms": 96.86709999999948,
+              "p95Ms": 133.81720000000132,
+              "p99Ms": 145.9350000000013,
+              "maxMs": 145.9350000000013,
+              "sessionMs": 24.098596000000434,
+              "connectMs": 1.528810000000376,
+              "sqlMs": 8.672852000000711,
+              "sqlCount": 15.3,
+              "cpuMs": 105.58,
+              "above50Ms": 50,
+              "above120Ms": 5
+            }
+          },
+          "concurrent": null
+        },
+        {
+          "label": "concurrent",
+          "firstHttpMs": 330.2385000000004,
+          "groups": {
+            "menu": {
+              "count": 20,
+              "minMs": 76.65139999999883,
+              "p50Ms": 83.91669999999795,
+              "p95Ms": 128.98300000000017,
+              "p99Ms": 138.60100000000057,
+              "maxMs": 138.60100000000057,
+              "sessionMs": 22.897525000000222,
+              "connectMs": 1.4026200000002063,
+              "sqlMs": 6.944734999999582,
+              "sqlCount": 14,
+              "cpuMs": 103.9,
+              "above50Ms": 20,
+              "above120Ms": 2
+            },
+            "itemmix": {
+              "count": 20,
+              "minMs": 85.11789999999746,
+              "p50Ms": 97.78490000000056,
+              "p95Ms": 106.92319999999927,
+              "p99Ms": 147.59909999999945,
+              "maxMs": 147.59909999999945,
+              "sessionMs": 22.79761499999986,
+              "connectMs": 1.3287450000000718,
+              "sqlMs": 5.906270000000586,
+              "sqlCount": 14,
+              "cpuMs": 100.85,
+              "above50Ms": 20,
+              "above120Ms": 1
+            },
+            "move": {
+              "count": 20,
+              "minMs": 76.90200000000004,
+              "p50Ms": 84.54030000000057,
+              "p95Ms": 106.2451000000001,
+              "p99Ms": 154.90809999999874,
+              "maxMs": 154.90809999999874,
+              "sessionMs": 23.71888500000059,
+              "connectMs": 1.368094999999539,
+              "sqlMs": 9.999149999998917,
+              "sqlCount": 20,
+              "cpuMs": 96.85,
+              "above50Ms": 20,
+              "above120Ms": 1
+            },
+            "search": {
+              "count": 20,
+              "minMs": 85.79579999999987,
+              "p50Ms": 95.25410000000193,
+              "p95Ms": 106.95779999999831,
+              "p99Ms": 240.78739999999925,
+              "maxMs": 240.78739999999925,
+              "sessionMs": 24.949224999999934,
+              "connectMs": 1.4665500000000065,
+              "sqlMs": 10.79970499999954,
+              "sqlCount": 19,
+              "cpuMs": 92.15,
+              "above50Ms": 20,
+              "above120Ms": 1
+            },
+            "itemuse": {
+              "count": 20,
+              "minMs": 83.20880000000034,
+              "p50Ms": 92.90060000000085,
+              "p95Ms": 111.95499999999993,
+              "p99Ms": 121.21429999999964,
+              "maxMs": 121.21429999999964,
+              "sessionMs": 23.411439999999676,
+              "connectMs": 1.3917800000000171,
+              "sqlMs": 5.713795000001118,
+              "sqlCount": 14,
+              "cpuMs": 117.3,
+              "above50Ms": 20,
+              "above120Ms": 1
+            },
+            "mixsubmit": {
+              "count": 20,
+              "minMs": 89.64550000000054,
+              "p50Ms": 96.90000000000146,
+              "p95Ms": 110.95319999999992,
+              "p99Ms": 159.32230000000163,
+              "maxMs": 159.32230000000163,
+              "sessionMs": 22.941800000000057,
+              "connectMs": 1.4145849999998972,
+              "sqlMs": 7.87406000000019,
+              "sqlCount": 15,
+              "cpuMs": 118.55,
+              "above50Ms": 20,
+              "above120Ms": 1
+            }
+          },
+          "concurrent": {
+            "count": 80,
+            "minMs": 90.28420000000187,
+            "p50Ms": 238.39199999999983,
+            "p95Ms": 349.13850000000093,
+            "p99Ms": 413.3651000000027,
+            "maxMs": 413.3651000000027,
+            "above50Ms": 80,
+            "above120Ms": 61
+          }
+        }
+      ]
+    }
   }
 }

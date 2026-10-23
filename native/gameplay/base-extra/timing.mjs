@@ -1,3 +1,4 @@
+import { isReferenceDescriptor } from '../../templates/values.mjs';
 import { number as n, text, present, round } from '../numbers.mjs';
 import { reference } from '../../modules/registry.mjs';
 import { appendLog } from '../numbers.mjs';
@@ -11,7 +12,7 @@ const entries = value => value instanceof Map ? [...value] : Object.entries(valu
 function parameterCopy(value) {
   if (value == null || typeof value !== 'object') return value;
   const result = structuredClone(value);
-  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (descriptor.get && descriptor.set) Object.defineProperty(result, key, descriptor);
+  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (isReferenceDescriptor(descriptor)) Object.defineProperty(result, key, descriptor);
   return result;
 }
 const milliseconds = async ctx => Math.floor(n(ctx.services.system?.clock?.now ? await ctx.services.system.clock.now() : Date.now() / 1000) * 1000);

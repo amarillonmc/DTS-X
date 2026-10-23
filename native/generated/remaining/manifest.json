@@ -3,7 +3,7 @@
     {
       "module": "bmp_util",
       "output": "modules/bmp_util.mjs",
-      "generatedHash": "0eff551de165486910ac9c031ee7a41ab7d1d4fe65f9c9575f8e18c880a93325",
+      "generatedHash": "f0758a85448f0d2e452709f7901c3a1d2e968131896a71a8b9a37f3c41455f10",
       "functions": [
         "bmp_binwriteint",
         "gen_bmp"
@@ -24,7 +24,7 @@
     {
       "module": "replay",
       "output": "modules/replay.mjs",
-      "generatedHash": "6e2b72f1d1503498ef1cf607bc9133bfa357599bed5e9bcc04df6f95f13b5539",
+      "generatedHash": "4013580334b6d43dc70a554fe159f1d75502e02d402f2b45ec63943a90d10793",
       "functions": [
         "get_html_color",
         "get_ident_textcolor",
@@ -82,7 +82,7 @@
     {
       "module": "map_display",
       "output": "modules/map_display.mjs",
-      "generatedHash": "ec903624589a85bc686c68f3379359ec03aa7bda0446cdcc242c131d756dbd0f",
+      "generatedHash": "2d92c1fe7d29a8744312d4487049af64f3fa4d72f4d9f9407e824a6a4c64edbc",
       "functions": [
         "get_map_display_config",
         "map_display_y2coor",
@@ -110,7 +110,7 @@
     {
       "module": "bufficons",
       "output": "modules/bufficons.mjs",
-      "generatedHash": "1901ef8381f9542d720614845cf975d9d4cafb06df2ba3cb285dd620c29b2763",
+      "generatedHash": "dbe38d2228e18a27230905ca4a705f86551451511db12351c1b87fe3e0fd40d6",
       "functions": [
         "bufficon_show",
         "bufficons_display",
@@ -151,7 +151,7 @@
     {
       "module": "elorating",
       "output": "modules/elorating.mjs",
-      "generatedHash": "8b3c92fda466dd23fc73cb5e9af4ced0520933e663646a39649a437f689626e8",
+      "generatedHash": "0965a06c703865ffff2dcf7281459b77ab095b5e6134f8fda7c80bf0bc9d3ba4",
       "functions": [
         "init_enter_battlefield_items",
         "get_servermark",
@@ -224,7 +224,7 @@
     {
       "module": "edible",
       "output": "modules/edible.mjs",
-      "generatedHash": "1732c5b0bd708bd59ea49944892e2a0b4f8b75330acc8c43bfde2ff84c018a8e",
+      "generatedHash": "de8adda39a96c8e463f3a7700e08474e5c97305845f89915f2bd3188addf5055",
       "functions": [
         "get_edible_spup",
         "get_edible_hpup",
@@ -256,7 +256,7 @@
     {
       "module": "boxes",
       "output": "modules/boxes.mjs",
-      "generatedHash": "a6c5c6e9758b7899ee71344c66e25a47155c7efd09af8e34aedb9bcad061f63b",
+      "generatedHash": "a4ea2af8b5ea97a215168dde7f6d8682961f17954e9a0cdba307e995458d472b",
       "functions": [
         "itemuse_boxes",
         "boxes_row_data_seperate",
@@ -289,7 +289,7 @@
     {
       "module": "scpdrink",
       "output": "modules/scpdrink.mjs",
-      "generatedHash": "0eedf7297caff4813b50d3acbc1c87e2231ba8770728b086106f505fce43c1f7",
+      "generatedHash": "aa4105a506bc4b9972991adfb8fa445ab524ab0fdd3eeed92b12b61bdbc3df6e",
       "functions": [
         "itemuse",
         "parse_news"
@@ -318,7 +318,7 @@
     {
       "module": "item_ub",
       "output": "modules/item_ub.mjs",
-      "generatedHash": "cdbd93a9cafcc01f8cdcde06f86d397b101dd99e14a90af496c683461b9bc63d",
+      "generatedHash": "85a8bd3644d02e16de7c84bcd8ceebf060aa99540ab3afc49aa512b114b82bb9",
       "functions": [
         "itemuse_ub",
         "ub_check",
@@ -341,7 +341,7 @@
     {
       "module": "item_uee",
       "output": "modules/item_uee.mjs",
-      "generatedHash": "5ea89e50051ef04d9456eddec5f56ee186bffd774bcd046f121a632799829dc2",
+      "generatedHash": "7e9b6d8186b429cad6d15576978f13122cf354ac0308133631bfcd6f7a195e7c",
       "functions": [
         "parse_itmuse_desc",
         "calculate_hack_proc_rate",
@@ -380,7 +380,7 @@
     {
       "module": "item_addarea",
       "output": "modules/item_addarea.mjs",
-      "generatedHash": "b970c3edae763df80327e5375718c5e702efcfc94a399975d1c731f0a5b12c8e",
+      "generatedHash": "42c8e0d7757bad23be2cbc1125c7b73040e83936edbf8a0c29bad680d6fd51ae",
       "functions": [
         "parse_itmuse_desc",
         "itemuse",
@@ -404,7 +404,7 @@
     {
       "module": "radar",
       "output": "modules/radar.mjs",
-      "generatedHash": "a236d627acf1c99907ba4d043a25c613e015edde114cd3d1b4bf901d8de0e643",
+      "generatedHash": "6a0b1b2eaee0673894db2c96cd42f3b78d223ef6491196bc3972e77c9ed803c0",
       "functions": [
         "pre_radar_event",
         "check_radar_digit",
@@ -453,7 +453,7 @@
     {
       "module": "randnpc",
       "output": "modules/randnpc.mjs",
-      "generatedHash": "887fe08b369e7713347d3b27b8bb8c44394b82cffe57b2e02c6910128c8d7ddc",
+      "generatedHash": "c8efac7811f4792b8ab1452c494c3ceafc50bafecd3fc4d552678b85aab3b9d3",
       "functions": [
         "generate_randnpc",
         "generate_single_randnpc",
@@ -505,7 +505,7 @@
     {
       "module": "npc_pick_item",
       "output": "modules/npc_pick_item.mjs",
-      "generatedHash": "69883f2b8c7d7462a7bdaacb628db1191f30be65d5a87922660e7648fc5b2301",
+      "generatedHash": "cb08fe771527363c7b49ff1b6a12142bdf946cba003140727baac28dbf970363",
       "functions": [
         "is_npc_pick_allowed",
         "lay_mapitem",
@@ -535,7 +535,7 @@
     {
       "module": "itemmix_sync",
       "output": "modules/itemmix_sync.mjs",
-      "generatedHash": "81984d427804755ba88b5aa2ad1c44b8bc22d769fa794d9532fd4b4f864fe0e7",
+      "generatedHash": "714b7ac179868ca280828bd5c16c27af6b25702ceb32d343ca4ddb4fdb2e4509",
       "functions": [
         "get_itemmix_sync_filename",
         "itemmix_prepare_sync",
@@ -570,7 +570,7 @@
     {
       "module": "item_uee_extra",
       "output": "modules/item_uee_extra.mjs",
-      "generatedHash": "fa04a8248d47127bfc9f0ec8b365007e7bf0989711f57630fe0f7c9e0708124f",
+      "generatedHash": "1f15c8a82f92e8ce84219762c6e235a49b3162f26e36d1fdd67d674c046d6f5a",
       "functions": [
         "uee_extra_get_hack_num",
         "itemuse_uee_core",
@@ -604,7 +604,7 @@
     {
       "module": "itemmix_overlay",
       "output": "modules/itemmix_overlay.mjs",
-      "generatedHash": "13e9663ed281886fdb213a1c6093b963e057419526731a1ac76b6756da42038e",
+      "generatedHash": "618424a9f156714386f9c73ab7f01db319ccb21a4e6368630edfd88b61df1a12",
       "functions": [
         "get_itemmix_overlay_filename",
         "itemmix_prepare_overlay",
@@ -636,7 +636,7 @@
     {
       "module": "item_misc",
       "output": "modules/item_misc.mjs",
-      "generatedHash": "c140808a07a87eb66720a0bc0d197a09a4dd2e743e62508186c96a1fd5a9611c",
+      "generatedHash": "da41399d881eaf63cb855daa952e2a2ea1aafc209fec7252f4a004f7ac9dd6a1",
       "functions": [
         "parse_itmuse_desc",
         "itemuse",
@@ -699,7 +699,7 @@
     {
       "module": "advteam",
       "output": "modules/advteam.mjs",
-      "generatedHash": "f7973e3e1f619e28ddaabfbd30cf30abc9ef87860a0226d93cf065318a720059",
+      "generatedHash": "2ad8c2c432a3f71b72daac844842419f47d8d53dbc3d94902570b77e45ccacf3",
       "functions": [
         "get_advteam_html",
         "act"
@@ -722,7 +722,7 @@
     {
       "module": "instance0",
       "output": "modules/instance0.mjs",
-      "generatedHash": "956024707d744bcd8ad0526b10d6e19c5cd555abf231452a534dcf7ef3aa7b32",
+      "generatedHash": "b0b2496b4b12d5792e8df7c8a4bd1c76d89d9b70be0c9efd530799ea73d054c1",
       "functions": [
         "checkcombo"
       ],
@@ -739,7 +739,7 @@
     {
       "module": "ex_vanish",
       "output": "modules/ex_vanish.mjs",
-      "generatedHash": "35ddb62a7cd95674e64509c2806f65d81c9d1c29162883d310ebeea2babf2851",
+      "generatedHash": "48d7e9b43c89819b5e010fbb8ea055ff56aac1ebedf806b494b857dbefc90fc2",
       "functions": [
         "player_kill_enemy",
         "itemget"
@@ -763,7 +763,7 @@
     {
       "module": "clubbase",
       "output": "modules/clubbase.mjs",
-      "generatedHash": "1b96e3b1c4a78437e990b61303965db20b2df2f02bbf2fbfdee6e81974b36f7d",
+      "generatedHash": "22b1408bfd4f262e3990ad471a1c8109247a0e1ba39e2fe58d70f31469650538",
       "functions": [
         "club_acquire",
         "club_lost",
@@ -845,7 +845,7 @@
     {
       "module": "item_um",
       "output": "modules/item_um.mjs",
-      "generatedHash": "18d4a763d781b93b68c64478170072876e94fee6cdec266a80f2a6d324093b57",
+      "generatedHash": "c7e2c19ae8e9132cf2c3babcbe14c446b73f81dc8ebbd85bb7efd9894b09e71e",
       "functions": [
         "calc_skillmed_value",
         "calc_skillmed_efct",
@@ -876,7 +876,7 @@
     {
       "module": "mapattr",
       "output": "modules/mapattr.mjs",
-      "generatedHash": "24578972a554a5c49074ee226f70d8d1b00703f95e675b62dc1c50a794eb58fb",
+      "generatedHash": "6bbb15e40c32c6a5be7e0a4b39d970d118ed309827a0104384cc60ffde136e19",
       "functions": [
         "calculate_itemfind_obbs",
         "calculate_findman_obbs",
@@ -898,7 +898,7 @@
     {
       "module": "item_uv",
       "output": "modules/item_uv.mjs",
-      "generatedHash": "d40c872d4546f24a2ce22aaede284bb72746f38b9b281cd66c115f342fe74779",
+      "generatedHash": "297bdeaf45c42a5ced27b3f423af0adae058c2f6248b7cfdb9ea2653ec64e8ae",
       "functions": [
         "parse_itmuse_desc",
         "calc_skillbook_efct",
@@ -942,7 +942,7 @@
     {
       "module": "item_empowers_extra",
       "output": "modules/item_empowers_extra.mjs",
-      "generatedHash": "e55725337f631fe2a719596f419c6ce1bdb1fcc4df4e1522feeff3fabab2a65b",
+      "generatedHash": "1733cf53e54bf5b7be73a8af937dfdac2364769da56845c65920c3a5ad49bb4d",
       "functions": [
         "parse_itmuse_desc",
         "itemuse",
@@ -977,7 +977,7 @@
     {
       "module": "club1",
       "output": "modules/club1.mjs",
-      "generatedHash": "b0a5c481551a442f1a3ab9acab993ef2ad7fe7fcd7a8a06780fc25cdf7fe4ee7",
+      "generatedHash": "49c180e29daba9cfff10db5cf961e7b09e484bd0bee01f74c9f5a725a2acf9ec",
       "functions": [],
       "calls": [],
       "sources": [
@@ -990,7 +990,7 @@
     {
       "module": "club2",
       "output": "modules/club2.mjs",
-      "generatedHash": "93269bb28c167be4c9f65c05caa9d60213f5f9c2e092001c8f341f62538cb556",
+      "generatedHash": "8d3ae3a1b8353e458f84f2ac6686963da8ca831be4c513b283346d26928cc4eb",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1003,7 +1003,7 @@
     {
       "module": "club3",
       "output": "modules/club3.mjs",
-      "generatedHash": "e0c1785ae4d91eeaa3090aaaf921294542d27c905d3fb962963dc30f8ab736d8",
+      "generatedHash": "b0190c5861ff6bbcd09a598eea7175af62b4e29af74d7ac704ef1ea3485ac184",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1016,7 +1016,7 @@
     {
       "module": "club4",
       "output": "modules/club4.mjs",
-      "generatedHash": "634d3aeca9d206d0bf02f1e5388b8e6544c8338532e211238e923865ef52b9a5",
+      "generatedHash": "f36246128e7e709b83555f92f2f1c66ae43ef2b69be510823a374d164f4f4b40",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1029,7 +1029,7 @@
     {
       "module": "club5",
       "output": "modules/club5.mjs",
-      "generatedHash": "23e246d75f477288b780f1e2b8e1d58709b68426bb39514b1ace397b34564b73",
+      "generatedHash": "c2718a60c9b70eb41eb51c269fef32e4fcd120a6e79f1919e35c6ce599b2f79f",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1042,7 +1042,7 @@
     {
       "module": "club9",
       "output": "modules/club9.mjs",
-      "generatedHash": "04da71ce1327b7b987428f002db4b50d13dee696ccb223b2c7b683f39f5e2338",
+      "generatedHash": "ab435c7a1276cc2c9ec38ef8bc30eef532267d983a6ae0f38a507ed6273c76c3",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1055,7 +1055,7 @@
     {
       "module": "club10",
       "output": "modules/club10.mjs",
-      "generatedHash": "b705692b734caa075f6fda4ea1db509b2d7546a9ee6e15b803c33d52b0472305",
+      "generatedHash": "816fc0fa07ee047dfe774dc7c73929ad904dc83361346c151e9b91a384649555",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1068,7 +1068,7 @@
     {
       "module": "club99",
       "output": "modules/club99.mjs",
-      "generatedHash": "73b1b717703c9d1936a3e371808979f4524c3ccdd263a99b2eaf5e878c6c8581",
+      "generatedHash": "ab3a763ce25052cec89f6b9a41dc07d66ee5dc4936407739e736b115afb23817",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1081,7 +1081,7 @@
     {
       "module": "club17",
       "output": "modules/club17.mjs",
-      "generatedHash": "63391dcc81fcb1a8d8025131ecb082bbc9675c191322382f974e7f2b1d2b23e2",
+      "generatedHash": "e03d979fdd7f55a1e20ed46e835130c2b40c1a3ecace5c55dc614f4fccae2bad",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1094,7 +1094,7 @@
     {
       "module": "club20",
       "output": "modules/club20.mjs",
-      "generatedHash": "abafb50ef824b13bad443d31c48da03c19c161b69f00ca898ecd73076c32fe5c",
+      "generatedHash": "463ce60868e232c207f94b7a2ac465de7b3562b99cd6f704d7053a582de65a4a",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1107,7 +1107,7 @@
     {
       "module": "club13",
       "output": "modules/club13.mjs",
-      "generatedHash": "7084958fde2de10f8d33ede65491cae7443b3b02d38bcfbe049bb6373dbc964e",
+      "generatedHash": "ec492bd741290797e336b9061a91245e54575668f99ce677416db7f98e1d23ef",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1120,7 +1120,7 @@
     {
       "module": "club14",
       "output": "modules/club14.mjs",
-      "generatedHash": "cebe72b5949a4261def1bf3140c66dbf0865baf93b4481521b060894d2eff439",
+      "generatedHash": "8cfa0deb5bc4cae63cbf042e4bc22f619b1611ef849d777bb51f20f005f817b8",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1133,7 +1133,7 @@
     {
       "module": "sklearn_util",
       "output": "modules/sklearn_util.mjs",
-      "generatedHash": "3ec03aef7e145f2e0a29d77e7f91a7e1ee7a19c87c51ad951067de78df6beb66",
+      "generatedHash": "cd940d893411de1d89c95c1edfed7bc9e628f0ef72a8538c7fd25a97f8ff1520",
       "functions": [
         "sklearn_basecheck",
         "get_skilllearn_table",
@@ -1167,7 +1167,7 @@
     {
       "module": "club6",
       "output": "modules/club6.mjs",
-      "generatedHash": "f620ae4fa0e88fc4edafa7006c68522efa9cc706fb028d14c5696afe25be2352",
+      "generatedHash": "89d4a263637551db390b1a86bd38ae0ae67e46369e1a0bd3fcacf923d315474a",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1180,7 +1180,7 @@
     {
       "module": "club8",
       "output": "modules/club8.mjs",
-      "generatedHash": "86fbcab86fec9fc7624906de8e1ec2c9e713b4d757cfc6361f13ea0264de9628",
+      "generatedHash": "cdcf6ec52b362f98390cf6aa47d85f6c84bca5e06d54361af344b147107c39f0",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1193,7 +1193,7 @@
     {
       "module": "club7",
       "output": "modules/club7.mjs",
-      "generatedHash": "d4873c35ae58735f0f9303f89dc2f113aa4a790cfd8f14ecc5c7f53c83bc4f71",
+      "generatedHash": "9ae69bed91f724ceb16e1fbcf50e214d97857a8a7af01067361e307037b3de8b",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1206,7 +1206,7 @@
     {
       "module": "club11",
       "output": "modules/club11.mjs",
-      "generatedHash": "5015c272c6e34881d755a1478d430acaf1d96b074680646868a22dd8d3b2fd8b",
+      "generatedHash": "8d2625ae25ea2bd07d1340401b00bb94283971cb5d8c94d01062764999431628",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1219,7 +1219,7 @@
     {
       "module": "club19",
       "output": "modules/club19.mjs",
-      "generatedHash": "f846d8932569122e924990ed0bd9d36215b3470961af41fc2a90af8fc7dc251b",
+      "generatedHash": "c52fe3a7b6b83cc10195a6fcdde1b799d48fbf665a850152b63581429c06a54c",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1232,7 +1232,7 @@
     {
       "module": "club24",
       "output": "modules/club24.mjs",
-      "generatedHash": "26f4ad8b501ff9182d7e7b3da4fae32e11462d12ee25b8f23c58697dcee23a6f",
+      "generatedHash": "47248fc1aca851a945df7cfaa7a457ebce0e5b04b0efb90be4a0145007b3e6dc",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1245,7 +1245,7 @@
     {
       "module": "club18",
       "output": "modules/club18.mjs",
-      "generatedHash": "74b48239594cdbc400929d85a035bacc0b552bf850ffd78bd621fb13dfe7e0cb",
+      "generatedHash": "2e9f13274c4f65cfbf5fb2f3ef592b27d33c57a50daa5a42235be2387c599a89",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1258,7 +1258,7 @@
     {
       "module": "club21",
       "output": "modules/club21.mjs",
-      "generatedHash": "f5365abd52edc3074e5f572d4e1cd276aba3d914df6b06abb4687031149d28d0",
+      "generatedHash": "4a20d0eefcd95737a9876c0eb19fe02f216f82c2c84e0d34cc3f35c31433d904",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1271,7 +1271,7 @@
     {
       "module": "club97",
       "output": "modules/club97.mjs",
-      "generatedHash": "87e82f48f61b3f6e3b83735066b2d14b35835f8c40315b373363a6df4d40fe15",
+      "generatedHash": "4fbeeb28af5d3250780dc8888c3f32007f584defcaf2c1a148174c85768a13a1",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1284,7 +1284,7 @@
     {
       "module": "club94",
       "output": "modules/club94.mjs",
-      "generatedHash": "cf6872962a414eb2fe2f94ee23f8df216e9e2c1208c5c433944b3a872de29efe",
+      "generatedHash": "9d49e0e8efecc03a98a1d2ebff0f2c80a3dad741a2ea059e03cada91511d7772",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1297,7 +1297,7 @@
     {
       "module": "club95",
       "output": "modules/club95.mjs",
-      "generatedHash": "336bf57aebc1e2b890fef31dc6da31437876448e70dd9dd1d18d97c629513dcb",
+      "generatedHash": "cff5951fb7a7fa42dd26f21f9688d886d10ea28863cf5c6e35cfa505ffded73c",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1310,7 +1310,7 @@
     {
       "module": "club96",
       "output": "modules/club96.mjs",
-      "generatedHash": "41f067aa32f11d4ec494ac92a1002609ad98ce05c691e199fa579d65d3cd0537",
+      "generatedHash": "f0572b71bd08f6327b93c9a7b618521559bc0ab56c933ecc0ceb876c010faefa",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1323,7 +1323,7 @@
     {
       "module": "club15",
       "output": "modules/club15.mjs",
-      "generatedHash": "477f26d6094b65d74f6a96dc354fc51a697fa44a5b0cca46939d22748190a4f1",
+      "generatedHash": "f4417640d5f5c28a6ffe14c7683b8f44e1544c0dc7637f4f7df3c444587801b4",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1336,7 +1336,7 @@
     {
       "module": "club25",
       "output": "modules/club25.mjs",
-      "generatedHash": "7b292bf5347d670d61c5084a30a25d591007b9608cb47f2a11c00bb2991bd567",
+      "generatedHash": "3ed421a9ae557dd8f24818f64cb023b063a57eacf310b7c63f30f62611e5875e",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1349,7 +1349,7 @@
     {
       "module": "club26",
       "output": "modules/club26.mjs",
-      "generatedHash": "469e4b4765badf681a164acc56c9e5fae539e767944a17d7cf8a278439afc9de",
+      "generatedHash": "471623007031fc9afd26fa087db7d23ea7493434358fd0cca9cc0156f34888f8",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1362,7 +1362,7 @@
     {
       "module": "club27",
       "output": "modules/club27.mjs",
-      "generatedHash": "5ddf5fa9d8bb2589fc0627c9a8077e3631354f9e97738afb25c6bcc2e3200ed8",
+      "generatedHash": "63a06d606230d92e0b508c5f7237e9c09fe8f69551493da6023422245be99191",
       "functions": [],
       "calls": [],
       "sources": [
@@ -1375,7 +1375,7 @@
     {
       "module": "skill_temp",
       "output": "modules/skill_temp.mjs",
-      "generatedHash": "78e5cf0a08a531fc3379128ae6abf47b2aab48dbd421b1c6c3f86dbf5e768760",
+      "generatedHash": "20983d7e34b609b3dbab682c708eb368d858f58c0edc2670fc652ee0f0182d5c",
       "functions": [
         "check_skillinfo_allowed_for_skill_temp",
         "check_skill_available",
@@ -1416,7 +1416,7 @@
     {
       "module": "poison",
       "output": "modules/poison.mjs",
-      "generatedHash": "4e9dc6918c9ae7f928f7827433a2283e9f2016ce0751b63fc5af6726094e151a",
+      "generatedHash": "cf97a176ad30f8561609fac80fce71fda2f464c703d725ca28ea64e6ba8d3161",
       "functions": [
         "parse_itmk_words",
         "send_poison_enemylog",
@@ -1466,7 +1466,7 @@
     {
       "module": "item_uc",
       "output": "modules/item_uc.mjs",
-      "generatedHash": "75edf083889cc1dc9b34dd7707815c3e9b1e2c0bfd9177cc731747d9aa0f85bb",
+      "generatedHash": "cca110e1816a9b1c4684cf05805818162c691b6f5540ef6005ad87c61866b7b8",
       "functions": [
         "itemuse"
       ],
@@ -1487,7 +1487,7 @@
     {
       "module": "event",
       "output": "modules/event.mjs",
-      "generatedHash": "183bc64e11287c331b94a6d96893466562583327c2afd60c6373fd00f8344046",
+      "generatedHash": "af2443e0ea7ef022c0682a23816612155031ae00382a68bf5e60b77d60ad04e7",
       "functions": [
         "event_available",
         "discover",
@@ -1564,7 +1564,7 @@
     {
       "module": "npcchat_bubble",
       "output": "modules/npcchat_bubble.mjs",
-      "generatedHash": "34b7be789a0275a1ab3ee0c0c813b50bdabf855f4ebf0bf9309978bae9d079fd",
+      "generatedHash": "a557c01314604bd6f116bc47e0461c312bcc53ac2783ec571d10d39c82b925e2",
       "functions": [
         "npcchat_print",
         "npcchat_tag_process",
@@ -1592,7 +1592,7 @@
     {
       "module": "item_slip",
       "output": "modules/item_slip.mjs",
-      "generatedHash": "32a9570b1a8c1ca2d2ab1fe1378e140badc89580e186c1ad907b5e361d648a3b",
+      "generatedHash": "5c84b6dd647479ff031a83f12916aa73e94185bb4036620e0fbf2825e45aa952",
       "functions": [
         "parse_itmuse_desc",
         "itemuse",
@@ -1636,7 +1636,7 @@
     {
       "module": "ammunition",
       "output": "modules/ammunition.mjs",
-      "generatedHash": "6b04f9f9cba73e06d46b0878be08dbf7c1394634f891742a3b8ea705c3ffc33e",
+      "generatedHash": "3242b9bd50c61b965fe61e0a82ddba2ffa94551190b9422b29043f4ebfca1f05",
       "functions": [
         "parse_itmk_desc",
         "check_ammukind",
@@ -1659,7 +1659,7 @@
     {
       "module": "npcinfo",
       "output": "modules/npcinfo.mjs",
-      "generatedHash": "1dcef861bb82d081320088b006760b59f2d05d29751f1c7ab8f9a4e1b64b6dcb",
+      "generatedHash": "639aadc415198f08bee3a340f5ca876d5b71d4467c692c63eb18786e45c9c5be",
       "functions": [
         "npcinfo_gen_item_description",
         "npcinfo_get_npc_description",
@@ -1686,7 +1686,7 @@
     {
       "module": "cardbase",
       "output": "modules/cardbase.mjs",
-      "generatedHash": "7afe7850872a9f26610b8197b2c99033d3e8d9c0b62fd44db582a543c34f9aa6",
+      "generatedHash": "03330addf649d819ece1a73e36c2226febec1679790d5a4cff0d84756e3d2969",
       "functions": [
         "get_cardlist_energy_from_udata",
         "get_cardlist_energy_from_card_data",
@@ -1819,7 +1819,7 @@
     {
       "module": "instance6",
       "output": "modules/instance6.mjs",
-      "generatedHash": "e192c6524099ae6d040435647dbf79b52e66156486b5517a2f641f053523844f",
+      "generatedHash": "6142b970b0447e8acad61e65169aa32e4c9e2f04df045d20b5ad3a0148169f66",
       "functions": [
         "get_shopconfig",
         "checkcombo",
@@ -1846,7 +1846,7 @@
     {
       "module": "attrbase",
       "output": "modules/attrbase.mjs",
-      "generatedHash": "66c17638f3ef5dd7456dc12cad55f5f99d63bae6032a0c24249b80aa694cdcbb",
+      "generatedHash": "9ca4c6b6bfd17d7c776730470d220bcff9957a119b19d92e0ff9ab4b7b9074b1",
       "functions": [
         "get_ex_def_array",
         "get_ex_def_array_core",
@@ -1922,7 +1922,7 @@
     {
       "module": "instance8",
       "output": "modules/instance8.mjs",
-      "generatedHash": "bd3fcdc44e1ac2c5cdf9b727e3d370d09bf4f975ae7f11c7fecb91f0e72950ec",
+      "generatedHash": "34d5df21a69ba6b9110fe76ae04f758d6c67b0b1bd6802cae9bfabe3a43aa0f2",
       "functions": [
         "load_gameinfo_post_work_extra",
         "init_enter_battlefield_items",
@@ -1950,7 +1950,7 @@
     {
       "module": "instance7",
       "output": "modules/instance7.mjs",
-      "generatedHash": "4e92585db90fa981e192444a1dba19801e57e35d810b573d8f69191543f84289",
+      "generatedHash": "4795f5c57620befb5bb4c1778c6fe8349ae3d2f843344c1a9564e8ad6d0880a2",
       "functions": [
         "get_enter_battlefield_card",
         "get_npclist",
@@ -1976,7 +1976,7 @@
     {
       "module": "kujibase",
       "output": "modules/kujibase.mjs",
-      "generatedHash": "04b9c2c888eef7850a7765f3750b0fab6cd2d80f3028a8cd278d788c06f2a743",
+      "generatedHash": "08b618c7f168a23795b432096b649bb20fb996c83aa24f512be2311a37a502fc",
       "functions": [
         "kujidraw"
       ],
@@ -2004,7 +2004,7 @@
     {
       "module": "set_gametype",
       "output": "modules/set_gametype.mjs",
-      "generatedHash": "ab514f8cdac919058c4e9028cb8d0d195f59247040ae60d698d837801c4c9fd2",
+      "generatedHash": "0b356a5ed15cee467badb2c2d342976fbe2b7cb358bc94ba71c3e7c1f83ab9ca",
       "functions": [
         "check_gametype_set_valid",
         "user_set_gamevars_list_init",
@@ -2030,7 +2030,7 @@
     {
       "module": "gtype6",
       "output": "modules/gtype6.mjs",
-      "generatedHash": "f87b7e56a2d14f3ad7c8c92f22e1bbce87a352b1ee8cf47dc50dfbf370bad068",
+      "generatedHash": "582cf1e03d7fcc6551922e141d2b9ea22987c10b8d0d7861e84e85f6ff2787cc",
       "functions": [
         "get_enter_battlefield_card",
         "card_validate_get_forbidden_cards",
@@ -2047,7 +2047,7 @@
     {
       "module": "npc_action",
       "output": "modules/npc_action.mjs",
-      "generatedHash": "dcdf365c2bbd374882b17554febaf6a489fb0adb2c60104b6c6166ddca183d3a",
+      "generatedHash": "bcde3185e7c2bbf9b7af95d67c6a20a848e1b27904dc42fa6520ba1e09c156ce",
       "functions": [
         "is_npc_action_allowed",
         "get_npc_action_list",
@@ -2117,7 +2117,7 @@
     {
       "module": "get_qiegao_in_battle",
       "output": "modules/get_qiegao_in_battle.mjs",
-      "generatedHash": "045bc1e5d6cc7f2e58ce0134982fbbe60c15160bf19fe8400b4dcb17bd36bd94",
+      "generatedHash": "c97aad859acf37ffba98d5a69ee7f3c5be85b01144a81d96441e722e3a8e44bf",
       "functions": [
         "calc_qiegao_drop",
         "player_kill_enemy",
@@ -2143,7 +2143,7 @@
     {
       "module": "instance12",
       "output": "modules/instance12.mjs",
-      "generatedHash": "054805582a1a07d09623570a8eb01631fa989777866ebc91b53c097524a5e716",
+      "generatedHash": "97e5a64c107760f993be7cb796dcb3c63c6ae0559bbce75f13b32d93710081f0",
       "functions": [
         "card_validate_get_forbidden_cards",
         "card_validate_display",
@@ -2205,7 +2205,7 @@
     {
       "module": "gtype7",
       "output": "modules/gtype7.mjs",
-      "generatedHash": "bfe213d3d4f8db2687256f7dbaac9126e6cdc4976faa54efa8041805a05720e0",
+      "generatedHash": "06d9a077b76c5fab8034dafcb59fea74e80a954313a941a77197a50d04e266cd",
       "functions": [
         "init_enter_battlefield_items",
         "get_npclist",
@@ -2233,7 +2233,7 @@
     {
       "module": "itemnumlist",
       "output": "modules/itemnumlist.mjs",
-      "generatedHash": "723d9bc51e514548d5eccf92a67a08f4570260a4edd94e487a47ade1e9b6abf0",
+      "generatedHash": "84350ee6ae6d99befcfd5db5747bdcbe101fb10d42733eab47010285f0e48cfb",
       "functions": [
         "itemnumlist_num_area_proc",
         "itemnumlist_write",
@@ -2273,7 +2273,7 @@
     {
       "module": "addnpc_event",
       "output": "modules/addnpc_event.mjs",
-      "generatedHash": "62f8d7fb9cf0059b4416793bff71aaffe4f3e991f4ba0a2c6f2292fc7935a718",
+      "generatedHash": "2df10a013a827fa6452c5ac8f9613876d6964a292e3afc55c4cf8b0d23bba159",
       "functions": [
         "player_kill_enemy",
         "addnpc_event"
@@ -2296,7 +2296,7 @@
     {
       "module": "supplycrate_event",
       "output": "modules/supplycrate_event.mjs",
-      "generatedHash": "6bf48a287da5ab24f8465c873ceeb4a82679ef7f5ecbe2d93dba45115fb269af",
+      "generatedHash": "ba4ddd24e18b04472443179cbaa57aab155f0aee3ca24fc289dce040c7a5e1fb",
       "functions": [
         "kill",
         "player_kill_enemy"
@@ -2322,7 +2322,7 @@
     {
       "module": "item_randskills",
       "output": "modules/item_randskills.mjs",
-      "generatedHash": "a3f03b1479f08c8fefd2ffcf6877caa0b38b4b5a6740f00d4698eb3b281ab58c",
+      "generatedHash": "4c9b2e70f286a5912570fad7084e570ba3cef3b4b6ee3cc5a8a1586424957420",
       "functions": [
         "parse_itmuse_desc",
         "itemuse",
@@ -2382,7 +2382,7 @@
     {
       "module": "ex_phy_def",
       "output": "modules/ex_phy_def.mjs",
-      "generatedHash": "5fdf1bbe938a5075496643091224456ce0d1adfd4b5d09f5cfb167e3867da2c1",
+      "generatedHash": "97272374e7d8c0054ee25eb6ab04bff2e2cb9c65ee6823b9a23cd07a716ba51a",
       "functions": [
         "get_ex_phy_def_proc_rate",
         "check_ex_phy_def_proc",
@@ -2408,7 +2408,7 @@
     {
       "module": "rage",
       "output": "modules/rage.mjs",
-      "generatedHash": "08b34960421bcea4ba766d0fd2bf02af66598ffe18c560c0a0209bb991726e31",
+      "generatedHash": "846b17b66a6dd0d4c25ca295d4bd01b429aa085c31b73a3f0bbfb0dc2ea3e673",
       "functions": [
         "get_max_rage",
         "calculate_rest_rageup",
@@ -2452,7 +2452,7 @@
     {
       "module": "ex_rapid_attr",
       "output": "modules/ex_rapid_attr.mjs",
-      "generatedHash": "d68e19de57123aa70cfdf45e9a3431f2427d8e35114ab603c93105f06f725676",
+      "generatedHash": "f74cf7f408957983a1bd77787a46135e88b5adce24ea5538d4ff93eae528ab76",
       "functions": [
         "get_rapid_times",
         "get_rapid_wepimp_increase",
@@ -2494,7 +2494,7 @@
     {
       "module": "ex_attr_silencer",
       "output": "modules/ex_attr_silencer.mjs",
-      "generatedHash": "8fbb292810acb649290050c01b2ea8838b564c78489f21f55eb4178ca2dc0ef1",
+      "generatedHash": "d9bd6aebdd2aad3390152136963204f2cab45f4aa9055fd06c56ffbd033adb7a",
       "functions": [
         "weapon_wg_addnoise",
         "weapon_wj_addnoise",
@@ -2517,7 +2517,7 @@
     {
       "module": "ex_dmg_att",
       "output": "modules/ex_dmg_att.mjs",
-      "generatedHash": "9e4d6e4290c6c7f4092a600e544aebf2a97267ff9155a4b1d121606a891038e4",
+      "generatedHash": "7ab8a39d1637f7c6916a07d72afcca49a771f041e76cc6b521019bd858caaff2",
       "functions": [
         "get_basic_ex_dmg",
         "get_ex_dmg_restriction",
@@ -2600,7 +2600,7 @@
     {
       "module": "ex_attr_charge",
       "output": "modules/ex_attr_charge.mjs",
-      "generatedHash": "26e0147757759798b6c0704686185cb1fc8ab36043bb4bb6f7fd2451cd4d28f1",
+      "generatedHash": "581f4258806aba347d880b3b08e844d02796e3c82ba3497397db5ee7d501399a",
       "functions": [
         "get_ex_charge_proc_rate",
         "check_charge_proc",
@@ -2624,7 +2624,7 @@
     {
       "module": "ex_hp_def",
       "output": "modules/ex_hp_def.mjs",
-      "generatedHash": "ad18a2556cb291662477371e293350b4f24793715e1c6d17d1154b1f898c6029",
+      "generatedHash": "4e7c5753e2b5dc0fe11d7e787a67e444c2a26e452cffe3c3fd2f1827db624cc1",
       "functions": [
         "calculate_hp_rev_dmg",
         "get_dmg_def_proc_rate",
@@ -2652,7 +2652,7 @@
     {
       "module": "ex_direct",
       "output": "modules/ex_direct.mjs",
-      "generatedHash": "3d673a0004208e1d8ecadbdc84b4845ddd727f147c35b8acb99218b15e6a44ee",
+      "generatedHash": "1e100bb23bea93458ff70394d0a97a72a2714a9cdca600a3780dd2a20258c56b",
       "functions": [
         "get_ex_direct_proc_rate",
         "strike_prepare",
@@ -2676,7 +2676,7 @@
     {
       "module": "ex_seckill",
       "output": "modules/ex_seckill.mjs",
-      "generatedHash": "1b6bdac438656c49bcade1f3fd2b32bf44b393cc8cf0c87f40abe0fece114e2e",
+      "generatedHash": "08c7da33173875e3a747c0275003b01ae6178ed472df9d5f32ff2794a507d253",
       "functions": [
         "get_ex_seckill_proc_rate",
         "apply_total_damage_modifier_seckill"
@@ -2698,7 +2698,7 @@
     {
       "module": "ex_cursed",
       "output": "modules/ex_cursed.mjs",
-      "generatedHash": "0c226aeb4971ad6e314e8dc38e077ff91aef3e492d0b13c17eaf2a4f854a69e3",
+      "generatedHash": "c1c2bcc1e951ba89389bb21bc7adab6a923d8cc4f8ee081328d643357420c2d8",
       "functions": [
         "itemdrop_valid_check",
         "itemoff_valid_check",
@@ -2723,7 +2723,7 @@
     {
       "module": "ex_def_down",
       "output": "modules/ex_def_down.mjs",
-      "generatedHash": "89d7089f8d1664ab0dee5dbb1fb6b6b6815ef5ff86dc416b30725269ebd4daff",
+      "generatedHash": "a370109823c0562873a9d7a1c17aa38d3387596ec33367d16920c0fdc229cb82",
       "functions": [
         "get_def_multiplier"
       ],
@@ -2741,7 +2741,7 @@
     {
       "module": "ex_armor_crack",
       "output": "modules/ex_armor_crack.mjs",
-      "generatedHash": "81c3b2822b05ad6a80ada27032214b862e6fee29bdb28a241c19409be383ca41",
+      "generatedHash": "5e6d35731e723b0ec67bfbf2467d109d02d79809d744c55474c7f466f342e536",
       "functions": [
         "calculate_inf_rate",
         "get_armor_crack_extra_wounds",
@@ -2765,7 +2765,7 @@
     {
       "module": "ex_attr_digit",
       "output": "modules/ex_attr_digit.mjs",
-      "generatedHash": "d906d67a06c3dacdade6b4e66c7885e94766b49c54f728777f25667916b964de",
+      "generatedHash": "606e18ad2a14aaf4dd9ea244c57c94f9e0f6f088c03132a0dc5830311828b44c",
       "functions": [
         "check_comp_itmsk_visible"
       ],
@@ -2782,7 +2782,7 @@
     {
       "module": "ex_weapon_crack",
       "output": "modules/ex_weapon_crack.mjs",
-      "generatedHash": "7d0150de5b0b28a71f68a3451dd01fae30cd291a9afb8250a8e5774b90ab02a8",
+      "generatedHash": "4d6f7920b4a865d1e42a04f294752bd5ad86ebda1af1a282bbab7fa9f0b2f985",
       "functions": [
         "calculate_wepimp",
         "apply_weapon_imp"
@@ -2810,7 +2810,7 @@
     {
       "module": "ex_deflect",
       "output": "modules/ex_deflect.mjs",
-      "generatedHash": "1877be7042091799ea1c0b84cc7a621e4bc4246e794e6112f79cc61087b0d3ba",
+      "generatedHash": "f164fd2b5ba8fceb40bccc6486b364af2d6fbf08f3b474a8e1fd1a97e0fc6bd0",
       "functions": [
         "get_att_change"
       ],
@@ -2830,7 +2830,7 @@
     {
       "module": "randmix",
       "output": "modules/randmix.mjs",
-      "generatedHash": "5fe7535337fe9add9261a654bd5d1481dba912df8537e70579d35695b0044074",
+      "generatedHash": "b01499f69d98e0735940564af2d3b3afbbc6125365a056d59b21a978b7f74b93",
       "functions": [
         "create_randmix_config",
         "create_randmix_list",
@@ -2871,7 +2871,7 @@
     {
       "module": "gtype1",
       "output": "modules/gtype1.mjs",
-      "generatedHash": "4735264ccf2b621708f8cc61b7b0a6785c8f92fddc3b7e29f108045d3ea5afff",
+      "generatedHash": "69c4730576929a15386d123e8b8be5adff8bba7bdce99f9cdc35c02ea2c47c5e",
       "functions": [
         "get_enter_battlefield_card",
         "card_validate_get_forbidden_cards",
@@ -2935,7 +2935,7 @@
     {
       "module": "wep_b_extra_reloading",
       "output": "modules/wep_b_extra_reloading.mjs",
-      "generatedHash": "10f30ad9204d67b49fcbdb79eb3b6f4d0a0c4d517f806b1a26ae8840e04cc8e6",
+      "generatedHash": "7574c5c8f9213e61b6253c50025ba6c6179e10fca893fee3e808f8520d6a16f2",
       "functions": [
         "wep_b_extra_reloading_check",
         "itemuse",
@@ -2958,7 +2958,7 @@
     {
       "module": "instance9",
       "output": "modules/instance9.mjs",
-      "generatedHash": "5b1827f633a063d44cdb0899aa1fa6280dc7ae47ab01c6144ddc1340b928a8ec",
+      "generatedHash": "50a36992b067aec11984969c4d3693d04c862daa0294fcdcbb109fe4d332cbcc",
       "functions": [
         "card_validate_get_forbidden_cards",
         "init_enter_battlefield_items",
@@ -2997,7 +2997,7 @@
     {
       "module": "ex_rapid_def",
       "output": "modules/ex_rapid_def.mjs",
-      "generatedHash": "1f40daf7c312afffaa510752f3c7afa2ff00a6bb75d9f37dc9f7653f11ab3a41",
+      "generatedHash": "665dc60d231848f5bef8a06e4e658e454f2609188ab60775c06a7a19518c4bde",
       "functions": [
         "get_ex_rapid_def_proc_rate",
         "check_ex_rapid_def_proc",
@@ -3025,7 +3025,7 @@
     {
       "module": "ex_attr_trap",
       "output": "modules/ex_attr_trap.mjs",
-      "generatedHash": "1762cb8cbb6651436a7597e3845a1352e05b50e66fe9a06024822fb1b437b5c8",
+      "generatedHash": "57bb7af5bca05496e97af8a3fd4ad3d79b6ab5e6e71edd290d70a333c4753b87",
       "functions": [
         "calculate_trapdetect_rate",
         "get_trap_escape_rate",
@@ -3055,7 +3055,7 @@
     {
       "module": "ex_dmg_def",
       "output": "modules/ex_dmg_def.mjs",
-      "generatedHash": "0005c3075c2436cb1b55583d71e4cbe67069e2119747b216674571389777b122",
+      "generatedHash": "b082a025e29020cca094c91b97dc08b8a65ea896d29683b38a057696c6261cf0",
       "functions": [
         "get_ex_dmg_def_proc_rate",
         "check_ex_dmg_def_proc",
@@ -3083,7 +3083,7 @@
     {
       "module": "ex_dmg_nullify",
       "output": "modules/ex_dmg_nullify.mjs",
-      "generatedHash": "1ed41b4b101d960a53bc577463af6429859327fa9eb5c235a922d273ca37cb1e",
+      "generatedHash": "6855c6dc0b6342b687ee0b730be30e738413e61e990fa8d935c34b85a737f0fd",
       "functions": [
         "get_ex_dmg_nullify_proc_rate",
         "check_ex_dmg_nullify",
@@ -3109,7 +3109,7 @@
     {
       "module": "item_uu",
       "output": "modules/item_uu.mjs",
-      "generatedHash": "07e1a86e9bf76f07f5372781251e8965b8ce8465bde74949a011c29d79264d88",
+      "generatedHash": "030f8116674bb5d02b30899479b8ef48144e93c2237e140602a294ba5462bc21",
       "functions": [
         "parse_itmuse_desc",
         "itemuse",
@@ -3131,7 +3131,7 @@
     {
       "module": "item_umb",
       "output": "modules/item_umb.mjs",
-      "generatedHash": "c43ec896750ac3dc1ff8f14a779c4dd35cd8d538c31dc233d75f72b1f9be8f2a",
+      "generatedHash": "99ff9cf5b53e4295cd4af8397a71589b51dc18a993b161cc992e1567e46c953d",
       "functions": [
         "parse_itmuse_desc",
         "itemuse_um",
@@ -3155,7 +3155,7 @@
     {
       "module": "item_recipe",
       "output": "modules/item_recipe.mjs",
-      "generatedHash": "b9652e8d9e8ed5533ba24677abdcff97bb670c77a9c5fcd793a8f1ab2ed961ea",
+      "generatedHash": "7dfaaf093ee0f822400e236ebb6a957e3c38be899f0d184f8e172badcd9b1be2",
       "functions": [
         "get_recipe_mixinfo",
         "itemuse",
@@ -3233,7 +3233,7 @@
     {
       "module": "achievement_base",
       "output": "modules/achievement_base.mjs",
-      "generatedHash": "a081ff189d1ca96606215d42229088c0e48d4cddaf401a75567b01f6e57ba621",
+      "generatedHash": "7dfbfaa5fc38502a5f8e9835b21212f00bada70851a7e3d1c69dba80531be938",
       "functions": [
         "ach_show_init",
         "check_ach_valid",
@@ -3365,7 +3365,7 @@
     {
       "module": "ending",
       "output": "modules/ending.mjs",
-      "generatedHash": "1b5b1d39e938074538d5f60ce4876fbadd6ddd2abbc5a2b7493e6b85591bb735",
+      "generatedHash": "98066d63e64e90d9bfe269db5ef6d65a8354d641f8e0d296b7326633b7c2e384",
       "functions": [
         "ending_by_shootings_available",
         "ending_changing_gamevars_available",
@@ -3401,7 +3401,7 @@
     {
       "module": "song",
       "output": "modules/song.mjs",
-      "generatedHash": "3e36f1cf22827d481e2df47d5572f45196685ab5b5323b06ce3b5faa3b7d49ce",
+      "generatedHash": "8ea542ed15f6ba8008fb20a2c446110495a67561f81ef08937231db84f94cb7c",
       "functions": [
         "parse_itmuse_desc",
         "ss_get_affected_players",
@@ -3486,7 +3486,7 @@
     {
       "module": "extra_event",
       "output": "modules/extra_event.mjs",
-      "generatedHash": "e81b7f718e2db0a79ff889bea91b584d060219c41a13ce6f417daead35f45acc",
+      "generatedHash": "507577dd28e9e17433ef5b1e6388245f0aa9f79bce03485a677c3c8f20592654",
       "functions": [
         "extra_event_get_branch_text_core",
         "is_extra_event_available",
@@ -3562,7 +3562,7 @@
     {
       "module": "news_observe",
       "output": "modules/news_observe.mjs",
-      "generatedHash": "6a289519de4e57819fd8bc52f2825660c2f387469a3eeb4cad4661112c68e36f",
+      "generatedHash": "1943a61a0ff36ee0c5540a534ccdc45e1bb1c692018e0244fd510e98405688a6",
       "functions": [
         "check_observe_groomid_allowed",
         "get_observe_roomlist",
@@ -3604,7 +3604,7 @@
     {
       "module": "empowers",
       "output": "modules/empowers.mjs",
-      "generatedHash": "e19e6d59445580605cf4c68a8c7fbeeef2d4dd3188375fd117c697696bd2a5c2",
+      "generatedHash": "70baca786b6eb76e9799df6b645b90aa93dc3096d0c002155a80adaad17c9218",
       "functions": [
         "parse_itmuse_desc",
         "check_nail",
@@ -3645,7 +3645,7 @@
     {
       "module": "ex_mhp_temp_up",
       "output": "modules/ex_mhp_temp_up.mjs",
-      "generatedHash": "8b5e1145373e4ce36abb50995fe0f3e39efe1cffecb9557b24c1dcaf82eb76e7",
+      "generatedHash": "5383b0432cd852f78242f51f272a372a22296e1432d705d09a19122071d08295",
       "functions": [
         "itemuse_edible_get_mhp",
         "ex_mhp_temp_lose",
@@ -3678,7 +3678,7 @@
     {
       "module": "instance_close_button",
       "output": "modules/instance_close_button.mjs",
-      "generatedHash": "bd15a7078cc63f2077493ad365b77362f7d1d4ff1bfc9600e996d2f60466e085",
+      "generatedHash": "431ebe6d9fea90468c9f060eb13fe08167b954cdeabc191ccd0c43e51112bc60",
       "functions": [
         "check_instance_close_available",
         "instance_close",
@@ -3706,7 +3706,7 @@
     {
       "module": "miracletrap",
       "output": "modules/miracletrap.mjs",
-      "generatedHash": "efb01dcca3982f8495faf488bbb7ac9833010feff6d216a591652a939fd41c54",
+      "generatedHash": "a82ebf54a928ad963232016c4d5590de7fbd899fc435e7b6f950053b4d3dd87a",
       "functions": [
         "trapcheck",
         "trap",
@@ -3727,7 +3727,7 @@
     {
       "module": "tutorial",
       "output": "modules/tutorial.mjs",
-      "generatedHash": "21f28444e1961efa7371a9e4b9a65b425159a1508b6ef687632cfa2fafcc8709",
+      "generatedHash": "892e4e15521cd2c92fe35ef98a295c61d4ee368f2e7a645c77d367bade615b62",
       "functions": [
         "get_item_allow_find_and_use",
         "init_current_tutorial",
@@ -3856,7 +3856,7 @@
     {
       "module": "randrecipe",
       "output": "modules/randrecipe.mjs",
-      "generatedHash": "ead9b519f02005ad59ab9aeaed5fb3cff366ccb5265eaf5a16a43967f527c614",
+      "generatedHash": "bff654b7641951b2ae8b5df866c0f5f9803b9a2bab5bf51a1e7a11464a5e6d1b",
       "functions": [
         "rs_game",
         "get_recipe_mixinfo",
@@ -3901,7 +3901,7 @@
     {
       "module": "activity_ranking",
       "output": "modules/activity_ranking.mjs",
-      "generatedHash": "f910485ed01b906b4aede58fe333c659b5db534ad9878dc432dde6fa545da131",
+      "generatedHash": "b39b1bc0f2f33ea2253cccca21f33ddad02d05f8c7122a17a0613b20b8e56452",
       "functions": [
         "prepare_aranking_table",
         "aranking_send",
@@ -3931,7 +3931,7 @@
     {
       "module": "aprilfool2018",
       "output": "modules/aprilfool2018.mjs",
-      "generatedHash": "8bbd779cb6ad16811a7fe6aa740f0364f201b3367c0744ac42a0ff4eb8c7c2cc",
+      "generatedHash": "2db39924eaf3a18aa008c5c31e90b21dcacb8e256905ee1f12f7659fb7e161cf",
       "functions": [
         "get_npclist",
         "init_npcdata",
@@ -3956,7 +3956,7 @@
     {
       "module": "instance3",
       "output": "modules/instance3.mjs",
-      "generatedHash": "b25a982f884c547cd1ff1829c447c55114599d4dbd3aa3991a7a29cca5330ee8",
+      "generatedHash": "000107adcea745e0ee1cfcca2f8d290bacc4867087b5e6d32a81eaf2832dbd02",
       "functions": [
         "get_shopconfig",
         "get_itemfilecont",
@@ -4023,7 +4023,7 @@
     {
       "module": "ex_uselog",
       "output": "modules/ex_uselog.mjs",
-      "generatedHash": "e66f000cdfc8e6420bdae1c7c7a961f6e73738ad719ca3e255cd66323452b910",
+      "generatedHash": "4c723ed327f92e2ddfef694b55d1f381a38de79bad3b2a820ab828ba385e4ed2",
       "functions": [
         "itemuse",
         "check_comp_itmsk_visible"
@@ -4043,7 +4043,7 @@
     {
       "module": "ex_attr_song",
       "output": "modules/ex_attr_song.mjs",
-      "generatedHash": "b262388cb3e4f560ac82bf62fdef7e355c63293fd17ea3461ada2bc64db0fd1f",
+      "generatedHash": "74d5edbe5a620ad97c706fa501b73a50b85bbc72558fe417425820a4a3c921df",
       "functions": [
         "get_song_effect",
         "ss_factor"
@@ -4064,7 +4064,7 @@
     {
       "module": "instance11",
       "output": "modules/instance11.mjs",
-      "generatedHash": "eb5d60ff2292b1db4c0612be3efb47b8a23305e0d0999b9432a111340e44f4e2",
+      "generatedHash": "52328b4a48e2e003e8c2473267b8f6ef9440d7464ad283e3a72849606b0cc169",
       "functions": [
         "map_display_get_pls_color",
         "card_validate_get_forbidden_cards",
@@ -4148,7 +4148,7 @@
     {
       "module": "wepchange",
       "output": "modules/wepchange.mjs",
-      "generatedHash": "afd45e0cedab5b43b7114a445d629c27d9151beb29b9fe23ec481ee1a9379a92",
+      "generatedHash": "d6ebc231bc7214d76271a8c065068592843551e61b46f7265e8d7c4e23f4cade",
       "functions": [
         "weaponswap",
         "get_weaponswap_obj_extra_process",
@@ -4181,7 +4181,7 @@
     {
       "module": "smartmix",
       "output": "modules/smartmix.mjs",
-      "generatedHash": "013300d857b2770800b47bda7f31fe63b98bc435be8e816f37a18917572ac812",
+      "generatedHash": "e6d972883d8cb9efcd02adf13bee892cb3fe627f891da20e8ceb5aece220898f",
       "functions": [
         "smartmix_find_recipe",
         "smartmix_check_available",
@@ -4236,7 +4236,7 @@
     {
       "module": "instance5",
       "output": "modules/instance5.mjs",
-      "generatedHash": "7c0cc4cc7740398cfd9a6b737247fe1d537a3a61959b10242ec2a195d74a4b06",
+      "generatedHash": "39486f57e5255870b7266cd16acf918d9d1217fa285c7158692833b2eaf28d0c",
       "functions": [
         "get_shopconfig",
         "get_npclist",
@@ -4273,7 +4273,7 @@
     {
       "module": "logistics",
       "output": "modules/logistics.mjs",
-      "generatedHash": "a784ffd02fe67ee62be5f027ba0dbb63e1e96a1aec29bbea7b1c320663a264f3",
+      "generatedHash": "4a43b9a5eba95b3e8a49089f2caf0d9c109dfe5c2a40e1d11908aca04af38613",
       "functions": [
         "get_cardshop_list",
         "card_check_o_blink",
@@ -4359,7 +4359,7 @@
     {
       "module": "autopower",
       "output": "modules/autopower.mjs",
-      "generatedHash": "add88b453e13f5d2b1c70e10efc9715972618748ec0d48f8d30e9ab74d6278e1",
+      "generatedHash": "d733fab049c2a5f055b414fa813aa0bc02b6b706c002b4ec2dfb6b8f78497705",
       "functions": [
         "itemuse"
       ],
@@ -4382,7 +4382,7 @@
     {
       "module": "item_uys",
       "output": "modules/item_uys.mjs",
-      "generatedHash": "a80dc8879b73263dbfe7d8d3fce544a844d3e63355c8d190eb8157020399086b",
+      "generatedHash": "72bb23ef17c377ec57e86ef763bf8e3889303ed5b847721ba498b8385ae9ca18",
       "functions": [
         "itemuse",
         "autosewingkit",
@@ -4416,7 +4416,7 @@
     {
       "module": "searchmemory",
       "output": "modules/searchmemory.mjs",
-      "generatedHash": "38844c508f6189b03d7f494897da648560035a4cc9b62a5b39215b1697f91d50",
+      "generatedHash": "7c8ff21041cca077d560ee882c1088066a1e5f57c8d5dce6c550b9d822917ded",
       "functions": [
         "searchmemory_available",
         "init_searchmemory",
@@ -4523,7 +4523,7 @@
     {
       "module": "instance_quit_button",
       "output": "modules/instance_quit_button.mjs",
-      "generatedHash": "1cbaff00fadb89756478bd22d881051df01ba546649619c6c3c19efdd4bac9c4",
+      "generatedHash": "2b3a8048aeed87079db0dd8818190fb7790775fe2025ef4ecedeaeb19af41b6b",
       "functions": [
         "check_instance_quit_available",
         "instance_quit",
@@ -4551,7 +4551,7 @@
     {
       "module": "blessstone",
       "output": "modules/blessstone.mjs",
-      "generatedHash": "12bf0dc5c6dd3e1be1e53b3c6ca47b43365c361077087b0b8d189b19a5b0bbf3",
+      "generatedHash": "ef280a736fbbe45d76a90de8289e0b7e0d892da5c62ca222ba2c58ef5bdc291a",
       "functions": [
         "itemuse",
         "use_blessstone",
@@ -4587,7 +4587,7 @@
     {
       "module": "item_ext_armor",
       "output": "modules/item_ext_armor.mjs",
-      "generatedHash": "4c8e1617ca9938e9e603afbcaf5e266dbb36bd30540bdc31ab050c02e9a74a10",
+      "generatedHash": "469dccf5827669786c03d01fb6eac963447d8724c5c1bbfc832d1d67fc21fe72",
       "functions": [
         "parse_itmuse_desc",
         "get_itmsk_desc_single_comp_process",
@@ -4646,7 +4646,7 @@
     {
       "module": "ex_phy_nullify",
       "output": "modules/ex_phy_nullify.mjs",
-      "generatedHash": "67bc1c5c583271b55072d91dbea33b5eafc3d45691a6905a75f7c74c820717a6",
+      "generatedHash": "5e1a0fffed586a47220025754c77cda5d143059bb4be4bdfe6b35378af76bef4",
       "functions": [
         "get_ex_phy_nullify_proc_rate",
         "check_physical_nullify",
@@ -4680,7 +4680,7 @@
     {
       "module": "ex_equipskill",
       "output": "modules/ex_equipskill.mjs",
-      "generatedHash": "54bfbf34c02ac51cd5c4c6eba50d3b0553fc262fd9f392ffb63d7204ccfc6396",
+      "generatedHash": "862aa3ea0a518721bec99a1a55d4b1f25ea914c1feec5a56b797a03e752d9e66",
       "functions": [
         "itemuse",
         "check_skill_available",
@@ -4711,7 +4711,7 @@
     {
       "module": "ex_storage",
       "output": "modules/ex_storage.mjs",
-      "generatedHash": "4e20bb29507732185ce51b97a570057f0f26221a3e4134500076d41bb333a0ca",
+      "generatedHash": "7cb74565de1fa7275bf760d6f3edeb95594d72748c73acf0fd213cf72be6d508",
       "functions": [
         "storage_encode_itmarr",
         "storage_decode_itmarr",
@@ -4771,7 +4771,7 @@
     {
       "module": "item_armor_empower",
       "output": "modules/item_armor_empower.mjs",
-      "generatedHash": "90ed47b571a6fb671e29cbdbbe5980d14e6a4f4f2572f4057ae7ef3beef0ddef",
+      "generatedHash": "5fce2d8ad96874d18f076ee41cef09227dcd7090d74116492bb0b478ca4ae065",
       "functions": [
         "parse_itmuse_desc",
         "use_armor_empower",
@@ -4810,7 +4810,7 @@
     {
       "module": "item_uvo_extra",
       "output": "modules/item_uvo_extra.mjs",
-      "generatedHash": "156201f0de5bc6fa73a2d88c0cbfb02d0731829b5edecf7afc6fc813f735b9ae",
+      "generatedHash": "2ba54d8349d4d1947573cdd2bab85a77f25ba99384c7f86e60b79b57d870cf7a",
       "functions": [
         "add_card_uvo_extra",
         "remove_card_uvo_extra",
@@ -4886,7 +4886,7 @@
     {
       "module": "ex_residue",
       "output": "modules/ex_residue.mjs",
-      "generatedHash": "cebcee4a75ce553d254742dc29aa19fdf96cf06ec6eff67b50002595afba194c",
+      "generatedHash": "7386deefa515f51b28f44caa3710ef19dd4417f64ae75717096e8743c91c1152",
       "functions": [
         "get_res_itm",
         "put_res_itm",
@@ -4928,7 +4928,7 @@
     {
       "module": "ex_gender_attr",
       "output": "modules/ex_gender_attr.mjs",
-      "generatedHash": "99b5fa991ec491208e93ce532121e1fcc477d8a1b0ce12dd081ed416beb2f54e",
+      "generatedHash": "26874dd28a63da93fb88d6472194e6ba9f35f2f098448d198188df784c3f4740",
       "functions": [
         "get_gender_bewitch_proc_rate",
         "get_gender_enrage_proc_rate",
@@ -4954,7 +4954,7 @@
     {
       "module": "ex_attr_pierce",
       "output": "modules/ex_attr_pierce.mjs",
-      "generatedHash": "2486800c0dd96a9963b38f70bf23ccab601cde3ab231d0290438475ab9046e4e",
+      "generatedHash": "9bacdd9bb6e2a09fb07e45a24bbc696832fae176b15f70d7bcbc7f1c981b8d42",
       "functions": [
         "get_ex_pierce_proc_rate",
         "get_attr_pierce_proc_rate",
@@ -4991,7 +4991,7 @@
     {
       "module": "ex_alternative",
       "output": "modules/ex_alternative.mjs",
-      "generatedHash": "e2c255b5444d337555f6aa409cd59e4c9caa717523bf2f7b2e855d217a22f309",
+      "generatedHash": "2172de9a7e21f0343702281a9688e1cde4fab4815b265fb874c13f9c6ae264be",
       "functions": [
         "get_altlist",
         "alt_change",
@@ -5035,7 +5035,7 @@
     {
       "module": "ex_purity",
       "output": "modules/ex_purity.mjs",
-      "generatedHash": "e52ea419c4d12050dba16c40a1804e4c486d005270e62e480ac2cc19bcb2fcc7",
+      "generatedHash": "7dd0cf1cb1cdbba0c1dac1c411f7f0922be7561a9cc4a36e41a6c192e5e65988",
       "functions": [
         "get_ex_attack_array",
         "attack_prepare",
@@ -5060,7 +5060,7 @@
     {
       "module": "instance10",
       "output": "modules/instance10.mjs",
-      "generatedHash": "305893a7ab99dfbc98ee51cbb4559ddbf6ebceb75350bea334e98c9b4795a7e6",
+      "generatedHash": "78381e975c081d4d123e02a3c31676c46a8158f34ee01a87954e572ec1f557c0",
       "functions": [
         "parse_itmuse_desc",
         "get_enter_battlefield_card",
@@ -5147,7 +5147,7 @@
     {
       "module": "bubblebox",
       "output": "modules/bubblebox.mjs",
-      "generatedHash": "a334fa7cac4372a17d9db86e18f3c73569ca64719b13292142397137f9d95c13",
+      "generatedHash": "b40470c1f8d2876aa632c7ecab51a4f8939303cc9081b6a4cd677d0f5e7e74f5",
       "functions": [
         "bubblebox_delete_trailing_spaces",
         "bubblebox_set_default",
@@ -5171,7 +5171,7 @@
     {
       "module": "gtype2",
       "output": "modules/gtype2.mjs",
-      "generatedHash": "bfe02655457ff7d910e090e2ed3a0c58059f82362b4914048271f91b856a3cbe",
+      "generatedHash": "b0579038a1d3b37593c15155558dc11f3e29c3bb9eaf80b6a4709c832fe4900c",
       "functions": [
         "prepare_new_game",
         "check_player_discover",
@@ -5210,7 +5210,7 @@
     {
       "module": "gtype3",
       "output": "modules/gtype3.mjs",
-      "generatedHash": "b0a30a784116d137cf6f8a9efc53048713da4fa462db938357b7a8a787345122",
+      "generatedHash": "b42fded1951e59be81c0fd35447d3005aa33985860bf35528cf939b1282be568",
       "functions": [
         "get_enter_battlefield_card",
         "prepare_new_game",
@@ -5230,7 +5230,7 @@
     {
       "module": "gtype5",
       "output": "modules/gtype5.mjs",
-      "generatedHash": "f70ba50257a46e639140031980a8639a39cb5c151b7c496884ffc14b9121474c",
+      "generatedHash": "4cd8222fe56d0fb0c93eb661ab6ae170eb8324542f9465e7b7ecbe36277b139b",
       "functions": [
         "get_npclist",
         "get_enpcinfo",
@@ -5261,7 +5261,7 @@
     {
       "module": "glowbutton",
       "output": "modules/glowbutton.mjs",
-      "generatedHash": "02c5ba8b8787c5c2f15fb7afa5dc73b2125947f4a08847d5716daa7fe3d7ab4e",
+      "generatedHash": "59dff16d49d1394491ffaed7bbfdda9d58329eaac2bf7d9091aa43b14cdf55b4",
       "functions": [
         "glowbutton_delete_trailing_spaces",
         "glowbutton_set_mousedown_event",
@@ -5286,7 +5286,7 @@
     {
       "module": "halloween2017",
       "output": "modules/halloween2017.mjs",
-      "generatedHash": "aeeff964855cb8cc9466ca2624a05e497c8f3774a0db9f2600426c74789b4445",
+      "generatedHash": "8c3f4ae90b87845457f10fe8ac55a609829bd3d315e12584be9f94e451b31744",
       "functions": [
         "check_available_h2017",
         "create_treat_h2017",

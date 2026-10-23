@@ -22,29 +22,31 @@ export async function createFileServices({ stateRoot, sourceRoot, locks, clock =
   const inside = (file, root) => file === root || file.startsWith(root + path.sep);
   if (inside(state, source) || inside(source, state)) throw new Error('Mutable data and original resources must be separate trees');
   async function checked(root, relative, createParents = false) {
-    const parts = relative.split('/'); let cursor = root;
+    const parts = relative.split('/'); let cursor = root, info, absent;
     for (let i = 0; i < parts.length; i++) {
       cursor = path.resolve(cursor, parts[i]);
       if (!inside(cursor, root) || cursor === root) throw new Error('Resolved data path is outside its root');
-      try { if ((await fs.lstat(cursor)).isSymbolicLink()) throw new Error('Game data symlinks are not allowed'); }
+      info = undefined; absent = undefined;
+      try { info = await fs.lstat(cursor); if (info.isSymbolicLink()) throw new Error('Game data symlinks are not allowed'); }
       catch (error) {
         if (!missing(error)) throw error;
+        absent = error;
         if (createParents && i < parts.length - 1) await fs.mkdir(cursor, { mode: 0o700 });
       }
     }
-    return cursor;
+    return { file: cursor, info, absent };
   }
   async function existing(relative) {
     if (mutable.test(relative)) {
-      const file = await checked(state, relative);
-      try { await fs.stat(file); return file; } catch (error) { if (!missing(error)) throw error; }
+      const entry = await checked(state, relative);
+      if (entry.info) return entry;
     }
     return checked(source, relative);
   }
   async function writable(value, parents = true) {
     const relative = relativePath(value);
     if (!mutable.test(relative)) throw new Error('Original game resources are read-only');
-    return { relative, file: await checked(state, relative, parents) };
+    return { relative, ...(await checked(state, relative, parents)) };
   }
   async function locked(relative, action) {
     const key = 'native-files/' + relative, token = await locks.acquire(key);
@@ -53,7 +55,7 @@ export async function createFileServices({ stateRoot, sourceRoot, locks, clock =
   const api = {
     async readBytes(value) {
       const relative = relativePath(value);
-      return locked(relative, async () => fs.readFile(await existing(relative)));
+      return locked(relative, async () => fs.readFile((await existing(relative)).file));
     },
     async read(value) {
       const bytes = await api.readBytes(value), string = bytes.toString('utf8');
@@ -65,18 +67,19 @@ export async function createFileServices({ stateRoot, sourceRoot, locks, clock =
       return result;
     },
     async exists(value) {
-      try { await fs.stat(await existing(relativePath(value))); return true; } catch (error) { if (missing(error)) return false; throw error; }
+      return !!(await existing(relativePath(value))).info;
     },
     async mtime(value) {
-      try { return Math.floor((await fs.stat(await existing(relativePath(value)))).mtimeMs / 1000); } catch (error) { if (missing(error)) return false; throw error; }
+      const { info } = await existing(relativePath(value));
+      return info ? Math.floor(info.mtimeMs / 1000) : false;
     },
-    async size(value) { return (await fs.stat(await existing(relativePath(value)))).size; },
+    async size(value) { const { info, absent } = await existing(relativePath(value)); if (!info) throw absent; return info.size; },
     async isDirectory(value) {
-      try { return (await fs.stat(await existing(relativePath(value)))).isDirectory(); } catch (error) { if (missing(error)) return false; throw error; }
+      return (await existing(relativePath(value))).info?.isDirectory() ?? false;
     },
     async list(value, type = '') {
       const relative = relativePath(value); let entries;
-      try { entries = await fs.readdir(await existing(relative), { withFileTypes: true }); } catch (error) { if (missing(error)) return null; throw error; }
+      try { entries = await fs.readdir((await existing(relative)).file, { withFileTypes: true }); } catch (error) { if (missing(error)) return null; throw error; }
       const result = [];
       for (const entry of entries) {
         if (entry.isSymbolicLink()) throw new Error('Game data symlinks are not allowed');

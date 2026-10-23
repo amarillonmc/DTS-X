@@ -21,7 +21,7 @@
   },
   "migration": {
     "statusFile": "native/migration-status.json",
-    "statusSha256": "74aa732f822498853c3459e112f557eae5ba6545ae7a83518f06333ed071e128",
+    "statusSha256": "8867dcda089e327b46cff5dfa7bd6a2d7bb84c6531e53c933bd5be4eb0aae2a6",
     "nativeGameReady": true,
     "note": "Readiness is an explicitly recorded acceptance result, not inferred from static inventory or file counts. This command does not rerun behavioral tests.",
     "counts": {
@@ -1573,7 +1573,9 @@
       "migration": {
         "status": "code_ported",
         "implementation": [
-          "native/gameplay/player.mjs"
+          "native/gameplay/player.mjs",
+          "native/storage/player-icon-catalog.mjs",
+          "native/storage/player-schema.mjs"
         ],
         "evidence": [
           {
@@ -1594,6 +1596,11 @@
           {
             "test": "tests/native-full-gameplay.test.mjs",
             "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-player-schema.test.mjs",
+            "scope": "玩家表列定义缓存的失败重试、失效竞态、请求和应用隔离；两个真实HTTP应用对不同元数据的行为。",
             "result": "passed"
           }
         ],
@@ -4234,6 +4241,11 @@
           {
             "test": "tests/native-itemmix-http.test.mjs",
             "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-base-extra-itemmix.test.mjs",
+            "scope": "676个PHP差分场景及惰性默认配方、显式空值覆盖、导出字段顺序、真实模板和库存引用边界。",
             "result": "passed"
           }
         ],

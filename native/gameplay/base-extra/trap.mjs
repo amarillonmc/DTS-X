@@ -1,3 +1,4 @@
+import { isReferenceDescriptor } from '../../templates/values.mjs';
 import { readFile } from 'node:fs/promises';
 import { number as n, text, present, isNumeric, round, appendLog } from '../numbers.mjs';
 import { call, eq, min } from './helpers.mjs';
@@ -11,12 +12,12 @@ function database(ctx) {
 const clear = player => Object.assign(player, { itm0: '', itmk0: '', itme0: 0, itms0: 0, itmsk0: '' });
 function parameterCopy(value) {
   const result = structuredClone(value);
-  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (descriptor.get && descriptor.set) Object.defineProperty(result, key, descriptor);
+  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (isReferenceDescriptor(descriptor)) Object.defineProperty(result, key, descriptor);
   return result;
 }
 function argument(value) {
   const descriptor = value && Object.getOwnPropertyDescriptor(value, 'value');
-  return descriptor?.get && descriptor?.set ? value.value : value;
+  return isReferenceDescriptor(descriptor) ? value.value : value;
 }
 /** Original map traps, deployment, evasion/reuse and attributed deaths. SQL
  * uses the original pre-escaped game fields; the host owns the async database.

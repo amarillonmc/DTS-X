@@ -29,6 +29,7 @@ import { userSettingsModule } from './accounts/settings.mjs';
 import { teamModule } from './gameplay/base-extra/team.mjs';
 import { itemshopModule } from './gameplay/base-extra/itemshop.mjs';
 import { itemmixModule } from './gameplay/base-extra/itemmix.mjs';
+import { createSkillCatalog } from './gameplay/skills.mjs';
 
 export const nativeGameplayModules = Object.freeze([
   inputModule, sysModule, mapModule, playerModule, loggerModule, levelModule,
@@ -52,6 +53,13 @@ export const nativeGameplayModules = Object.freeze([
  * it does not certify that selection as the original full game.
  */
 export function createNativeGameRegistry(configuration, additionalModules = []) {
+  return createNativeGamePlan(configuration, additionalModules).registry;
+}
+
+/** Immutable code/metadata plan. Rebuild when the host activates a new module
+ * configuration; live states, initialization and hook publication still run
+ * independently in every session. Nothing here contains player/request data. */
+export function createNativeGamePlan(configuration, additionalModules = [], infoById = {}) {
   if (!Array.isArray(configuration) || !configuration.length) throw new TypeError('A complete explicit module configuration is required');
   const available = new Map();
   for (const definition of [...nativeGameplayModules, ...additionalModules]) {
@@ -76,5 +84,9 @@ export function createNativeGameRegistry(configuration, additionalModules = []) 
     error.missingModules = Object.freeze(missing);
     throw error;
   }
-  return new ModuleRegistry(selected);
+  const enabled = Object.freeze(configuration.filter(entry => entry.enabled).map(entry => entry.name.toLowerCase()));
+  const enabledSet = new Set(enabled);
+  const definitions = Object.freeze([...available.values()].filter(definition => enabledSet.has(definition.name.toLowerCase())));
+  return Object.freeze({ registry: new ModuleRegistry(selected), selected: definitions, enabled,
+    skills: createSkillCatalog(definitions, infoById) });
 }

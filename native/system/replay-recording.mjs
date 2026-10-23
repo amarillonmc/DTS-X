@@ -32,12 +32,17 @@ export async function recordReplayResponse(host, encodedResponse) {
   if (!Number.isFinite(started)) throw new TypeError('Native replay requires request.pageStartTime');
   const locks = host.services.system?.locks;
   if (typeof locks?.acquire !== 'function' || typeof locks?.release !== 'function') throw new Error('Native replay recording requires real OS locks');
-  for (const name of ['write', 'readText', 'exists']) if (typeof files?.[name] !== 'function') throw new Error(`Native replay recording requires files.${name}()`);
+  for (const name of ['write', 'readText']) if (typeof files?.[name] !== 'function') throw new Error(`Native replay recording requires files.${name}()`);
+  const readOptional = async file => {
+    try { return await files.readText(file); }
+    catch (error) { if (error.code === 'ENOENT') return null; throw error; }
+  };
   const dictionaryKey = 'native-replay/dictionary', dictionaryToken = await locks.acquire(dictionaryKey);
   try {
     const file = 'gamedata/javascript/' + NATIVE_REPLAY_DICTIONARY;
-    if (await files.exists(file)) {
-      if (await files.readText(file) !== NATIVE_REPLAY_DICTIONARY_SOURCE) throw new Error('Native replay dictionary version has conflicting contents');
+    const dictionary = await readOptional(file);
+    if (dictionary !== null) {
+      if (dictionary !== NATIVE_REPLAY_DICTIONARY_SOURCE) throw new Error('Native replay dictionary version has conflicting contents');
     } else await files.write(file, NATIVE_REPLAY_DICTIONARY_SOURCE, 'wb');
     await files.write('gamedata/javascript/datalib.current.txt', NATIVE_REPLAY_DICTIONARY, 'wb');
   } finally { await locks.release(dictionaryKey, dictionaryToken); }
@@ -48,7 +53,7 @@ export async function recordReplayResponse(host, encodedResponse) {
   await files.write(responseFile, encodedResponse, 'wb');
   const indexKey = 'native-replay/index/' + prefix + '/' + pid, token = await locks.acquire(indexKey);
   try {
-    const existing = await files.exists(indexFile) && await files.readText(indexFile);
+    const existing = await readOptional(indexFile);
     const line = `${text(operations)},${text(elapsed)},${responseFile},\n`;
     await files.write(indexFile, (existing ? '' : header) + line, 'ab');
   } finally { await locks.release(indexKey, token); }

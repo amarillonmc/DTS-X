@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { nativeGameplayModules, createNativeGameRegistry } from '../native/index.mjs';
+import { createNativeGamePlan } from '../native/catalog.mjs';
 
 const project = fileURLToPath(new URL('../', import.meta.url));
 const descriptors = nativeGameplayModules;
@@ -48,4 +49,18 @@ test('full source configuration rejects every missing port before a partial game
   const developmentSelection = inventory.modules.filter(module => available.has(module.name));
   assert.equal(createNativeGameRegistry(developmentSelection).order.length, descriptors.length);
   assert.throws(() => createNativeGameRegistry(), /explicit module configuration/);
+});
+
+test('native game plans reuse immutable skill metadata without retaining live request state', async () => {
+  const definitions = [{name:'skill9999',state:{count:0},functions:{work(ctx){return ++ctx.state().count;}}}];
+  const config = [{name:'skill9999',enabled:true}], info = {9999:'fixture;'};
+  const plan = createNativeGamePlan(config, definitions, info);
+  assert.deepEqual(plan.enabled,['skill9999']); assert.deepEqual(plan.selected,definitions);
+  const [one,two] = await Promise.all([plan.registry.createSession(),plan.registry.createSession()]);
+  assert.equal(one.call('skill9999','work'),1); assert.equal(one.call('skill9999','work'),2);
+  assert.equal(two.call('skill9999','work'),1);
+  info[9999]='updated;'; config[0].enabled=false;
+  assert.equal(plan.skills.getInfo(9999),'fixture;'); assert.equal(plan.skills.hasFunction(9999,'work'),true);
+  const next = createNativeGamePlan(config,definitions,info);
+  assert.equal(next.skills.getInfo(9999),null); assert.deepEqual(next.registry.order,[]);
 });

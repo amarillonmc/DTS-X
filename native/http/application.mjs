@@ -10,8 +10,11 @@ import { chatPage } from './chat-page.mjs';
 import { roomUpdate } from './room-update.mjs';
 import { RoomError } from '../system/rooms.mjs';
 import { AccountError } from '../accounts/service.mjs';
-import { createNativeGameRegistry } from '../catalog.mjs';
+import { createNativeGamePlan } from '../catalog.mjs';
 import { createDatabase } from '../storage/database.mjs';
+import { createPlayerSchemaCache } from '../storage/player-schema.mjs';
+import { createPlayerIconCatalog } from '../storage/player-icon-catalog.mjs';
+import { preloadNativeTemplates } from '../templates/index.mjs';
 import { prepareInputRequest } from '../gameplay/input.mjs';
 import { gencode } from '../protocol/codec.mjs';
 import { present, n } from '../system/sys-support.mjs';
@@ -30,17 +33,19 @@ const commandPages = new Set(['game','roomcmd','valid','end','winner','rank','al
  * by HTTP input. The default executable is switched only after full acceptance. */
 export function createNativeApplication({ configuration, additionalModules = [], pages: overrides = {}, onError = () => {}, schedulerIntervalMs = 1000, ...options }) {
   const pages = { ...generatedPages, ...overrides };
-  createNativeGameRegistry(configuration, additionalModules); // Fail before any socket or database side effect.
+  let gamePlan = createNativeGamePlan(configuration, additionalModules, options.infoById); // Fail before any socket or database side effect.
   let currentConfiguration=configuration,ready=false;
   const broadcast = createRoomBroadcast(), maintenance = createMaintenanceGate();
-  const appOptions = { ...options, configuration, additionalModules, broadcast, maintenance };
+  const playerSchema = createPlayerSchemaCache();
+  const playerIconCatalog = createPlayerIconCatalog();
+  const appOptions = { ...options, configuration, additionalModules, broadcast, maintenance, playerSchema, playerIconCatalog };
   let timer, tickPromise, stopping = false, schedulerEnabled=schedulerIntervalMs>0, remoteDatabase, remoteReceiver, lastRunAt=null,lastError=null;
   const scheduler={status:()=>({enabled:schedulerEnabled,running:!!tickPromise,intervalMs:schedulerIntervalMs,lastRunAt,lastError}),
     start(){if(stopping)throw new Error('Application is shutting down');schedulerEnabled=true;schedule();},
     async stop(){schedulerEnabled=false;clearTimeout(timer);timer=null;await tickPromise;},
     async restart(){await this.stop();this.start();}};
-  const setup = request => createNativeRequestHost({ ...appOptions,configuration:currentConfiguration,scheduler,
-    applyConfiguration:next=>{createNativeGameRegistry(next,additionalModules);currentConfiguration=next;},request });
+  const setup = request => createNativeRequestHost({ ...appOptions,configuration:currentConfiguration,gamePlan,scheduler,
+    applyConfiguration:next=>{const nextPlan=createNativeGamePlan(next,additionalModules,options.infoById);playerSchema.invalidate();playerIconCatalog.invalidate();currentConfiguration=next;gamePlan=nextPlan;},request });
   const server = createNativeHttpServer({ ...options, maintenance, onError, health: () => ({ runtime:'native-node', ready, enabledModules:currentConfiguration.filter(item=>item.enabled).length }),
     async dispatch(request) {
       let name = request.pathname.slice(1,-4);
@@ -106,7 +111,7 @@ export function createNativeApplication({ configuration, additionalModules = [],
       if (stopping) break;
       await maintenance.request(async () => {
         const input = prepareInputRequest({cookies:{[`${options.systemConfig?.gtablepre ?? 'bra_'}roomid`]:row.groomid}});
-        const host = await setup({pathname:'/command.php',input,server:{SERVER_PORT:new URL(options.publicUrl).port||'80'},pageStartTime:Date.now()/1000});
+        const host = await setup({pathname:'/command.php',input,server:{SERVER_PORT:new URL(options.publicUrl).port||'80'},pageStartTime:options.clock?.now() ?? Date.now()/1000});
         try { await host.session.call('sys','routine');if(Number(row.groomid)===0 && new Date(Number(host.scope.now)*1000).getUTCHours()===3 && await host.autoMaintain.isOldEnough())await host.autoMaintain.run(63); }
         finally { await host.close(); }
       });
@@ -120,7 +125,8 @@ export function createNativeApplication({ configuration, additionalModules = [],
     },schedulerIntervalMs);timer.unref();
   };
   return { ...server, scheduler, async listen(address) {
-      currentConfiguration=await readModuleConfiguration(options.stateRoot,configuration);createNativeGameRegistry(currentConfiguration,additionalModules);
+      currentConfiguration=await readModuleConfiguration(options.stateRoot,configuration);gamePlan=createNativeGamePlan(currentConfiguration,additionalModules,options.infoById);
+      await preloadNativeTemplates();
       const replayPeers=await readRemoteReplayPeers(options.stateRoot,{configured:options.remoteReplayPeers});
       appOptions.systemConfig={...options.systemConfig,replay_receive_list:replayPeers};
       if(!appOptions.remoteUsers) {

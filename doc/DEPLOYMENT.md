@@ -123,4 +123,6 @@ docker compose start app
 
 默认开发修改 `native/`。部分规则、页面和模板是由开发期工具生成的静态 JavaScript；运行 `scripts/native-compiler/build-*.mjs` 会覆盖相应生成文件，不能当作日常启动/编译步骤。维护方式见 [ARCHITECTURE.md](ARCHITECTURE.md) 与 [DEVELOPMENT.md](DEVELOPMENT.md)。
 
+原生性能优化自动启用，无需新的 `.env` 参数。应用复用模块/模板准备结果、玩家表列定义和原始头像目录；每次请求仍有独立人物状态、随机状态和锁。更新头像文件或手工修改玩家表结构后要重启 Node，或重新应用模块清单以刷新静态元数据。默认头像目录的行为对应原版生成的头像缓存；自定义头像钩子仍逐次执行。不要通过清空存档、录像或数据库来刷新这些内存缓存。性能复测命令见 [DEVELOPMENT.md](DEVELOPMENT.md#原生请求性能基准)。
+
 上线前仍需在目标环境验证首次安装、非空库保护、重复启动、反代 IP、跨服回调、SIGTERM、完整备份和隔离恢复。当前真实 MySQL、OS 锁、原生 HTTP 和原 PHP 差分测试的结果，不能替代未执行的 Docker、Linux 或目标并发容量验收。

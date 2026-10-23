@@ -27,7 +27,7 @@ export function varExport(value, indent = 0) {
   return v.text(value);
 }
 function varDump(value, indent = 0) {
-  if (v.isArray(value)) { const pad = ' '.repeat(indent); return `array(${v.entries(value).length}) {\n${v.entries(value).map(([key, child]) => pad + '  [' + (typeof key === 'number' ? key : '"' + key + '"') + ']=>\n' + pad + '  ' + varDump(child, indent + 2)).join('')}${pad}}\n`; }
+  if (v.isArray(value)) { const pad = ' '.repeat(indent); return `array(${v.arrayCount(value)}) {\n${v.entries(value).map(([key, child]) => pad + '  [' + (typeof key === 'number' ? key : '"' + key + '"') + ']=>\n' + pad + '  ' + varDump(child, indent + 2)).join('')}${pad}}\n`; }
   if (value == null) return 'NULL\n'; if (typeof value === 'boolean') return `bool(${value ? 'true' : 'false'})\n`;
   if (typeof value === 'number') return `${Number.isInteger(value) ? 'int' : 'float'}(${v.text(value)})\n`;
   return `string(${Buffer.byteLength(v.text(value))}) "${v.text(value)}"\n`;
@@ -57,20 +57,20 @@ export function moduleBuiltins(options) {
     localtime: (timestamp = options?.now?.() ?? Math.floor(Date.now() / 1000), associative = false) => { const date = new Date((v.number(timestamp) + (options?.timezoneOffset ?? 0)) * 1000); const row = [date.getUTCSeconds(), date.getUTCMinutes(), date.getUTCHours(), date.getUTCDate(), date.getUTCMonth(), date.getUTCFullYear() - 1900, date.getUTCDay(), Math.floor((Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) - Date.UTC(date.getUTCFullYear(), 0, 1)) / 86400000), 0]; return v.truth(associative) ? v.array(['sec','min','hour','mday','mon','year','wday','yday','isdst'].map((name, index) => ['tm_' + name, row[index]])) : row; },
     reset: value => v.entries(value)[0]?.[1] ?? false,
     array_merge_recursive: (...arrays) => arrays.reduce(mergeRecursive, []),
-    full_combination: (values, minimum) => { const rows = []; for (let count = v.int(minimum); count <= v.entries(values).length; count++) rows.push(...combination(values, count)); return rows; },
+    full_combination: (values, minimum) => { const rows = []; for (let count = v.int(minimum); count <= v.arrayCount(values); count++) rows.push(...combination(values, count)); return rows; },
     fatenum_create: (seed, length = 9) => { length = Math.min(16, v.int(length)); const full = base.md5(seed), hash = base.substr(full, 0, length) + base.substr(full, -length), digits = hash.replace(/[^0-9]/g, ''); let result = v.truth(digits) ? digits : String(Number.parseInt(hash.slice(0, 3), 16)); if (v.number(result) < 1997) result = String(v.number(result) * 999983); return result; },
     array_values: list,
     array_clone: source => v.array(v.entries(source).map(([key, value]) => [key, v.copy(value)])),
     array_slice: (source, offset, length = null, preserve = false) => { const rows = v.entries(source), start = v.int(offset) < 0 ? Math.max(0, rows.length + v.int(offset)) : v.int(offset); let index = 0; return v.array(rows.slice(start, length == null ? undefined : v.int(length) < 0 ? rows.length + v.int(length) : start + v.int(length)).map(([key, value]) => [typeof key === 'number' && !v.truth(preserve) ? index++ : key, value])); },
     array_combine: (keys, values) => { const a = list(keys), b = list(values); return !a.length || a.length !== b.length ? false : v.array(a.map((key, index) => [v.key(key), b[index]])); },
     array_column: (source, column, index = null) => { const rows = []; for (const [, row] of v.entries(source)) { const hasColumn = column === null || v.entries(row).some(([key]) => key === v.key(column)); if (hasColumn) rows.push([index !== null && v.entries(row).some(([key]) => key === v.key(index)) ? v.key(v.get(row, index)) : v.APPEND, column === null ? row : v.get(row, column)]); } return v.array(rows); },
-    array_key_exists: (key, array) => v.entries(array).some(([name]) => name === v.key(key)),
+    array_key_exists: (key, array) => v.arrayKeys(array).includes(v.key(key)),
     array_sum: array => list(array).reduce((sum, value) => sum + (v.isArray(value) ? 0 : v.number(value)), 0),
     array_diff: (first, ...others) => { const rows = v.entries(first), excluded = others.flatMap(list).map(v.text); if (!excluded.length) return v.copy(first); const keep = value => !excluded.includes(v.text(value)); if (rows.length === 1) return keep(rows[0][1]) ? v.copy(first) : []; return retained(first, keep, rows.length); },
     array_intersect: (first, ...others) => retainedByDeletion(first, value => others.every(other => list(other).some(item => v.text(item) === v.text(value)))),
-    array_diff_key: (first, ...others) => retained(first, (value, key) => !others.some(other => v.entries(other).some(([name]) => name === key))),
+    array_diff_key: (first, ...others) => retained(first, (value, key) => !others.some(other => v.arrayKeys(other).includes(key))),
     array_filter: (array, callback = null) => { if (callback !== null) throw new Error('Generated module array_filter requires a statically migrated callback'); return retained(array, v.truth); },
-    array_unique: array => { if (v.entries(array).length <= 1) return v.copy(array); const seen = new Set(); return retained(array, value => { const key = v.text(value); if (seen.has(key)) return false; seen.add(key); return true; }); },
+    array_unique: array => { if (v.arrayCount(array) <= 1) return v.copy(array); const seen = new Set(); return retained(array, value => { const key = v.text(value); if (seen.has(key)) return false; seen.add(key); return true; }); },
     array_reverse: (array, preserveKeys = false) => { let numeric = 0; return v.array(v.entries(array).reverse().map(([key, value]) => [typeof key === 'number' && !v.truth(preserveKeys) ? numeric++ : key, value])); },
     array_count_values: array => { const result = new Map(); for (const value of list(array)) if (typeof value === 'string' || Number.isInteger(value)) { const key = v.key(value); result.set(key, (result.get(key) ?? 0) + 1); } return v.array([...result]); },
     end: array => v.entries(array).at(-1)?.[1] ?? false,

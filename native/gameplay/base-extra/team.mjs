@@ -1,3 +1,4 @@
+import { isReferenceDescriptor } from '../../templates/values.mjs';
 import { number as n, text, present, isNumeric, appendLog } from '../numbers.mjs';
 import { call, eq } from './helpers.mjs';
 import config from './team-config.json' with { type: 'json' };
@@ -8,7 +9,7 @@ const equalText = (left, right) => left === right || (isNumeric(left) && isNumer
 const clone = value => {
   if (value == null) return value;
   const result = structuredClone(value);
-  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (descriptor.get && descriptor.set) Object.defineProperty(result, key, descriptor);
+  for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) if (isReferenceDescriptor(descriptor)) Object.defineProperty(result, key, descriptor);
   return result;
 };
 const fields = ['itm', 'itmk', 'itme', 'itms', 'itmsk'];

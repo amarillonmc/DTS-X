@@ -15,6 +15,18 @@ const fakeRequest = (body, overrides = {}) => Object.assign(Readable.from([Buffe
   method: 'POST', url: '/command.php', headers: { 'content-type': 'application/x-www-form-urlencoded' }, socket: { remoteAddress: '127.0.0.1' }, ...overrides,
 });
 
+test('HTTP request start uses the same injected epoch clock as game cooldowns', async t => {
+  let now = 1700000000.25;
+  const server = createNativeHttpServer({ sourceRoot: fileURLToPath(new URL('../engine/', import.meta.url)), publicUrl: 'http://127.0.0.1',
+    clock: { now: () => now }, dispatch: async request => { const started = request.pageStartTime; now += 2; return { body: JSON.stringify({ started, current: now }) }; } });
+  t.after(() => server.close());
+  const address = await server.listen();
+  for (const expected of [1700000000.25, 1700000002.25]) {
+    const response = await fetch(`http://127.0.0.1:${address.port}/command.php`);
+    assert.equal(response.status, 200); assert.deepEqual(await response.json(), { started: expected, current: expected + 2 });
+  }
+});
+
 test('native form parser retains source parse_str bracket, duplicate and key semantics', t => {
   const executable = process.env.DTS_REFERENCE_PHP || 'php';
   const cases = [

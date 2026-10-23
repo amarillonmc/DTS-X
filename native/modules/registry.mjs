@@ -8,6 +8,10 @@
  */
 
 import {AsyncLocalStorage} from 'node:async_hooks';
+// One process-lifetime carrier; each frame belongs to one request session.
+// Allocating a carrier per request grows async-resource metadata on long-lived
+// sockets (and the async-hooks fallback requires explicit disable()).
+const calls = new AsyncLocalStorage();
 const identifier = /^[a-z_][a-z0-9_]*$/i;
 const reservedFunctions = new Set(['init', '___pre_init', '___post_init']);
 const own = (value, key) => Object.hasOwn(value, key);
@@ -103,15 +107,27 @@ export function reference(target, key) {
 
 export class ModuleRegistry {
   #definitions;
+  #program;
 
   constructor(definitions) {
     this.#definitions = orderModules(definitions);
+    const chains = new Map(), targets = new Map();
+    for (const definition of this.#definitions) {
+      const functions = new Map(); targets.set(definition.name, functions);
+      for (const [name, implementation] of Object.entries(definition.functions)) {
+        const chain = chains.get(name) ?? [];
+        const entry = Object.freeze({ module: definition.name, name, implementation, index: chain.length });
+        chain.push(entry); chains.set(name, chain); functions.set(name, entry);
+      }
+    }
+    for (const chain of chains.values()) Object.freeze(chain);
+    this.#program = { chains, targets };
   }
 
   get order() { return this.#definitions.map(definition => definition.name); }
 
   async createSession({ services = {}, states = {}, onCreate } = {}) {
-    const session = new ModuleSession(services);
+    const session = new ModuleSession(services, this.#program);
     // Host services (templates, room/account helpers) may be called by init.
     // Publish this request's session before loading without sharing any state
     // between requests. Accessing an unloaded module still fails normally.
@@ -122,16 +138,20 @@ export class ModuleRegistry {
 }
 
 class ModuleSession {
-  #calls = new AsyncLocalStorage();
+  #callOwner = Symbol('module session');
   #services;
   #states = new Map();
   #exports = new Map();
   #imports = new Map();
+  #selectedImports = new Map();
   #chains = new Map();
+  #chainLengths = new Map();
   #definitions = new Map();
+  #targets = new Map();
+  #contexts = new Map();
   #initializing = null;
 
-  constructor(services) { this.#services = services; }
+  constructor(services, program) { this.#services = services; this.#chains = program.chains; this.#targets = program.targets; }
 
   async load(definition, injectedState) {
     const initial = typeof definition.state === 'function'
@@ -157,11 +177,9 @@ class ModuleSession {
     // PHP captures the public variable list after init. Later assignments can
     // update those variables, but do not silently add new import_module exports.
     this.#exports.set(definition.name, Object.keys(state).filter(key => !key.startsWith('___PRIVATE_')));
-    for (const [name, implementation] of Object.entries(definition.functions)) {
-      const chain = this.#chains.get(name) ?? [];
-      chain.push({ module: definition.name, name, implementation, index: chain.length });
-      this.#chains.set(name, chain);
-    }
+    // The code plan is shared, but visibility advances only after this
+    // session's initializer completes, just like source hook_register.
+    for (const [name, entry] of this.#targets.get(definition.name)) this.#chainLengths.set(name, entry.index + 1);
   }
 
   state(name) {
@@ -177,13 +195,31 @@ class ModuleSession {
     return !!definition && own(definition.functions, canonical(functionName));
   }
 
-  chain(name) { return (this.#chains.get(canonical(name)) ?? []).map(entry => entry.module); }
+  chain(name) {
+    const key = canonical(name);
+    return (this.#chains.get(key) ?? []).slice(0, this.#chainLengths.get(key) ?? 0).map(entry => entry.module);
+  }
+
+  isUnhookedFunction(moduleName, functionName, implementation) {
+    const module = canonical(moduleName), name = canonical(functionName);
+    const chain = this.#chains.get(name);
+    return this.#chainLengths.get(name) === 1 && chain[0].module === module && chain[0].implementation === implementation;
+  }
 
   call(moduleName, functionName, ...args) { return this.#dispatch(null, moduleName, functionName, args); }
 
   reference(moduleName, variableName) { return reference(this.state(moduleName), variableName); }
 
   importInto(scope, ...moduleNames) {
+    return this.#importInto(scope, null, moduleNames);
+  }
+
+  importSelectedInto(scope, fields, ...moduleNames) {
+    if (!Array.isArray(fields) || fields.some(key => typeof key !== 'string')) throw new TypeError('Selected import fields must be an array of strings');
+    return this.#importInto(scope, new Set(fields), moduleNames);
+  }
+
+  #importInto(scope, selected, moduleNames) {
     for (const moduleName of moduleNames) {
       const name = canonical(moduleName);
       const state = this.state(name);
@@ -194,16 +230,34 @@ class ModuleSession {
       // for every invocation of every hook; never share them across requests.
       let bindings = this.#imports.get(name);
       if (!bindings) {
-        bindings = names.map(key => [key, {
-          configurable: true, enumerable: true,
-          get: () => state[key],
-          set: value => { state[key] = value; },
-        }]);
+        bindings = new Map();
         this.#imports.set(name, bindings);
       }
-      for (const [key, descriptor] of bindings) {
+      let keys = names;
+      if (selected) {
+        let lookup = this.#selectedImports.get(name);
+        if (!lookup) {
+          lookup = new Map(names.map((key, index) => [key, index]));
+          this.#selectedImports.set(name, lookup);
+        }
+        const chosen = [];
+        for (const key of selected) {
+          const index = lookup.get(key);
+          if (index !== undefined) chosen.push(index);
+        }
+        // Selection order must not change the observable order of binding
+        // attempts, including INPUT getters and non-configurable failures.
+        chosen.sort((a, b) => a - b);
+        keys = chosen.map(index => names[index]);
+      }
+      for (const key of keys) {
         // INPUT uses PHP isset: null is not set; 0, false and '' are set.
         if (name === 'input' && own(scope, key) && scope[key] !== null && scope[key] !== undefined) continue;
+        let descriptor = bindings.get(key);
+        if (!descriptor) {
+          descriptor = { configurable: true, enumerable: true, get: () => state[key], set: value => { state[key] = value; } };
+          bindings.set(key, descriptor);
+        }
         Object.defineProperty(scope, key, descriptor);
       }
     }
@@ -211,14 +265,24 @@ class ModuleSession {
   }
 
   #context(moduleName, functionName, entry) {
+    const key = entry ?? `${moduleName}.${functionName}`;
+    const existing = this.#contexts.get(key);
+    if (existing) return existing;
     const caller = `${moduleName}.${functionName}`;
-    return Object.freeze({
+    const context = Object.freeze({
       moduleName, functionName,
       nextModuleName: entry && entry.index > 0 ? this.#chains.get(functionName)[entry.index - 1].module : null,
       services: this.#services,
       hasModule: name => this.hasModule(name),
       hasFunction: (module, name) => this.hasFunction(module, name),
-      backtrace: () => (this.#calls.getStore() ?? []).map(frame=>({...frame})),
+      isUnhookedFunction: (module, name, implementation) => this.isUnhookedFunction(module, name, implementation),
+      backtrace: () => {
+        const result = [];
+        for (let frame = calls.getStore(); frame; frame = frame.parent) {
+          if (frame.owner === this.#callOwner) result.push({ function: frame.function });
+        }
+        return result;
+      },
       call: (target, name, ...args) => this.#dispatch(caller, target, name, args),
       next: (...args) => entry && entry.index > 0
         ? this.#invoke(this.#chains.get(functionName)[entry.index - 1], args)
@@ -226,11 +290,15 @@ class ModuleSession {
       state: (name = moduleName) => this.state(name),
       reference: (name, variable) => this.reference(name, variable),
       importInto: (scope, ...names) => this.importInto(scope, ...names),
+      importSelectedInto: (scope, fields, ...names) => this.importSelectedInto(scope, fields, ...names),
     });
+    this.#contexts.set(key, context);
+    return context;
   }
 
   #invoke(entry, args) {
-    return this.#calls.run([{function:`${entry.module}\\${entry.name}`},...(this.#calls.getStore()??[])],()=>entry.implementation(this.#context(entry.module, entry.name, entry), ...args));
+    return calls.run({owner:this.#callOwner,function:`${entry.module}\\${entry.name}`,parent:calls.getStore()}, entry.implementation,
+      this.#context(entry.module, entry.name, entry), ...args);
   }
 
   #dispatch(caller, moduleName, functionName, args) {
@@ -241,14 +309,16 @@ class ModuleSession {
     if (!own(definition.functions, name)) throw new Error(`Undefined module function ${module}.${name}`);
     if (this.#initializing === module) {
       // Functions exist while init runs, but hook_register has not run yet.
-      return this.#calls.run([{function:`${module}\\${name}`},...(this.#calls.getStore()??[])],()=>definition.functions[name](this.#context(module, name, null), ...args));
+      return calls.run({owner:this.#callOwner,function:`${module}\\${name}`,parent:calls.getStore()}, definition.functions[name],
+        this.#context(module, name, null), ...args);
     }
     const chain = this.#chains.get(name);
-    const target = chain.find(entry => entry.module === module);
-    const parent = chain[target.index + 1];
+    const target = this.#targets.get(module).get(name);
+    const length = this.#chainLengths.get(name);
+    const parent = target.index + 1 < length ? chain[target.index + 1] : undefined;
     // __MAGIC__ permits direct entry only from the immediate overriding
     // function. All other callers enter the final (outermost) implementation.
-    const actual = parent && caller !== `${parent.module}.${name}` ? chain.at(-1) : target;
+    const actual = parent && caller !== `${parent.module}.${name}` ? chain[length - 1] : target;
     return this.#invoke(actual, args);
   }
 }

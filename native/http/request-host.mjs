@@ -7,8 +7,7 @@ import { createLockServices } from '../storage/locks.mjs';
 import { createFileServices } from '../storage/files.mjs';
 import { createFileFunctions } from '../storage/file-functions.mjs';
 import { createPlayerAssets } from '../storage/player-assets.mjs';
-import { createNativeGameRegistry, nativeGameplayModules } from '../catalog.mjs';
-import { createSkillCatalog } from '../gameplay/skills.mjs';
+import { createNativeGamePlan } from '../catalog.mjs';
 import { sysDefaultState } from '../gameplay/sys.mjs';
 import { filterInputValue } from '../gameplay/input.mjs';
 import { createPhp74Random } from '../random.mjs';
@@ -42,16 +41,15 @@ import { n, text, present, values } from '../system/sys-support.mjs';
  * registry rejects unavailable modules before connecting any database. */
 export async function createNativeRequestHost({ configuration, additionalModules = [], infoById = {}, databaseOptions, sourceRoot, stateRoot,
   publicUrl, request, systemConfig = {}, accountConfig = {}, broadcast, maintenance, remoteUsers, remoteUserClient, randomSeed, applyConfiguration, scheduler,
-  clock = { now: () => Date.now() / 1000 }, databaseFactory = () => createDatabase(databaseOptions) }) {
-  const registry = createNativeGameRegistry(configuration, additionalModules);
+  clock = { now: () => Date.now() / 1000 }, databaseFactory = () => createDatabase(databaseOptions), gamePlan, playerSchema, playerIconCatalog }) {
+  const { registry, enabled, skills } = gamePlan ?? createNativeGamePlan(configuration, additionalModules, infoById);
   if (!broadcast || !maintenance) throw new TypeError('Request host requires shared room broadcast and maintenance services');
-  const definitions = [...nativeGameplayModules, ...additionalModules], enabled = configuration.filter(item => item.enabled).map(item => item.name);
   // The upstream snapshot does not ship announcement files: PHP displays their
   // missing read as empty text. Preserve that initial content, then JSON edits.
   const configurationDefaults = { messages: Object.fromEntries(await Promise.all(['adminmsg','systemmsg'].map(async name => [name,await readFile(path.join(sourceRoot,'gamedata',name+'.htm'),'utf8').catch(error=>{if(error.code==='ENOENT')return '';throw error;})]))) };
   const snapshot = await createAdminConfigurationService({stateRoot,defaults:configurationDefaults}).getSnapshot();
   const effectiveSystem = { ...snapshot.server, ...snapshot.game.sys, replay_receive_list:{},userdb_receive_list:{}, ...systemConfig, gameurl:systemConfig.gameurl ?? publicUrl };
-  const selected = definitions.filter(item => enabled.includes(item.name)), config = sysDefaultState(effectiveSystem);
+  const config = sysDefaultState(effectiveSystem);
   config.server_address = new URL(publicUrl).origin; config.dbpass = ''; config.dbpw = '';
   const script = request.pathname.slice(1, -4), page = ['act','game','valid','end','news','rank','alive','roomcmd','winner','help'].includes(script) ? `command_${script}` : '';
   let session, database, locks, users, closed = false;
@@ -186,8 +184,8 @@ export async function createNativeRequestHost({ configuration, additionalModules
       filemtime: value => files.mtime(value), touch: value => files.touch(value), unlink: value => files.remove(value), readover: value => files.read(value),
       clear_dir: (value,keep,expire) => files.clear(value,{keepRoot:!!keep,expireSeconds:n(expire)}),
     });
-    const services = host.services = { input: request.input, database, output, templates: host.templates, random, files, inCommand: true,
-      playerLocks: locks.playerLocks, playerAssets: await createPlayerAssets(path.join(sourceRoot,'img'),{indexNames:true}), skills: createSkillCatalog(selected,infoById),
+    const services = host.services = { input: request.input, database, output, templates: host.templates, random, files, inCommand: true, playerSchema, playerIconCatalog,
+      playerLocks: locks.playerLocks, playerAssets: await createPlayerAssets(path.join(sourceRoot,'img'),{indexNames:true}), skills,
       system: { config: systemConfig, request: { cookies: request.input.cookies, post: request.input.post, script, page, pageStartTime: request.pageStartTime, daemon: false },
         files, locks: locks.locks, users, rooms: host.rooms, messages: host.messages, clock } };
     services.system.config = { ...effectiveSystem, server_address: config.server_address };

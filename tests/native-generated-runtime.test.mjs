@@ -35,6 +35,45 @@ test('generated contexts share value helpers but isolate overrides, globals, clo
     r.write(String(index)); assert.equal(output.peek(), String(index));
   }
 });
+test('request builtin reuse observes changed clock methods and timezone settings', async () => {
+  const clock = { value: 100, nowSeconds() { return this.value; } }, generated = createGeneratedServices({ clock });
+  const context = () => createModuleContext({ services: { generated } }, 'fixture');
+  assert.equal(await context().call('time'), 100);
+  clock.value = 200;
+  assert.equal(await context().call('time'), 200);
+  clock.nowSeconds = () => 300;
+  assert.equal(await context().call('time'), 300);
+  generated.timezoneOffset = 3600;
+  assert.equal(await context().call('date', 'H', 0), '01');
+  generated.clock = { nowSeconds: () => 400 };
+  assert.equal(await context().call('time'), 400);
+});
+
+test('initialization contexts preserve define/global semantics and lazily use real request services', async () => {
+  for (const phase of ['top', 'init']) {
+    const state = {}, calls = [], output = createOutput();
+    const generated = createGeneratedServices({ globals: { existing: 3 }, constants: { ALREADY: 'original' }, output, clock: { nowSeconds: () => 120 } });
+    const ctx = { services: { generated, database: { async execute(...args) { calls.push(['sql', ...args]); return 2; } } },
+      state: () => state, hasModule: name => name === 'source', async call(...args) { calls.push(['module', ...args]); return 4; },
+      importInto(scope) { Object.defineProperty(scope, 'external', { enumerable: true, configurable: true, get: () => 7, set: () => {} }); return scope; } };
+    const r = createModuleContext(ctx, 'fixture', phase), s = {};
+    assert.equal(await r.call('define', 'ALREADY', 'changed'), false);
+    assert.equal(await r.call('define', 'CREATED', [1]), true);
+    assert.deepEqual(await r.call('constant', 'CREATED'), [1]);
+    r.global(s, 'created'); r.global(s, 'existing'); s.created = 5; s.existing = 9;
+    assert.equal((phase === 'init' ? state : generated.globals).created, 5);
+    assert.equal(generated.globals.existing, 9);
+    assert.equal(r.constant('MOD_SOURCE'), 1); assert.equal(r.constant('IN_GAME'), true);
+    r.importsSelected(s, ['external'], 'source'); assert.equal(s.external, 7);
+    generated.clock = { nowSeconds: () => 999 };
+    assert.equal(await r.call('time'), 120, 'deferred service context retains the original clock binding');
+    assert.equal(await r.database('execute', 'SELECT 1'), 2);
+    assert.equal(await r.module('source', 'operation', 1), 4);
+    r.write('written'); assert.equal(output.peek(), 'written');
+    assert.deepEqual(calls, [['sql', 'SELECT 1'], ['module', 'source', 'operation', 1]]);
+    assert.ok(generated.generatedModules.has('fixture'));
+  }
+});
 async function temporary(t) {
   const parent = path.resolve('var/tests'); await mkdir(parent, { recursive: true }); const root = await mkdtemp(path.join(parent, 'generated-runtime-'));
   t.after(async () => { assert.ok(root.startsWith(parent + path.sep)); await rm(root, { recursive: true, force: true }); }); return root;

@@ -1,3 +1,4 @@
+import { isReferenceDescriptor } from '../templates/values.mjs';
 import { readFile } from 'node:fs/promises';
 import { isNumeric, number as n, present, round, sameDurability, text } from './numbers.mjs';
 
@@ -5,13 +6,14 @@ const call = (ctx, name, ...args) => ctx.call('player', name, ...args);
 const isset = value => value !== undefined && value !== null;
 const filled = value => present(value) && (typeof value !== 'object' || Object.keys(value).length !== 0);
 const copy = value => value === undefined ? null : structuredClone(value);
+const iconSnapshotProbe = Symbol('built-in icon directory snapshot');
 // PHP copies an array parameter but keeps reference slots inside that array.
 // Only explicitly declared native getter/setter aliases retain that identity;
 // plain records are ordinary value parameters. Pool snapshots use copy().
 function parameterCopy(value) {
   const result = copy(value);
   for (const [key, descriptor] of Object.entries(Object.getOwnPropertyDescriptors(value))) {
-    if (descriptor.get && descriptor.set) Object.defineProperty(result, key, descriptor);
+    if (isReferenceDescriptor(descriptor)) Object.defineProperty(result, key, descriptor);
   }
   return result;
 }
@@ -88,9 +90,10 @@ function interfaceState(ctx) {
  * - optional playerDiagnostics.fetchedSelf({by,value}) receives the original
  *   self-fetch diagnostic. It replaces source debug_backtrace/log.txt details.
  *
- * Initialization DESCRIBEs the installed players table, rather than creating
- * the PHP compile-time tmp_players table or executing a PHP schema cache. The
- * table must already be installed from the original players.sql. Gameplay
+ * Initialization uses the application's schema metadata, or DESCRIBEs the
+ * installed players table for a standalone host. It never creates a PHP
+ * compile-time tmp_players table or executes a PHP schema cache. The table
+ * must already be installed from the original players.sql. Gameplay
  * reset executes that same original SQL only when rs_game's bit 4 is requested.
  * Skill/map/sys/weapon hooks are real registry dependencies, not placeholders.
  * By-value player inputs are cloned at each source by-value boundary; sdata's
@@ -117,7 +120,9 @@ export const playerModule = {
     state.tpldata = [];
     // New rooms have no players table until reset_game. The installed main
     // schema is shared by every room, as was the original compile-time cache.
-    const rows = await query(ctx, `DESCRIBE ${table(ctx, true)}`);
+    const rows = ctx.services.playerSchema
+      ? await ctx.services.playerSchema.describe(ctx.services.database, table(ctx, true))
+      : await query(ctx, `DESCRIBE ${table(ctx, true)}`);
     if (!rows.length) throw new Error('Native player requires an installed players table with a real schema');
     for (const { Field: key, Type: type } of rows) {
       if (typeof key !== 'string' || !/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(key) || typeof type !== 'string' || Object.hasOwn(state.db_player_structure_types, key)) throw new TypeError('Invalid or duplicate player schema column');
@@ -214,14 +219,42 @@ export const playerModule = {
     async get_pc_icon_selecting_list(ctx) {
       const state = ctx.state();
       if (filled(state.icon_list)) return copy(state.icon_list);
+      // Only the built-in pair is pure filename/metadata work. An extension
+      // can observe every original call, so any override keeps the full range
+      // and sequential hook dispatch. Ordinary file names use a request-local
+      // snapshot; symlinks and actual image reads still validate current paths.
+      const indexed = typeof ctx.services.playerAssets?.numberedCandidates === 'function'
+        && ['icon_parser_name_format', 'icon_parser_file_check'].every(name =>
+          ctx.isUnhookedFunction('player', name, playerModule.functions[name]));
+      if (indexed && ctx.services.playerIconCatalog && ctx.isUnhookedFunction('player', 'get_pc_icon_selecting_list', playerModule.functions.get_pc_icon_selecting_list)) {
+        const catalog = await ctx.services.playerIconCatalog.read(JSON.stringify(state.pc_icon_range), async () => {
+          await playerModule.functions.get_pc_icon_selecting_list({ ...ctx, services: { ...ctx.services, playerIconCatalog: undefined } });
+          return { icon_list: state.icon_list, icon_list_contents_to_frontend: state.icon_list_contents_to_frontend };
+        });
+        Object.assign(state, catalog);
+        return copy(state.icon_list);
+      }
       state.icon_list = { f: {}, m: {} };
       state.icon_list_contents_to_frontend = {};
       for (const gender of ['f', 'm', 'n']) {
         const [minimum, maximum] = state.pc_icon_range[gender].map(n);
         const step = minimum <= maximum ? 1 : -1;
-        for (let index = minimum; step > 0 ? index <= maximum : index >= maximum; index += step) {
+        const inspect = async index => {
           const [small, big] = await call(ctx, 'icon_parser_name_format', gender === 'n' ? 1 : 0, gender, index);
-          const result = await call(ctx, 'icon_parser_file_check', small, big);
+          return indexed && typeof ctx.services.playerAssets.snapshotExists === 'function'
+            ? call(ctx, 'icon_parser_file_check', small, big, iconSnapshotProbe)
+            : call(ctx, 'icon_parser_file_check', small, big);
+        };
+        const candidates = indexed ? await ctx.services.playerAssets.numberedCandidates(gender, minimum, maximum) : null;
+        // Independent read-only image probes run together, then publish in
+        // source range order. No player state, hook or random call is cached.
+        const results = candidates && await Promise.allSettled(candidates.map(inspect));
+        let position = 0;
+        for (let index = candidates ? candidates[position] : minimum;
+          candidates ? position < candidates.length : step > 0 ? index <= maximum : index >= maximum;
+          index = candidates ? candidates[++position] : index + step) {
+          if (candidates && results[position].status === 'rejected') throw results[position].reason;
+          const result = candidates ? results[position].value : await inspect(index);
           if (!filled(result[0])) continue;
           (state.icon_list[gender] ??= {})[index] = result;
           if (gender !== 'n') {
@@ -252,8 +285,8 @@ export const playerModule = {
       const name = text(icon), ext = extension(name);
       return [name, `${removeEnding(name, Buffer.byteLength(ext) + 1)}_a.${ext}`];
     },
-    async icon_parser_file_check(ctx, small, big) {
-      const exists = service(ctx, 'playerAssets', 'exists');
+    async icon_parser_file_check(ctx, small, big, probe) {
+      const exists = service(ctx, 'playerAssets', probe === iconSnapshotProbe ? 'snapshotExists' : 'exists');
       const fallback = async name => {
         if (await exists(name)) return name;
         const stem = removeEnding(name, extension(name).length);

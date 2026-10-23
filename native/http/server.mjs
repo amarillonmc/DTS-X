@@ -43,15 +43,16 @@ export async function serveResource(request, response, root, relative) {
  * never a general document root, and source/configuration code is not served.
  */
 export function createNativeHttpServer({ sourceRoot, stateRoot, modernRoot, publicUrl, dispatch, maxBytes = 64 * 1024 * 1024, trustProxy = false,
-  onError = () => {}, modern = true, health = () => ({ runtime: 'native-node', ready: false }), shutdownTimeoutMs = 30_000, maintenance = createMaintenanceGate() } = {}) {
+  onError = () => {}, modern = true, health = () => ({ runtime: 'native-node', ready: false }), shutdownTimeoutMs = 30_000, maintenance = createMaintenanceGate(), clock = { now: () => Date.now() / 1000 } } = {}) {
   if (typeof dispatch !== 'function') throw new TypeError('Native HTTP requires real request controllers');
   if (typeof sourceRoot !== 'string' || !path.isAbsolute(sourceRoot)) throw new TypeError('Native HTTP requires an absolute source resource root');
+  if (typeof clock?.now !== 'function') throw new TypeError('Native HTTP requires a clock.now() function');
   const origin = new URL(publicUrl);
   if (!['http:','https:'].includes(origin.protocol) || origin.pathname !== '/' || origin.search || origin.hash || origin.username || origin.password) throw new TypeError('Public URL must be an HTTP origin');
   const requests = new Map(); let closing = false, closed;
   const server = http.createServer(async (request, response) => {
     response.setHeader('Referrer-Policy','same-origin');response.setHeader('X-Frame-Options','SAMEORIGIN');
-    const pageStartTime = Date.now() / 1000, abort = new AbortController(); let finished;
+    const abort = new AbortController(); let finished;
     requests.set(abort, new Promise(resolve => { finished = resolve; }));
     response.on('close', () => { if (!response.writableEnded) abort.abort(); });
     const send = (status, body, headers = {}) => {
@@ -67,6 +68,8 @@ export function createNativeHttpServer({ sourceRoot, stateRoot, modernRoot, publ
       response.end(request.method === 'HEAD' ? undefined : bytes);
     };
     try {
+      const pageStartTime = clock.now();
+      if (!Number.isFinite(pageStartTime)) throw new TypeError('Native HTTP clock must return finite epoch seconds');
       if (closing) { send(503, 'Server is shutting down'); return; }
       if (!['GET','HEAD','POST'].includes(request.method)) { send(405, 'Method not allowed', { Allow:'GET, HEAD, POST' }); return; }
       const pathname = decodeGamePath(request.url);

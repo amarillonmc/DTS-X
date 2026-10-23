@@ -5,12 +5,46 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compileTemplate, sourceLanguage } from '../scripts/native-compiler/build-templates.mjs';
-import { createTemplateServices, createOutput } from '../native/templates/index.mjs';
+import { createTemplateServices, createOutput, preloadNativeTemplates } from '../native/templates/index.mjs';
 import { ModuleRegistry } from '../native/modules/registry.mjs';
 import { createPhp74Random } from '../native/random.mjs';
-import { names as bindings } from '../native/templates/catalog.mjs';
+import { names as bindings, loaders } from '../native/templates/catalog.mjs';
 
 const project = fileURLToPath(new URL('../', import.meta.url));
+test('static template preload shares code, never runs renderers and retries a failed loader', async t => {
+  const file = 'templates/default/error.htm', original = loaders[file];
+  t.after(() => { loaders[file] = original; });
+  let loads = 0, renders = 0;
+  loaders[file] = async () => {
+    loads++;
+    if (loads === 1) throw new Error('loader probe');
+    return { default(r, scope) { renders++; r.write(scope.text); scope.calls = (scope.calls ?? 0) + 1; } };
+  };
+  await assert.rejects(preloadNativeTemplates(), /loader probe/);
+  assert.deepEqual(await Promise.all([preloadNativeTemplates(), preloadNativeTemplates()]), [882, 882]);
+  assert.equal(loads, 2); assert.equal(renders, 0);
+  const first = { text: 'one' }, second = { text: 'two' };
+  const one = createTemplateServices(), two = createTemplateServices();
+  assert.deepEqual(await Promise.all([one.render('error', first), two.render('error', second)]), ['one', 'two']);
+  assert.equal(await one.render('error', first), 'one');
+  assert.equal(loads, 2); assert.equal(renders, 3);
+  assert.equal(first.calls, 2); assert.equal(second.calls, 1);
+});
+
+test('shared template plans keep bindings, enabled selections and request constants isolated', async () => {
+  const enabled = ['weapon'];
+  const first = createTemplateServices({ enabledModules: enabled, constants: { TEST_REQUEST: 'one' } });
+  const second = createTemplateServices({ enabledModules: enabled, constants: { TEST_REQUEST: 'two' } });
+  const binding = Object.keys(first.names)[0]; assert.ok(binding);
+  first.names[binding] = 'local';
+  assert.notEqual(second.names[binding], 'local');
+  enabled.length = 0;
+  const disabled = createTemplateServices({ enabledModules: enabled });
+  assert.equal(Object.hasOwn(disabled.names, binding), false);
+  for (const [service, expected] of [[first, 'one'], [second, 'two']]) {
+    assert.equal(await service.renderFunction(r => r.write(r.constant('TEST_REQUEST'))), expected);
+  }
+});
 const normalize = value => value == null ? null : value instanceof Map ? Object.fromEntries([...value].map(([key, child]) => [key, normalize(child)])) : Array.isArray(value) ? value.map(normalize) : typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([key, child]) => [key, normalize(child)])) : value;
 const phpSource = String.raw`<?php
 namespace fixture {
@@ -134,6 +168,26 @@ test('request scope may be the global binding object without creating self-refer
     await r.write(r.text(r.get(scope, 'created')) + r.constant('MOD_SKILL52_INFO'));
   }, globals);
   assert.equal(html, '2club;upgrade;'); assert.equal(globals.created, 2); assert.equal(globals.___MOD_CODE_ADV3, 1);
+});
+
+test('output captures retain their owner across nested outputs, failures and concurrent awaits', async () => {
+  const one = createOutput(), two = createOutput();
+  one.write('root-one'); two.write('root-two');
+  const captured = await one.capture(async () => {
+    one.write('a');
+    assert.equal(await two.capture(async () => {
+      two.write('b'); one.write('c');
+      await new Promise(resolve => setImmediate(resolve));
+      assert.equal(await one.capture(async () => { one.write('nested'); two.write('d'); }), 'nested');
+      assert.equal(one.peek(), 'ac');
+      await assert.rejects(one.capture(async () => { one.write('discarded'); throw new Error('failed capture'); }), /failed capture/);
+      one.start(); one.write('cleaned'); assert.equal(one.endClean(), true); assert.equal(one.endClean(), false);
+    }), 'bd');
+    one.write('e');
+  });
+  assert.equal(captured, 'ace');
+  assert.deepEqual(await Promise.all([one.capture(async () => { one.write('x'); await new Promise(resolve => setImmediate(resolve)); one.write('y'); }), one.capture(() => one.write('z'))]), ['xy', 'z']);
+  assert.equal(one.take(), 'root-one'); assert.equal(two.take(), 'root-two');
 });
 
 test('missing optional template file content is false while access and service errors remain failures', async () => {

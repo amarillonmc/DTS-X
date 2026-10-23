@@ -14,17 +14,16 @@ export function fateNumber(seed, length = 9) {
 }
 const phpTrim = value => value.replace(/^[\x00\x09\x0a\x0b\x0d ]+|[\x00\x09\x0a\x0b\x0d ]+$/g, '');
 const substring = (value, start, count) => [...value].slice(start < 0 ? Math.max(0, [...value].length + start) : start, count < 0 ? [...value].length + count : start + count).join('');
-
-export async function createVerificationService({ gameUrl, clock = () => Date.now() / 1000, helpFile = new URL('../../engine/templates/default/help.htm', import.meta.url), decimalModulo = true } = {}) {
-  if (typeof gameUrl !== 'string') throw new TypeError('An explicit gameUrl is required for registration questions');
+const corpora = new Map();
+function questionPool(html) {
+  // Read the file on every creation, so edits/errors retain their old behavior.
+  // Only deterministic parsing of identical bytes is shared across requests.
+  const key = html.toString('base64');
+  if (corpora.has(key)) return corpora.get(key);
   const pool = ['作为一款以文本为主要表现形式的webgame', '虽然ACFUN大逃杀即将迎来她的第10个年头',
     '但玩过它、或者涉猎过同类游戏的人依然十分稀少', '也许你已经是BR原版的老玩家了', '也许你虽然没怎么玩过BR大逃杀',
     '但是对类似的网页游戏有所涉猎', '当然更可能的情况是你以前并没有接触过这款网页游戏'];
-  let html = '';
-  try { html = await readFile(helpFile); } catch (error) { if (error.code !== 'ENOENT') throw error; }
-  // Source regex has no /u modifier: its 30..150 limit is in UTF-8 bytes.
-  const matches = [...Buffer.from(html).toString('latin1').matchAll(/>([^<>&$;{}]{30,150}?)</gs)].map(match => Buffer.from(match[1], 'latin1').toString('utf8'));
-  // PHP array union retains the seven seed entries rather than concatenating.
+  const matches = [...html.toString('latin1').matchAll(/>([^<>&$;{}]{30,150}?)</gs)].map(match => Buffer.from(match[1], 'latin1').toString('utf8'));
   for (let i = pool.length; i < matches.length; i++) pool[i] = matches[i];
   for (let i = 0; i < pool.length; i++) {
     let value = phpTrim(pool[i]);
@@ -35,6 +34,19 @@ export async function createVerificationService({ gameUrl, clock = () => Date.no
     }
     pool[i] = value;
   }
+  Object.freeze(pool);
+  if (corpora.size >= 8) corpora.delete(corpora.keys().next().value);
+  corpora.set(key, pool);
+  return pool;
+}
+
+export async function createVerificationService({ gameUrl, clock = () => Date.now() / 1000, helpFile = new URL('../../engine/templates/default/help.htm', import.meta.url), decimalModulo = true } = {}) {
+  if (typeof gameUrl !== 'string') throw new TypeError('An explicit gameUrl is required for registration questions');
+  let html = Buffer.alloc(0);
+  try { html = await readFile(helpFile); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  // Source regex has no /u modifier: its 30..150 limit is in UTF-8 bytes.
+  // PHP array union retains the seven seed entries rather than concatenating.
+  const pool = questionPool(html);
   const tokenAt = (token, now) => {
     if (!present(token)) token = text(now) + gameUrl;
     const date = new Date(now * 1000);

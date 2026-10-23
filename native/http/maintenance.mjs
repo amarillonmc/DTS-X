@@ -56,6 +56,7 @@ export function createMaintenanceGate() {
     async close() {
       closing = true; notify();
       await until(() => active.size === 0 && pending === 0);
+      context.disable();
     },
     get pending() { return pending; },
   };

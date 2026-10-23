@@ -11,12 +11,15 @@ import { derivedFilePath } from '../templates/derived.mjs';
 
 const REF = Symbol('native generated reference');
 const servicesByHost = new WeakMap();
+const builtinsByHost = new WeakMap();
+const initializationContexts = new WeakMap();
+const compiledContexts = new WeakMap();
 // ESM namespace spreading is expensive at every rule call. Share the stateless
 // value functions through an ordinary prototype; request bindings stay own
 // properties, and a caller can still override a helper on its own context.
 const valueHelpers = { ...v };
 const own = (object, key) => Object.hasOwn(object, key);
-const isRef = value => !!value && typeof value === 'object' && (value[REF] || (() => { const d = Object.getOwnPropertyDescriptor(value, 'value'); return !!d?.get && !!d?.set; })());
+const isRef = value => !!value && typeof value === 'object' && (value[REF] || (() => { const d = Object.getOwnPropertyDescriptor(value, 'value'); return v.isReferenceDescriptor(d); })());
 const readReference = value => isRef(value) ? value.value : value;
 const required = (object, method, name = method) => { if (typeof object?.[method] !== 'function') throw new Error(`Native generated modules require ${name}`); return object[method].bind(object); };
 const argument = ref => Object.freeze({ [REF]: true, get value() { return v.get(ref.target, ref.key); }, set value(value) { v.assign(ref, value); } });
@@ -25,6 +28,56 @@ function alias(ref, source) {
   if (ref.target instanceof Map) throw new TypeError('Reference binding into a Map needs an explicit record boundary');
   Object.defineProperty(ref.target, ref.key, { configurable: true, enumerable: true, get: () => source.value, set: value => { source.value = value; } });
   return source.value;
+}
+Object.assign(valueHelpers, {
+  argument, alias, readReference,
+  returnOwnedLocal(scope, name) {
+    const descriptor = Object.getOwnPropertyDescriptor(scope, name);
+    return descriptor && own(descriptor, 'value') ? descriptor.value : v.copy(v.get(scope, name));
+  },
+  parameter(scope, name, value, byref) {
+    if (byref && isRef(value)) alias(v.slot(scope, [name]), value);
+    else if (byref) Object.defineProperty(scope, name, { value, configurable: true, enumerable: true, writable: true });
+    else {
+      const ref = v.slot(scope, [name]), copied = v.copy(readReference(value));
+      if (Object.getPrototypeOf(scope) === null) scope[ref.key] = copied;
+      else v.assignOwned(ref, copied);
+    }
+  },
+  arrayRefs(items) {
+    const value = v.array(items.map(([key, child]) => [key, readReference(child)]));
+    let next = 0;
+    for (let [key, child, byref] of items) { if (key === v.APPEND) key = next; key = v.key(key); if (typeof key === 'number' && key >= next) next = key + 1; if (byref) alias(v.slot(value, [key]), child); }
+    return value;
+  },
+  declare(scope, name) { if (!own(scope, name)) v.assign(v.slot(scope, [name]), null); },
+  match(pattern, subject, matches, flags = 0, offset = 0, all = false) { const result = pregMatch(pattern, subject, flags, offset, all); if (matches) matches.value = result.matches; return result.count; },
+  extract(scope, value, flags = 0, prefix = '') {
+    let count = 0;
+    if (![0, 3, 'EXTR_PREFIX_ALL'].includes(flags)) throw new Error(`Unsupported source extract mode ${flags}`);
+    for (const [key, child] of v.entries(value)) {
+      const name = flags === 3 || flags === 'EXTR_PREFIX_ALL' ? `${v.text(prefix)}_${key}` : v.text(key);
+      if (/^[a-zA-Z_\x80-\uffff][a-zA-Z0-9_\x80-\uffff]*$/.test(name) && name !== 'GLOBALS' && name !== 'this') { v.assign(v.slot(scope, [name]), child); count++; }
+    }
+    return count;
+  },
+  shiftLeft: (left, right) => Number(BigInt.asIntN(64, BigInt(v.int(left)) << BigInt(v.int(right)))),
+  exit: value => { throw new Error(`Native source exited: ${v.text(value)}`); },
+  template: (name, templateId) => ({ name, templateId }),
+});
+const initializationHelpers = Object.create(valueHelpers);
+for (const name of ['write', 'module', 'next', 'database', 'lookupReference', 'writeCache', 'include', 'requireRooms', 'requireMessages', 'namedCall', 'mutate']) {
+  Object.defineProperty(initializationHelpers, name, {
+    configurable: true,
+    get() {
+      const binding = initializationContexts.get(this);
+      const full = binding.full ??= createFullModuleContext(binding.ctx, binding.module, binding.phase, binding.captured);
+      const value = full[name];
+      Object.defineProperty(this, name, { value, writable: true, configurable: true, enumerable: true });
+      return value;
+    },
+    set(value) { Object.defineProperty(this, name, { value, writable: true, configurable: true, enumerable: true }); },
+  });
 }
 const replacementCalls = new Set(['skillbase.skill_acquire', 'skillbase.skill_lost', 'wound.get_inf', 'trap.trap_damage']);
 export const contextGlobalFunctions = Object.freeze(['preg_match', 'preg_match_all', 'preg_replace', 'preg_replace_callback', 'define', 'defined', 'constant', 'function_exists', 'debug_backtrace', 'save_gameinfo', 'addnews', 'getchat', 'systemputchat', 'rand', 'array_rand', 'array_randompick', 'ob_start', 'ob_get_contents', 'ob_clean', 'ob_end_clean', 'ob_end_flush', 'file_exists', 'filemtime', 'unlink', 'check_filemtime_expired', 'dump_template', 'file_get_contents', 'file_put_contents', 'writeover', 'openfile', 'var_dump']);
@@ -50,12 +103,74 @@ function services(ctx) {
   if (!result) { result = createGeneratedServices(ctx.services); servicesByHost.set(ctx.services, result); }
   return result;
 }
+function builtins(host) {
+  const clock = host.clock, now = clock?.nowSeconds, timezoneOffset = host.timezoneOffset ?? 0;
+  let cached = builtinsByHost.get(host);
+  if (!cached || cached.clock !== clock || cached.now !== now || cached.timezoneOffset !== timezoneOffset) {
+    cached = { clock, now, timezoneOffset, functions: moduleBuiltins({ now: now?.bind(clock), timezoneOffset }) };
+    builtinsByHost.set(host, cached);
+  }
+  return cached.functions;
+}
 export function createModuleContext(ctx, module, phase = 'function') {
-  const host = services(ctx), output = ctx.services.output ?? host.output, templates = ctx.services.templates ?? host.templates;
+  if (phase !== 'top' && phase !== 'init') return createFullModuleContext(ctx, module, phase);
+  const host = services(ctx), templates = ctx.services.templates ?? host.templates;
   host.generatedModules.add(module);
-  const random = ctx.services.random ?? host.random, files = ctx.services.files ?? host.files;
+  const captured = { host, templates, output: ctx.services.output ?? host.output, random: ctx.services.random ?? host.random, files: ctx.services.files ?? host.files, builtin: builtins(host) };
+  const binding = { ctx, module, phase, captured, full: null };
+  const full = () => binding.full ??= createFullModuleContext(ctx, module, phase, captured);
+  const constant = name => {
+    if (own(host.constants, name)) return host.constants[name];
+    if (name === 'IN_GAME') return true;
+    if (name.startsWith('MOD_') && /^MOD_[A-Z0-9_]+$/.test(name) && ctx.hasModule(name.slice(4).toLowerCase())) return 1;
+    if (own(templates?.names ?? {}, name)) return templates.names[name];
+    return name;
+  };
+  const r = { __proto__: initializationHelpers, globals: host.globals,
+    capability: name => host.capabilities?.[name] === true,
+    imports: (scope, ...names) => ctx.importInto(scope, ...names),
+    importsSelected: (scope, fields, ...names) => typeof ctx.importSelectedInto === 'function'
+      ? ctx.importSelectedInto(scope, fields, ...names) : ctx.importInto(scope, ...names),
+    global(scope, name) {
+      const target = phase === 'init' && !own(host.globals, name) ? ctx.state() : host.globals;
+      if (!own(target, name)) v.assign(v.slot(target, [name]), null);
+      if (scope !== target) v.bind(v.slot(scope, [name]), target, name);
+    },
+    constant,
+    async call(name, ...args) {
+      if (name === 'define') { if (own(host.constants, args[0])) return false; host.constants[args[0]] = v.copy(args[1]); return true; }
+      if (name === 'defined') return constant(v.text(args[0])) !== args[0];
+      if (name === 'constant') return constant(v.text(args[0]));
+      return full().call(name, ...args);
+    },
+  };
+  initializationContexts.set(r, binding);
+  return r;
+}
+
+/** Compiler-owned function contexts contain service bindings, never locals.
+ * Reuse within a registry request; standalone mutable contexts keep the public
+ * fresh-context API. Changed services/clock/globals invalidate the binding. */
+export function cachedModuleContext(ctx, module, phase = 'function') {
+  if (phase !== 'function' || !Object.isFrozen(ctx)) return createModuleContext(ctx, module, phase);
+  const host = services(ctx), templates = ctx.services.templates ?? host.templates;
+  const output = ctx.services.output ?? host.output, random = ctx.services.random ?? host.random, files = ctx.services.files ?? host.files;
+  const clock = host.clock, now = clock?.nowSeconds, timezone = host.timezoneOffset ?? 0;
+  let cached = compiledContexts.get(ctx);
+  if (!cached || cached.module !== module || cached.host !== host || cached.templates !== templates || cached.output !== output
+    || cached.random !== random || cached.files !== files || cached.clock !== clock || cached.now !== now || cached.timezone !== timezone || cached.globals !== host.globals) {
+    cached = { module, host, templates, output, random, files, clock, now, timezone, globals: host.globals,
+      context: createModuleContext(ctx, module, phase) };
+    compiledContexts.set(ctx, cached);
+  } else host.generatedModules.add(module);
+  return cached.context;
+}
+function createFullModuleContext(ctx, module, phase, captured) {
+  const host = captured ? captured.host : services(ctx), output = captured ? captured.output : ctx.services.output ?? host.output, templates = captured ? captured.templates : ctx.services.templates ?? host.templates;
+  host.generatedModules.add(module);
+  const random = captured ? captured.random : ctx.services.random ?? host.random, files = captured ? captured.files : ctx.services.files ?? host.files;
   const relativeFile = value => { if (typeof value !== 'string') return value; const root = v.text(host.constants.GAME_ROOT ?? '').replaceAll('\\', '/'); let path = value.replaceAll('\\', '/'); if (root && path.startsWith(root)) path = path.slice(root.length); return path.replace(/^(?:\.\/|\/)+/, ''); };
-  const builtin = moduleBuiltins({ now: host.clock?.nowSeconds?.bind(host.clock), timezoneOffset: host.timezoneOffset ?? 0 });
+  const builtin = captured ? captured.builtin : builtins(host);
   const global = (scope, name) => {
     const target = phase === 'init' && !own(host.globals, name) ? ctx.state() : host.globals;
     if (!own(target, name)) v.assign(v.slot(target, [name]), null);
@@ -69,35 +184,15 @@ export function createModuleContext(ctx, module, phase = 'function') {
     if (own(templates?.names ?? {}, name)) return templates.names[name];
     return name;
   };
-  const r = { __proto__: valueHelpers, argument, alias, readReference, globals: host.globals,
+  const r = { __proto__: valueHelpers, globals: host.globals,
     capability: name => host.capabilities?.[name] === true,
-    parameter(scope, name, value, byref) {
-      if (byref && isRef(value)) alias(v.slot(scope, [name]), value);
-      else if (byref) Object.defineProperty(scope, name, { value, configurable: true, enumerable: true, writable: true });
-      else v.assign(v.slot(scope, [name]), readReference(value));
-    },
-    arrayRefs(items) {
-      const value = v.array(items.map(([key, child]) => [key, readReference(child)]));
-      let next = 0;
-      for (let [key, child, byref] of items) { if (key === v.APPEND) key = next; key = v.key(key); if (typeof key === 'number' && key >= next) next = key + 1; if (byref) alias(v.slot(value, [key]), child); }
-      return value;
-    },
-    declare(scope, name) { if (!own(scope, name)) v.assign(v.slot(scope, [name]), null); },
-    match(pattern, subject, matches, flags = 0, offset = 0, all = false) { const result = pregMatch(pattern, subject, flags, offset, all); if (matches) matches.value = result.matches; return result.count; },
-    extract(scope, value, flags = 0, prefix = '') {
-      let count = 0;
-      if (![0, 3, 'EXTR_PREFIX_ALL'].includes(flags)) throw new Error(`Unsupported source extract mode ${flags}`);
-      for (const [key, child] of v.entries(value)) {
-        const name = flags === 3 || flags === 'EXTR_PREFIX_ALL' ? `${v.text(prefix)}_${key}` : v.text(key);
-        if (/^[a-zA-Z_\x80-\uffff][a-zA-Z0-9_\x80-\uffff]*$/.test(name) && name !== 'GLOBALS' && name !== 'this') { v.assign(v.slot(scope, [name]), child); count++; }
-      }
-      return count;
-    },
-    imports: (scope, ...names) => ctx.importInto(scope, ...names), global, constant,
+    imports: (scope, ...names) => ctx.importInto(scope, ...names),
+    // The compiler uses this only when every access to the local scope is a
+    // known literal key. Dynamic scopes retain the complete import boundary.
+    importsSelected: (scope, fields, ...names) => typeof ctx.importSelectedInto === 'function'
+      ? ctx.importSelectedInto(scope, fields, ...names) : ctx.importInto(scope, ...names), global, constant,
     unset: v.unset,
-    shiftLeft: (left, right) => Number(BigInt.asIntN(64, BigInt(v.int(left)) << BigInt(v.int(right)))),
     write: value => required(output, 'write', 'services.output.write')(value),
-    exit: value => { throw new Error(`Native source exited: ${v.text(value)}`); },
     module: (target, method, ...args) => ctx.call(target, method, ...nativeArguments(target, method, args, host.generatedModules)),
     next: (...args) => ctx.next(...nativeArguments(ctx.nextModuleName ?? '', ctx.functionName, args, host.generatedModules)),
     async database(method, ...args) {
@@ -110,7 +205,6 @@ export function createModuleContext(ctx, module, phase = 'function') {
       if (name === 'get_var_input') return ctx.call('input', 'get_var', key);
       const state = ctx.state(target); return v.truth(key) && v.get(state, key) != null ? ctx.reference(target, key) : reference({ value: null }, 'value');
     },
-    template: (name, templateId) => ({ name, templateId }),
     writeCache: (filename, fields) => writeDataCache(files, relativeFile(filename), fields),
     async include(target, scope, once = false) {
       if (typeof target === 'string') {
@@ -135,9 +229,9 @@ export function createModuleContext(ctx, module, phase = 'function') {
       if (!v.isArray(value)) throw new TypeError(`${name} needs an array`);
       let items = v.entries(value), result = true;
       if (name === 'array_pop') { const last = items.pop(); result = last?.[1] ?? null; if (last) r.unset(v.slot(value, [last[0]])); return result; }
-      if (name === 'array_push') { for (const item of args) v.assign(v.slot(value, [v.APPEND]), item); return v.entries(value).length; }
+      if (name === 'array_push') { for (const item of args) v.assign(v.slot(value, [v.APPEND]), item); return v.arrayCount(value); }
       if (name === 'array_shift') { result = items.shift()?.[1] ?? null; let next = 0; ref.value = v.array(items.map(([key, item]) => [typeof key === 'number' ? next++ : key, item])); return result; }
-      if (name === 'array_unshift') { let next = args.length; ref.value = v.array([...args.map((item, key) => [key, item]), ...items.map(([key, item]) => [typeof key === 'number' ? next++ : key, item])]); return v.entries(ref.value).length; }
+      if (name === 'array_unshift') { let next = args.length; ref.value = v.array([...args.map((item, key) => [key, item]), ...items.map(([key, item]) => [typeof key === 'number' ? next++ : key, item])]); return v.arrayCount(ref.value); }
       if (name === 'array_splice') { const offset = v.int(args[0]), length = args.length < 2 ? items.length : v.int(args[1]), start = offset < 0 ? Math.max(0, items.length + offset) : offset; const removed = items.splice(start, length < 0 ? Math.max(0, items.length - start + length) : length, ...v.entries(v.castArray(args[2] ?? [])).map(([, item]) => [v.APPEND, item])); let next = 0; ref.value = v.array(items.map(([key, item]) => [typeof key === 'number' || key === v.APPEND ? next++ : key, item])); next = 0; return v.array(removed.map(([key, item]) => [typeof key === 'number' ? next++ : key, item])); }
       if (['asort', 'arsort', 'ksort', 'krsort'].includes(name)) { items.sort(([leftKey, left], [rightKey, right]) => name === 'ksort' || name === 'krsort' ? (name === 'krsort' ? -1 : 1) * v.compare(leftKey, rightKey) : (name === 'arsort' ? -1 : 1) * v.compare(left, right)); ref.value = v.array(items); return true; }
       const list = items.map(([, item]) => item);
@@ -162,8 +256,8 @@ export function createModuleContext(ctx, module, phase = 'function') {
       if (['save_gameinfo', 'addnews', 'getchat', 'systemputchat'].includes(name)) return ctx.call('sys', name, ...args);
       if (name === 'rand') return required(random, 'rand', 'services.random.rand')(...args.map(v.int));
       if (name === 'array_rand' || name === 'array_randompick') {
-        const source = args[0], count = args[1] === undefined ? 1 : v.int(args[1]), entries = v.entries(source);
-        if (count < 1 || count > entries.length) return null;
+        const source = args[0], count = args[1] === undefined ? 1 : v.int(args[1]), length = v.arrayCount(source);
+        if (count < 1 || count > length) return null;
         const buckets = v.arrayBucketKeys(source);
         const selected = required(random, 'arrayRandPacked', 'services.random.arrayRandPacked')(buckets, count);
         const keys = Array.isArray(selected) ? selected.map(index => buckets[index]) : buckets[selected];

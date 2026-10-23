@@ -1,10 +1,11 @@
+import { isReferenceDescriptor } from '../../templates/values.mjs';
 import { number as n, text, present, appendLog } from '../numbers.mjs';
 import { call, eq } from './helpers.mjs';
 import config from './wound-config.json' with { type: 'json' };
 
 function argument(value) {
   const descriptor = value && Object.getOwnPropertyDescriptor(value, 'value');
-  return descriptor?.get && descriptor?.set ? value.value : value;
+  return isReferenceDescriptor(descriptor) ? value.value : value;
 }
 const emptyPlayer = value => value == null || (typeof value === 'object' && Object.keys(value).length === 0);
 

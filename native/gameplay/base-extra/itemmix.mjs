@@ -1,6 +1,10 @@
 import { number as n, text, present, isNumeric, appendLog } from '../numbers.mjs';
 import { call, eq, integer } from './helpers.mjs';
 import config from './itemmix-config.json' with { type: 'json' };
+import { copy as copyArray, immutableArray, readonlyValues } from '../../templates/values.mjs';
+
+const defaultRecipes = immutableArray(config.values.mixinfo);
+const { mixinfo: ignoredRecipes, ...configuration } = config.values;
 
 const copy = value => structuredClone(value);
 const values = value => value instanceof Map ? [...value.values()] : Object.values(value ?? {});
@@ -19,9 +23,21 @@ function replacePattern(value, pattern) {
 }
 export const itemmixModule = {
   name: 'itemmix', dependencies: ['sys', 'player', 'logger', 'itemmain', 'input'], optionalDependencies: [], templates: ['itemmix', 'itemmix_cmd', 'itemmix_options', 'itemmix_option_start', 'itemmix_option_end'],
-  state: () => ({ mix_type: { normal: '' }, ...copy(config.values) }),
+  state: () => ({ mix_type: { normal: '' }, ...copy(configuration) }),
+  initialize(ctx) {
+    // Configuration is injected before initialize. Only the absent default
+    // uses a shared inert template; even an explicit null override is retained.
+    const state = ctx.state();
+    // The default mixinfo occupied this position before injected extra fields.
+    // Retain that export/binding order even though its copy is now deferred.
+    const extras = Object.keys(state).filter(key => !['mix_type', 'itmname_ignore', 'mixinfo'].includes(key))
+      .map(key => [key, Object.getOwnPropertyDescriptor(state, key)]);
+    for (const [key] of extras) delete state[key];
+    if (!Object.hasOwn(state, 'mixinfo')) state.mixinfo = copyArray(defaultRecipes);
+    for (const [key, descriptor] of extras) Object.defineProperty(state, key, descriptor);
+  },
   functions: {
-    async get_mixinfo(ctx) { return copy(ctx.state().mixinfo); },
+    async get_mixinfo(ctx) { return copyArray(ctx.state().mixinfo); },
     async itemmix_success(ctx) {
       const sys = ctx.state('sys'), player = ctx.state('player'), state = ctx.state(), type = !present(sys.uip?.mixtp) || eq(sys.uip.mixtp, get(state.mix_type, 'normal')) ? '' : get(state.mix_type, sys.uip.mixtp);
       appendLog(ctx, `<span class="yellow b">${text(sys.uip?.itmstr)}</span>${text(type)}合成了<span class="yellow b">${text(player.itm0)}</span><br>`);
@@ -46,7 +62,7 @@ export const itemmixModule = {
       const result = []; if (values(items).length < 2) return result;
       const recipes = await call(ctx, 'get_mixinfo'), names = [];
       for (const item of values(items)) names.push(await call(ctx, 'itemmix_name_proc', get(item, 'itm'))); names.sort(nameCompare);
-      for (const recipe of values(recipes)) { const materials = [...values(get(recipe, 'stuff'))].sort(nameCompare); if (materials.length === names.length && materials.every((name, index) => nameCompare(name, names[index]) === 0)) { const match = copy(recipe); if (match instanceof Map) match.set('type', 'normal'); else match.type = 'normal'; result.push(match); } }
+      for (const recipe of readonlyValues(recipes)) { const materials = [...values(get(recipe, 'stuff'))].sort(nameCompare); if (materials.length === names.length && materials.every((name, index) => nameCompare(name, names[index]) === 0)) { const match = copy(recipe); if (match instanceof Map) match.set('type', 'normal'); else match.type = 'normal'; result.push(match); } }
       return result;
     },
     async parse_itemmix_resultshow(ctx, result) { let textResult = text(get(result, 0)) + '/' + text(await ctx.call('itemmain', 'parse_itmk_words', get(result, 1), 1)) + '/' + text(get(result, 2)) + '/' + text(get(result, 3)); const special = present(get(result, 4)) ? await ctx.call('itemmain', 'parse_itmsk_words', get(result, 4), 1) : ''; if (present(special)) textResult += '/' + text(special); return textResult; },
