@@ -1,0 +1,9 @@
+{
+  "source": "engine/include/modules/base/team/config/team.config.php",
+  "sha256": "db957ddab12843e504883d11ffb1d0a25e3905a1e0157e07bb628bb34981ae82",
+  "values": {
+    "team_sp": 200,
+    "teamj_sp": 100,
+    "teamlimit": 5
+  }
+}

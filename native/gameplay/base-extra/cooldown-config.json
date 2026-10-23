@@ -1,0 +1,11 @@
+{
+  "source": "engine/include/modules/base/cooldown/config/cooldown.config.php",
+  "sha256": "644953dc268918645917dd93b4664cf31eb67fbd3efe1fe1c307d702ac56275c",
+  "values": {
+    "coldtimeon": 1,
+    "showcoldtimer": 1,
+    "movecoldtime": 650,
+    "searchcoldtime": 650,
+    "itemusecoldtime": 250
+  }
+}

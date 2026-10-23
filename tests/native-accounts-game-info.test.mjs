@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createAdminConfigOracle} from './helpers/native-admin-config.mjs';
+import {createGameAdminService} from '../native/accounts/game-admin.mjs';
+import {createMaintenanceGate} from '../native/http/maintenance.mjs';
+import {ModuleRegistry} from '../native/modules/registry.mjs';
+import {protocolJson} from '../native/protocol/codec.mjs';
+const now=1729612800,fields=['weather','hack','gamestate','starttime','readymin','areatime','gamevars'],base={now,weather:1,hack:0,gamestate:30,starttime:now-3600,readymin:5,areatime:now+1200,startmin:15,gamevars:[],gamenum:9,room_prefix:'',groomtype:0,gstate:{0:'停止',10:'准备',20:'开始',30:'连斗',40:'结束'}};
+test('weather, area timing, start-time and game-state admin branches match actual original PHP including boundary call order',async t=>{
+ const oracle=await createAdminConfigOracle(t);if(!oracle)return;const gate=createMaintenanceGate();t.after(()=>gate.close());
+ const cases=[{command:'wthedit',iweather:'2'},{command:'wthedit',iweather:'1'},{command:'wthedit',iweather:'99'},{command:'hackedit',ihack:'1'},{command:'hackedit',ihack:'0'},...['gsedit_99','gsedit_30','gsedit_20','gsedit_40','gsedit_0'].map(command=>({command})),{command:'gsedit_40',gamestate:0},{command:'gsedit_40',gamestate:10},{command:'gsedit_20',gamestate:10},{command:'gsedit_10',gamestate:0,readymin:0},{command:'areaadd',gamestate:0},{command:'areaadd',wave:0,starttime:now-1},{command:'areaadd',wave:0},{command:'areaadd',wave:1,areatime:now+1795},{command:'areaadd',wave:1},{command:'areawarn'},{command:'areawarn',gamestate:10},{command:'gametypeset',sgtype:'18'},{command:'gametypeset',sgtype:'3'},{command:'gametypeset',sgtype:'18',groomtype:1},{command:'sttimeedit',gamestate:0,setyear:'2027',setmonth:'1',setday:'2',sethour:'3',setmin:'4'},{command:'sttimeedit',gamestate:0,setyear:'20',setmonth:'1',setday:'2',sethour:'3',setmin:'4'},{command:'sttimeedit',gamestate:20}];
+ for(const input of cases){const globals={...base,...Object.fromEntries(['gamestate','starttime','areatime','groomtype','readymin'].filter(key=>key in input).map(key=>[key,input[key]])),wthinfo:['雨','晴','雪'],plsinfo:['甲','乙','丙','丁']};const expected=oracle({page:'gameinfomng',command:input.command,post:input,request:input.command==='gametypeset'?{sgtype:input.sgtype}:{},globals,now,fields,wave:input.wave});
+  const trace=[],session=await new ModuleRegistry([{name:'sys',state:globals,functions:{save_gameinfo(ctx){trace.push(['save',Object.fromEntries(fields.map(key=>[key,structuredClone(ctx.state()[key])]))]);},addnews(ctx,...args){trace.push(['news',...args]);},gameover(ctx,...args){trace.push(['gameover',...args]);ctx.state().gamestate=0;}}},{name:'weather',state:{wthinfo:globals.wthinfo}},{name:'map',state:{plsinfo:globals.plsinfo},functions:{get_area_wavenum:()=>input.wave??0,get_area_interval:()=>30,get_current_area:(ctx,next)=>next?[2,3]:[0,1]}}]).createSession();
+  const service=createGameAdminService({accounts:{authorizeAdmin:async()=>({})},admin:{recordAudit:async(scope,...args)=>trace.push(args)},session,maintenance:gate});const actual=await service.handle('gameinfomng',input,{});
+  assert.equal(actual.context.cmd_info,expected.info,JSON.stringify(input));assert.deepEqual(JSON.parse(protocolJson(Object.fromEntries(fields.map(key=>[key,session.state('sys')[key]])))),expected.fields,JSON.stringify(input));assert.deepEqual(JSON.parse(protocolJson(trace)),expected.trace,JSON.stringify(input));
+ }
+});

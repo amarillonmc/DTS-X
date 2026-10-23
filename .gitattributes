@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Immutable upstream bytes must match upstream/manifest.json on every OS.
+/engine/** -text
+# Static native build hashes are calculated from the emitted LF files.
+/native/** text eol=lf

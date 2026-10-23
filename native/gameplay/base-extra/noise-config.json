@@ -1,0 +1,8 @@
+{
+  "source": "engine/include/modules/base/noise/config/noise.config.php",
+  "sha256": "e93fa4c25a187f40a41982a4f53e241f9fb005fa2668c65397c15b4f7a112896",
+  "values": {
+    "noiseinfo": [],
+    "noiselimit": 300
+  }
+}

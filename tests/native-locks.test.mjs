@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createLockServices } from '../native/storage/locks.mjs';
+
+test('native locks exclude separate processes, wake asynchronously and release on crashes without unlinking', { timeout: 20_000 }, async t => {
+  const parent = fileURLToPath(new URL('../var/tests/', import.meta.url)); await fs.mkdir(parent, { recursive: true });
+  const root = await fs.mkdtemp(path.join(parent, 'native-locks-'));
+  t.after(async () => { assert.ok(path.resolve(root).startsWith(path.resolve(parent) + path.sep)); await fs.rm(root, { recursive: true, force: true }); });
+  const first = await createLockServices(root), second = await createLockServices(root);
+  t.after(() => first.close()); t.after(() => second.close());
+  const token = await first.locks.acquire('gamedata/tmp/processlock/process_1.nlk');
+  await assert.rejects(second.locks.acquire('gamedata/tmp/processlock/process_1.nlk', { timeoutMs: 20 }), { code: 'LOCK_TIMEOUT' });
+  await assert.rejects(second.locks.release(token.resource, token), /not owned/);
+  const source = `import {createLockServices} from ${JSON.stringify(new URL('../native/storage/locks.mjs', import.meta.url).href)}; const s=await createLockServices(process.argv[1]); process.stdout.write('ready\\n'); const t=await s.locks.acquire('gamedata/tmp/processlock/process_1.nlk'); process.stdout.write('acquired\\n'); setInterval(()=>{},1000);`;
+  const child = spawn(process.execPath, ['--input-type=module', '-e', source, root], { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
+  let output = ''; child.stdout.setEncoding('utf8'); child.stdout.on('data', chunk => { output += chunk; });
+  t.after(() => { if (child.exitCode === null) child.kill(); });
+  const waitFor = async word => { const deadline = Date.now() + 5000; while (!output.includes(word)) { if (Date.now() > deadline) assert.fail(`Child did not reach ${word}`); await new Promise(resolve => setTimeout(resolve, 10)); } };
+  await waitFor('ready'); assert.ok(!output.includes('acquired'));
+  await first.locks.release(token.resource, token); await waitFor('acquired');
+  await assert.rejects(second.locks.acquire(token.resource, { timeoutMs: 20 }), { code: 'LOCK_TIMEOUT' });
+  const exit = once(child, 'exit'); child.kill(); await exit;
+  const reclaimed = await second.locks.acquire(token.resource, { timeoutMs: 2000 }); await second.locks.release(token.resource, reclaimed);
+  assert.equal((await fs.readdir(path.join(root, '.native-locks'))).length, 1, 'Stable lock inode remains after process exit');
+  await first.playerLocks.check(1, 7, 1000); assert.equal(await first.playerLocks.create(1, 7), true);
+  await assert.rejects(second.playerLocks.check(1, 7, 20), { code: 'LOCK_TIMEOUT' });
+  await first.playerLocks.release(1, 7); assert.equal(await second.playerLocks.create(1, 7), true); await second.playerLocks.release(1, 7);
+  await assert.rejects(first.locks.acquire('../other'), /escapes/);
+  const held = await first.locks.acquire('close'); const waiting = second.locks.acquire('close');
+  const rejected = assert.rejects(waiting, /abort|closed/i); await second.close(); await rejected;
+  await first.locks.release('close', held);
+});

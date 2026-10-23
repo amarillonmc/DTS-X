@@ -45,8 +45,15 @@ test('Node replay bridge feeds real upstream archive, packing and replay reader 
   const runtime = await createPhpRuntime({ engineRoot, runtimeRoot, stateRoot:path.join(root,'php') });
   try {
     const response = await runtime.run({ scriptPath:'/runtime/replay-archive.php', server:{ DTS_REPLAY_DATABASE:databaseName, DTS_REPLAY_CREDENTIALS:JSON.stringify(credentials) } });
-    assert.equal(response.exitCode, 0, response.errors);
-    assert.equal(response.httpStatusCode, 200, response.errors);
+    // PHP 7.4 stack traces can abbreviate arguments to a 15-character prefix.
+    // Keep diagnostic failures useful without emitting fixture credentials.
+    let diagnostics = response.errors;
+    if (credentials.password) {
+      diagnostics = diagnostics.replaceAll(credentials.password, '[redacted]');
+      if (credentials.password.length > 15) diagnostics = diagnostics.replaceAll(credentials.password.slice(0,15) + '...', '[redacted]');
+    }
+    assert.equal(response.exitCode, 0, diagnostics);
+    assert.equal(response.httpStatusCode, 200, diagnostics);
     const result = JSON.parse(response.text);
     assert.deepEqual(result.cases.map(item=>item.game), ['401','s.402']);
     assert.equal(result.excludedCases, 3);

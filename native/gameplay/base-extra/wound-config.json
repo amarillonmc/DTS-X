@@ -1,0 +1,48 @@
+{
+  "source": "engine/include/modules/base/wound/config/wound.config.php",
+  "sha256": "49a7f7997017a812b30ffb082176f007be3e99f4250fbd084d08f7b9792a08e2",
+  "values": {
+    "inf_place": "bhaf",
+    "infinfo": {
+      "b": "<span class=\"red b\">胸</span>",
+      "h": "<span class=\"red b\">头</span>",
+      "a": "<span class=\"red b\">腕</span>",
+      "f": "<span class=\"red b\">足</span>"
+    },
+    "infname": {
+      "b": "<span class=\"red b\">胸部受伤</span>",
+      "h": "<span class=\"red b\">头部受伤</span>",
+      "a": "<span class=\"red b\">腕部受伤</span>",
+      "f": "<span class=\"red b\">足部受伤</span>"
+    },
+    "infskillinfo": {
+      "b": 1,
+      "h": 2,
+      "a": 3,
+      "f": 4
+    },
+    "wep_infatt": {
+      "N": "b",
+      "P": "bha",
+      "K": "bhaf",
+      "G": "bhaf",
+      "C": "bh",
+      "D": "bhaf",
+      "F": "bhaf",
+      "J": "bhaf",
+      "B": "bhaf"
+    },
+    "wep_infobbs": {
+      "N": 5,
+      "P": 15,
+      "K": 55,
+      "G": 25,
+      "C": 10,
+      "D": 55,
+      "F": 30,
+      "J": 75,
+      "B": 40
+    },
+    "inf_recover_sp_cost": 50
+  }
+}

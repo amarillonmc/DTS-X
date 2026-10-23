@@ -1,34 +1,45 @@
-# 部署、迁移与运维
+# 原生 Node.js 部署与运维
 
-本地实现验收已完成，可作为 VPS 验证交付版。自动测试、真实主局与房间操作、全量编译和重启持久化已经通过；目标 VPS 的 Compose 部署、备份恢复和多人完整开战仍应先在隔离测试服验证。具体结果及 Windows 模板隔离的历史原因见 [VALIDATION.md](VALIDATION.md)。
+`XX` 分支的生产入口位于 `native/`。`npm start`、`npm run setup`、`npm run compile`、`npm run doctor` 使用原生 JavaScript、mysql2 和操作系统文件锁，不运行 PHP、PHP WebAssembly 或原 PHP daemon。PHP/WASM 留在开发依赖和旧版回归中；生产安装使用 `npm ci --omit=dev`。
 
-## 完整包与依赖
-
-必须携带 `engine/`、`runtime/`、`public/`、`scripts/`、`upstream/`、`server.mjs`、`package*.json`，以及 Docker 部署文件。本项目不引用工作区的相邻 `dts`、设定仓库或资源库；外部游戏原本引用的链接、论坛、远程音频和跨服服务仍依原配置工作。
-
-可运行 `npm run bundle` 生成 `artifacts/dts-x-node.tar.gz`，复制到 VPS 后在新目录用 `tar -xzf dts-x-node.tar.gz` 解包。该包包含部署源码和锁定依赖清单，排除本机 `.env`、数据库、玩家存档和测试工具下载；首次部署仍需生成自己的配置。迁移已有服务器的数据另按下文备份恢复。
-
-Docker 方案使用 Node 24 LTS 和 MariaDB 11.4.13，npm 依赖锁定在 `package-lock.json`。本地运行需要 Node ≥24.18.0（推荐受支持的 LTS）、npm 及 MariaDB。运行时确实内嵌 PHP，安装 npm 包会下载 WebAssembly；不需要本机 PHP。原生文件锁扩展用于不同执行线程间的文件锁，不可用时启动失败，不能降级成没有锁的多人服务。
-
-建议先按 2 vCPU、2–4 GB RAM 的小服配置进行实测，再按玩家并发调整；这是起始配置，不是容量承诺。默认有 2 个外部执行线程、4 个内部线程、2 个 NPC 回调线程。每个实例的 PHP 内存上限为 512 MB，实际占用依模块和操作而变；不要盲目增加线程数。
+原始资源和对照源码仍在 `engine/`，来源见 `upstream/manifest.json`。经典界面、请求协议及资源路径保留。原生测试覆盖情况见 [NATIVE-MIGRATION.md](NATIVE-MIGRATION.md)，旧兼容版的历史验收不能作为本版的验收。**本次没有实际运行 Docker/Compose；下述容器流程仍需在目标主机演练。**
 
 ## 首次安装
 
-1. 生成 `.env`：`node scripts/configure.mjs --url=https://你的域名`。这一步不需要安装 npm 依赖，不覆盖已有配置。
-2. 使用 `docker compose up -d --build`。默认只把应用端口绑定到 VPS 的 loopback；数据库不向宿主公开。
-3. 查看 `docker compose logs -f app`。首次模块编译会耗时，健康检查留有十分钟启动窗口。初始化及编译失败的详细记录在应用持久卷的 `var/install.log`、`var/compile-validate.log`、`var/compile-compile.log`。
-4. 使用 `.env` 中的 `ADMIN_USER` / `ADMIN_PASSWORD` 登录。主游戏的开始方式沿用原配置；站长可从原管理页面开局，玩家也可使用原房间功能。
-5. 域名反向代理至 `http://127.0.0.1:3000`，为外网部署配置 HTTPS。游戏目前要求部署在域名根路径，不支持 `/dts/` 这样的子路径。
+需要 Node.js ≥24.18.0、npm、可用的原生 OS 文件锁扩展，以及专用 MySQL/MariaDB 数据库。数据库须支持原表使用的 MyISAM、MEMORY/HEAP 和 InnoDB；不要自行把所有表转换成一种引擎。
 
-如 VPS 没有 Node，可在另一台机器生成 `.env` 后一起上传，或在 Linux 通过 `docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" -w /work node:24-bookworm-slim node scripts/configure.mjs --url=https://你的域名` 生成。指定宿主用户可避免生成只有 root 可读的配置文件。
+1. 用 `node scripts/configure.mjs --url=https://你的域名` 生成私有 `.env`。生成器不会覆盖已有文件。配置 `DB_HOST`、`DB_PORT`、`DB_NAME`、`DB_USER`、`DB_PASSWORD` 和 `TABLE_PREFIX`；非 Docker 部署需先建立专用空库和相应数据库用户。
+2. 确认 `NATIVE_DATA_DIR` 指向独立、空的私有目录。未设置时为 `DATA_DIR/native`；`DATA_DIR` 默认 `var`，因此默认是项目下的 `var/native/`。不能放在 `engine/`、`public/` 或项目根目录中。
+3. 执行 `npm ci --omit=dev`，再执行 `npm run setup`。安装器创建原始表结构、主局记录和初始管理员；它不创建数据库，也不清空数据库。
+4. 执行 `npm run compile` 和 `npm run doctor`，确认静态模块、模板、安装归属、数据库与 OS 锁可用，再运行 `npm start`。
+5. 使用 `.env` 的 `ADMIN_USER` / `ADMIN_PASSWORD` 登录。初始密码建议使用生成器的 24 位随机值，并保持在原界面接受的 12–24 字符范围内。安装后修改 `ADMIN_PASSWORD` 不会修改已存密码；改密使用账户页面。
 
-非 Docker：事先创建专用空库与数据库用户，把连接信息写入 `.env`，执行 `npm ci`、`npm run setup`、`npm start`。应用不会替你创建数据库，也不会清空非空数据库。可用 systemd 管理 `npm start`，不用运行 `acdts-daemonctl.sh` 或 `.bat`。
+`AUTO_SETUP=1` 允许启动时执行同一个安装检查。新实例必须同时满足空库、空状态目录；已有实例只有归属验证通过才继续启动。首次安装中断时保留 `creating` 日志和已创建数据，之后拒绝重新初始化；不要删除安装标记或清空数据库来重试。先检查失败原因，或使用另一套明确的空库和空目录重新部署。
 
-## 单层反向代理与玩家 IP
+安装归属由两个位置共同证明：状态目录的 `native-install.json`，以及数据库的 `<TABLE_PREFIX>native_install` 表。两者的 `owner` 必须一致，数据库名、表前缀、必需表及主局记录也必须匹配。仅复制其中一方、手工伪造标记或把旧服数据库直接交给安装器都会被拒绝。
 
-`TRUST_PROXY` 默认 `0`，只使用 TCP 连接对端地址。若在同机 nginx 后运行，默认地址会是代理或 Docker 网关，影响原游戏按 IP 记录及限制账号的行为。只有在应用端口不向外网开放、请求必经自己控制的单层反代时，才在 `.env` 设置 `TRUST_PROXY=1`，并保持 Compose 的 `BIND_ADDRESS=127.0.0.1`；非 Docker 的 `HOST` 同样保持 `127.0.0.1`。
+部署包必须包含 `native/`、`engine/`、`public/`、`upstream/`、`scripts/`、`package.json` 与 lockfile，以及所用的部署文件。`npm run bundle` 生成源码发布包；包内不应包含 `.env`、玩家状态、数据库文件、`node_modules` 或本机测试下载。安装依赖时保持 lockfile，不通过重新解析版本修复线上问题。
 
-在已配置域名与 HTTPS 证书的 nginx `server` 内加入以下代理段，`PUBLIC_URL` 填同一个外部 HTTPS 地址：
+## 配置、权限与公开入口
+
+| 配置 | 用途 |
+| --- | --- |
+| `PUBLIC_URL` | 外部可访问的 HTTP/HTTPS origin，例如 `https://dts.example.com`。只支持域名根路径。 |
+| `HOST` / `PORT` | Node 监听地址与端口，默认 `127.0.0.1:3000`。 |
+| `NATIVE_DATA_DIR` | 本实例全部可变文件的私有根目录。 |
+| `MAX_BODY_MB` | 请求体上限，默认 64 MiB；反代上限应与之相符。 |
+| `NATIVE_TICK_MS` | 原生后台调度间隔，默认 1000 ms；不会改变原玩法中的时间条件。 |
+| `TRUST_PROXY` | 默认 `0`；只在受控单层反代后设置为 `1`。 |
+
+`native-admin-config.json` 保存管理页面设置；`native-module-state.json` 保存活动模块清单、编辑候选和已验证候选。其余可变内容位于该根目录的 `gamedata/`，包含录像、缓存、日志、房间通知和备份。`.native-locks/` 是真实 OS 锁的稳定文件载体。数据库保存账户、人物、房间、战绩和活动排行。源目录 `engine/` 不是存档，也不会在每次启动时复制成第二份 PHP 运行树。
+
+状态目录只授权给运行 Node 的系统账户。POSIX 目录建议 `0700`、私有文件 `0600`；Windows 使用相应 ACL 限制访问。`.env`、安装标记、账户备份和跨服密钥都不能放进静态资源目录或公开下载。原生文件服务拒绝逃逸路径及符号链接，不把私有目录作为一般 HTTP 文档根目录。
+
+`/healthz` 用于进程就绪检查；它不代替数据库诊断或玩法回归。`npm run doctor` 验证归属、必需表、主局、模块/模板和锁支持，报告不包含凭据；除私有锁探测文件外不写业务数据。公开网页安装器 `install_NEW.php` 不启用。
+
+## 反向代理与跨服回调
+
+应用端口只绑定回环地址，在受控 nginx `server` 中可使用：
 
 ```nginx
 location / {
@@ -41,28 +52,43 @@ location / {
 }
 ```
 
-必须用 `$remote_addr` **覆盖** `X-Forwarded-For`，不要使用会累加客户端值的 `$proxy_add_x_forwarded_for`。Node 仅接受该头中的单个合法 IPv4/IPv6，非法值、多值或缺失值回退到连接对端；原始 `X-Forwarded-For`、`Client-IP` 和 `CF-Connecting-IP` 会在进入 PHP 前移除，防止旧 `real_ip()` 再次无条件信任它们。直接开放 `BIND_ADDRESS=0.0.0.0` 时必须保持 `TRUST_PROXY=0`。此配置不适用于未经单独验证的 CDN 或多层代理链。
+只有请求必经自己的单层代理、应用端口未对外开放的部署，才启用 `TRUST_PROXY=1`。必须覆盖 `X-Forwarded-For`，不能累加客户端传入值。Node 只接受一个有效地址；其余代理头不会再次交给游戏无条件信任。直接开放监听时保持 `TRUST_PROXY=0`。多层 CDN/代理需要另行验证。原账户 IP 处理保留上游 IPv4 限制。
 
-Node 向 PHP 提供正确的 IPv6 `REMOTE_ADDR`，但上游 `real_ip()` 只提取 IPv4，原 IP 记录/限制因此仍有 IPv6 局限；本移植未改变其游戏侧解析规则。`client_max_body_size` 应与 `MAX_BODY_MB` 保持一致。
+跨服用户库、活动排行和录像使用真实 HTTP 请求。`PUBLIC_URL` / 游戏地址须从对方服务器可达；录像远端收到 `storage_req` 后会反向访问本服 `/replay_receive.php` 取回原录像容器。不要把仅容器内可达的主机名写成公开回调地址。检查 DNS、TLS、入站/出站防火墙、反代请求大小与超时；单机能打开首页不证明跨服回调可达。
 
-## 状态和配置
+接收授权必须由操作员显式写入状态根目录。默认不启用原源码中公开的示例密钥。安装完成后，再创建以下私有文件；修改后重启服务：
 
-- `.env`：连接信息、公开地址、初始站长账号和线程数。安装后修改 `ADMIN_PASSWORD` 不会重置数据库中的密码；改密码使用游戏原有流程。
-- `var/game/`：实际运行目录，包含配置、资源快照、编译代码、日志、临时锁、录像和生成文件。
-- `var/php/`：PHP 会话和临时文件。
-- MariaDB：账号、人物、房间、战绩等原数据表。表引擎与字符集保留原版，不擅自转换。
+`native-userdb-peers.json`，同时用于远程用户库与活动排行认证：
 
-Docker 将应用的 `var` 和数据库分别放在 `game-state`、`database` 命名卷中。源目录的 `engine/` 不是服务器存档。复制仓库只会部署新服，迁移现有服必须同时迁移数据库和持久化目录。
+```json
+{"version":1,"peers":{"other-server":{"pass":"替换为独立随机密钥","ip":"203.0.113.10"}}}
+```
 
-初始管理员密码必须为 12–24 个字符，与原版登录和改密限制相容；生成器使用随机 24 位十六进制密码。`MAX_BODY_MB` 默认 64，同时设置 Node 请求体限制及 PHP 上传限制，供原跨服录像上传使用；反向代理也要允许所需请求大小。`DATA_DIR` 默认 `var`，必须与 `engine/` 分开，不能指向项目根或其父目录；迁移到另一台机器时不要沿用旧机器的绝对路径。
+`ip` 为对方服务器实际请求地址，支持精确 IPv4；空字符串不限制来源 IP，仍须通过密钥与时间签名。用户库协议能查询和修改账户数据，只授权受信任的服务器。各主机时钟须同步。
 
-应用以容器内 `node` 用户（UID/GID 1000）运行。首次命名卷会继承镜像中的目录所有者；恢复备份或改用 bind mount 后，需停服校正状态目录权限。对于本项目 Compose 命名卷，可执行 `docker compose run --rm --no-deps --user root --entrypoint chown app -R 1000:1000 /app/var`，然后正常启动。此命令只针对应用状态卷，不修改数据库卷。
+`native-replay-peers.json`，用于授权录像存储请求：
 
-`GET /healthz` 表示应用启动和编译完成。深度数据库诊断使用 `docker compose exec app npm run doctor` 或本地 `npm run doctor`。健康接口不输出密码、绝对路径或管理信息。
+```json
+{"version":1,"peers":{"other-server":"替换为另一独立随机密钥"}}
+```
 
-## 停服备份与恢复
+录像 `sign` 也是私有目录名，不能包含路径分隔符、冒号或目录逃逸语法。发送端的原配置字段为 `userdb_remote_storage` / `userdb_remote_storage_sign` / `userdb_remote_storage_pass`，以及 `replay_remote_storage` / `replay_remote_storage_sign` / `replay_remote_storage_key`；通过原生管理设置配置，不能只编辑原 PHP 样例文件。接收端授权文件与发送端设置是两个独立方向，不会自动互相授权。
 
-原 SQL 含 MyISAM 表，不能依赖 `--single-transaction` 做一致性备份。先停止应用，再导出数据库和整个状态目录：
+## Docker 与进程管理
+
+`Dockerfile` 使用原生入口和生产依赖；Compose 提供应用与 MariaDB 服务。先检查 `.env`，再使用 `docker compose up -d --build`。Compose 默认仅向宿主回环地址发布应用端口，数据库不发布到宿主；`game-state` 卷挂载 `/app/var`，默认原生状态在 `/app/var/native`，数据库使用独立 `database` 卷。首次健康检查的宽限期不是编译或容量承诺。
+
+应用以容器中的 `node` 用户运行。bind mount 或备份恢复后需确认 UID/GID 和目录权限；示例镜像使用 UID/GID 1000。只对已核对的应用状态目录修正权限，不修改数据库卷。非容器部署可由 systemd 或其他服务管理器管理 `npm start`，不运行旧 shell/bat PHP daemon。
+
+一个原生状态目录只允许一个服务进程。`start`、离线 `setup` 与 `compile` 共用 `native-process-owner` OS 锁；锁不可用或被其他进程持有就失败。不要删除锁文件，也不要将多个 app 副本指向同一数据库和存档做横向扩容。该部署模型未验收分布式文件系统和多主写入。
+
+`SIGINT` / `SIGTERM` 触发停止调度、停止接收新动态请求、等待进行中的请求及远端账户锁释放，最后关闭数据库与实例锁。HTTP 有关闭超时，操作系统崩溃仍不等于有序完成业务；备份应等待应用真正退出。原生锁由 OS 随进程退出释放持有权，不需要删除所谓“旧锁”。
+
+## 备份与同版本恢复
+
+完整备份包括**数据库、整个 `NATIVE_DATA_DIR` 和 `.env`**。原表含 MyISAM，不能仅依赖 `--single-transaction`；先停服，再导出并复制文件。管理页用户表备份和每日用户备份只保存账户表，不能恢复人物、房间、全局进度或录像，不能替代完整备份。
+
+以下 Compose 示例仅适用于默认状态路径。使用自定义 `NATIVE_DATA_DIR` 时先核对容器内对应路径，再替换复制命令：
 
 ```sh
 set -eu
@@ -72,39 +98,23 @@ test ! -e "$backup_dir"
 mkdir -p "$backup_dir"
 docker compose stop app
 docker compose exec -T db sh -c 'exec mariadb-dump -uroot -p"$MARIADB_ROOT_PASSWORD" --databases "$MARIADB_DATABASE" --lock-all-tables' > "$backup_dir/database.sql"
-docker compose cp app:/app/var "$backup_dir/state"
+docker compose cp app:/app/var/native "$backup_dir/native"
 cp .env "$backup_dir/config.env"
 docker compose start app
 ```
 
-每次备份写入新的时间戳目录，避免覆盖上次备份或把 `var` 嵌套复制进旧 `state`。任何步骤失败便停止；检查错误并完成备份后，再手工启动应用。保管好备份中的凭据和玩家数据。在新 VPS 使用同版本代码与数据库，先启动数据库服务，再通过 `mariadb` 导入 dump，把备份状态复制回应用卷的 `/app/var` 后再启动 app。务必核对 `DB_NAME`、`TABLE_PREFIX`、文件所有者和 `gamedata/install.lock`；不要让自动首次安装运行在已有数据上。实际恢复前可先在隔离实例演练。
+任一步失败都应先查清原因，不覆盖上一份备份。备份含账号哈希、跨服密钥与数据库密码，按私有数据保存。不要把备份目录提交到版本库或放到网页目录。
 
-以下是将上述 DTS-X 备份恢复到全新 Compose 卷的顺序。先把所选备份中的 `config.env` 放回 `.env`，只调整 `PUBLIC_URL` 等目标机器设置，保留数据库名、表前缀和凭据的一致性。将示例 `backup_dir` 替换为实际备份目录后执行：
+恢复必须针对隔离的空目标，使用匹配的代码版本和数据库名称/表前缀。先启动数据库而不启动应用，导入完整 dump，再恢复整个原生状态目录和 `.env`，检查文件权限。`native-install.json` 与 `<TABLE_PREFIX>native_install` 必须来自同一次备份且归属一致。确认后先运行 `npm run doctor`，再启动应用并核对账号、主局、房间、录像和再次重启。数据库改名、拆分备份或只恢复用户表都不是自动支持的完整实例恢复。
 
-```sh
-set -eu
-backup_dir=backup/20261022T183000Z
-test -f "$backup_dir/state/game/gamedata/install.lock"
-docker compose up -d --wait db
-docker compose build app
-docker compose create app
-docker compose exec -T db sh -c 'exec mariadb -uroot -p"$MARIADB_ROOT_PASSWORD"' < "$backup_dir/database.sql"
-docker compose cp "$backup_dir/state/." app:/app/var
-docker compose run --rm --no-deps --user root --entrypoint chown app -R 1000:1000 /app/var
-docker compose up -d app
-docker compose exec app npm run doctor
-```
+## 旧 PHP/WASM 服迁移与更新
 
-导入失败就停止恢复，不要启动应用或反复运行安装器。这个流程针对完整 DTS-X 备份；旧 PHP 服的目录不是这样的备份，不能直接覆盖 `var/game` 后假定迁移完成。旧服导入还需确认其源码版本、配置与模块差异、数据库表前缀及录像中的历史绝对路径，先在隔离副本逐项迁移验证。本项目未提供未经验证的一键旧服导入器。
+原生安装器**不认领旧服非空数据库，也不自动导入或清空旧服**。旧版 `var/game` / `var/php` 不是原生状态目录，不能改名为 `var/native` 假装完成迁移。当前没有经验证的一键全服导入命令。
 
-## 更新和故障处理
+先保留旧服数据库、完整持久目录、`.env` 和代码版本备份。在局间安排切换窗口，使用独立的新原生数据库和状态路径验证账号、配置、模块差异、历史录像与其他数据的迁移方案；保留旧实例的完整回退副本。未完成该实例的数据核对前，不把玩家流量切到新服。不要为绕过安装保护而复制或修改 owner 标记。
 
-更新前备份并停服。修改源 `engine/` 后重建 app 镜像；启动时同步发生变动的源文件到持久目录，并按需重新编译。没变动的源文件不会覆盖运行目录内旧管理页面保存的设置。如果源与运行副本都改变，启动会报告具体冲突并在同步前停止：备份两个副本，合并改动，使运行副本与最终源内容一致后重试。源删除只会删除未被单独修改的对应副本。不要删除 `source-state.json` 绕过冲突，它记录了同步依据。
+正常原生更新先备份、停服、替换代码并按 lockfile 安装依赖，然后运行 `npm run compile`、`npm run doctor`，再启动。`compile` 只验证已交付的原生模块和静态模板，不重新执行 PHP 编译器，也不重生覆盖 JavaScript。管理页面保存并通过检查的候选可在停服后用 `npm run compile -- --staged` 应用；没有有效候选或构建指纹变化就拒绝。更改 JavaScript 实现后需要重启 Node。
 
-`npm run setup` 可重复执行：已有安装锁时不重建数据库，编译输入未改变且缓存完整时不重复编译。编译结束后，Node 根据原模板解析器生成的清单逐项检查宿主磁盘上的非空模板文件，全部存在才保存成功标记；每次启动也会复核清单，发现丢失或空文件便重新编译。编译开始即撤销旧成功标记；失败后修复错误再运行 `npm run compile`，不能通过恢复旧标记来使用部分生成的缓存。首次安装若中途失败并留下非空库，安装器会拒绝再次写入；查看 `install.log`，确认是否为新建空服后，恢复安装前的空库备份或使用新的专用空库。不要清空已有玩家数据的库。
+默认开发修改 `native/`。部分规则、页面和模板是由开发期工具生成的静态 JavaScript；运行 `scripts/native-compiler/build-*.mjs` 会覆盖相应生成文件，不能当作日常启动/编译步骤。维护方式见 [ARCHITECTURE.md](ARCHITECTURE.md) 与 [DEVELOPMENT.md](DEVELOPMENT.md)。
 
-如果编译输出成功而模板文件随后消失，先检查宿主安全软件的隔离记录及文件系统日志，不要持续重编译或恢复旧成功标记。本次 Windows 验证已确认火绒隔离原引擎生成的 PHP 模板。信任目录或恢复隔离文件应由主机管理员根据实际记录决定；也可转到独立 Linux 测试环境继续验收。应用本身不会修改防护设置。
-
-禁止把多个 app 副本指向同一存档进行横向扩容。服务器、setup 与 compile 使用同一个 OS 状态锁，并发运行会直接报错；停止持有锁的进程后再重试，不要删除锁文件。进程退出后锁由 OS 释放，不需要手工清理“旧锁”。该版本保留原文件锁和游戏全局状态，部署约定是单个 Node 主机、多个内部执行线程。后台维护由 Node 的定时器触发，仍沿用原维护的节流和业务逻辑。
-
-本次环境没有 Docker，Compose 的实际构建、Linux 文件锁与备份恢复演练尚未完成。Windows 上已验证真实 MariaDB 与嵌入 PHP 的安装、全量编译、独立进程状态锁、实际游戏操作及重启前后数据一致；测试父进程通过 IPC 进入相同生产 shutdown 逻辑并正常退出，这不等同于 Linux 的 SIGTERM 验收。生产上线前应在目标 VPS 执行首次启动、停服备份和隔离恢复演练。
+上线前仍需在目标环境验证首次安装、非空库保护、重复启动、反代 IP、跨服回调、SIGTERM、完整备份和隔离恢复。当前真实 MySQL、OS 锁、原生 HTTP 和原 PHP 差分测试的结果，不能替代未执行的 Docker、Linux 或目标并发容量验收。

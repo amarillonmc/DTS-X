@@ -1,0 +1,8 @@
+{
+  "source": "engine/include/modules/base/items/trap/config/trap.config.php",
+  "sha256": "ad96b20262fd4c8c60c75418577c785a7d8f045aaa163bf22d0edbd95825c475",
+  "values": {
+    "trap_min_obbs": 1.5,
+    "trap_max_obbs": 40
+  }
+}

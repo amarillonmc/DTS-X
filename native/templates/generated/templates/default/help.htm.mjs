@@ -1,0 +1,556 @@
+// Generated from templates/default/help.htm; edit source migration/compiler, not generated code.
+export default async function render(r, s) {
+  if (r.truth((!r.truth((await r.call("defined", "IN_GAME")))))) {
+    r.exit("Access Denied");
+  }
+  (await r.include(r.template("header"), s));
+  await r.write("<div class=\"subtitle\">游戏帮助</div>\r\n\r\n\r\n<HR>\r\n\r\n\r\n<TABLE class=menutbl style=\"BORDER-COLLAPSE: collapse\" cellSpacing=0\r\ncellPadding=0 align=center border=0>\r\n<TBODY>\r\n<TR>\r\n<TD colSpan=8 class=\"b3\" height=30px>\r\n<span><B style=\"FONT-SIZE: 120%; color: #98fb98\">“ACFUN大逃杀”游戏帮助目录</B></span>\r\n</TD>\r\n</TR>\r\n<TR>\r\n<TD class=\"b3\" height=25px width=105px>\r\n<span><A href=\"help.php#基本概念\">基本概念</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#参加游戏\">参加游戏</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#游戏流程\">游戏流程</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#禁区和连斗\">禁区和连斗</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#游戏界面\">游戏界面</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#指令说明\">指令说明</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#战斗说明\">战斗说明</A></span>\r\n</TD>\r\n<TD class=\"b3\" width=105px>\r\n<span><A href=\"help.php#伤害与熟练\">伤害与熟练</A></span>\r\n</TD>\r\n</TR>\r\n<TR>\r\n<TD class=\"b3\" height=25px>\r\n<span><A href=\"help.php#基础姿态\">基础姿态</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#应战策略\">应战策略</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#道具说明\">道具说明</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#武器\">武器</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#属性\">属性</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#受伤与状态\">受伤与状态</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#毒药和陷阱\">毒药和陷阱</A></span>\r\n</TD>\r\n<TD class=\"b3\" height=25px>\r\n<span><A href=\"help.php#称号与技能\">称号与技能</A></span>\r\n</TD>\r\n</TR>\r\n<TR>\r\n<TD class=\"b3\" height=25px>\r\n<span><A href=\"help.php#道具合成\">道具合成</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#特殊道具\">特殊道具</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#天气\">天气</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#物品掉落表\">物品掉落表</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#NPC简介\">NPC简介</A></span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span><A href=\"help.php#玩家守则\">玩家守则</A></span>\r\n</TD>\r\n</TR>\r\n</TBODY>\r\n</TABLE>\r\n<HR>\r\n<center>\r\n<div class='help_body'>\r\n\r\n<p><span class=\"subtitle2\">写在前面的话</span></p>\r\n<p>作为一款以文本为主要表现形式的webgame，虽然ACFUN大逃杀即将迎来她的第10个年头，但玩过它、或者涉猎过同类游戏的人依然十分稀少。<br>\r\n也许你已经是BR原版的老玩家了；也许你虽然没怎么玩过BR大逃杀，但是对类似的网页游戏有所涉猎；当然更可能的情况是你以前并没有接触过这款网页游戏。<br>\r\n虽然，当代游戏节奏越来越快，这样大段的帮助也许已经是时代眼泪了，但无论是刚接触本游戏的新手，还是已经对玩法有相当认识的老手，本帮助文档都希望能让你了解到有关这款游戏的更多的知识。</p>\r\n<p>以下就是关于这款游戏的基本说明，包括游戏的操作方式、游戏过程、基本的道具资料以及NPC资料。<BR>\r\n部分内容并未在此说明，则是为了保留一点神秘感，增加游戏的趣味性。</p>\r\n<p>注意，以下帮助文档中的所有资料基于ACFUN大逃杀N.E.W.1.9.1版的资料，如果版本号更新则可能出现变动。<BR>\r\n本文档最早原型为CSIEBR的帮助文档。感谢所有参与撰写帮助的玩家的协助。<BR>\r\n<BR>\r\n</p>\r\n\r\n<p><a name=\"基本概念\"><span class=\"subtitle2\">■基本概念Q&A</span></a></p>\r\n<DIV align=\"left\" class=FAQ>下面以问与答的形式简述基本游戏概念。<BR>\r\n<DL class=\"FAQ\">\r\n<DT>问1：ACFUN大逃杀是什么，怎么玩？\r\n<DD>答：ACFUN大逃杀是一个网页游戏（webgame），不需要安装客户端，基本操作通过鼠标/快捷键来进行。<br>\r\n<DT>问2：怎么进入游戏？\r\n<DD>答：如果你尚未注册，需要先点击屏幕上方、标题下方的<a>&gt;&gt;账号注册</a>，并输入想要的用户名和密码来创建账号。<br>\r\n如果已经注册过，在首页登陆以后，单击<input type=\"button\" value=\"进入游戏\">按钮，或者屏幕上方的<a>&gt;&gt;进入游戏</a>链接皆可。<br>\r\n<dt>问3：我能否中途离开游戏？\r\n<DD>答：如果要中途离开游戏，只要关闭浏览器即可；如果这局游戏未结束，而你想回到游戏，登陆账号进入游戏就可以继续。<br>\r\n请注意，就算你离开游戏，你的游戏角色仍留在在游戏中，有可能被别的玩家杀死、因停留在禁区被抹杀，或者被清除挂机系统给清除。<br>\r\n<DT>问4：房间是什么？怎么进入房间？\r\n<DD>答：“房间”相当于标准游戏之外的副本，在首页点击<input type=\"button\" value=\"新建一个房间\">即可创建，或者选择已经存在的房间<input type=\"button\" value=\"进入\">或者<input type=\"button\" value=\"旁观\">。<br>\r\n进入已存在的房间需要再次点击<input type=\"button\" value=\"进入游戏\">才能加入。<br>\r\n<DT>问5：游戏目标是什么？\r\n<DD>答：首先，<span class=\"yellow b\">保证自己的存活</span>；其次，设法通过<span class=\"yellow b\">最后幸存</span>、<span class=\"yellow b\">锁定解除</span>或其他胜利方式结束游戏，并成为那个胜利者。\r\n<DT>问6：场上只有我一个人了，为什么还没有获胜？<BR>\r\n<DD>答：游戏开局时是<span class=\"yellow b\">开放激活</span>状态，此时任何玩家都能随时加入游戏，就算只剩1个人也不会立刻结束。<br>\r\n当游戏<span class=\"yellow b\">停止激活</span>（一般同时会进入<span class=\"yellow b\">连斗阶段</span>）之后，如果场上只有1位玩家幸存，那么这位玩家才会获得<span class=\"yellow b\">最后幸存</span>胜利。<br>\r\n<DT>问7：为什么我刚入场没多久就死了？\r\n<DD>答：死亡的原因有很多种，常见的原因有：<span class=\"yellow b\">被高级NPC杀害，误食毒物，踩到了陷阱</span>，或是触发了某些区域的<span class=\"yellow b\">特殊即死事件</span>。<br>\r\n游戏中尽量保持<span class=\"yellow b\">生命值处于高位乃至全满</span>，能够减少上述情况的发生率。<BR>\r\n还有一种情况是，有其他玩家比你入场早或者发展比你快，到了<span class=\"yellow b\">足以秒杀你</span>的程度。这种情况需要你多积累一些游戏经验、提升生存能力。<BR>\r\n<DT>问8：为什么那些玩家开局很快就能击杀我、击杀NPC？他们是不是充值了？\r\n<DD>答：这些玩家可能<span class=\"yellow b\">手速更快</span>，这样移动和探索的次数更多，获取道具资源和攻击NPC的机会就更多；<BR>\r\n而且他们可能<span class=\"yellow b\">对游戏更加熟悉</span>，选择了容易发育的武器路线、称号或者卡片。<BR>\r\nACFUN大逃杀是一个开源免费运营的游戏，不存在充值系统，每位玩家的起点都是相同的。与新玩家相比，老玩家的优势在于游戏经验更为丰富，并且在更长的游戏时间里积累了更多的卡片等游戏资源。<BR>\r\n<DT>问9：怎么移动和探索？\r\n<DD>答：在<select><option>■ 移动 ■ </option></select>下拉框</span>点选<span class=\"yellow b\">目的地</span>，就可以移动到该地点。<br>\r\n点击<input type=\"button\" class=\"cmdbutton\" value=\"[Z]探索\">则会<span class=\"yellow b\">在原地进行探索。</span><br>\r\n移动和探索都会消耗一定体力，如果自己处于异常状态还可能损失一定生命，而且可能发现物品、遇到敌人、队友、尸体、陷阱或者意外事件。<br>\r\n<DT>问10：怎么获得强力的武器和防具？\r\n<DD>答：<span class=\"yellow b\">移动</span>和<span class=\"yellow b\">探索</span>都可能发现物品，这时只要<input type=\"button\" class=\"cmdbutton\" value=\"[Z]拾取\">就会将其放入包裹，如果包裹已满则会让你进行取舍；选择<input type=\"button\" class=\"cmdbutton\" value=\"[X]丢弃\">则会将其放回原处。<BR>\r\n除了拾取以外，杀死其他玩家和NPC也能<span class=\"yellow b\">缴获装备道具</span>；使用缴获的金钱能够<span class=\"yellow b\">在商店购买装备道具</span>；此外，<span class=\"yellow b\">进行道具合成</span>也是中后期获取强力装备道具的手段。<br>\r\n<DT>问11：怎样杀死其他玩家和NPC？被杀死的玩家会怎样？\r\n<DD>答：<span class=\"yellow b\">移动</span>和<span class=\"yellow b\">探索</span>都有一定概率遭遇敌人。<br>\r\n如果对方发现了你，那么强制进入战斗；<br>\r\n如果对方没有发现你，那么你可以酌情点击<input type=\"button\" class=\"cmdbutton\" value=\"[Z]攻击\">或者<input type=\"button\" class=\"cmdbutton\" value=\"[X]逃跑\">。<br>\r\n战斗时依据双方攻击、防御以及熟练度，会互相造成损伤。<br>\r\n战斗中如果对方生命减为0，那么对方死亡，你可以在尸体上<span class=\"yellow b\">掠夺一件物品或者拿走金钱</span>。<br>\r\n如果游戏没有进入连斗状态，原地还有可能再遇到这具尸体，并再拿物品；当然其他玩家也可能捷足先登。<br>\r\n被杀死的玩家在同一局游戏中无法再行动，但是下一局游戏这位玩家依然可以重新入场。<br>\r\n<DT>问12：NPC会不会主动攻击我？\r\n<DD>答：在游戏机制里，战斗都是由玩家触发的。只有玩家移动或者探索时，才有可能遇见NPC、进入战斗。<BR>\r\n如果玩家不探索/移动，是不会被NPC攻击的，可以利用这一点避免伤亡。但是，玩家就算不动，也还是有可能被其他玩家主动攻击的。<BR>\r\n<DT>问13：怎么赚钱？钱能干什么？\r\n<DD>答：开局会发放非常少量的金钱；NPC身上有大量金钱，<span class=\"yellow b\">杀死玩家或者NPC</span>就能拿到他身上携带的金钱。<br>\r\n一些<span class=\"yellow b\">特殊事件</span>或者<span class=\"yellow b\">特殊道具</span>也能获得金钱。但是，并不能通过贩卖来获取金钱（这是一个你死我活的游戏）。<br>\r\n钱可以在<span class=\"yellow b\">商店</span>购买装备或者道具。<br>\r\n<span class=\"yellow b\">商店</span>位于“无月之影”、“光坂高校”或者“花菱商厦”，在这些区域点击<input type=\"button\" class=\"cmdbutton\" value=\"[C]商店\">即可进入商店页面。\r\n<DT>问14：体力耗尽了！生命值快归零了！怎样回复体力和生命？\r\n<DD>答：回复体力和生命通常有3种办法：<span class=\"yellow b\">吃补给品、使用睡眠/治疗/静养功能、使用「治疗」技能。</span><BR>\r\n1. 开局会发面包和矿泉水，分别能回复生命和体力。游戏中也可拾取、缴获大量补给品，不过可能带毒导致损失生命。<BR>\r\n2. 如果补给耗尽，点击<input type=\"button\" class=\"cmdbutton\" value=\"睡眠\">可以进入睡眠状态，逐渐回复体力；点击<input type=\"button\" class=\"cmdbutton\" value=\"治疗\">则是回复生命。<BR>\r\n3. 选择称号后可以获得<span class=\"yellow b\">「治疗」技能</span>，点击<input type=\"button\" class=\"cmdbutton\" value=\"[V]技能表\">并在技能表界面<input type=\"button\" value=\"治疗\">，即可立刻回复500点生命和体力，但是需要消耗1个技能点<BR>\r\n此外，等级提升时也能回复少量体力；一些特殊技能和道具也能回复体力或者生命。<BR>\r\n<DT>问15：受伤了怎么办？进入异常状态了怎么办？\r\n<DD>答：受伤跟异常状态都不会自动解除。<BR>\r\n受伤时直接<span class=\"yellow b\">点击状态图标的受伤部位</span>，即可消耗一定体力包扎伤口。<BR>\r\n解除异常状态则有3种办法：其一是寻找或购买相应的药剂并服用；其二是到特定地图通过“静养”指令解除；其三是通过<span class=\"yellow b\">「治疗」</span>等技能直接解除。<BR>\r\n<DT>问16：能组队吗？怎么组队？组队有什么好处？\r\n<DD>答：在游戏进入“连斗”阶段之前都可以组队<BR>\r\n想创立队伍请点击<input type=\"button\" class=\"cmdbutton\" value=\"组建队伍\">，相应地还能<input type=\"button\" class=\"cmdbutton\" value=\"加入队伍\">和<input type=\"button\" class=\"cmdbutton\" value=\"退出队伍\"><BR>\r\n队友不会相互攻击（但是雾天可能误伤）；遇到队友时，可以将道具赠送给队友，但是不能赠送钱。<BR>\r\n如果是组队对抗的房间，队友之间还能即时赠送物品和呼叫支援。<BR>\r\n需要注意的是，进入“连斗”之后队伍功能失效，此时玩家只能自相残杀。<BR>\r\n<DT>问17：称号是什么？\r\n<DD>答：<span class=\"yellow b\">内定称号</span>相当于“职业”，不同称号能让玩家获得不同的优势。<BR>\r\n一般情况下，玩家开局能从若干称号中任选一个。选择后，会立刻获得一定的加成和技能，之后一般就不能再更换称号了。<BR>\r\n根据游戏目的和场上情况选择合适的称号是生存和获胜的必修课。<BR>\r\n<DT>问18：技能是什么？\r\n<DD>答：<span class=\"yellow b\">技能</span>让玩家具有一定的特殊能力。<BR>\r\n技能可以通过选取称号、使用技能书或者使用特定卡片入场来获得。<BR>\r\n活用技能也是生存和获胜的必由之路。<BR>\r\n<DT>问19：卡片是什么？\r\n<DD>答：在进入游戏之前选择不同的<span class=\"yellow b\">卡片</span>，能让玩家以不同的初始状态进入游戏。<BR>\r\n只有<span class=\"yellow b\">卡片模式</span>和部分房间模式允许玩家自选入场卡片。<BR>\r\n卡片可以靠<span class=\"yellow b\">游戏中使用卡片包、抽卡、完成成就</span>等方式获得。<BR>\r\n卡片具有罕贵度，<span class=\"gold b\">S卡</span>最为稀有和强大，之后<span class=\"cyan b\">A卡</span>、<span class=\"brickred b\">B卡</span>、<span class=\"white b\">C卡</span>和<span class=\"grey b\">M卡</span>稀有度和强度依次下降。<BR>\r\n合适的卡片能够让玩家一开局就获得优势，不过总体而言，胜负的决定因素还是在于人的技术而不是卡片强度。<br>\r\n</DD>\r\n</DL>\r\n</DIV>\r\n<br>\r\n<p><a name=\"参加游戏\"><span class=\"subtitle2\">1.参加游戏</span></a></p>\r\n\r\n<p>\r\n要加入游戏，首先必须<span class=\"yellow b\">登录账号</span>。<br>\r\n<br>\r\n1. 如果你尚未注册过账号，需要先点击屏幕上方、标题下方的<a>&gt;&gt;账号注册</a>，并输入想要的用户名和密码来创建账号。<br>\r\n用户名必须是未注册过的，并且不可包含敏感词汇。不同服务器的账号是互不通用的。<br>\r\n注册完毕后会自动登录账号。<br>\t\r\n2. 如果已经注册过，在首页输入用户名和密码进行登陆。<br>\r\n<br>\r\n登录以后，你可以自由选择参与<span class=\"yellow b\">标准局</span>或者<span class=\"yellow b\">房间局</span><br>\r\n若要参加标准游戏，登陆后直接单击<input type=\"button\" value=\"进入游戏\">，或者屏幕上方的<a>&gt;&gt;进入游戏</a>链接就可以了<br>\r\n<img src=\"img/help/help_1.1.gif\"><br>\r\n这样首先会进入<span class=\"yellow b\">入场手续</span>页面，在这个页面可以即时修改自己选用的头像、性别和口头禅等，还可以修改用于入场的卡片。\r\n<img src=\"img/help/help_1.2.gif\" style=\"width:900px\"><br>\r\n选好以后，点击<input type=\"button\" value=\"提交\">就可以进入游戏了。<br>\r\n<br>\r\n若要参加房间游戏，登陆后在画面右侧的<span class=\"yellow b\">房间列表</span>中选择已经存在的房间<input type=\"button\" value=\"进入\">或者<input type=\"button\" value=\"旁观\">。<br>\r\n<img src=\"img/help/help_1.3.gif\"><br>\r\n进入房间以后，还需要再次点击左侧的<input type=\"button\" value=\"进入游戏\">才能到达<span class=\"yellow b\">入场手续</span>页面。<br>\r\n也可以创建新房间。点击<input type=\"button\" value=\"新建一个房间\">即可进入创建新房间的页面。<br>\r\n<img src=\"img/help/help_1.4.gif\"><br>\r\n一般而言，在选好房间模式并点击<span class=\"yellow b\">准备</span>按钮之后，就会自动进入新房间的游戏中。<br>\r\n</p>\r\n\r\n\r\n<br>\r\n\r\n<p><a name=\"游戏流程\"><span class=\"subtitle2\">2.游戏流程</span></a></p>\r\n\r\n<p>\r\n<span class=\"lime b\">【胜利条件】</span>：<br>\r\n“ACFUN大逃杀”的故事背景简而言之，是玩家们被锁死在虚拟幻境中，被迫互相残杀来争取唯一的生存名额。<br>\r\n因此，简要地说，<span class=\"yellow b\">杀光其他所有玩家，最后独存</span>的那个人，就是本局游戏的胜利者，将迎来<span class=\"yellow b\">「最后幸存」</span>结局。<br>\r\n如果玩家设法杀死位于<span class=\"yellow b\">无月之影</span>的BOSS，并使用从BOSS身上拾取的特殊道具<span class=\"yellow b\">「游戏解除钥匙」</span>，也可以带领剩余玩家逃离“ACFUN大逃杀”的世界，迎来<span class=\"yellow b\">「锁定解除」</span>结局。<br>\r\n若玩家以某种方式找到<span class=\"yellow b\">奇怪的按钮</span>，使用后则有一定概率引来电子病毒核弹炸毁整个虚拟世界，也即<span class=\"yellow b\">「核爆全灭」</span>结局。<br>\r\n此外，还存在面向PVE的<span class=\"yellow b\">「幻境解离」</span>结局，其流程较为复杂，推荐有一定基础的玩家挑战。<br>\r\n另外，房间和某些限时开放的特殊局也有自己的游戏结局。<br><br>\r\n\r\n<span class=\"lime b\">【游戏路线】</span>：<br>\r\n进入游戏 →→ 通过战斗提升等级和熟练 →→ 杀死NPC和玩家存钱买补给、武器、强化道具  →→ 连斗以后与其他玩家决斗并获胜 →→ <span class=\"yellow b\">『最后幸存』</span><br>\r\n进入游戏 →→ 选择合适的姿势和策略 →→ 回避战斗并等待其他玩家自相残杀或被NPC杀死  →→ 躲藏在安全地点等待高等级玩家因禁区停留、踩高伤陷阱、撞BOSS或者其他RP死法而死亡 →→ <span class=\"yellow b\">『最后幸存』</span><br>\r\n进入游戏 →→ 通过战斗提升等级和熟练 →→ 杀死NPC和玩家存钱买补给、武器、强化道具  →→ 用移动PC解除禁区 →→ 杀死位于无月之影的BOSS NPC →→ <span class=\"yellow b\">『锁定解除』</span><br>\r\n这里只列出最常见的游戏路线，其他路线或者其他游戏模式的打法也请玩家自行探索。<br>\r\n</p>\r\n\r\n\r\n<p><a name=\"禁区和连斗\"><span class=\"subtitle2\">3.禁区和连斗</span></a></p>");
+  r.imports(s, "sys", "map", "gameflow_combo");
+  await r.write("<img src=\"img/help/help_3.1.gif\"><br>");
+  r.assign(r.slot(s, ["plsnum1"]), (await r.module("map", "get_plsnum")));
+  await r.write("<p>ACFUN大逃杀地图中共有");
+  await r.write(r.text(r.get(s, "plsnum1")));
+  await r.write("个区域。<br>\r\n<span class=\"yellow b\">无月之影</span>是玩家的出生地，也是默认的禁区，离开之后就不能返回。<br>\r\n此外，每隔一定的时间，就会有一些地区变为<span class=\"yellow b\">禁区</span>。禁区的间隔时间因模式而异，通常为30分钟增加1次禁区，极速模式为10分钟增加1次禁区。<br>\r\n在禁区增加的那一刻，<span class=\"yellow b\">滞留在禁区</span>的玩家都会被强行杀死。变为禁区的区域将<span class=\"yellow b\">不能进入</span>。<br>\r\n不过，在连斗前将应战策略改为<span class=\"yellow b\">“重视躲避”</span>，则可以<span class=\"yellow b\">自动回避禁区</span>。<br>\r\nNPC不会被禁区杀死。此外，多数NPC也会自动回避禁区。<br>\r\n<br>\r\n玩家可以使用道具<span class=\"yellow b\">“移动PC”</span>，来<span class=\"yellow b\">临时解除禁区</span>。如果解除了禁区，一直到下一次增加禁区的时刻为止，玩家可以任意进入这些区域，不过已经移走的NPC不会返回。<br>\r\n如玩家想挑战游戏BOSS，也必须先解除禁区，才能到无月之影与BOSS决战。<br>\r\n<br>");
+  r.assign(r.slot(s, ["combonum1"]), r.add(r.get(r.get(s, "deathlimit_by_gtype"), "0"), 20));
+  await r.write("当禁区数量增加到一定程度（一般是游戏<span class=\"yellow b\">第");
+  await r.write(r.text(r.get(s, "arealimit")));
+  await r.write("次增加禁区</span>的时刻），游戏会<span class=\"yellow b\">停止激活</span>，新玩家不能再任意加入游戏了。<br>\r\n如果<span class=\"yellow b\">停止激活时存活玩家数少于");
+  await r.write(r.text(r.get(s, "combolimit")));
+  await r.write("人</span>，或者在游戏中死亡的玩家和NPC<span class=\"yellow b\">总数超过");
+  await r.write(r.text(r.get(s, "combonum1")));
+  await r.write("人的阈值</span>，都将使游戏进入<span class=\"yellow b\">“连斗阶段”</span>。如果加入游戏的玩家数目较多，死亡人数阈值会有一定上浮。<br>\r\n进入连斗以后，<span class=\"yellow b\">所有尸体消失且无法再摸到尸体</span>，<span class=\"yellow b\">所有队伍解散</span>，<span class=\"yellow b\">躲避姿态也无法回避禁区</span>，剩下的人必须决一死战。<br>\r\n而且，禁区还会继续增加。如果全部地区都变为禁区，那么所有的参与者都会死亡，这局游戏将没有胜利者。</p>\r\n<p>此外，在游戏进入连斗以后，如果玩家使用从<span class=\"yellow b\">杏仁豆腐</span>处缴获的<span class=\"yellow b\">“杏仁豆腐的ID卡”</span>，则会使游戏进入<span class=\"red b\">“死斗模式”</span>。<br>\r\n进入死斗模式以后，玩家将不会再遇到任何NPC。如果想要快速消灭剩下的玩家，死斗模式不失为一种选择。</p><br>\r\n<p><a name=\"游戏界面\"><span class=\"subtitle2\">4.游戏界面</span></a></p>\r\n<p>\r\n<span class=\"lime b\">下面这是一般游戏进行中的画面。</span><br>\r\n画面顶端这样一行链接对应的含义如下：<br>\r\n<span class=\"yellow b\">『首页』</span> 回到首页，可以登录登出、更换房间，也可以看当前游戏的进行时间，激活、生存、死亡人数。<br>\r\n<span class=\"yellow b\">『站内邮件』</span> 用于查看和收取游戏站内信，成就奖励、卡片获得都要收取站内信的附件才算真正完成。<br>\r\n<span class=\"yellow b\">『账号资料』</span> 查看自己账号的<span class=\"yellow b\">个人资料和成就完成状况</span>，<br>\r\n还可以选择主卡片、查看自己的卡册、花费切糕进行抽卡，或是获取日常任务<br>\r\n<span class=\"yellow b\">『进入游戏』</span> 从其他页面进入游戏界面，如果网速不快导致“提交”按钮卡住了也能通过这个链接刷新当前页面。<br>\r\n<span class=\"yellow b\">『战场地图』</span> 显示大逃杀战场的简易地图，除了可以看禁区以外暂时没什么用。<br>\r\n<span class=\"yellow b\">『进行状况』</span> 显示游戏的进行状况以及最新的50条聊天记录，不参加游戏的旁观者也可以从这个页面观看游戏进度。<br>\r\n此外，这一页面还能察看<span class=\"yellow b\">禁区解除与否、当前以及未来3次的禁区状况</span>，请多加留意。<br>\r\n<span class=\"yellow b\">『当前幸存』</span> 按杀人数和等级顺序显示当前存活的玩家情况，可以用于掌握其他玩家的游戏进展。<br>\r\n<span class=\"yellow b\">『历史优胜』</span> 可以查看服务器上储存的<span class=\"yellow b\">历次游戏获胜者、该局进行状况以及录像</span>。<br>\r\n<span class=\"yellow b\">『玩家排行』</span> 查看本服务器的玩家排行榜。点击玩家名可以查看该玩家的详细信息和他的卡册。<br>\r\n<span class=\"yellow b\">『游戏帮助』</span> 即是本帮助文档所在的页面。<br>\r\n<span class=\"yellow b\">『游戏管理』</span> GM可以由此进入管理界面。<br>\r\n<span class=\"yellow b\">『官方讨论区』</span> 通往本游戏的官方论坛。<br>\r\n<span class=\"yellow b\">『官方网站』</span> 通往本游戏的设定站。<br>\r\n</p>\r\n<img src=\"img/help/help_4.1.gif\" style=\"width:900px\"><br>\r\n<div class=\"FAQ\">\r\n<dl>\r\n<dt>『玩家状态数据』\r\n<dd>显示玩家的等级、内定称号、攻防数据、熟练度、受伤状况等等各种数值，以及身上装备和包裹道具的界面。<br>\r\n其中“体力”、“生命”以及“受伤状况”也以图像的形式显示，这三个数值与玩家息息相关，请多加留意。<br>\r\n此外，<span class=\"yellow b\">基础姿态</span>和<span class=\"yellow b\">应战策略</span>的切换、<span class=\"yellow b\">内定称号</span>的选择、<span class=\"yellow b\">武器装备</span>的卸下，以及一些<span class=\"yellow b\">主动技能</span>的触发也是在这个区域进行。\r\n<dt>『聊天及进行状况』\r\n<dd>默认显示聊天信息。点击<input type=\"button\" value=\"切换模式\">可以切换到进行状况显示。<br>\r\n<span class=\"yellow b\">聊天信息：</span><br>\r\n玩家可以听到公共频道所有人的聊天信息，也可以发送聊天信息。<br>\r\n如果玩家加入了队伍，还可以在队伍频道聊天，此时信息只有队友能收到。<br>\r\n当玩家或者NPC死亡时，也会以红字在聊天框留下遗言，同时会显示死亡的地点。<br>\r\n游戏开始、结束、增加禁区时，会以黄字在聊天框发送提示。<br>\r\n<span class=\"yellow b\">进行状况：</span><br>\r\n这里会即时显示游戏开始、结束、增加禁区、天气变化、玩家杀死玩家或者NPC、合成道具、发动技能、造成伤害等等的讯息。<br>\r\n经常关注聊天框的信息有助于掌握战场态势。<br>\r\n<dt>『反馈区』\r\n<dd>玩家操作的结果一般以文字的形式显示在这里。\r\n<dt>『指令区』</span> \r\n<dd>玩家各指令的用途参见下方的<span class=\"yellow b\">“指令说明”</span>。\r\n</dl>\r\n</div>\r\n<br>\r\n\r\n<p><a name=\"指令说明\"><span class=\"subtitle2\">5.指令说明</span></a></p>\r\n<dl>\r\n<dt>『移动与探索』\r\n<dd>\r\n<span class=\"yellow b\">『移动』</span> 消耗15点体力，离开现在的区域而移动到别的区域。<br>\r\n<span class=\"yellow b\">『探索』</span> 消耗15点体力，探索现在的区域。快捷键为Z。<br>\r\n移动和探索都可能发现物品、遇到敌人、队友、尸体，或者遇上突发事件。<br>\r\n<dt>『包裹道具使用』\r\n<dd>\r\n使用或者装备对应道具，具体效果根据道具的类型而定。可拥有的道具上限是6个。<br>\r\n从包裹1号到6号的快捷键分别是A、S、D、Q、W、E。\r\n<dt>『道具特殊操作』\r\n<dd>\r\n<span class=\"yellow b\">『装备卸下』</span> 位于状态数据区，可以卸下装备的武器和防具并放到包裹里。<br>\r\n<span class=\"yellow b\">『道具合成』</span> 将2-6个不同道具合成为一个新道具。常见的合成公式请参考后文<br>\r\n<span class=\"yellow b\">『包裹管理』</span>\r\n可以将完全相同的道具合并，以节约包裹空间。注意，将有毒的食物和无毒的食物合并，会使全部食物带毒。此外，还可以将两个道具互换位置。<br>\r\n<span class=\"yellow b\">『道具丢弃』</span> 选择装备或者包裹道具并丢掉。该道具不会消失，而是丢在当前的地区，自己可以通过<span class=\"yellow b\">『视野』</span>立刻捡回来，别的玩家也能捡到。<br>\r\n<dt>『回复操作』");
+  r.imports(s, "rest");
+  r.assign(r.slot(s, ["rest_sleep_val"]), r.divide((await r.call("round", r.multiply(r.divide(1, r.get(s, "rest_sleep_time")), 10000))), 10000));
+  r.assign(r.slot(s, ["rest_heal_val"]), r.divide((await r.call("round", r.multiply(r.divide(1, r.get(s, "rest_heal_time")), 10000))), 10000));
+  await r.write("<dd>\r\n<span class=\"yellow b\">『睡眠』</span> 每秒回复体力上限的");
+  await r.write(r.text(r.get(s, "rest_sleep_val")));
+  await r.write("%的体力。<br>\r\n<span class=\"yellow b\">『治疗』</span> 每秒回复生命上限的");
+  await r.write(r.text(r.get(s, "rest_heal_val")));
+  await r.write("%的生命。<br>\r\n<span class=\"yellow b\">『静养』</span> 按上述速度同时恢复生命和体力，同时有一定概率解除异常状态，静养时间越长，解除概率越高。<br>");
+  r.assign(r.slot(s, ["rest_pls_arr"]), r.array([]));
+  {
+    const a0 = r.copy(r.get(s, "rest_hospital_list"));
+    for (const [k0, v0] of r.entries(a0)) {
+      r.assign(r.slot(s, ["rhlv"]), v0);
+      r.assign(r.slot(s, ["rest_pls_arr", r.APPEND]), r.get(r.get(s, "plsinfo"), r.get(s, "rhlv")));
+    }
+  }
+  r.assign(r.slot(s, ["rest_pls"]), (await r.call("implode", "、", r.get(s, "rest_pls_arr"))));
+  await r.write("静养只能在<span class=\"yellow b\">");
+  await r.write(r.text(r.get(s, "rest_pls")));
+  await r.write("</span>内进行。\r\n<dt>『队伍』");
+  r.imports(s, "team");
+  await r.write("<dd>队友不能互相攻击，可以互相赠送道具，可以队内聊天。<br>\r\n不过，在<span class=\"yellow b\">起雾、浓雾和暴风雪</span>天气下，由于进入战斗时无法识别对方，可能会误伤队友。<br>\r\n进入连斗后，所有的队伍都将被取消，并且不能再组建或者加入队伍。<br>\r\n\r\n<span class=\"yellow b\">『创建队伍』</span> 消耗");
+  await r.write(r.text(r.get(s, "team_sp")));
+  await r.write("点体力，组建一个新的队伍，队伍必须有名称和密码。<br>\r\n<span class=\"yellow b\">『加入队伍』</span> 消耗");
+  await r.write(r.text(r.get(s, "teamj_sp")));
+  await r.write("点体力，加入一个已经存在的队伍，需要填写队伍名称和密码。每支队伍最多能有");
+  await r.write(r.text(r.get(s, "teamlimit")));
+  await r.write("人。<br>\r\n<span class=\"yellow b\">『脱离队伍』</span> 脱离目前已经加入的队伍。\r\n<dt>『商店』");
+  r.imports(s, "itemshop");
+  r.assign(r.slot(s, ["shop_pls_arr"]), r.array([]));
+  {
+    const a1 = r.copy(r.get(s, "shops"));
+    for (const [k1, v1] of r.entries(a1)) {
+      r.assign(r.slot(s, ["sv"]), v1);
+      r.assign(r.slot(s, ["shop_pls_arr", r.APPEND]), r.get(r.get(s, "plsinfo"), r.get(s, "sv")));
+    }
+  }
+  r.assign(r.slot(s, ["shop_pls"]), (await r.call("implode", "、", r.get(s, "shop_pls_arr"))));
+  await r.write("<dd>\r\n在<span class=\"yellow b\">");
+  await r.write(r.text(r.get(s, "shop_pls")));
+  await r.write("</span>内可以访问商店。商店的快捷键是C。<br>\r\n在商店内可以购买回复品、异常治疗药剂、各系武器、防具、武器强化道具、陷阱，以及一些有用的杂物。<br>\r\n<dt>『技能表』\r\n<dd>\r\n可以打开技能表，使用或者学习技能。具体技能讲解见后文<A href=\"help.php#称号与技能\">称号与技能</A>。\r\n</dl>\r\n<p><a name=\"战斗说明\"><span class=\"subtitle2\">6.战斗说明</span></a></p>\r\n\r\n<p>\r\n玩家移动或者探索时，若遇见其他的角色（包括玩家和NPC）便会发生战斗。此时，战斗的<span class=\"yellow b\">发起方</span>是玩家自己。<BR>\r\n战斗发起方有一定概率<span class=\"yellow b\">先制攻击</span>。<BR>\r\n敌方是玩家时，先制率基础值是50%，而敌方是NPC时，基础值是55%；天气良好时先制率增加，天气恶劣时则降低；选用合适的策略和技能也能增加先制率。对战斗发起方而言，先制率通常是大于50%的。<br>\r\n如果你先制攻击，可以向对方<span class=\"yellow b\">喊话</span>，选择<input type=\"button\" class=\"cmdbutton\" value=\"[Z]攻击\">或者<input type=\"button\" class=\"cmdbutton\" value=\"[X]逃跑\">，还可以<span class=\"yellow b\">发动战斗技能</span>。<BR>\r\n如果选择攻击，则你先攻击对手，在你攻击完毕后对手再反击（也有可能无法反击）。具体的攻击方式依据你所持武器或者发动的战斗技能而有区别。而如果选择逃走，则必然回避战斗。<BR>\r\n而如果敌方先制攻击，就是对方先发动攻击，此时直接进入战斗而无法逃跑。就算战斗发起方是你自己，也有可能被敌方先制攻击。<BR>\r\n<BR>\r\n注意，其他玩家也会行动。当一名玩家主动行动并遭遇另一名玩家时，主动行动方就是战斗发起方，可以看到详细的作战讯息。而另一名玩家只能看到简要的战斗报告。<BR>\r\n<span class=\"lime b\">下面就是先制敌方时的战斗界面。左边的主界面显示双方的能力值和状态，右边则是指令区。</span></p>\r\n<img  src=\"img/help/help_6.1.gif\" style=\"width:900\">\r\n<p>如果选择用武器进行攻击，则会根据自己的攻击力和熟练度，以及对方的防御力来计算攻击伤害。<BR>\r\n如果玩家的攻击造成对方的生命值归零，那么对方就被玩家<span class=\"yellow b\">杀死</span>了。<BR>\r\n同样的，如果敌人的攻击造成玩家的生命值归零，那么玩家就被敌方杀害，在这局游戏中就无法再进行任何行动了。<BR>\r\n玩家杀死对手后（无论是否是发起方），可以从对方的武器、防具、包裹道具或者金钱中，<span class=\"yellow b\">选择一项来缴获</span>。<BR>\r\n缴获以后无法立刻再次缴获别的道具，必须在原地再次发现尸体才有机会。<BR>\r\n</p>\r\n<br>\r\n\r\n<p><a name=\"伤害与熟练\"><span class=\"subtitle2\">7.战斗伤害与熟练度</span></a></p>\r\n<p>\r\n战斗造成的伤害分为<span class=\"yellow b\">物理伤害</span>和<span class=\"yellow b\">属性伤害</span>两大部分。\r\n此两大部分相加得到<span class=\"yellow b\">最终伤害</span><br>\r\n</p>\r\n<p>\r\n<span class=\"lime b\">1.『物理伤害』</span><br>\r\n与攻击者的<span class=\"yellow b\">总攻击力</span>和<span class=\"yellow b\">武器对应系别的“熟练度”</span>成正比例关系，并与防御者的<span class=\"yellow b\">总防御力</span>成反比例关系。<BR>\r\n此外，部分武器拥有固定的物理伤害值。连击属性也影响物理伤害值。<br>\r\n整体而言，物理伤害的特点是<span class=\"lime b\">成长性明显</span>，初期数值很小，但后期伤害通常非常可观。<br>\r\n<dl>\r\n<dt>『总攻击力』\r\n<dd>通常等于攻击者基础攻击力 + 武器攻击力 x 2。<br>\r\n要增加基础攻击力，可以依靠<span class=\"yellow b\">升级</span>、<span class=\"yellow b\">攻击强化药物</span>、<span class=\"yellow b\">部分技能</span>或者其他一些途径来提升基本数值。<br>\r\n要增加武器攻击力（即武器效果值），则可以依靠<span class=\"yellow b\">拾取、缴获、合成更强大的武器</span>或者<span class=\"yellow b\">使用武器强化道具</span>来提升武器的效果值。\r\n<dt>『熟练度』\r\n<dd>熟练度对伤害的影响同各系<span class=\"yellow b\">熟练度</span>以及<span class=\"yellow b\">熟练度伤害系数</span>成正比例关系。<br>\r\n各系武器的熟练度伤害系数参见<A href=\"help.php#武器\">武器</A>部分。<BR>\r\n同样的武器攻击同样的敌人，在熟练度很低时可能只能造成1-2点的伤害，但在熟练度很高完全可能把敌人秒杀。<BR>\r\n要增加熟练度通常有以下方式：<br>\r\n①只要<span class=\"yellow b\">攻击敌人</span>，无论命中与否，武器对应的熟练度都会上升。<BR>\r\n②阅读<span class=\"yellow b\">“技能书”</span>或者使用特定的<span class=\"yellow b\">“能力药”</span>也可以提高熟练度。<BR>\r\n③部分<span class=\"yellow b\">“内定称号”</span>或<span class=\"yellow b\">“卡片”</span>也会自带增加熟练度的<span class=\"yellow b\">“技能”</span>。<BR>\r\n④比较特殊的是，<span class=\"yellow b\">合成物品</span>和<span class=\"yellow b\">设置陷阱</span>可以增加爆系熟练度；使用<span class=\"yellow b\">水果刀</span>可以增加斩系熟练度。<BR>\r\n⑤此外，使用“装有H173的注射器”进行自杀时，有微小概率会进入<span class=\"yellow b\">L5状态</span>，此时全系熟练度都会大幅度上升。\r\n<dt>『总防御力』\r\n<dd>通常等于防御者的基础防御力 + 身体/头部/手部/足部四个部位的防具防御力之和。注意饰物的效果值不计入防御力。<br>\r\n要增加基础防御力，可以依靠<span class=\"yellow b\">升级</span>、<span class=\"yellow b\">防御强化药物</span>、<span class=\"yellow b\">部分技能</span>或者其他一些途径来提升基本数值。<br>\r\n要增加防具防御力，则可以依靠<span class=\"yellow b\">拾取、缴获、合成更强大的防具</span>或者<span class=\"yellow b\">使用强化道具</span>来提升防具的效果值。<br>\r\n此外，部分属性和技能还会导致防御方的防御力下降。\r\n<dt>『物理固定伤害』\r\n<dd>指的是<span class=\"yellow b\">重型枪械</span>和<span class=\"yellow b\">灵力兵器</span>的固定伤害值，在<A href=\"help.php#武器\">武器</A>部分会专门阐述。\r\n<dt>『连击』\r\n<dd>属性<span class=\"yellow b\">连击</span>会让物理伤害值直接乘上一个系数，在<A href=\"help.php#属性\">属性</A>部分会专门阐述。\r\n</dl>\r\n</p>\r\n<p>\r\n另外，若要考察整个物理伤害前后阶段，则可分为<span class=\"yellow b\">物抹判定、物伤基础值、物伤加成值、物伤修正值</span>四个阶段。<br>\r\n<dl>\r\n<dt>1.1 物抹判定阶段\r\n<dd>如果物抹（伤害抹消）生效，物理伤害只有1，并且不再进行后续判定。</dd>\r\n<dt>1.2 基础值阶段\r\n<dd>这一阶段又分为2个子阶段，将两个子阶段的伤害简单相加得到的基础值：\r\n<ol>\r\n<li>武器主伤害阶段，根据前述的总攻击力、熟练度和总防御力算出武器主伤，加上重枪和灵系的固定伤害，之后计算连击属性的伤害加成。\r\n<li>固定伤害阶段，又分为固伤加算阶段和固伤乘算阶段，【底力】、【科学】、【乱击】、【浴血】的固定伤害属于加算阶段，【金刚】降低固伤的效果属于乘算阶段，先加算，后乘算。\r\n</ol>\r\n</dd>\r\n<dt>1.3 加成值阶段\r\n<dd>所有影响这一阶段的技能给出一个系数，全部乘到基础值上。<br>\r\n影响这一阶段的技能/功能有【灵力兵器的体力衰减】、【重枪挨打时伤害增加】、【热恋/同志属性的激怒】、【物理减半类防御属性】以及【重击/烈击】、【硬化/钢化】、钱四爷【嗑药】、【藤甲】、【梦想天生】、【瞄准】、【咆哮】、【歼灭】、【蓄力】、【穿杨】、【重拳】、【暴打】、【潜能】、【百出】、【恐惧】、【解构】和【必杀】技能的物伤加成。</li>\r\n<dt>1.4 修正值阶段\r\n<dd>满足条件时，直接改变整个物理伤害。<br>\r\n【EMP】影响这里（物理伤害变成0）。\r\n</dl>\r\n</p>\r\n<p>\r\n<span class=\"lime b\">2.『属性伤害』</span><br>\r\n只有在拥有<span class=\"yellow b\">攻击属性</span>时才会拥有此项伤害。攻击属性列表见<A href=\"help.php#属性\">属性</A>部分<BR>\r\n无视防御者的防御力，且与攻击者的<span class=\"yellow b\">武器攻击力</span>和<span class=\"yellow b\">武器对应系别的“熟练度”</span>有关，但不同属性的伤害计算指标有较大区别。<br>\r\n整体而言，属性伤害的特点是<span class=\"lime b\">两极分化</span>，前期大部分攻击属性都能无视防御力，快速打出伤害，但中后期大部分下位攻击属性的伤害封顶，只有上位属性伤害能随着武器攻击的上涨而继续上升。<br>\r\n</p>\r\n<p>\r\n另外，若要考察整个属性伤害前后阶段，则可分为为<span class=\"yellow b\">属抹判定、总属伤基础值、总属伤加成值、总属伤修正值</span>四个阶段。\r\n<dl>\r\n<dt>2.1 属抹判定阶段\r\n<dd>如果属抹（属性抹消）生效，只按照攻击属性数目返回伤害，并且不再进行后续判定。\r\n<dt>2.2 总属伤基础值阶段\r\n<dd>这一阶段所有的攻击属性依次进行判定，将各个属性伤害简单相加得到的总属伤基础值。单个属性伤害又分为以下阶段：\r\n<ol>\r\n<li>单属性基础值，根据属性类别、武器攻击力、熟练度和对方是否受伤计算出一个伤害。暂时没有任何技能/功能影响这个阶段。\r\n<li>单属性加成值，将基础值乘上各功能/技能对单属性伤害的加成值。影响这一阶段的有【属性减半防御属性】、DK^BurNIng的【核弹】、冥界亚龙的【创世】、【藤甲】、FFF的【圣火】、【催化】、【过载】、【金刚】、【附魔】等影响单项属性伤害的技能/功能。\r\n<li>单属性修正值。技能【高能】影响这一阶段。\r\n</ol>\r\n</dd>\r\n<dt>2.3 总属伤加成值阶段\r\n<dd>所有影响这一阶段的技能/功能给出一个系数，全部乘到基础值上。<br>\r\n影响这一阶段的技能/功能有【咆哮】、【特攻】、【圣光】、【吸光】、【圣盾】等影响所有属性的技能。\r\n<dt>2.4 修正值阶段\r\n<dd>目前还没有技能影响这一阶段。\r\n</dl>\r\n\r\n</p>\r\n<p>\r\n<span class=\"lime b\">3.『最终伤害』</span><br>\r\n前述两个伤害的简单相加。<br>有许多功能/技能会影响最终伤害，具体分为<span class=\"yellow b\">终伤基础值、终伤加成值、终伤修正值</span>共3个阶段。<br>\r\n<dl>\r\n<dt>3.1 基础值阶段\r\n<dd>用物理伤害+属性伤害得到基础值，之后加上各直接增减最终伤害的技能。<br>\r\n【力场】【解牛】【闷棍】【压制】【死神】【神蚀】【格斗】等技能位于此阶段。这一阶段是<span class=\"yellow b\">加减关系</span>。比如，【解牛】技能附加30+对方等级伤害，就是在这个阶段加到终伤基础值上。\r\n<dt>3.2 加成值阶段\r\n<dd>大部分影响最终伤害的技能都在这个阶段判定，是<span class=\"yellow b\">乘除关系</span>。<br>\r\n比如，蓝凝卡的【心火】使最终伤害+100%，就是在这个阶段使基础值x2。\r\n<dt>3.3 修正值阶段\r\n<dd>主要是无敌、直死之类特殊技能。<br>\r\n这些技能的执行顺序目前分为5个步骤，按下列顺序依次判定。\r\n<ol>\r\n<li>无敌类技能，这样的技能有Dr.Clef的【魔鬼】、亚巴顿的【死线】、CTY的【无敌】、宛如疾风生效状态的【天佑】以及极速模式开场的【无垢】技能\r\n<li>特殊变化类技能，这里是固定顺序，为最强大脑【规约】 >> 黑曲的【影像】 >> sc的【反演】 >> 数体教的【口胡】\r\n<li>限制伤害类技能，这样的技能/功能有除错模式【谨慎】以及控伤（伤害制御）属性。注意，【反演】技能特殊，它反弹的伤害也会经过伤害制御的判定。\r\n<li>保命类技能，这样的技能有根性兄贵的【不屈】和独立技能【气功】等\r\n<li>秒杀类技能，这样的技能有【直死】、远古冰魄的【热寂】和狙击鹰眼的【爆头】，以及属性【弑神】\r\n</ol>\r\n</dd>\r\n<dd>除了秒杀步骤外的其他步骤，如果最终伤害为0就不会判定。此外，“复活”的判定是在击杀之后，并不属于伤害阶段。\r\n</dl>\r\n</p>\r\n<BR>\r\n\r\n<p><a name=\"基础姿态\"><span class=\"subtitle2\">8.基础姿态</span></a></p>\r\n\r\n<p>玩家的<span class=\"yellow b\">“基础姿态”</span>可以影响攻击、防御、遇敌率等一系列重要数值，因此请务必根据战场局势，选择合适的姿态。<br>\r\n在游戏界面左侧的“基础姿态”栏的下拉列表处可以随时修改基础姿态。<br>\r\n注：角色发现率-道具发现率的值越大，则玩家每次探索时遭遇角色而不是道具的概率就越高，反之亦然；<br>\r\n此外，角色发现率/道具发现率越高，玩家就越不容易“什么都没发现”。</p>\r\n</div>\r\n<table cellSpacing=0 cellPadding=0 width=\"1200px\">\r\n<TBODY>\r\n<TR>\r\n<TD class=\"b1\" height=25px>\r\n<span> 基础姿态 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 说明 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 攻击力 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 防御力 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 角色发现率 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 道具发现率 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 隐蔽率 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 先制攻击率 </span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 备注 </span>\r\n</TD>\r\n</TR>");
+  if (r.truth((await r.call("is_array", r.get(s, "poseinfo"))))) {
+    {
+      const a2 = r.copy(r.get(s, "poseinfo"));
+      for (const [k2, v2] of r.entries(a2)) {
+      r.assign(r.slot(s, ["pi"]), k2);
+        r.assign(r.slot(s, ["pn"]), v2);
+        if (r.truth(r.get(r.get(s, "pose_player_usable"), r.get(s, "pi")))) {
+          await r.write("<TR>\r\n<TD class=\"b2\" height=25px>\r\n<span>");
+          await r.write(r.text(r.get(s, "pn")));
+          await r.write("</span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span>");
+          await r.write(r.text(r.get(r.get(s, "posedesc"), r.get(s, "pi"))));
+          await r.write("</span>\r\n</TD>");
+          r.assign(r.slot(s, ["tmp_pose_loop"]), r.array([[r.APPEND, r.get(r.get(s, "pose_attack_modifier"), r.get(s, "pi"))], [r.APPEND, r.get(r.get(s, "pose_defend_modifier"), r.get(s, "pi"))], [r.APPEND, r.get(r.get(s, "pose_findman_obbs"), r.get(s, "pi"))], [r.APPEND, r.get(r.get(s, "pose_itemfind_obbs"), r.get(s, "pi"))], [r.APPEND, r.get(r.get(s, "pose_hide_obbs"), r.get(s, "pi"))], [r.APPEND, r.get(r.get(s, "pose_active_obbs"), r.get(s, "pi"))]]));
+          if (r.truth((await r.call("is_array", r.get(s, "tmp_pose_loop"))))) {
+            {
+              const a3 = r.copy(r.get(s, "tmp_pose_loop"));
+              for (const [k3, v3] of r.entries(a3)) {
+                r.assign(r.slot(s, ["tmp_pose_var"]), v3);
+                await r.write("<TD class=\"b3\">\r\n<span class=");
+                if (r.truth((r.compare(r.get(s, "tmp_pose_var"), 0) > 0))) {
+                  await r.write("\"cyan b\"");
+                } else {
+                  if (r.truth((r.compare(r.get(s, "tmp_pose_var"), 0) < 0))) {
+                    await r.write("\"red b\"");
+                  } else {
+                    await r.write("\"white b\"");
+                  }
+                }
+                await r.write(">");
+                if (r.truth((r.compare(r.get(s, "tmp_pose_var"), 0) > 0))) {
+                  await r.write("+");
+                  await r.write(r.text(r.get(s, "tmp_pose_var")));
+                  await r.write("%");
+                } else {
+                  await r.write(r.text(r.get(s, "tmp_pose_var")));
+                  await r.write("%");
+                }
+                await r.write("</span>\r\n</TD>");
+              }
+            }
+          }
+          await r.write("<TD class=\"b3\">\r\n<span>");
+          await r.write(r.text(r.get(r.get(s, "poseremark"), r.get(s, "pi"))));
+          await r.write("</span>\r\n</TD>");
+        }
+      }
+    }
+  }
+  await r.write("</TBODY>\r\n</TABLE>\r\n<div class='help_body'>\r\n<BR>\r\n<BR>\r\n<br>\r\n\r\n<p><a name=\"应战策略\"><span class=\"subtitle2\">9.应战策略</span></a></p>\r\n\r\n<p>玩家的<span class=\"yellow b\">“应战策略”</span>可以影响作战时的各项参数，同时还有一系列额外的效果。<br>\r\n注：角色发现率-道具发现率的值越大，则玩家每次探索时遭遇角色而不是道具的概率就越高，反之亦然；<br>\r\n此外，角色发现率/道具发现率越高，玩家就越不容易“什么都没发现”。</p>\r\n</div>\r\n\r\n<table cellSpacing=0 cellPadding=0 width=\"1000px\">\r\n<TBODY>\r\n<TR>\r\n<TD class=\"b1\" height=20px>\r\n<span>应战策略</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>说明</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>攻击力</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>防御力</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>角色发现率</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>隐蔽率</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span> 备注 </span>\r\n</TD>\r\n</TR>");
+  if (r.truth((await r.call("is_array", r.get(s, "tacinfo"))))) {
+    {
+      const a4 = r.copy(r.get(s, "tacinfo"));
+      for (const [k4, v4] of r.entries(a4)) {
+      r.assign(r.slot(s, ["ti"]), k4);
+        r.assign(r.slot(s, ["tn"]), v4);
+        if (r.truth(r.get(r.get(s, "tactic_player_usable"), r.get(s, "ti")))) {
+          await r.write("<TR>\r\n<TD class=\"b2\" height=25px>\r\n<span>");
+          await r.write(r.text(r.get(s, "tn")));
+          await r.write("</span>\r\n</TD>\r\n<TD class=\"b3\">\r\n<span>");
+          await r.write(r.text(r.get(r.get(s, "tacticdesc"), r.get(s, "ti"))));
+          await r.write("</span>\r\n</TD>");
+          r.assign(r.slot(s, ["tmp_tactic_loop"]), r.array([[r.APPEND, r.get(r.get(s, "tactic_attack_modifier"), r.get(s, "ti"))], [r.APPEND, r.get(r.get(s, "tactic_defend_modifier"), r.get(s, "ti"))], [r.APPEND, r.get(r.get(s, "tactic_meetman_obbs"), r.get(s, "ti"))], [r.APPEND, r.get(r.get(s, "tactic_hide_obbs"), r.get(s, "ti"))]]));
+          if (r.truth((await r.call("is_array", r.get(s, "tmp_tactic_loop"))))) {
+            {
+              const a5 = r.copy(r.get(s, "tmp_tactic_loop"));
+              for (const [k5, v5] of r.entries(a5)) {
+                r.assign(r.slot(s, ["tmp_tactic_var"]), v5);
+                await r.write("<TD class=\"b3\">\r\n<span class=");
+                if (r.truth((r.compare(r.get(s, "tmp_tactic_var"), 0) > 0))) {
+                  await r.write("\"cyan b\"");
+                } else {
+                  if (r.truth((r.compare(r.get(s, "tmp_tactic_var"), 0) < 0))) {
+                    await r.write("\"red b\"");
+                  } else {
+                    await r.write("\"white b\"");
+                  }
+                }
+                await r.write(">");
+                if (r.truth((r.compare(r.get(s, "tmp_tactic_var"), 0) > 0))) {
+                  await r.write("+");
+                  await r.write(r.text(r.get(s, "tmp_tactic_var")));
+                  await r.write("%");
+                } else {
+                  await r.write(r.text(r.get(s, "tmp_tactic_var")));
+                  await r.write("%");
+                }
+                await r.write("</span>\r\n</TD>");
+              }
+            }
+          }
+          await r.write("<TD class=\"b3\">\r\n<span>");
+          await r.write(r.text(r.get(r.get(s, "tacticremark"), r.get(s, "ti"))));
+          await r.write("</span>\r\n</TD>");
+        }
+      }
+    }
+  }
+  await r.write("</TBODY>\r\n</TABLE>\r\n<div class='help_body'>\r\n<BR>\r\n<BR>\r\n<br>\r\n\r\n\r\n\r\n<p><a name=\"道具说明\"><span class=\"subtitle2\">10.道具说明</span></a></p>\r\n<p>道具有以下几种类型：</p>\r\n<dl>\r\n<dt>『武器』</dt>\r\n<dd>\r\n可装备在<span class=\"yellow b\">武器栏</span>，增加玩家的伤害输出。<br>\r\n开局给的武器几乎没有战斗能力，而且武器在攻击后可能消耗或者损坏，因而随着游戏进展，玩家几乎必然需要寻找更加强大的武器。<br>\r\n武器分为殴、斩、射、投、爆、灵六系，不同的武器有不同的特性，详情见<A href=\"help.php#武器\">武器</A>章节。\r\n<dt>『防具』</dt>\r\n<dd>\r\n分为身体、头部、手臂和腿部四个部位，可以装备在对应的<span class=\"yellow b\">装备栏</span>，在战斗中减少玩家受到的伤害，并保护该部位不受伤。<br>\r\n开局给的防具几乎没有防御能力，且防具在受到攻击时耐久会下降甚至损坏，因而随着游戏进展，玩家几乎必然需要寻找更加强大的防具。<br>\r\n如果防具的类型是<span class=\"yellow b\">外甲</span>，则可以叠加在该部位已有的防具上，合并成为同一个防具来发挥更强大的保护作用。合并后的防具的效果值与其内的防具叠加计算，属性则取并集。外甲可以随时卸下。当外甲的耐久值被削减到超过其原本的耐久值，则会损坏，露出其内部原本的防具。<br>\r\n<dt>『饰物』</dt>\r\n<dd>\r\n可装备在<span class=\"yellow b\">饰物栏</span>，虽然并不直接增加玩家的攻击和防御力，但其属性在战斗中也有效，且部分饰物具有特殊效果，例如“妖精的羽翼”在下毒时可以将毒药变为解毒剂，“Untainted Glory”允许玩家进入英灵殿等。\r\n<dt>『恢复类道具』</dt>\r\n<dd>依据道具的不同，可以回复生命、体力、歌魂、怒气等等，但以最大值为限。<br>\r\n提示：所有恢复类道具<span class=\"yellow b\">都可能有毒</span>。如果服用了有毒的恢复类道具，不仅没有恢复效果，还可能倒扣生命并染上<span class=\"purple b\">“中毒”</span>状态，如果生命扣尽则会被毒死！所以如果捡到<span class=\"yellow b\">看上去不能吃的回复品，切勿随便服用</span>。<br>\r\n<ul>\r\n<li><span class=\"yellow b\">『生命恢复』</span> 恢复道具效果值的生命。\r\n<li><span class=\"yellow b\">『体力恢复』</span> 恢复道具效果值的体力。\r\n<li><span class=\"yellow b\">『命体恢复』</span> 恢复道具效果值的生命和体力。\r\n<li><span class=\"yellow b\">『歌魂恢复』</span> 恢复道具效果值的歌魂。\r\n<li><span class=\"yellow b\">『怒气恢复』</span> 恢复道具效果值的怒气。\r\n</ul>\r\n</dd>\r\n<dt>『药剂』</dt>\r\n<dd>药剂分为两类：<br>\r\n其一是<span class=\"yellow b\">『异常状态药剂』</span>，如解毒剂、解冻药水、烧伤药剂等，可以去除对应的异常状态。如果不在异常状态则没有效果。<br>\r\n另一类是<span class=\"yellow b\">『特殊药剂』</span>，主要指商店药剂栏出售的“溶剂SCP-294”开头的一类“特殊”类别的道具，能够减少你的一些数值，并增加另一些数值，如“溶剂SCP-294_PT_Poini_Kune”的效果是随机减少你的生命和体力上限，之后让你的全系熟练增加减少的值，不失为一种剑走偏锋的打法。需要注意的是，服用这类药剂若让数值减少到0则会死亡！而且就算不死，称号也会变为“走路萌物”从而失去所有技能，所以服用此类药剂前请三思。\r\n<dt>『技能书』</dt>\r\n<dd>技能书分为两类：<br>\r\n其一是<span class=\"yellow b\">『熟练技能书』</span>，类别名是“殴系书籍”、“全系书籍”等，能够增加玩家的熟练度。玩家熟练度小于100时，增加值就是道具的效果值，但如果玩家熟练度高于100，技能书的效果会降低。玩家熟练度很高时技能书会完全无效，甚至倒扣熟练度。<br>\r\n另一类是<span class=\"yellow b\">『技能学习书』</span>，类别名就是“技能书籍”，使用后能够让玩家获得指定的技能。如果玩家已有这一技能，则没有作用，也不会消耗技能书。\r\n<dt>『强化药物』</dt>\r\n<dd>依据道具的不同，可以增加玩家的生命上限、体力上限、歌魂上限、攻击力、防御力、经验、全系熟练等各项数值。<br>\r\n强化药物绝对无毒，捡到可以放心服用。但是，除生命、体力、歌魂、经验以外的强化药物，在玩家对应数值较高时，强化效果也会下降、无效，甚至倒扣。\r\n<dt>『陷阱』</dt>\r\n<dd>能在当前地区埋下陷阱。<br>\r\n陷阱对其他玩家的伤害不受防御力影响，因而是劣势翻盘的好办法。不过，埋设陷阱时，如果你的等级和爆系熟练度都很低，则<span class=\"yellow b\">陷阱的效果值会下降（不会低于原值的一半）</span>。<br>\r\n陷阱的详细介绍见<A href=\"help.php#毒药和陷阱\">毒药和陷阱</A>章节。\r\n<dt>『防具改造』</dt>\r\n<dd>使防具获得一定数值的【升血】属性，或改造成外甲，或者附加一些防御属性。常见的防具改造道具有商店出售的R.M.『霜铸炎甲』</dd>\r\n<dt>『防具强化』</dt>\r\n<dd>能提高防具的效果值和耐久值，并能自动批量地执行强化指令。常见的防具强化道具有商店出售的『自动叠甲设备』</dd>\r\n<dt>『扫雷设备』</dt>\r\n<dd>随机扫除当前地图的若干陷阱，效果值累计不高于设备本身的效果值\r\n<dt>『干扰设备』</dt>\r\n<dd>道具名一般是“移动PC”。使用后有一定概率能够<span class=\"yellow b\">解封当前禁区</span>，让玩家可以进入禁区探索，但这一危险行动有一定概率导致该设备毁坏，甚至杀死玩家！<br>\r\n干扰设备使用后会消耗电力（效果值），电力降到0则需要用『电池』充电才能继续使用。\r\n<dt>『探测仪器』</dt>\r\n<dd>道具名一般是<span class=\"yellow b\">“生命探测器”或者“广域生命探测器”</span>。前者使用后可以看到玩家所在地区的其他玩家以及各类NPC的数目，而后者的视野更是扩展到全地图。<br>\r\n无论是PVP还是PVE，掌握对手动向都是至关重要的，因而寻找/合成广域生命探测器是高水平玩家必做的事。<br>\r\n探测仪器使用后会消耗电力（效果值），电力降到0则需要用『探测器电池』充电才能继续使用。\r\n<dt>『电池』</dt>\r\n<dd>分为『电池』和『探测器电池』两种，分别为『干扰设备』及『探测仪器』供电。\r\n<dt>『弹药』</dt>\r\n<dd>使用后可为手中装备的射系武器，即<span class=\"yellow b\">『远程兵器』</span>和<span class=\"yellow b\">『重型枪械』</span>补充弹药。<br>\r\n分为『手枪弹药』、『机枪弹药』、『能源弹药』（枪械电池）、『气体弹药』（枪械电池）和『重型弹药』五种，分别对应不同类型和属性的枪械。不同弹药的判定优先顺序如下：\r\n<ol>\r\n<li><span class=\"yellow b\">『重型弹药』</span> 武器类别为 <span class=\"yellow b\">『重型枪械』</span>。弹夹上限4发，如果有<span class=\"white b\">“连击”</span>属性则是6发。\r\n<li><span class=\"yellow b\">『能源弹药』</span> 不满足以上条件，且枪械属性有<span class=\"yellow b\">“电击”</span>或者<span class=\"grey b\">“音波”</span>。弹夹上限10发，如果有<span class=\"white b\">“连击”</span>属性则是12发。\r\n<li><span class=\"yellow b\">『气体弹药』</span> 不满足以上条件，且枪械属性有<span class=\"red b\">“火焰”</span>或者<span class=\"cyan b\">“冻气”</span>。弹夹上限10发，如果有<span class=\"white b\">“连击”</span>属性则是12发。\r\n<li><span class=\"yellow b\">『机枪弹药』</span> 不满足以上条件，且枪械属性有<span class=\"white b\">“连击”</span>。弹夹上限20发。\r\n<li><span class=\"yellow b\">『手枪弹药』</span> 以上条件皆不满足时的弹药类型。弹夹上限6发。\r\n</ol>\r\n射系武器用尽弹药后如果继续攻击，则会当做钝器使用，不仅属性无效，攻击力还会迅速下降，因此使用射系武器时请保证弹药充足！\r\n<dt>『箭矢』</dt>\r\n<dd>使用后可为手中装备的弓类武器上箭。如果那把弓已上过箭矢，则会替换那支箭矢。如果弓或者箭有<span class=\"white b\">“连击”</span>属性，则会根据玩家的连续攻击次数上箭。弓类武器攻击时，所上的箭的属性也会生效。<br>\r\n弓类武器用尽弹药后如果继续攻击，则会当做锐器使用，不仅属性无效，攻击力还会迅速下降，因此使用弓类武器时请保证随时装上箭矢！\r\n<dt>『天气控制』</dt>\r\n<dd>可改变当前天气。“驱云弹”会将天气变为<span class=\"yellow b\">『大晴』</span>，“造雾设备”会将天气变为<span class=\"grey b\">『起雾』或『浓雾』</span>，其他天气道具也有各自的效果。\r\n<dt>『歌词卡片』</dt>\r\n<dd>可装备在饰品栏，之后可以<span class=\"yellow b\">歌唱</span>。歌唱需要消耗对应歌魂，带来的效果因各歌词卡片而异。\r\n<dt>『礼包类道具』</dt>\r\n<dd>分为『礼物』、『卡包』和『浮云』三类，使用后可以随机获得一项道具。<br>\r\n卡包能开出的道具多是游戏王卡片（投系武器或者素材），礼物（礼品盒）能开出多种多样的道具，不过一般以无价值的杂物为主。浮云道具只在“SCP研究所”这一危险地图存在，使用后得到的道具较好。\r\n<dt>『合成专用』</dt>\r\n<dd>只能用来合成更高级的物品，本身没有用处。\r\n<dt>『特殊』</dt>\r\n<dd>有特殊用途的道具，详情见<A href=\"help.php#特殊道具\">特殊道具</A>章节。\r\n</dl>\r\n<br>\r\n<br>\r\n<p><a name=\"武器\"><span class=\"subtitle2\">11.武器</span></a></p>\r\n\r\n<p>武器分为<span class=\"yellow b\">殴、斩、射、投、爆、灵</span>六系。不同的武器之间的特性差异很大，详情见下表。</p>\r\n</div>\r\n<table cellSpacing=0 cellPadding=0 height=300px width=1250px>\r\n<tr>\r\n<td class=\"b1\" height=20px width=160px>\r\n<span>武器种类</span>\r\n</td>\r\n<td class=\"b1\" width=75px>\r\n<span>所需熟练度</span>\r\n</td>\r\n<td class=\"b1\" width=50px>\r\n<span>射程</span>\r\n</td>\r\n<td class=\"b1\" width=60px>\r\n<span>伤害成长</span>\r\n</td>\r\n<td class=\"b1\" width=60px>\r\n<span>初始命中</span>\r\n</td>\r\n<td class=\"b1\" width=60px>\r\n<span>后期命中</span>\r\n</td>\r\n<td class=\"b1\" width=60px>\r\n<span>致伤率</span>\r\n</td>\r\n<td class=\"b1\" width=60px>\r\n<span>反击率</span>\r\n</td>\r\n<td class=\"b1\" width=300px>\r\n<span>优势</span>\r\n</td>\r\n<td class=\"b1\" width=300px>\r\n<span>劣势</span>\r\n</td>\r\n</tr>");
+  r.imports(s, "weapon", "itemmain", "wound");
+  r.assign(r.slot(s, ["wep_adv_desc"]), r.array([["P", "空手也能造成可观伤害；<br>能够用钉子加强棍棒类钝器"], ["K", "伤害正向浮动大；<br>能够用磨刀石加强武器；"], ["G", "射程远；<br>反击率高，故对NPC输出较高"], ["J", "射程最远；<br>有与武器效果值和敌方生命上限相关的固定伤害值；<br>伤害输出优秀"], ["C", "后期命中率最高；<br>命中率成长最快"], ["B", "熟练度越高射程越高；<br>箭矢的攻击属性也能生效"], ["D", "伏击型武器，不会被反击；<br>伤害输出优秀，且难以防御"], ["F", "有等于武器效果值的固定伤害值；<br>命中率高；<br>大部分合成武器耐久无限"]]));
+  r.assign(r.slot(s, ["wep_wea_desc"]), r.array([["P", "各数值平庸"], ["K", "伤害负向浮动也大；<br>武器容易损坏"], ["G", "有子弹数量和种类限制；<br>反制装备较多；<br>基础攻击力不能充分发挥作用；<br>攻击时会发出枪声"], ["J", "反击率低；被他人袭击时会遭受额外伤害；<br>反制装备较多；装备本身和子弹均难以获得；<br>射熟低时命中率极端低下；<br>不可以发动大部分战斗技能；<br>攻击时会发出枪声"], ["C", "致伤率最低；<br>伤害输出不佳"], ["B", "反击率低；<br>有箭矢数量限制；<br>不预先上箭则无法反击"], ["D", "伏击型武器，无法反击他人；<br>命中率低下；<br>大部分武器耐久较低<br>攻击时会发出爆炸声"], ["F", "射程最近；<br>伤害成长率最慢；<br>攻击时需要消耗体力；<br>有容易获得的反制装备"]]));
+  if (r.truth((await r.call("is_array", r.array([[r.APPEND, "P"], [r.APPEND, "K"], [r.APPEND, "G"], [r.APPEND, "J"], [r.APPEND, "C"], [r.APPEND, "B"], [r.APPEND, "D"], [r.APPEND, "F"]]))))) {
+    {
+      const a6 = r.copy(r.array([[r.APPEND, "P"], [r.APPEND, "K"], [r.APPEND, "G"], [r.APPEND, "J"], [r.APPEND, "C"], [r.APPEND, "B"], [r.APPEND, "D"], [r.APPEND, "F"]]));
+      for (const [k6, v6] of r.entries(a6)) {
+        r.assign(r.slot(s, ["val"]), v6);
+        await r.write("<tr>\r\n<td class=\"b2 b2h\">\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "iteminfo"), (r.text("W") + r.text(r.get(s, "val"))))));
+        await r.write("</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>");
+        await r.write(r.text((r.text(r.get(r.get(s, "skilltypeinfo"), r.get(r.get(s, "skillinfo"), r.get(s, "val")))) + r.text("熟"))));
+        await r.write("</span>\r\n</td>\r\n<td class=\"b3\">");
+        if (r.truth((r.compare(r.get(r.get(s, "rangeinfo"), r.get(s, "val")), 5) > 0))) {
+          await r.write("<span class=\"cyan b\">");
+          await r.write(r.text(r.get(r.get(s, "rangeinfo"), r.get(s, "val"))));
+          await r.write("</span>");
+        } else {
+          if (r.truth((r.compare(r.get(r.get(s, "rangeinfo"), r.get(s, "val")), 3) > 0))) {
+            await r.write("<span class=\"lime b\">");
+            await r.write(r.text(r.get(r.get(s, "rangeinfo"), r.get(s, "val"))));
+            await r.write("</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "rangeinfo"), r.get(s, "val")), 1) > 0))) {
+              await r.write("<span class=\"yellow b\">");
+              await r.write(r.text(r.get(r.get(s, "rangeinfo"), r.get(s, "val"))));
+              await r.write("</span>");
+            } else {
+              if (r.truth((r.compare(r.get(r.get(s, "rangeinfo"), r.get(s, "val")), 0) > 0))) {
+                await r.write("<span class=\"red b\">");
+                await r.write(r.text(r.get(r.get(s, "rangeinfo"), r.get(s, "val"))));
+                await r.write("</span>");
+              } else {
+                await r.write("<span class=\"evergreen b\">伏击※</span>");
+              }
+            }
+          }
+        }
+        await r.write("</td>\r\n<td class=\"b3\">");
+        if (r.truth((r.compare(r.get(r.get(s, "skill_dmg"), r.get(s, "val")), 0.65) > 0))) {
+          await r.write("<span class=\"cyan b\">");
+          await r.write(r.text(r.get(r.get(s, "skill_dmg"), r.get(s, "val"))));
+          await r.write("</span>");
+        } else {
+          if (r.truth((r.compare(r.get(r.get(s, "skill_dmg"), r.get(s, "val")), 0.5) > 0))) {
+            await r.write("<span class=\"lime b\">");
+            await r.write(r.text(r.get(r.get(s, "skill_dmg"), r.get(s, "val"))));
+            await r.write("</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "skill_dmg"), r.get(s, "val")), 0.35) > 0))) {
+              await r.write("<span class=\"yellow b\">");
+              await r.write(r.text(r.get(r.get(s, "skill_dmg"), r.get(s, "val"))));
+              await r.write("</span>");
+            } else {
+              await r.write("<span class=\"red b\">");
+              await r.write(r.text(r.get(r.get(s, "skill_dmg"), r.get(s, "val"))));
+              await r.write("</span>");
+            }
+          }
+        }
+        await r.write("</td>\r\n<td class=\"b3\">");
+        if (r.truth((r.compare(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val")), 70) > 0))) {
+          await r.write("<span class=\"cyan b\">");
+          await r.write(r.text(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val"))));
+          await r.write("</span>");
+        } else {
+          if (r.truth((r.compare(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val")), 60) > 0))) {
+            await r.write("<span class=\"lime b\">");
+            await r.write(r.text(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val"))));
+            await r.write("</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val")), 50) > 0))) {
+              await r.write("<span class=\"yellow b\">");
+              await r.write(r.text(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            } else {
+              await r.write("<span class=\"red b\">");
+              await r.write(r.text(r.get(r.get(s, "hitrate_obbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            }
+          }
+        }
+        await r.write("</td>\r\n<td class=\"b3\">");
+        if (r.truth((r.compare(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val")), 90) > 0))) {
+          await r.write("<span class=\"cyan b\">");
+          await r.write(r.text(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val"))));
+          await r.write("</span>");
+        } else {
+          if (r.truth((r.compare(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val")), 85) > 0))) {
+            await r.write("<span class=\"lime b\">");
+            await r.write(r.text(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val"))));
+            await r.write("</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val")), 80) > 0))) {
+              await r.write("<span class=\"yellow b\">");
+              await r.write(r.text(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            } else {
+              await r.write("<span class=\"red b\">");
+              await r.write(r.text(r.get(r.get(s, "hitrate_max_obbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            }
+          }
+        }
+        await r.write("</td>\r\n<td class=\"b3\">");
+        if (r.truth((r.compare(r.get(r.get(s, "wep_infobbs"), r.get(s, "val")), 75) > 0))) {
+          await r.write("<span class=\"cyan b\">");
+          await r.write(r.text(r.get(r.get(s, "wep_infobbs"), r.get(s, "val"))));
+          await r.write("</span>");
+        } else {
+          if (r.truth((r.compare(r.get(r.get(s, "wep_infobbs"), r.get(s, "val")), 50) > 0))) {
+            await r.write("<span class=\"lime b\">");
+            await r.write(r.text(r.get(r.get(s, "wep_infobbs"), r.get(s, "val"))));
+            await r.write("</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "wep_infobbs"), r.get(s, "val")), 25) > 0))) {
+              await r.write("<span class=\"yellow b\">");
+              await r.write(r.text(r.get(r.get(s, "wep_infobbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            } else {
+              await r.write("<span class=\"red b\">");
+              await r.write(r.text(r.get(r.get(s, "wep_infobbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            }
+          }
+        }
+        await r.write("</td>\r\n<td class=\"b3\">");
+        if (r.truth((r.compare(r.get(r.get(s, "counter_obbs"), r.get(s, "val")), 60) > 0))) {
+          await r.write("<span class=\"cyan b\">");
+          await r.write(r.text(r.get(r.get(s, "counter_obbs"), r.get(s, "val"))));
+          await r.write("</span>");
+        } else {
+          if (r.truth((r.compare(r.get(r.get(s, "counter_obbs"), r.get(s, "val")), 40) > 0))) {
+            await r.write("<span class=\"lime b\">");
+            await r.write(r.text(r.get(r.get(s, "counter_obbs"), r.get(s, "val"))));
+            await r.write("</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "counter_obbs"), r.get(s, "val")), 20) > 0))) {
+              await r.write("<span class=\"yellow b\">");
+              await r.write(r.text(r.get(r.get(s, "counter_obbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            } else {
+              await r.write("<span class=\"red b\">");
+              await r.write(r.text(r.get(r.get(s, "counter_obbs"), r.get(s, "val"))));
+              await r.write("</span>");
+            }
+          }
+        }
+        await r.write("</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8 0\"><span class=\"cyan b\">");
+        await r.write(r.text(r.get(r.get(s, "wep_adv_desc"), r.get(s, "val"))));
+        await r.write("</span></div>\r\n</td>\r\n<td class=\"b3\" style=\"margin:5 0\">\r\n<div style=\"margin:8 0\"><span class=\"yellow b\">");
+        await r.write(r.text(r.get(r.get(s, "wep_wea_desc"), r.get(s, "val"))));
+        await r.write("</span></div>\r\n</td>\r\n</tr>");
+      }
+    }
+  }
+  await r.write("</table>\r\n<div class='help_body'>\r\n<p>※“伏击”指不能反击任何系的攻击，但是其他系也不能反击自己的主动攻击。</p>\r\n<br>\r\n<BR>\r\n<BR>\r\n<p>殴、斩系武器，命中对手之后，有一定机率造成武器<span class=\"yellow b\">“损耗”</span>。<BR>\r\n如果武器的耐久值不是<span class=\"yellow b\">“∞”</span>，那么耐久会下降。如果耐久降为0，武器会<span class=\"yellow b\">“毁坏”</span>，不能再使用了。<BR>\r\n如果武器的耐久值是<span class=\"yellow b\">“∞”</span>，那么武器的攻击力（效果值）将会下降，效果降为0时武器同样会毁坏。<BR>\r\n与一般殴、斩系武器相比，无限耐久的殴、斩系武器更容易损坏，请注意取舍。<BR>\r\n<BR>\r\n射系武器有<span class=\"yellow b\">“子弹”</span>的设定。\r\n如果射系武器子弹用尽，耐久值将显示为<span class=\"yellow b\">“∞”</span>。此时射系武器只能直接作为钝器攻击，攻击力会飞速下降，而当耐久并非<span class=\"yellow b\">“∞”</span>时才能作为枪械进行射击。<BR>\r\n装填子弹的方法是装备射系武器并「使用」子弹。<BR>\r\n不同类别、属性的射系武器需要的子弹类型也不同，具体请见<A href=\"help.php#道具说明\">道具说明</A>章节中，<span class=\"yellow b\">弹药</span>的部分。<BR>\r\n<BR>\r\n投系、爆系和灵系的武器，属于<span class=\"yellow b\">消耗品</span>，每次攻击后，数量（耐久）都会减少。<BR>\r\n当然，耐久是<span class=\"yellow b\">“∞”</span>的这三类武器，可以无限次攻击。<BR>\r\n<BR>\r\n部分道具如“磨刀石”、“钉”、“幻铁的改造结晶”系列、“武器师安雅的奖赏”等，都能<span class=\"yellow b\">强化武器</span>，使用方法是装备武器然后使用特殊道具即可。具体情况见<A href=\"help.php#特殊道具\">特殊道具</A>章节。\r\n</p>\r\n<BR>\r\n<p>另外，也存在一部分「复合」武器。复合武器在主动攻击时能够自由选择两种攻击方式之一来进行攻击，而反击时采用主攻系别进行反击。玩家可以自由切换当前的主攻系别。\r\n<br>如果选用的攻击方式的熟练度比另一种攻击方式的一半还要低，则会按另一种攻击方式的一半来计算。\r\n<br>复合武器的消耗方式与主攻方式无关，而是根据复合武器的耐久值和两种系别，按如下顺序中较为靠前的那个为准：无限耐久的投、爆、灵系武器 > 射系武器 > 殴、斩系武器 > 有限耐久的投、爆、灵系武器。例如：耐久有限的「灵刃」按斩系武器判定，而耐久无限的「灵刃」按灵系武器判定（也即不会降低攻击或者耐久）。\r\n<br>不过，一切依赖于武器系别的战斗技，<span class=\"yellow b\">都不能用复合武器来发动</span>。\r\n<br><br>复合武器具体种类见下表：\r\n</p>");
+  r.imports(s, "dualwep");
+  await r.write("<table cellSpacing=0 cellPadding=0 width=400px>\r\n<tr>\r\n<td class=\"b1\" height=20px>\r\n复合武器种类\r\n</td>\r\n<td class=\"b1\"> </td>\r\n<td class=\"b1\">\r\n类别1\r\n</td>\r\n<td class=\"b1\"> </td>\r\n<td class=\"b1\">\r\n类别2\r\n</td>\r\n</tr>");
+  if (r.truth((await r.call("is_array", r.get(s, "dualwep_iteminfo"))))) {
+    {
+      const a7 = r.copy(r.get(s, "dualwep_iteminfo"));
+      for (const [k7, v7] of r.entries(a7)) {
+      r.assign(r.slot(s, ["dk"]), k7);
+        r.assign(r.slot(s, ["dv"]), v7);
+        r.assign(r.slot(s, ["tmp1"]), (await r.call("substr", r.get(s, "dk"), 1, 1)));
+        r.assign(r.slot(s, ["tmp2"]), (await r.call("substr", r.get(s, "dk"), 2, 1)));
+        if (r.truth((r.truth((!r.truth(r.get(s, "o_k")))) || r.truth((!r.equal(r.get(s, "o_k"), (r.text(r.get(s, "tmp2")) + r.text(r.get(s, "tmp1"))))))))) {
+          await r.write("<tr>\r\n<td class=\"b3\" height=20px>\r");
+          await r.write(r.text(r.get(s, "dv")));
+          await r.write("</td>\r\n<td class=\"b3\">=</td>\r\n<td class=\"b3\">");
+          await r.write(r.text(r.get(r.get(s, "iteminfo"), (r.text("W") + r.text(r.get(s, "tmp1"))))));
+          await r.write("</td>\r\n<td class=\"b3\">+</td>\r\n<td class=\"b3\">");
+          await r.write(r.text(r.get(r.get(s, "iteminfo"), (r.text("W") + r.text(r.get(s, "tmp2"))))));
+          await r.write("</td>\r\n</tr>");
+        }
+        r.assign(r.slot(s, ["o_k"]), (r.text(r.get(s, "tmp1")) + r.text(r.get(s, "tmp2"))));
+      }
+    }
+  }
+  await r.write("</table>\r\n<BR>\r\n<BR>\r\n<BR>\r\n<p><a name=\"属性\"><span class=\"subtitle2\">12.属性</span></a></p>\r\n\r\n<p>一切道具皆可能拥有属性。属性分为攻击属性、防御属性和杂项属性，其中攻击和防御属性只有<span class=\"yellow b\">装备着的道具</span>有效。<BR>\r\n获得属性的办法有：寻找/缴获/购买/合成属性更丰富的武器和装备、使用宝石骑士的技能给道具上属性、某些特定技能可以为玩家带来额外的攻击/防御属性。<br>\r\n具体的属性说明见下表。</p>\r\n\r\n<p><span class=\"yellow b\">攻击属性</span>：</p>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tr>\r\n<td class=\"b1\" height=20px>\r\n<span>属性名称</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>属性效果</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>备注</span>\r\n</td>\r\n</tr>");
+  r.assign(r.slot(s, ["itemspkdesc", "^dfl"]), (await r.call("str_replace", "<:skn:>", "x", r.get(r.get(s, "itemspkdesc"), "^dfl"))));
+  if (r.truth((await r.call("is_array", r.array([[r.APPEND, "S"], [r.APPEND, "r"], [r.APPEND, "d"], [r.APPEND, "p"], [r.APPEND, "u"], [r.APPEND, "i"], [r.APPEND, "e"], [r.APPEND, "w"], [r.APPEND, "f"], [r.APPEND, "k"], [r.APPEND, "t"], [r.APPEND, "n"], [r.APPEND, "y"], [r.APPEND, "N"], [r.APPEND, "^ac"], [r.APPEND, "L"], [r.APPEND, "v"], [r.APPEND, "V"], [r.APPEND, "Y"], [r.APPEND, "^dfl"]]))))) {
+    {
+      const a8 = r.copy(r.array([[r.APPEND, "S"], [r.APPEND, "r"], [r.APPEND, "d"], [r.APPEND, "p"], [r.APPEND, "u"], [r.APPEND, "i"], [r.APPEND, "e"], [r.APPEND, "w"], [r.APPEND, "f"], [r.APPEND, "k"], [r.APPEND, "t"], [r.APPEND, "n"], [r.APPEND, "y"], [r.APPEND, "N"], [r.APPEND, "^ac"], [r.APPEND, "L"], [r.APPEND, "v"], [r.APPEND, "V"], [r.APPEND, "Y"], [r.APPEND, "^dfl"]]));
+      for (const [k8, v8] of r.entries(a8)) {
+        r.assign(r.slot(s, ["tmp_attr"]), v8);
+        await r.write("<tr>\r\n<td class=\"b2\" height=20px>\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "itemspkinfo"), r.get(s, "tmp_attr"))));
+        await r.write("</span>\r\n</td>\r\n<td class=\"b3\" style=\"padding:6 0\">");
+        if (r.truth((!r.truth((!r.truth(r.get(r.get(s, "itemspkdesc_help"), r.get(s, "tmp_attr")))))))) {
+          await r.write(r.text(r.get(r.get(s, "itemspkdesc_help"), r.get(s, "tmp_attr"))));
+        } else {
+          await r.write(r.text(r.get(r.get(s, "itemspkdesc"), r.get(s, "tmp_attr"))));
+        }
+        await r.write("</td>\r\n<td class=\"b3\" style=\"padding:6 0\">\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "itemspkremark"), r.get(s, "tmp_attr"))));
+        await r.write("</span>\r\n</td>\r\n</tr>");
+      }
+    }
+  }
+  await r.write("</table>\r\n<br>\r\n<br>\r\n\r\n<p><span class=\"cyan b\">防御属性</span>：</p>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tr>\r\n<td class=\"b1\" height=20px>\r\n<span>属性名称</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>属性效果</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>备注</span>\r\n</td>\r\n\r\n</tr>");
+  r.assign(r.slot(s, ["itemspkdesc", "^hu"]), (await r.call("str_replace", "<:skn:>", "x", r.get(r.get(s, "itemspkdesc"), "^hu"))));
+  if (r.truth((await r.call("is_array", r.array([[r.APPEND, "A"], [r.APPEND, "a"], [r.APPEND, "B"], [r.APPEND, "b"], [r.APPEND, "R"], [r.APPEND, "P"], [r.APPEND, "K"], [r.APPEND, "G"], [r.APPEND, "C"], [r.APPEND, "D"], [r.APPEND, "F"], [r.APPEND, "q"], [r.APPEND, "U"], [r.APPEND, "I"], [r.APPEND, "E"], [r.APPEND, "W"], [r.APPEND, "c"], [r.APPEND, "H"], [r.APPEND, "h"], [r.APPEND, "^hu"], [r.APPEND, "M"], [r.APPEND, "m"], [r.APPEND, "^wc"], [r.APPEND, "l"], [r.APPEND, "g"]]))))) {
+    {
+      const a9 = r.copy(r.array([[r.APPEND, "A"], [r.APPEND, "a"], [r.APPEND, "B"], [r.APPEND, "b"], [r.APPEND, "R"], [r.APPEND, "P"], [r.APPEND, "K"], [r.APPEND, "G"], [r.APPEND, "C"], [r.APPEND, "D"], [r.APPEND, "F"], [r.APPEND, "q"], [r.APPEND, "U"], [r.APPEND, "I"], [r.APPEND, "E"], [r.APPEND, "W"], [r.APPEND, "c"], [r.APPEND, "H"], [r.APPEND, "h"], [r.APPEND, "^hu"], [r.APPEND, "M"], [r.APPEND, "m"], [r.APPEND, "^wc"], [r.APPEND, "l"], [r.APPEND, "g"]]));
+      for (const [k9, v9] of r.entries(a9)) {
+        r.assign(r.slot(s, ["tmp_attr"]), v9);
+        await r.write("<tr>\r\n<td class=\"b2\" height=20px>\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "itemspkinfo"), r.get(s, "tmp_attr"))));
+        await r.write("</span>\r\n</td>\r\n<td class=\"b3\" style=\"padding:6 0\">");
+        if (r.truth((!r.truth((!r.truth(r.get(r.get(s, "itemspkdesc_help"), r.get(s, "tmp_attr")))))))) {
+          await r.write(r.text(r.get(r.get(s, "itemspkdesc_help"), r.get(s, "tmp_attr"))));
+        } else {
+          await r.write(r.text(r.get(r.get(s, "itemspkdesc"), r.get(s, "tmp_attr"))));
+        }
+        await r.write("</td>\r\n<td class=\"b3\" style=\"padding:6 0\">\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "itemspkremark"), r.get(s, "tmp_attr"))));
+        await r.write("</span>\r\n</td>\r\n</tr>");
+      }
+    }
+  }
+  await r.write("</table>\r\n<br>\r\n<br>\r\n\r\n<p><span class=\"yellow b\">杂项属性</span>：</p>\r\n<table cellSpacing=0 cellPadding=0>\r\n<tr>\r\n<td class=\"b1\" width=60px height=20px>\r\n<span>属性名称</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>属性效果</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>备注</span>\r\n</td>\r\n</tr>");
+  r.assign(r.slot(s, ["itemspkdesc", "^dd"]), (await r.call("str_replace", "<:skn:>", "x", r.get(r.get(s, "itemspkdesc"), "^dd"))));
+  if (r.truth((await r.call("is_array", r.array([[r.APPEND, "s"], [r.APPEND, "^001"], [r.APPEND, "^002"], [r.APPEND, "J"], [r.APPEND, "O"], [r.APPEND, "o"], [r.APPEND, "^dd"], [r.APPEND, "Z"], [r.APPEND, "^st"], [r.APPEND, "^res"], [r.APPEND, "^alt"], [r.APPEND, "^st"], [r.APPEND, "^sv"], [r.APPEND, "^sa"], [r.APPEND, "x"], [r.APPEND, "z"]]))))) {
+    {
+      const a10 = r.copy(r.array([[r.APPEND, "s"], [r.APPEND, "^001"], [r.APPEND, "^002"], [r.APPEND, "J"], [r.APPEND, "O"], [r.APPEND, "o"], [r.APPEND, "^dd"], [r.APPEND, "Z"], [r.APPEND, "^st"], [r.APPEND, "^res"], [r.APPEND, "^alt"], [r.APPEND, "^st"], [r.APPEND, "^sv"], [r.APPEND, "^sa"], [r.APPEND, "x"], [r.APPEND, "z"]]));
+      for (const [k10, v10] of r.entries(a10)) {
+        r.assign(r.slot(s, ["tmp_attr"]), v10);
+        await r.write("<tr>\r\n<td class=\"b2\" height=20px>\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "itemspkinfo"), r.get(s, "tmp_attr"))));
+        await r.write("</span>\r\n</td>\r\n<td class=\"b3\" style=\"padding:6 0\">\r\n<span>");
+        if (r.truth((!r.truth((!r.truth(r.get(r.get(s, "itemspkdesc_help"), r.get(s, "tmp_attr")))))))) {
+          await r.write(r.text(r.get(r.get(s, "itemspkdesc_help"), r.get(s, "tmp_attr"))));
+        } else {
+          await r.write(r.text(r.get(r.get(s, "itemspkdesc"), r.get(s, "tmp_attr"))));
+        }
+        await r.write("</span>\r\n</td>\r\n<td class=\"b3\" style=\"padding:6 0\">\r\n<span>");
+        await r.write(r.text(r.get(r.get(s, "itemspkremark"), r.get(s, "tmp_attr"))));
+        await r.write("</span>\r\n</td>\r\n</tr>");
+      }
+    }
+  }
+  await r.write("</table>\r\n<br>\r\n<br>\r\n\r\n<p><a name=\"受伤与状态\"><span class=\"subtitle2\">13.受伤与异常状态</span></a></p>\r\n\r\n<p>战斗中，角色每次攻击都可能对敌人某个身体部位发出“致伤攻击”。<BR>\r\n如果该部位有防具，则其耐久会减少，防具耐久下降到0时会<span class=\"red b\">毁坏</span>。注意，耐久为“∞”的防具实际相当于耐久只有1。<BR>\r\n而如果该部位没有防具，那么被攻击者该部位会<span class=\"red b\">“受伤”</span>。<BR>\r\n受伤可以靠<span class=\"cyan b\">单击人物状态上的受伤部位</span>来“包扎伤口”并治愈，不过需要消耗50体力。<BR>\r\n此外，部分武器带有“属性攻击”，有一定几率导致<span class=\"yellow b\">“异常状态”</span>。战斗技能或者特殊事件也可能导致异常状态。<BR>\r\n异常状态无法通过包扎来解除，需要寻找或者购买对应的“药剂”并服用。<br>\r\n“静养”90秒（治疗姿态为60秒）能够恢复所有的异常状态。<br>\r\n在有技能点时，通过技能窗口的“治疗”技能，能一次性治愈所有的受伤和异常状态，不过要消耗1个技能点。<BR>\r\n受伤部位和异常状态种类的具体影响见下表。</p>\r\n\r\n<table cellSpacing=0 cellPadding=0 width=800px>\r\n<tr>\r\n<td class=\"b1\" height=20px  width=80px>\r\n<span>异常状态名</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>移动和探索影响</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>战斗影响</span>\r\n</td>\r\n<td class=\"b1\" width=80px>\r\n<span>解除方法</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"red b\">胸部受伤</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>睡眠、治疗、静养<span class=\"yellow b\">效果x50%</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>防御力<span class=\"yellow b\">x75%</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>包扎伤口</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"red b\">头部受伤</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>命中率<span class=\"yellow b\">x75%</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>包扎伤口</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"red b\">腕部受伤</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>探索体力消耗<span class=\"yellow b\">+10</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>攻击力<span class=\"yellow b\">x75%</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>包扎伤口</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"red b\">足部受伤</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>移动体力消耗<span class=\"yellow b\">+10</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>包扎伤口</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"purple b\">中毒</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div>移动和探索时生命值减少。移动约为最大生命的<span class=\"red b\">1/16</span>，探索则为<span\tclass=\"red b\">1/32</span>。生命降到0将会<span\tclass=\"red b\">毒发身亡</span>。</div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>解毒剂</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"red b\">烧伤</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div>移动和探索时生命值减少。移动约为最大生命的<span class=\"red b\">1/16</span>，探索则为<span\tclass=\"red b\">1/32</span>。生命降到0将会<span\tclass=\"red b\">烧伤发作身亡</span>。</div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>攻击力<span class=\"yellow b\">x60%</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>烧伤药剂</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"cyan b\">冻结</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>移动和探索体力消耗<span class=\"yellow b\">+20</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>命中率<span class=\"yellow b\">x80%</span>，攻击力、防御力、先攻率、反击率<span class=\"yellow b\">x90%</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>解冻药水</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"yellow b\">身体麻痹</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>移动和探索体力消耗<span class=\"yellow b\">+5</span></span>\r\n</td>\r\n<td class=\"b3\">\r\n<div>命中率<span class=\"yellow b\">x90%</span>；先制攻击率和反击率<span class=\"red b\">x20%</span></div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>麻痹药剂</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2\" height=30px>\r\n<span class=\"grey b\">混乱</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div>防御力<span class=\"yellow b\">x70%</span>；先制攻击率和反击率<span class=\"yellow b\">x80%</span></div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>清醒药剂</span>\r\n</td>\r\n</tr>\r\n\r\n</table>\r\n<br>\r\n<br>\r\n<BR>\r\n<p><a name=\"毒药和陷阱\"><span class=\"subtitle2\">14.毒药和陷阱</span></a></p>\r\n\r\n<p><span class=\"lime b\">陷阱类道具：</span>「使用」之后可以在所在的区域设下陷阱。<br>\r\n设置陷阱时可以增加经验值和爆系熟练度。<br>\r\n设下陷阱后，其他玩家在该区域探索，或者移动到该区域时，有可能踩中陷阱，并受到介于<span class=\"yellow b\">陷阱效果值的一半</span>~<span class=\"yellow b\">陷阱效果值</span>的伤害。这一伤害不受防御力影响，但采取“重视防御”应战策略有大概率把这一伤害降低25%。因此，劣势局面时可以靠埋设高伤陷阱来翻盘，而优势局时需要小心他人埋设的陷阱。<br>\r\n陷阱也可能被其他玩家回避，玩家等级越高则回避率越高，自己也有较高概率回避自己埋设的陷阱。如果玩家回避了陷阱，还有可能拾取该陷阱。<BR>\r\n不过，埋设陷阱时，如果你的等级和爆系熟练度都很低，则陷阱的效果值会下降（不会低于原值的一半）。鼠标在“使用”按钮处悬停，可以看到陷阱埋设效果的悬浮提示。<br>\r\n如果装备有「探雷」属性的道具，会提升自己对陷阱的回避率。而如果装备有「防雷」属性的道具，则有概率完全免疫陷阱的伤害。<br>\r\n自己设下的陷阱可能被自己触发，甚至反杀自己，因此在设下陷阱时需要谨慎。<br><br>\r\n<span class=\"lime b\">毒药：</span>「使用」后可对恢复类物品下毒。<BR>\r\n下毒后的恢复道具将失去恢复效果，还会反过来扣除使用者的生命。如果使用者的生命值被扣到0，则会<span class=\"yellow b\">误食毒物身亡</span>。<br>\r\n正常情况下，下毒道具的伤害等同于道具的效果值，因而原本恢复效果越好的道具，也越具有下毒的价值。如果玩家装备「毒物说明书」再下毒，则毒物的杀伤效果会+50%并随下毒次数增加毒性；如果玩家拥有「毒师」技能（黑衣组织自带）则毒物杀伤效果会+100%！<br>\r\n下毒后，从外表是看不出该恢复道具是否有毒（只有吃了才会知道）。而且无论是将这一道具丢弃、赠与对方，甚或是故意让对方杀死自己而缴获之，道具的毒性都依然存在。可以利用这一点来反杀领先的玩家。<br>\r\n自己下毒的道具可能会被自己捡到并误食，因此在下毒时同样需要谨慎。<BR></p>\r\n<BR>\r\n<p><a name=\"称号与技能\"><span class=\"subtitle2\">15.称号与技能</span></a></p>\r\n\r\n<br>\r\n<p>\r\n内定称号分为“一般”和“特殊”两种类型。<BR>\r\n玩家进入游戏时，会随机分配到4个内定称号，其中有2个“一般”类型称号和2个“特殊”类型称号，玩家可从中任选一个作为自己的称号。<BR>\r\n不同的内定称号有不同的特性与技能，各种技能涉及的两个重要资源便是“<span class=\"lime b\">技能点</span>”与“<span class=\"yellow b\">怒气</span>”。<br>\r\n“<span class=\"lime b\">技能点</span>”在升级时获得，每升1级获得1点技能点；技能点是对各类技能进行升级强化的资源。<br>\r\n而“<span class=\"yellow b\">怒气</span>”在战斗中获得：当你遭到敌人攻击时，你会获得一定怒气。敌人比你的等级高出越多，你获得的怒气也越多。怒气可以用于释放出各种不同的战斗技能。<br>\r\n各个称号的特性与技能请参见下表：</p>\r\n<BR>");
+  (await r.include(r.template("clubhelp"), s));
+  await r.write("<br><br>\r\n<p><a name=\"道具合成\"><span class=\"subtitle2\">16.道具合成</span></a></p>\r\n\r\n<p>“道具合成”是获得高级道具的重要途径。只要玩家集齐了特定合成公式的素材道具，就可以通过“道具合成”将它们转化为更高级的武器、防具或者其他道具，增加自己获胜的机会。\r\n<br>合成分为<span class=\"lime b\">通常合成、同调合成与超量合成</span>三种。\r\n<br>其中，通常合成只要素材道具的名称正确，无论素材道具是什么类别、效果或者数目，都可以顺利合成。而且，素材道具的部分前后缀（黑衣组织技能附加的“毒性”、边缘行者技能附加的“电气”、磨刀石带来的“锋利的”、武器师安雅的奖赏带来的“-改”）也不影响合成。但是，上钉子带来的“钉”前缀，以及祝福宝石/灵魂宝石带来的“[+x]”后缀会让素材无法参与合成。道具名里的一些特殊符号（如书名号《》、方括号【】等）的区别，也会让道具无法成为正确的合成素材。\r\n<br>而同调和超量合成对道具有更特殊的要求，其具体规则列在后面。\r\n</p>\r\n<p>道具合成的具体操作是：点击「道具合成」按钮后，把合成素材前面的复选框勾上，然后单击「提交」。\r\n<br>如果素材正确，会顺利合成；如果不正确，什么都不会发生。<br>\r\n合成界面也会提示当前包裹道具能够完成的合成公式。点击反查链接也能看到该道具参与的合成公式（只限通常合成）。</p>\r\n<p>合成成功时，如果素材是武器或防具，或者素材耐久为“∞”，则素材消失；其他情况下，材料的耐久会减1。\r\n<br>合成成功时还会让玩家的爆系熟练度+1。\r\n<br>如果合成产物是恢复类道具，无论素材是否有毒，产物都是无毒的。\r\n</p>\r\n<br>\r\n<br>\r\n</div>");
+  (await r.include(r.template("tmp_mixhelp"), s));
+  await r.write("<div class='help_body'>\r\n<br>\r\n<p><span class=\"lime b\">同调合成与超量合成说明：</span></p>\r\n<p><font size=2>\r\n游戏王系道具（名字后面带有‘★ 数字’的道具，也包含少量例外）可以参与同调合成。<br>\r\n合成时，会对‘★’后面的数字求和，合成结果就是星数为这个总和值的道具。如果有多种，你可以<span class=\"yellow b\">从中任选一个作为结果</span>。<br>\r\n总之，<span class=\"yellow b\">同调合成就是算星数的和</span>。 只要<span class=\"yellow b\">参与合成的道具都具有星数</span>，且<span class=\"yellow b\">有且仅有1个道具有“调整”属性</span>，也存在对应星数的合成结果，就能成功合成。<br>\r\n例如：卡片汽车 D ★2 + 水灵使-艾莉娅 ★3 + 盟军 次时代鸟人 ★3（这个道具有调整属性） => 星尘龙 ★8<br>\r\n或者：救世龙 ★1（这个道具有调整属性） + 凭依装着-希塔 ★4 + 光灵使-莱娜 ★3 => 星尘龙 ★8<br>\r\n</p>\r\n</div>");
+  (await r.include(r.template("tmp_mixhelp_sync"), s));
+  await r.write("<div class='help_body'>\r\n<br>\r\n<p>\r\n道具属性中带有<span class=\"yellow b\">“超量素材”属性</span>的道具，或者<span class=\"yellow b\">具有星数且名字里没有“-仮”字样的游戏王系道具</span>可以进行超量合成。装备<span class=\"yellow b\">具有“多重”属性且具有星数的游戏王系武器</span>，点击“武器模式”按钮，即可将武器转化为超量素材。注意，多数转化是不可逆的！<br>\r\n超量合成要求所有参与合成的道具<span class=\"yellow b\">星数相同</span>。 参与合成的超量素材的星数和个数决定了合成结果，与同调一样，如果有多个，你可以<span class=\"yellow b\">从中任选一个</span>。<br>\r\n</p>\r\n</div>");
+  (await r.include(r.template("tmp_mixhelp_overlay"), s));
+  await r.write("<div class='help_body'>\r\n<p><a name=\"特殊道具\"><span class=\"subtitle2\">17.特殊道具</span></a></p>\r\n\r\n<p>游戏中类别为“特殊”的道具，依照名字不同拥有完全不同的功能效果。在此列出游戏中部分特殊道具的用途。</p>\r\n<p><span class=\"yellow b\">强化道具用途</span>：</p>\r\n<table cellSpacing=0 cellPadding=0 width=1100px>\r\n<tr>\r\n<td class=\"b1\" height=20px width=180px>\r\n<span>道具名称</span>\r\n</td>\r\n<td class=\"b1\" width=300px>\r\n<span>道具用途</span>\r\n</td>\r\n\r\n<td class=\"b1\">\r\n<span>取得方式</span>\r\n</td>\r\n<td class=\"b1\" width=300px>\r\n<span>备注</span>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>名字以“钉”结尾的道具</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>为武器名字带有“棍棒”的钝器增加攻击力</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买、拾取、缴获、礼品盒</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">使用对象为装备着的武器<br>10%概率失败，反而让武器效果值下降</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>名字包含“磨刀石”的道具</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>为锐器增加攻击力</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买、拾取、缴获、礼品盒</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">使用对象为装备着的武器<br>15%概率失败，反而让武器效果值下降</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>幻铁的改造结晶·山铜</span><br>\r\n<span>武器师安雅的奖赏</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">随机选择以下1个效果：<br>1. 武器系别变为自己最擅长的系别<br>2. 武器耐久值+效果值的50%<br>3. 武器武器效果值x150%</div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>合成</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:10px\">\r\n使用对象为装备着的武器<br>\r\n3种效果的概率分别是：改系30%、改耐40%、改效30%<br>\r\n但如果武器已经是自己最擅长的系，则改系概率变为改耐概率。<br>\r\n如果武器耐久为“∞”，则改耐概率变为改效概率。<br>\r\n如果这两个条件都满足，则100%改效。<br>\r\n改造“复合武器”时，只要其任意1个系别是你最擅长的，就不会改系。\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>幻铁的改造结晶·精钢</span>\r\n</td>\r\n<td class=\"b3\">\r\n在“幻铁的改造结晶·山铜”的基础上，如果满足改系条件，则100%改系\r\n</td>\r\n<td class=\"b3\">\r\n<span>合成</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:10px\">\r\n——\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>幻铁的改造结晶·绯金</span>\r\n</td>\r\n<td class=\"b3\">\r\n在“幻铁的改造结晶·山铜”的基础上，武器效和耐都必定额外增加50%\r\n</td>\r\n<td class=\"b3\">\r\n<span>合成</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:10px\">\r\n——\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>『祝福宝石』</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>可以强化带“菁英”属性道具的效果值</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:10px\">\r\n任选包裹道具强化。<br>\r\n初次强化时，会给道具名加上[+1]的后缀，之后每次强化，这个值都会+1。<br>\r\n第1次强化效果是1.5倍，之后根据被强化时[+x]的值，强化效果为(1.5+0.1x)倍。<br>\r\n单个『祝福宝石』只能把道具强化到[+3]；<br>\r\n2个『祝福宝石』有1/3概率强化到[+4]，但2/3概率失败；<br>\r\n3个『祝福宝石』必定能强化到[+4]。<br>\r\n无论如何都不能强化到[+5]或者以上。<br>\r\n强化失败时，所选道具变成“悲叹之种”并且无法复原。\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>『灵魂宝石』</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>可以强化“菁英”属性道具的效果值，<br>能够强化到更高阶段</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>1禁后可购买</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:10px\">\r\n任选包裹道具强化。<br>\r\n初次强化时，会给道具名加上[+1]的后缀，之后每次强化，这个值都会+1。<br>\r\n第1次强化效果是1.5倍，之后根据被强化时[+x]的值，强化效果为(1.5+0.1x)倍。<br>\r\n强化没有上限，强化到[+4]必定成功，但之后有概率失败。<br>\r\n强化到[+5]的成功率为1/2，[+6]为1/3，[+7]为1/4，以此类推。<br>\r\n强化失败时，所选道具变成“悲叹之种”并且无法复原。\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>针线包</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>增加身体防具的效果值</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买、拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">使用对象为装备着的身体防具</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>消音器</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>为远程武器添加“消音”属性</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">使用对象为装备着的武器</div>\r\n</td>\r\n</tr>\r\n</table>\r\n<br>\r\n<br>\r\n<br>\r\n\r\n<p>游戏还有一类可以通过使用“电池”来充电的道具，称为“电子装备”。它们的效果如下：</p>\r\n<p><span class=\"lime b\">电子装备用途</span>：</p>\r\n<table cellSpacing=0 cellPadding=0 width=900>\r\n<tr>\r\n<td class=\"b1\" height=20px>\r\n<span>道具名称</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>道具用途</span>\r\n</td>\r\n\r\n<td class=\"b1\">\r\n<span>取得方式</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>备注</span>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px width=120px>\r\n<span>生命探测器</span>\r\n</td>\r\n<td class=\"b3\" width=240px>\r\n<span>探测当前区域的玩家和NPC数目</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>拾取、开局可能携带</span>\r\n</td>\r\n<td class=\"b3\" width=450>\r\n<div style=\"margin:8px\">每次使用后，效果值-1<br>效果值为0时不能使用，须用“探测器电池”充电</div>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>广域生命探测器</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>探测<span class=\"lime b\">所有区域</span>的玩家和NPC数目</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>合成、1禁后可购买</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">每次使用后，效果值-1<br>效果值为0时不能使用，须用“探测器电池”充电</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>探测器电池</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>为生命探测器和广域生命探测器充电</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买、拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">电量（效果值）最多充到5<br>包裹有超过1个探测器时，靠前的优先。</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>移动PC</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>干扰幻境，用以暂时解除禁区</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>合成、拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">40%概率成功解除禁区；<br>被解除的禁区在下一次过禁时会复原<br>\r\n无论是否成功，都有5%概率毁坏移动PC，且3%概率导致角色死亡！<br>\r\n称号「边缘行者」的「网瘾」技能可以95%成功且完全无风险。</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>电池</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>为移动PC充电</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买、拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">电量（效果值）最多充到5<br>包裹有超过1个移动PC时，靠前的优先</div>\r\n</td>\r\n</tr>\r\n</table>\r\n<br>\r\n<br>\r\n\r\n<p><span class=\"cyan b\">剧情道具用途</span>：</p>\r\n<table cellSpacing=0 cellPadding=0 width=1000>\r\n<tr>\r\n<td class=\"b1\" height=20px>\r\n<span>道具名称</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>道具用途</span>\r\n</td>\r\n\r\n<td class=\"b1\">\r\n<span>取得方式</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>备注</span>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>游戏解除钥匙</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后获得“锁定解除”胜利</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">BOSS NPC『幻影执行官』掉落的「社员专用的ID卡」集齐3张以合成<br><span class=\"red b\">极速模式</span>BOSS 无尽狂飙直接掉落</div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>奇怪的按钮</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后30%概率获得“核爆全灭”胜利</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>地图拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">除30%概率胜利外，还有40%概率按钮变为可乐，<br>另外30%概率导致玩家被炸死！</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>『G.A.M.E.O.V.E.R』</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后获得“幻境解离”胜利</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>通过一定步骤获得素材并合成</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">获得解离胜利有一定难度并需要运气，新手不建议挑战</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>伐木解除钥匙</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后结束本次伐木挑战</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>伐木模式商店“杂物”出售</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>杏仁豆腐的ID卡</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后使游戏进入死斗模式</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>杏仁豆腐NPC掉落</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">进入连斗后方可使用；<br>死斗后所有NPC消失，所有恶性事件消失。</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>挑战者之印</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后召唤三位幻影执行官</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>BOSS NPC『红暮』掉落</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">幻影执行官会进入随机未禁地区，击倒后分别掉落“游戏解除钥匙”的素材</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>黑色碎片</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后召唤Dark Force幼体</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>BOSS NPC『红暮』掉落</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">获取的黑色碎片需先切换武器模式才能使用。<br>DF会进入随机未禁地区，击倒获得“游戏解除钥匙”。<br>击杀难度较高。</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>破灭之诗</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">使用后暂时解除禁区、天气变为<span class=\"gold b\">极光</span>，<br>且召唤■到雏菊之丘</div>\r\n</td>\r\n<td class=\"b3\">\r\n<span>三名『数据碎片』掉落的<span title=\"歌词卡片【海洋】 歌词卡片【大地】 歌词卡片【星空】\" class=\"yellow b\">歌词卡片</span>合成<br>或三名『数据碎片』掉落的<span title=\"『随心所欲的虚拟笔』 『铭刻记忆的单词本』『命定身体的契约书』\" class=\"yellow b\">合成专用</span>道具合成</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">击倒后获得“幻境解离”路线的必需道具。击杀难度较高。</div>\r\n</td>\r\n</tr>\r\n</table>\r\n<br>\r\n<br>\r\n\r\n\r\n<p><span class=\"lime b\">其他特殊道具用途</span>：</p>\r\n<table cellSpacing=0 cellPadding=0 width=1000>\r\n<tr>\r\n<td class=\"b1\" height=20px>\r\n<span>道具名称</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>道具用途</span>\r\n</td>\r\n\r\n<td class=\"b1\">\r\n<span>取得方式</span>\r\n</td>\r\n<td class=\"b1\">\r\n<span>备注</span>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>装有H173的注射器</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后立刻自杀</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>有微小概率自杀失败并且进入L5状态</span>\r\n</td>\r\n\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>毒物说明书</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>装备以后，下毒效果x1.5，且每次下毒毒性增加</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>会被“黑衣组织”称号的技能覆盖，但毒性叠加效果保留</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>妖精的羽翼</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>装备以后，下毒的效果变为去除恢复品的毒性</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买；NPC掉落</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>会覆盖“毒物说明书”或者“黑衣组织”的效果。</span>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>御神签</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后随机增减少量能力值</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n</tr>\r\n\r\n<tr>\r\n<td class=\"b2 b2h\" height=30px>\r\n<span>凸眼鱼</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后让当前所有尸体消失</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>刚死亡不到10秒的尸体不受影响</span>\r\n</td>\r\n</tr>\r\n\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>■DeathNote■</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>填入玩家名字和头像即可将其杀死。</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>拾取；NPC掉落</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">如果名字或者头像不正确则无效<br>除错模式中不可使用</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>水果刀</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>使用后可把包裹里的水果变为补给或者陷阱。</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买；拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<div style=\"margin:8px\">斩系熟练度低于120会转化为陷阱，否则转化为补给<br>\r\n每次使用后斩熟+1，且水果刀有20%几率损坏</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class=\"b2 b2h\" height=20px>\r\n<span>“提示纸条”类道具</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>可以查看游戏提示，并无特殊用处</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>购买；拾取</span>\r\n</td>\r\n<td class=\"b3\">\r\n<span>无</span>\r\n</td>\r\n</tr>\r\n</table>\r\n<br>\r\n<br>\r\n\r\n\r\n\r\n<p><a name=\"天气\"><span class=\"subtitle2\">18.天气状况</span></a></p>\r\n<br>\r\n<p>天气对玩家探索和战斗有一定的加成/减成。<br>\r\n开局天气会是“晴天”、“多云”、“小雨”、“暴雨”、“下雪”中的一种。在禁区增加时，天气也会变化，诸如“大晴”或者“台风”这样的天气将出现。<BR>\r\n<BR>\r\n天气为“起雾”、“浓雾”或者“暴风雪”时，先制攻击时无法确定对方的身份。这时贸然攻击可能会伤害自己的队友，请小心。<BR>\r\n使用道具“驱云弹”能把天气变为“大晴”，有利于探索和战斗。<BR>\r\n使用“造雾设备”会把天气变为“起雾”或“浓雾”。<br>\r\n使用道具“天候棒”，则会将天气强制改变成<span class=\"blue b\">“冰雹”</span>、<span class=\"red b\">“龙卷风”</span>、<span class=\"yellow b\">“瘴气”</span>和<span class=\"cyan b\">“暴风雪”</span>的其中一种。<BR>\r\n天气对游戏的影响如下：<BR>\r\n</p>\r\n<TABLE cellSpacing=0 cellPadding=0 width=700>\r\n<TBODY>\r\n<TR>\r\n<TD class=\"b1\" height=20px>\r\n<span>天气</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>攻击力</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>防御力</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>角色发现率</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>道具发现率</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>先攻率</span>\r\n</TD>\r\n<TD class=\"b1\">\r\n<span>备注</span>\r\n</TD>\r\n</TR>");
+  r.imports(s, "weather");
+  if (r.truth((await r.call("is_array", r.get(s, "wthinfo"))))) {
+    {
+      const a11 = r.copy(r.get(s, "wthinfo"));
+      for (const [k11, v11] of r.entries(a11)) {
+      r.assign(r.slot(s, ["wi"]), k11);
+        r.assign(r.slot(s, ["wn"]), v11);
+        if (r.truth((r.truth((r.compare(r.get(s, "wi"), 14) < 0)) || r.truth((r.compare(r.get(s, "wi"), 16) > 0))))) {
+          await r.write("<TR>\r\n<TD class=\"b2 b2h\" height=20px width=70px>\r\n<span>");
+          await r.write(r.text(r.get(s, "wn")));
+          await r.write("</span>\r\n</TD>\r\n<TD class=\"b3\">");
+          if (r.truth((r.compare(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi")), 10) > 0))) {
+            await r.write("<span class=\"cyan b\">+");
+            await r.write(r.text(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi"))));
+            await r.write("%</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi")), 0) > 0))) {
+              await r.write("<span class=\"lime b\">+");
+              await r.write(r.text(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi"))));
+              await r.write("%</span>");
+            } else {
+              if (r.truth((r.compare(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi")), (-r.number(10))) > 0))) {
+                await r.write("<span class=\"yellow b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              } else {
+                await r.write("<span class=\"red b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_attack_modifier"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              }
+            }
+          }
+          await r.write("</TD>\r\n<TD class=\"b3\">");
+          if (r.truth((r.compare(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi")), 10) > 0))) {
+            await r.write("<span class=\"cyan b\">+");
+            await r.write(r.text(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi"))));
+            await r.write("%</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi")), 0) > 0))) {
+              await r.write("<span class=\"lime b\">+");
+              await r.write(r.text(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi"))));
+              await r.write("%</span>");
+            } else {
+              if (r.truth((r.compare(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi")), (-r.number(10))) > 0))) {
+                await r.write("<span class=\"yellow b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              } else {
+                await r.write("<span class=\"red b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_defend_modifier"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              }
+            }
+          }
+          await r.write("</TD>\r\n<TD class=\"b3\">");
+          if (r.truth((r.compare(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi")), 10) > 0))) {
+            await r.write("<span class=\"cyan b\">+");
+            await r.write(r.text(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi"))));
+            await r.write("%</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi")), 0) > 0))) {
+              await r.write("<span class=\"lime b\">+");
+              await r.write(r.text(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi"))));
+              await r.write("%</span>");
+            } else {
+              if (r.truth((r.compare(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi")), (-r.number(10))) > 0))) {
+                await r.write("<span class=\"yellow b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              } else {
+                await r.write("<span class=\"red b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_meetman_obbs"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              }
+            }
+          }
+          await r.write("</TD>\r\n<TD class=\"b3\">");
+          if (r.truth((r.compare(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi")), 10) > 0))) {
+            await r.write("<span class=\"cyan b\">+");
+            await r.write(r.text(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi"))));
+            await r.write("%</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi")), 0) > 0))) {
+              await r.write("<span class=\"lime b\">+");
+              await r.write(r.text(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi"))));
+              await r.write("%</span>");
+            } else {
+              if (r.truth((r.compare(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi")), (-r.number(10))) > 0))) {
+                await r.write("<span class=\"yellow b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              } else {
+                await r.write("<span class=\"red b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_itemfind_obbs"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              }
+            }
+          }
+          await r.write("</TD>\r\n<TD class=\"b3\">");
+          if (r.truth((r.compare(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi")), 10) > 0))) {
+            await r.write("<span class=\"cyan b\">+");
+            await r.write(r.text(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi"))));
+            await r.write("%</span>");
+          } else {
+            if (r.truth((r.compare(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi")), 0) > 0))) {
+              await r.write("<span class=\"lime b\">+");
+              await r.write(r.text(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi"))));
+              await r.write("%</span>");
+            } else {
+              if (r.truth((r.compare(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi")), (-r.number(10))) > 0))) {
+                await r.write("<span class=\"yellow b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              } else {
+                await r.write("<span class=\"red b\">");
+                await r.write(r.text(r.get(r.get(s, "weather_active_obbs"), r.get(s, "wi"))));
+                await r.write("%</span>");
+              }
+            }
+          }
+          await r.write("</TD>\r\n<td class=\"b3\">");
+          if (r.truth(r.get(r.get(s, "weather_fog"), r.get(s, "wi")))) {
+            await r.write("<span>有雾</span>");
+          } else {
+            if (r.truth(r.equal(17, r.get(s, "wi")))) {
+              await r.write("<span>玩家10%概率复活；NPC 1%概率复活</span>");
+            } else {
+              await r.write("<span>-</span>");
+            }
+          }
+          if (r.truth(r.equal(12, r.get(s, "wi")))) {
+            await r.write("<span>，命中率+20%</span>");
+          }
+          await r.write("</td>\r\n</TR>");
+        }
+      }
+    }
+  }
+  await r.write("</TBODY>\r\n</TABLE>\r\n<p>注：角色发现率-道具发现率的值越大，则玩家每次探索时遭遇角色而不是道具的概率就越高，反之亦然；<br>\r\n此外，角色发现率/道具发现率越高，玩家就越不容易“什么都没发现”。</p>\r\n<BR>\r\n<BR>\r\n<BR>\r\n\r\n<p><a name=\"物品掉落表\"><span class=\"subtitle2\">19.物品掉落表</span></a></p>\r\n<br>\r\n下面给出ACFUN大逃杀地图物品掉落表格，供玩家查询使用。<br> \r\n<span class=\"lime b\">如果你只是想查找合成表中的物品的掉落位置，只需将鼠标停留在合成表中该物品上，就会出现这个物品的获取方式了～</span><br>\r\n<span class=\"yellow b\">物品掉落表比较巨大，因此请利用浏览器的查找功能（Ctrl+F）查找你所需的内容。 </span><br>\r\n<a href=\"itemhelp.php\"><u>>>点我查看掉落物品一览表<<</u></a><br>\r\n<br>\r\n<br>\r\n\r\n<p><a name=\"NPC简介\"><span class=\"subtitle2\">20.NPC简介</span></a></p>\r\n<br>\r\n</div>");
+  (await r.include(r.template("tmp_npchelp"), s));
+  await r.write("<div class='help_body'>\r\n<BR>\r\n\r\n<BR>\r\n<p><a name=\"玩家守则\"><span class=\"subtitle2\">21.玩家守则</span></a></p>\r\n<p><span class=\"evergreen b\">\r\n1。请文明地进行游戏。使用不雅昵称或口出脏话，而且不听劝阻的人，不保证其继续游戏的权利。<br>\r\n2。请放松地进行游戏，勿为游戏中的突发事件而走极端。<br>\r\n3。如果发现游戏中的漏洞，请及时通知管理员。如果利用游戏漏洞谋取利益或者攻击游戏服务器，管理员将保留采取任何反制手段的权利。<br>\r\n<br>\r\n感谢能遵守以上三条的人的默默支持，祝你们都能享受到“ACFUN大逃杀”的游戏乐趣。</span></p>\r\n\r\n</div>\r\n</center>\r\n<a href=\"updatelist.php\">新版更新履历</a><br>\r\n\r\n\r\n\r\n<form method=\"post\" name=\"backindex\" action=\"index.php\"><input\r\ntype=\"submit\" name=\"enter\" value=\"返回首页\"></form>");
+  (await r.include(r.template("footer"), s));
+return 1;
+}

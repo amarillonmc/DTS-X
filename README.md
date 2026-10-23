@@ -1,39 +1,44 @@
 # DTS-X
 
-新电波版 DTS 的 Node.js 部署版本，基于 `dts/Unstable` 提交 `ba8f607a57d5352327113f41b32676d16fe7c3ba`。Node.js 内嵌 PHP WebAssembly 执行原规则，保留原资源、模块、数据库格式及经典界面，增加可切换的「电波终端」窗口界面。
+`XX` 分支将 `dts/Unstable` 完整移植为原生 Node.js：游戏规则、账号、HTTP、调度、模板和录像均执行 JavaScript。保留 779 个模块（默认启用 770 个）、全部原资源、经典界面及可切换的电波终端界面。来源提交为 `ba8f607a57d5352327113f41b32676d16fe7c3ba`。
 
-**本地实现验收已完成，可作为 VPS 验证交付版。** 已通过 27 项自动测试、真实主局和房间操作、两种界面及移动端检查、756 个编译模板完整性检查和重启持久化验证。Linux/Docker 部署、多人完整开战及全部技能组合仍需在目标服继续验证；范围与实测延迟见 [验证记录](doc/VALIDATION.md)。
+生产运行不依赖 PHP、PHP WebAssembly 或解释器。`engine/` 保留 3,578 个原文件作为资源及行为对照；`native/` 是实际运行实现。开发期静态转换器和 PHP 差分测试不参与生产请求。
 
-这不是把规则改写成 JavaScript 的版本。选择兼容运行层是为了保留动态模块链、技能数值和现有开发方式；服务器无需安装 PHP、Apache 或独立 daemon。Node.js 管理隔离执行线程、内部请求、房间等待及定时维护。
+## 本地部署
 
-## 部署到 VPS
-
-准备 Docker Engine + Compose，复制本仓库完整目录。在有 Node.js 的电脑上生成配置后也可以整目录上传；VPS 使用 Docker 时无需另外安装 Node.js。
+准备 Node.js ≥24.18.0、MariaDB/MySQL，以及一个专用空数据库：
 
 ```sh
-node scripts/configure.mjs --url=https://dts.example.com
-docker compose up -d --build
-docker compose logs -f app
+npm ci --omit=dev
+node scripts/configure.mjs --url=http://localhost:3000
+# 私下编辑 .env，填入专用数据库连接，保管随机站长密码
+npm run setup
+npm run compile
+npm run doctor
+npm start
 ```
 
-`.env` 内有随机生成的数据库和站长密码。第一次启动自动安装空数据库并编译模块；出现 `DTS-X ready` 后访问配置的域名。数据库非空而没有安装锁时会拒绝初始化，避免覆盖旧服。反向代理指向 `127.0.0.1:3000`，按部署文档配置真实 IP 转发后启用 `TRUST_PROXY=1`；需要临时通过 VPS IP 直接访问时，在 `.env` 设置正确 `PUBLIC_URL=http://IP:3000` 及 `BIND_ADDRESS=0.0.0.0`，并保持 `TRUST_PROXY=0`。
+访问 `.env` 中的 `PUBLIC_URL`。默认私有状态位于 `var/native`，可用 `NATIVE_DATA_DIR` 指定；不要放在源文件或公开资源目录。重复启动会验证数据库与目录所有权并保留数据。安装器拒绝非空未知库，不会清空或自动认领旧服。
 
-部署、备份和迁移步骤见 [doc/DEPLOYMENT.md](doc/DEPLOYMENT.md)。没有 Docker 时使用 Node.js ≥24.18、MariaDB，然后 `npm ci`、配置 `.env`、`npm run setup`、`npm start`。
+Compose 配置也已指向原生入口；本轮没有 Docker 环境，尚未实际验证容器部署。详细的反向代理、私有远端授权、备份恢复和旧服切换约束见 [部署说明](doc/DEPLOYMENT.md)。不要直接用正式旧服数据库试安装。
 
-## 游玩与改造
+## 开发与验证
 
-页面右上角可切换经典界面与电波终端。现代界面提供窗口移动、调整尺寸、最小化、恢复、布局保存和归位；人物、装备、背包、操作、日志、聊天、游戏状况与地图均使用原游戏数据。
-
-- [doc/DEVELOPMENT.md](doc/DEVELOPMENT.md)：资源、技能和模块的修改路径；旧开发流程与 Node 版的对应关系。
-- [doc/ARCHITECTURE.md](doc/ARCHITECTURE.md)：运行结构、daemon 替代方式、持久化与兼容补丁。
-- [docs/PORTING-AUDIT.md](docs/PORTING-AUDIT.md)：原版审计与验证边界。
-- [doc/VALIDATION.md](doc/VALIDATION.md)：已覆盖的测试与公测清单。
-- [AGENTS.md](AGENTS.md)：后续开发约定。
+修改规则直接编辑原生 JavaScript；依赖顺序、参数引用、随机分支和原数值语义必须保留。停服后 `npm run compile` 校验模块及模板，管理页候选可用 `npm run compile -- --staged` 应用。图片、地图和原交互脚本仍位于原资源路径。
 
 ```sh
+npm ci
 npm test
 npm run verify:source
-npm run doctor
+npm run verify:native
+npm run native:status
 ```
 
-`verify:source` 对照导入时清单核验原版全部文件。主动修改 `engine/` 后会报告差异，这是维护者检查改造范围的依据。它不代表对全部玩法的端到端证明；功能验证记录与人工回归清单另见文档。
+已覆盖原 PHP 差分、真实隔离数据库、19 种模式、账号和房间、整局持久化与结局、真实 Edge 经典/现代操作及录像播放、远端接口、维护、空库安装和重启。测试需要专用测试数据库；缺少对照环境时的 skip 不算验收。没有穷举全部技能组合和随机种子，具体范围及原有缺陷见 [原生移植记录](doc/NATIVE-MIGRATION.md)。
+
+- [开发说明](doc/DEVELOPMENT.md)：修改路径、模块 API、静态产物与测试方法。
+- [架构说明](doc/ARCHITECTURE.md)：请求、模块、存储、调度和录像。
+- [移植审计](docs/PORTING-AUDIT.md)：来源与明确行为差异。
+- [开发约定](AGENTS.md)：数据保护和后续验证要求。
+
+`runtime/` 只保留为旧兼容层的开发回归材料；默认部署不加载它。旧版验证记录保留其历史范围，不替代本轮原生验证。

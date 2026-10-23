@@ -1,0 +1,10314 @@
+{
+  "bmp_util.init": [],
+  "bmp_util.bmp_binwriteint": [
+    {
+      "name": "str",
+      "byref": true
+    },
+    {
+      "name": "pos",
+      "byref": false
+    },
+    {
+      "name": "val",
+      "byref": false
+    }
+  ],
+  "bmp_util.gen_bmp": [
+    {
+      "name": "content",
+      "byref": true
+    },
+    {
+      "name": "width",
+      "byref": false
+    },
+    {
+      "name": "height",
+      "byref": false
+    }
+  ],
+  "replay.init": [],
+  "replay.get_html_color": [
+    {
+      "name": "r",
+      "byref": false
+    },
+    {
+      "name": "g",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    }
+  ],
+  "replay.get_ident_textcolor": [
+    {
+      "name": "u",
+      "byref": false
+    }
+  ],
+  "replay.post_gameover_events": [],
+  "replay.replay_validify_record": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "replay.replay_record_op": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "replay.get_replay_by_gnum": [
+    {
+      "name": "gnum",
+      "byref": false
+    },
+    {
+      "name": "wmode",
+      "byref": false
+    }
+  ],
+  "replay.get_replay_remote": [
+    {
+      "name": "repfilename",
+      "byref": false
+    }
+  ],
+  "map_display.init": [],
+  "map_display.get_map_display_config": [],
+  "map_display.map_display_y2coor": [
+    {
+      "name": "y",
+      "byref": false
+    }
+  ],
+  "map_display.map_display_check_pls_available": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "map_display.map_display_get_pls_color": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "bufficons.init": [],
+  "bufficons.bufficon_show": [
+    {
+      "name": "src",
+      "byref": false
+    },
+    {
+      "name": "para",
+      "byref": false
+    }
+  ],
+  "bufficons.bufficons_display": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "bufficons.bufficons_display_single": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "config",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "bufficons.bufficons_set_timestamp": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "end",
+      "byref": false
+    },
+    {
+      "name": "cd",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tp",
+      "byref": false
+    },
+    {
+      "name": "msec",
+      "byref": false
+    }
+  ],
+  "bufficons.bufficons_check_buff_state": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "msec",
+      "byref": false
+    }
+  ],
+  "bufficons.bufficons_check_buff_state_shell": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "msec",
+      "byref": false
+    }
+  ],
+  "bufficons.bufficons_activate_buff": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "end",
+      "byref": false
+    },
+    {
+      "name": "cd",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tp",
+      "byref": false
+    },
+    {
+      "name": "msec",
+      "byref": false
+    }
+  ],
+  "bufficons.bufficons_impose_buff": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "end",
+      "byref": false
+    },
+    {
+      "name": "cd",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tp",
+      "byref": false
+    },
+    {
+      "name": "msec",
+      "byref": false
+    }
+  ],
+  "elorating.init": [],
+  "elorating.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "elorating.get_servermark": [],
+  "elorating.elorating_math_erf": [
+    {
+      "name": "x",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_math_ierf": [
+    {
+      "name": "x",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_math_probit": [
+    {
+      "name": "x",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_calculate_win_probability": [
+    {
+      "name": "p1",
+      "byref": false
+    },
+    {
+      "name": "p2",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_stimulate_game": [
+    {
+      "name": "arr",
+      "byref": true
+    }
+  ],
+  "elorating.elorating_calculate_update": [
+    {
+      "name": "arr",
+      "byref": true
+    }
+  ],
+  "elorating.elorating_update": [],
+  "elorating.get_gameover_udata_update_fields": [],
+  "elorating.post_gameover_events": [],
+  "elorating.elorating_draw_line": [
+    {
+      "name": "p1",
+      "byref": false
+    },
+    {
+      "name": "p2",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_get_title": [
+    {
+      "name": "r",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_get_color": [
+    {
+      "name": "r",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_get_graph_color": [
+    {
+      "name": "r",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_draw_point": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_draw": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "elorating.elorating_show": [],
+  "edible.init": [],
+  "edible.get_edible_spup": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "edible.get_edible_hpup": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "edible.edible_recover": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "hpup",
+      "byref": false
+    },
+    {
+      "name": "spup",
+      "byref": false
+    }
+  ],
+  "edible.itemuse_edible_get_msp": [],
+  "edible.itemuse_edible_get_mhp": [],
+  "edible.itemuse_edible": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "edible.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "boxes.init": [],
+  "boxes.itemuse_boxes": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "boxes.boxes_row_data_seperate": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "boxes.boxes_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "boxes.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "boxes.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "scpdrink.init": [],
+  "scpdrink.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "scpdrink.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_ub.init": [],
+  "item_ub.itemuse_ub": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_ub.ub_check": [
+    {
+      "name": "bat_kind",
+      "byref": false
+    },
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    }
+  ],
+  "item_ub.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_uee.init": [],
+  "item_uee.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_uee.calculate_hack_proc_rate": [],
+  "item_uee.calculate_post_hack_proc_rate": [],
+  "item_uee.get_uee_deathlog": [],
+  "item_uee.post_hack_events": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "item_uee.itemuse_uee": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "item_uee.itemuse_uee_core": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "item_uee.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_uee.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_addarea.init": [],
+  "item_addarea.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_addarea.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_addarea.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "radar.init": [],
+  "radar.pre_radar_event": [
+    {
+      "name": "radarsk",
+      "byref": false
+    }
+  ],
+  "radar.check_radar_digit": [
+    {
+      "name": "radarsk",
+      "byref": false
+    }
+  ],
+  "radar.radar_itmsk_to_digit": [
+    {
+      "name": "radarsk",
+      "byref": false
+    }
+  ],
+  "radar.use_radar": [
+    {
+      "name": "radarsk",
+      "byref": false
+    }
+  ],
+  "radar.check_include_radar_cmdpage": [
+    {
+      "name": "radarsk",
+      "byref": false
+    }
+  ],
+  "radar.post_radar_event": [
+    {
+      "name": "radarsk",
+      "byref": false
+    }
+  ],
+  "radar.radar_parse_namelist": [
+    {
+      "name": "arr",
+      "byref": false
+    }
+  ],
+  "radar.get_radar_npc_type_list": [
+    {
+      "name": "radarsk",
+      "byref": false
+    },
+    {
+      "name": "existing_npctp",
+      "byref": false
+    }
+  ],
+  "radar.item_radar_reduce": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "radar.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "randnpc.init": [],
+  "randnpc.generate_randnpc": [
+    {
+      "name": "rank",
+      "byref": false
+    },
+    {
+      "name": "num",
+      "byref": false
+    },
+    {
+      "name": "offens_tend",
+      "byref": false
+    },
+    {
+      "name": "defens_tend",
+      "byref": false
+    },
+    {
+      "name": "variety",
+      "byref": false
+    },
+    {
+      "name": "use_preset",
+      "byref": false
+    },
+    {
+      "name": "chara_preset",
+      "byref": false
+    }
+  ],
+  "randnpc.generate_single_randnpc": [
+    {
+      "name": "rank",
+      "byref": false
+    },
+    {
+      "name": "offens_tend",
+      "byref": false
+    },
+    {
+      "name": "defens_tend",
+      "byref": false
+    },
+    {
+      "name": "variety",
+      "byref": false
+    },
+    {
+      "name": "use_preset",
+      "byref": false
+    },
+    {
+      "name": "chara_preset",
+      "byref": false
+    }
+  ],
+  "randnpc.generate_randnpc_item": [
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "randname",
+      "byref": false
+    }
+  ],
+  "randnpc.generate_randnpc_itmsk": [
+    {
+      "name": "rank",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "randnpc.generate_randnpc_skills": [
+    {
+      "name": "rank",
+      "byref": false
+    },
+    {
+      "name": "skills",
+      "byref": false
+    }
+  ],
+  "randnpc.add_randnpc": [
+    {
+      "name": "rank",
+      "byref": false
+    },
+    {
+      "name": "num",
+      "byref": false
+    },
+    {
+      "name": "offens_tend",
+      "byref": false
+    },
+    {
+      "name": "defens_tend",
+      "byref": false
+    },
+    {
+      "name": "variety",
+      "byref": false
+    },
+    {
+      "name": "use_preset",
+      "byref": false
+    },
+    {
+      "name": "pls_available",
+      "byref": false
+    },
+    {
+      "name": "addnews",
+      "byref": false
+    }
+  ],
+  "randnpc.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "npc_pick_item.init": [],
+  "npc_pick_item.is_npc_pick_allowed": [],
+  "npc_pick_item.lay_mapitem": [
+    {
+      "name": "lpls",
+      "byref": false
+    }
+  ],
+  "npc_pick_item.itemlist_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "npc_pick_item.mapitem_single_data_attr_process": [
+    {
+      "name": "iname",
+      "byref": false
+    },
+    {
+      "name": "ikind",
+      "byref": false
+    },
+    {
+      "name": "ieff",
+      "byref": false
+    },
+    {
+      "name": "ista",
+      "byref": false
+    },
+    {
+      "name": "iskind",
+      "byref": false
+    },
+    {
+      "name": "imap",
+      "byref": false
+    },
+    {
+      "name": "count",
+      "byref": false
+    }
+  ],
+  "itemmix_sync.init": [],
+  "itemmix_sync.get_itemmix_sync_filename": [],
+  "itemmix_sync.itemmix_prepare_sync": [],
+  "itemmix_sync.itemmix_star_culc_sync": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "itemmix_sync.itemmix_get_star": [
+    {
+      "name": "z",
+      "byref": false
+    }
+  ],
+  "itemmix_sync.itemmix_sync_check": [
+    {
+      "name": "mlist",
+      "byref": false
+    }
+  ],
+  "itemmix_sync.itemmix_get_result": [
+    {
+      "name": "mlist",
+      "byref": false
+    }
+  ],
+  "item_uee_extra.init": [],
+  "item_uee_extra.uee_extra_get_hack_num": [],
+  "item_uee_extra.itemuse_uee_core": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "item_uee_extra.itemuse_uee_extra_reset": [],
+  "item_uee_extra.itemuse_uee_extra": [
+    {
+      "name": "pos",
+      "byref": false
+    }
+  ],
+  "itemmix_overlay.init": [],
+  "itemmix_overlay.get_itemmix_overlay_filename": [],
+  "itemmix_overlay.itemmix_prepare_overlay": [],
+  "itemmix_overlay.itemmix_star_culc_overlay": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "itemmix_overlay.check_valid_overlay_material": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "star",
+      "byref": false
+    }
+  ],
+  "itemmix_overlay.itemmix_overlay_check": [
+    {
+      "name": "mlist",
+      "byref": false
+    }
+  ],
+  "itemmix_overlay.itemmix_get_result": [
+    {
+      "name": "mlist",
+      "byref": false
+    }
+  ],
+  "item_misc.init": [],
+  "item_misc.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_misc.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_misc.divining": [],
+  "item_misc.divining1": [
+    {
+      "name": "u",
+      "byref": false
+    }
+  ],
+  "item_misc.divining2": [
+    {
+      "name": "u",
+      "byref": false
+    }
+  ],
+  "item_misc.deathnote": [
+    {
+      "name": "itmd",
+      "byref": false
+    },
+    {
+      "name": "dnname",
+      "byref": false
+    },
+    {
+      "name": "dndeath",
+      "byref": false
+    },
+    {
+      "name": "dngender",
+      "byref": false
+    },
+    {
+      "name": "dnicon",
+      "byref": false
+    }
+  ],
+  "item_misc.deathnote_process": [
+    {
+      "name": "dnname",
+      "byref": false
+    },
+    {
+      "name": "dndeath",
+      "byref": false
+    },
+    {
+      "name": "dngender",
+      "byref": false
+    },
+    {
+      "name": "dnicon",
+      "byref": false
+    }
+  ],
+  "item_misc.deathnote_process_core": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "dndeath",
+      "byref": false
+    }
+  ],
+  "item_misc.act": [],
+  "item_misc.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "advteam.init": [],
+  "advteam.get_advteam_html": [],
+  "advteam.act": [],
+  "instance0.init": [],
+  "instance0.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "ex_vanish.init": [],
+  "ex_vanish.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_vanish.itemget": [],
+  "clubbase.init": [],
+  "clubbase.club_acquire": [
+    {
+      "name": "clubid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "clubbase.club_lost": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "clubbase.club_randseed_calc": [
+    {
+      "name": "modval",
+      "byref": false
+    },
+    {
+      "name": "baseval",
+      "byref": false
+    },
+    {
+      "name": "curgid",
+      "byref": false
+    },
+    {
+      "name": "curuid",
+      "byref": false
+    },
+    {
+      "name": "curpid",
+      "byref": false
+    },
+    {
+      "name": "sttime",
+      "byref": false
+    },
+    {
+      "name": "vatime",
+      "byref": false
+    }
+  ],
+  "clubbase.club_choice_probability_process": [
+    {
+      "name": "clublist",
+      "byref": false
+    }
+  ],
+  "clubbase.get_club_choice_array": [],
+  "clubbase.player_selectclub": [
+    {
+      "name": "id",
+      "byref": false
+    }
+  ],
+  "clubbase.act": [],
+  "clubbase.init_npcdata": [
+    {
+      "name": "npc",
+      "byref": false
+    },
+    {
+      "name": "plslist",
+      "byref": false
+    }
+  ],
+  "clubbase.init_npcdata_skills": [
+    {
+      "name": "npc",
+      "byref": true
+    }
+  ],
+  "clubbase.init_npcdata_skills_get_custom": [
+    {
+      "name": "npc",
+      "byref": true
+    }
+  ],
+  "clubbase.skill_query_unlocked": [
+    {
+      "name": "id",
+      "byref": false
+    },
+    {
+      "name": "who",
+      "byref": false
+    }
+  ],
+  "clubbase.check_battle_skill_available": [
+    {
+      "name": "edata",
+      "byref": true
+    },
+    {
+      "name": "skillno",
+      "byref": false
+    }
+  ],
+  "clubbase.check_battle_skill_unactivatable": [
+    {
+      "name": "ldata",
+      "byref": true
+    },
+    {
+      "name": "edata",
+      "byref": true
+    },
+    {
+      "name": "skillno",
+      "byref": false
+    }
+  ],
+  "clubbase.get_battle_skill_entry_array": [
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "clubbase.get_battle_skill_entry": [
+    {
+      "name": "edata",
+      "byref": true
+    },
+    {
+      "name": "which",
+      "byref": false
+    }
+  ],
+  "clubbase.get_profile_skill_buttons": [],
+  "clubbase.get_skillpage": [],
+  "clubbase.load_user_battleskill_command": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "clubbase.load_user_combat_command": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "clubbase.check_npc_clubskill_load": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "clubbase.get_npcskillpage": [
+    {
+      "name": "pn",
+      "byref": false
+    }
+  ],
+  "clubbase.skill_check_alternative_state": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_um.init": [],
+  "item_um.calc_skillmed_value": [
+    {
+      "name": "x",
+      "byref": false
+    },
+    {
+      "name": "v",
+      "byref": false
+    }
+  ],
+  "item_um.calc_skillmed_efct": [
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "skcnt",
+      "byref": false
+    },
+    {
+      "name": "ws_sum",
+      "byref": false
+    }
+  ],
+  "item_um.itemuse_um": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_um.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "mapattr.init": [],
+  "mapattr.calculate_itemfind_obbs": [],
+  "mapattr.calculate_findman_obbs": [
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "mapattr.calculate_meetman_rate": [
+    {
+      "name": "schmode",
+      "byref": false
+    }
+  ],
+  "mapattr.calculate_real_trap_obbs": [],
+  "item_uv.init": [],
+  "item_uv.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_uv.calc_skillbook_efct": [
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "skcnt",
+      "byref": false
+    },
+    {
+      "name": "ws_sum",
+      "byref": false
+    }
+  ],
+  "item_uv.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_uv.item_uv_getcard": [
+    {
+      "name": "get_card_id",
+      "byref": false
+    },
+    {
+      "name": "get_cardinfo",
+      "byref": false
+    },
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_uv.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_empowers_extra.init": [],
+  "item_empowers_extra.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_empowers_extra.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_empowers_extra.get_ec_lvl": [
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "club1.init": [],
+  "club2.init": [],
+  "club3.init": [],
+  "club4.init": [],
+  "club5.init": [],
+  "club9.init": [],
+  "club10.init": [],
+  "club99.init": [],
+  "club17.init": [],
+  "club20.init": [],
+  "club13.init": [],
+  "club14.init": [],
+  "sklearn_util.init": [],
+  "sklearn_util.sklearn_basecheck": [
+    {
+      "name": "skillid",
+      "byref": false
+    }
+  ],
+  "sklearn_util.get_skilllearn_table": [
+    {
+      "name": "callback_funcname",
+      "byref": false
+    }
+  ],
+  "sklearn_util.parse_skilllearn_desc": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "sklearn_util.sklearn_skill_lost": [
+    {
+      "name": "skillid",
+      "byref": false
+    }
+  ],
+  "club6.init": [],
+  "club8.init": [],
+  "club7.init": [],
+  "club11.init": [],
+  "club19.init": [],
+  "club24.init": [],
+  "club18.init": [],
+  "club21.init": [],
+  "club97.init": [],
+  "club94.init": [],
+  "club95.init": [],
+  "club96.init": [],
+  "club15.init": [],
+  "club25.init": [],
+  "club26.init": [],
+  "club27.init": [],
+  "skill_temp.init": [],
+  "skill_temp.check_skillinfo_allowed_for_skill_temp": [
+    {
+      "name": "skillid",
+      "byref": false
+    }
+  ],
+  "skill_temp.check_skill_available": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "skill_temp.skill_temp_acquire": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "buff_time",
+      "byref": false
+    },
+    {
+      "name": "buff_lvl",
+      "byref": false
+    }
+  ],
+  "skill_temp.set_skill_temp_time": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "temp_time",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "skill_temp.bufficons_check_buff_state": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "msec",
+      "byref": false
+    }
+  ],
+  "skill_temp.bufficons_display_single": [
+    {
+      "name": "token",
+      "byref": false
+    },
+    {
+      "name": "config",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "skill_temp.show_tsk_hint": [
+    {
+      "name": "idlist",
+      "byref": false
+    }
+  ],
+  "skill_temp.init_buff_timing": [
+    {
+      "name": "buffid",
+      "byref": false
+    },
+    {
+      "name": "buffrm",
+      "byref": false
+    }
+  ],
+  "skill_temp.act": [],
+  "poison.init": [],
+  "poison.parse_itmk_words": [
+    {
+      "name": "k_value",
+      "byref": false
+    },
+    {
+      "name": "reveal",
+      "byref": false
+    }
+  ],
+  "poison.send_poison_enemylog": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "poison.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "poison.poison": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "poison.poison_record_pid": [
+    {
+      "name": "itmsk",
+      "byref": true
+    },
+    {
+      "name": "id",
+      "byref": false
+    }
+  ],
+  "poison.poison_check_pid": [
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "poison.check_poison_factor": [],
+  "poison.act": [],
+  "poison.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_uc.init": [],
+  "item_uc.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "event.init": [],
+  "event.event_available": [],
+  "event.discover": [
+    {
+      "name": "schmode",
+      "byref": false
+    }
+  ],
+  "event.check_event_happen": [],
+  "event.check_event_happen_special": [],
+  "event.can_continue_post_event_proc": [
+    {
+      "name": "evret",
+      "byref": false
+    }
+  ],
+  "event.event_main": [],
+  "event.event_core": [
+    {
+      "name": "dice",
+      "byref": false
+    },
+    {
+      "name": "dice2",
+      "byref": false
+    }
+  ],
+  "event.event_death": [
+    {
+      "name": "dstate",
+      "byref": false
+    }
+  ],
+  "event.death_kagari": [
+    {
+      "name": "type",
+      "byref": false
+    }
+  ],
+  "event.event_suffer_inf": [
+    {
+      "name": "pos",
+      "byref": false
+    },
+    {
+      "name": "hurt",
+      "byref": false
+    }
+  ],
+  "event.event_suffer_dmg": [
+    {
+      "name": "dmg",
+      "byref": false
+    },
+    {
+      "name": "show_log",
+      "byref": false
+    }
+  ],
+  "event.event_get_field": [
+    {
+      "name": "got",
+      "byref": false
+    },
+    {
+      "name": "field",
+      "byref": false
+    },
+    {
+      "name": "show_log",
+      "byref": false
+    }
+  ],
+  "event.event_get_item": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "event.event_get_money": [
+    {
+      "name": "got",
+      "byref": false
+    },
+    {
+      "name": "show_log",
+      "byref": false
+    }
+  ],
+  "event.event_get_rp": [
+    {
+      "name": "got",
+      "byref": false
+    }
+  ],
+  "event.event_winrate_process": [
+    {
+      "name": "winrate",
+      "byref": false
+    }
+  ],
+  "event.event_escrate_process": [
+    {
+      "name": "escrate",
+      "byref": false
+    }
+  ],
+  "event.check_pls34_enterable": [],
+  "event.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "npcchat_bubble.init": [],
+  "npcchat_bubble.npcchat_print": [
+    {
+      "name": "printlog",
+      "byref": false
+    }
+  ],
+  "npcchat_bubble.npcchat_tag_process": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "situation",
+      "byref": false
+    },
+    {
+      "name": "npc_active",
+      "byref": false
+    },
+    {
+      "name": "nchat",
+      "byref": false
+    }
+  ],
+  "npcchat_bubble.npcchat_get_chatlog": [
+    {
+      "name": "chattag",
+      "byref": false
+    },
+    {
+      "name": "sid",
+      "byref": false
+    },
+    {
+      "name": "nchat",
+      "byref": false
+    }
+  ],
+  "npcchat_bubble.npcchat_bubble_cleanqm": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "npcchat_bubble.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "npcchat_bubble.npcchat_bubble_show": [
+    {
+      "name": "tp",
+      "byref": false
+    }
+  ],
+  "item_slip.init": [],
+  "item_slip.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_slip.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_slip.mapitem_single_data_attr_process": [
+    {
+      "name": "iname",
+      "byref": false
+    },
+    {
+      "name": "ikind",
+      "byref": false
+    },
+    {
+      "name": "ieff",
+      "byref": false
+    },
+    {
+      "name": "ista",
+      "byref": false
+    },
+    {
+      "name": "iskind",
+      "byref": false
+    },
+    {
+      "name": "imap",
+      "byref": false
+    },
+    {
+      "name": "count",
+      "byref": false
+    }
+  ],
+  "item_slip.item_slip_set_puzzle": [
+    {
+      "name": "itm",
+      "byref": false
+    }
+  ],
+  "item_slip.get_mixinfo": [],
+  "item_slip.item_slip_get_puzzle": [
+    {
+      "name": "puzzleid",
+      "byref": false
+    }
+  ],
+  "item_slip.post_gameover_events": [],
+  "item_slip.evonpc_npcdata_process": [
+    {
+      "name": "enpc",
+      "byref": false
+    },
+    {
+      "name": "xtype",
+      "byref": false
+    },
+    {
+      "name": "xname",
+      "byref": false
+    }
+  ],
+  "ammunition.init": [],
+  "ammunition.parse_itmk_desc": [
+    {
+      "name": "k_value",
+      "byref": false
+    },
+    {
+      "name": "sk_value",
+      "byref": false
+    }
+  ],
+  "ammunition.check_ammukind": [
+    {
+      "name": "cwepk",
+      "byref": false
+    },
+    {
+      "name": "cwepsk",
+      "byref": false
+    }
+  ],
+  "ammunition.itemuse_ugb": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ammunition.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "npcinfo.init": [],
+  "npcinfo.npcinfo_gen_item_description": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "npcinfo.npcinfo_get_npc_description": [
+    {
+      "name": "npckind",
+      "byref": false
+    },
+    {
+      "name": "npcsubkind",
+      "byref": false
+    },
+    {
+      "name": "npcdata",
+      "byref": false
+    },
+    {
+      "name": "ninfo_custom",
+      "byref": false
+    }
+  ],
+  "npcinfo.npcinfo_get_npc_description_all": [
+    {
+      "name": "npckind",
+      "byref": false
+    },
+    {
+      "name": "ninfo_custom",
+      "byref": false
+    }
+  ],
+  "cardbase.init": [],
+  "cardbase.get_cardlist_energy_from_udata": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "cardbase.get_cardlist_energy_from_card_data": [
+    {
+      "name": "card_data",
+      "byref": false
+    }
+  ],
+  "cardbase.put_cardlist_energy_to_udata": [
+    {
+      "name": "cardlist",
+      "byref": false
+    },
+    {
+      "name": "cardenergy",
+      "byref": false
+    },
+    {
+      "name": "card_data",
+      "byref": true
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "cardbase.put_cardlist_energy_to_card_data": [
+    {
+      "name": "cardlist",
+      "byref": false
+    },
+    {
+      "name": "cardenergy",
+      "byref": false
+    },
+    {
+      "name": "card_data",
+      "byref": true
+    },
+    {
+      "name": "allow_delete",
+      "byref": false
+    }
+  ],
+  "cardbase.init_card_data_single": [
+    {
+      "name": "cardid",
+      "byref": false
+    }
+  ],
+  "cardbase.get_decoded_card_data": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "cardbase.put_encoded_card_data": [
+    {
+      "name": "udata",
+      "byref": true
+    },
+    {
+      "name": "card_data_arr",
+      "byref": false
+    }
+  ],
+  "cardbase.card_energy_update": [
+    {
+      "name": "cardlist",
+      "byref": false
+    },
+    {
+      "name": "cardenergy",
+      "byref": false
+    },
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "cardbase.cardlist_decode": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "cardbase.cardlist_encode": [
+    {
+      "name": "arr",
+      "byref": false
+    }
+  ],
+  "cardbase.get_user_cards": [
+    {
+      "name": "username",
+      "byref": false
+    }
+  ],
+  "cardbase.get_user_cards_process": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "cardbase.get_energy_recover_rate": [
+    {
+      "name": "cardlist",
+      "byref": false
+    },
+    {
+      "name": "qiegao",
+      "byref": false
+    }
+  ],
+  "cardbase.get_user_cardinfo": [
+    {
+      "name": "who",
+      "byref": false
+    }
+  ],
+  "cardbase.save_cardenergy_to_db": [
+    {
+      "name": "cardlist",
+      "byref": false
+    },
+    {
+      "name": "cardenergy",
+      "byref": false
+    },
+    {
+      "name": "card_data",
+      "byref": true
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "cardbase.save_cardenergy": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "who",
+      "byref": false
+    }
+  ],
+  "cardbase.get_card_message": [
+    {
+      "name": "ci",
+      "byref": false
+    },
+    {
+      "name": "ext",
+      "byref": false
+    },
+    {
+      "name": "blink",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "cardbase.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "cardbase.cardchange": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "cardbase.enter_battlefield_cardproc": [
+    {
+      "name": "ebp",
+      "byref": false
+    },
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "cardbase.card_valid_info_process": [
+    {
+      "name": "card_valid_info",
+      "byref": false
+    },
+    {
+      "name": "ebp",
+      "byref": true
+    },
+    {
+      "name": "skills",
+      "byref": true
+    }
+  ],
+  "cardbase.enter_battlefield_cardproc_valueproc": [
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "value",
+      "byref": false
+    }
+  ],
+  "cardbase.check_card_in_ownlist": [
+    {
+      "name": "card",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "cardbase.get_card": [
+    {
+      "name": "ci",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "ignore_qiegao",
+      "byref": false
+    }
+  ],
+  "cardbase.get_card_process": [
+    {
+      "name": "ci",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "ignore_qiegao",
+      "byref": false
+    }
+  ],
+  "cardbase.get_card_calc_blink": [
+    {
+      "name": "cardid",
+      "byref": false
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "cardbase.get_card_alternative": [
+    {
+      "name": "cardid",
+      "byref": false
+    },
+    {
+      "name": "udata",
+      "byref": true
+    },
+    {
+      "name": "ignore_qiegao",
+      "byref": false
+    },
+    {
+      "name": "blink",
+      "byref": false
+    }
+  ],
+  "cardbase.get_card_transfer_to_qiegao": [
+    {
+      "name": "cardid",
+      "byref": false
+    },
+    {
+      "name": "udata",
+      "byref": true
+    },
+    {
+      "name": "blink",
+      "byref": false
+    }
+  ],
+  "cardbase.get_qiegao": [
+    {
+      "name": "num",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "cardbase.get_card_pack": [
+    {
+      "name": "card_pack_name",
+      "byref": false
+    }
+  ],
+  "cardbase.get_card_pack_list": [],
+  "cardbase.in_card_pack": [
+    {
+      "name": "packname",
+      "byref": false
+    }
+  ],
+  "cardbase.kuji": [
+    {
+      "name": "type",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "is_dryrun",
+      "byref": false
+    }
+  ],
+  "cardbase.card_sort": [
+    {
+      "name": "cards",
+      "byref": false
+    }
+  ],
+  "cardbase.check_pack_availble": [
+    {
+      "name": "pn",
+      "byref": false
+    },
+    {
+      "name": "ignore_kuji",
+      "byref": false
+    }
+  ],
+  "cardbase.pack_filter": [
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "ignore_kuji",
+      "byref": false
+    }
+  ],
+  "cardbase.parse_interface_profile": [],
+  "cardbase.parse_card_show_data": [
+    {
+      "name": "pdata",
+      "byref": false
+    }
+  ],
+  "cardbase.check_realcard": [
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "cn",
+      "byref": false
+    }
+  ],
+  "cardbase.init_battle": [
+    {
+      "name": "ismeet",
+      "byref": false
+    }
+  ],
+  "cardbase.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "cardbase.parse_card_index": [],
+  "cardbase.parse_card_gaining_method": [],
+  "cardbase.card_validate": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "cardbase.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "cardbase.card_validate_display": [
+    {
+      "name": "cardChosen",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    },
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "hideDisableButton",
+      "byref": false
+    }
+  ],
+  "cardbase.icon_parser_valid": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "instance6.init": [],
+  "instance6.get_shopconfig": [],
+  "instance6.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "instance6.get_npclist": [],
+  "instance6.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "instance6.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "attrbase.init": [],
+  "attrbase.get_ex_def_array": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "attrbase.get_ex_def_array_core": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "attrbase.get_ex_attack_array": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "attrbase.get_ex_attack_array_core": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "attrbase.attr_dmg_check_not_wpg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "attrbase.get_comp_itmsk_info": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.check_single_sk_head_equal": [
+    {
+      "name": "single_sk",
+      "byref": false
+    },
+    {
+      "name": "skhead",
+      "byref": false
+    }
+  ],
+  "attrbase.check_in_itmsk": [
+    {
+      "name": "mark",
+      "byref": false
+    },
+    {
+      "name": "skarr",
+      "byref": false
+    },
+    {
+      "name": "count",
+      "byref": false
+    }
+  ],
+  "attrbase.replace_in_itmsk": [
+    {
+      "name": "needle",
+      "byref": false
+    },
+    {
+      "name": "replacement",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "strict",
+      "byref": false
+    }
+  ],
+  "attrbase.check_itmsk": [
+    {
+      "name": "nm",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "attrbase.get_itmsk_words_single": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.get_itmsk_desc_single": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "attrbase.count_itmsk_num": [
+    {
+      "name": "sk_value",
+      "byref": false
+    },
+    {
+      "name": "ignore_invisible",
+      "byref": false
+    }
+  ],
+  "attrbase.get_itmsk_desc_single_comp_process": [
+    {
+      "name": "skk",
+      "byref": false
+    },
+    {
+      "name": "skn",
+      "byref": false
+    },
+    {
+      "name": "sks",
+      "byref": false
+    }
+  ],
+  "attrbase.base64_encode_comp_itmsk": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.base64_decode_comp_itmsk": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.config_process_encode_comp_itmsk": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.config_process_encode_comp_itmsk_callback": [
+    {
+      "name": "matches",
+      "byref": false
+    }
+  ],
+  "attrbase.config_process_encode_comp_itmsk_sepr_transfer": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "attrbase.config_process_encode_comp_itmsk_sepr_transfer_callback": [
+    {
+      "name": "matches",
+      "byref": false
+    }
+  ],
+  "attrbase.mapitem_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "no",
+      "byref": false
+    }
+  ],
+  "attrbase.mapitem_row_data_seperate": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "no",
+      "byref": false
+    }
+  ],
+  "attrbase.shopitem_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "attrbase.shopitem_row_data_seperate": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "attrbase.boxes_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "attrbase.boxes_row_data_seperate": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "attrbase.itemmix_success": [],
+  "attrbase.init_npcdata": [
+    {
+      "name": "npc",
+      "byref": false
+    },
+    {
+      "name": "plslist",
+      "byref": false
+    }
+  ],
+  "attrbase.evonpc": [
+    {
+      "name": "xtype",
+      "byref": false
+    },
+    {
+      "name": "xname",
+      "byref": false
+    }
+  ],
+  "attrbase.enter_battlefield_cardproc_valueproc": [
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "value",
+      "byref": false
+    }
+  ],
+  "attrbase.startingitem_row_data_seperate": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "attrbase.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "attrbase.event_get_item": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "attrbase.parse_itemmix_resultshow": [
+    {
+      "name": "rarr",
+      "byref": false
+    }
+  ],
+  "instance8.init": [],
+  "instance8.load_gameinfo_post_work_extra": [],
+  "instance8.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "instance8.get_npclist": [],
+  "instance8.get_shopconfig": [],
+  "instance8.get_itemfilecont": [],
+  "instance8.get_startingitemfilecont": [],
+  "instance8.get_startingwepfilecont": [],
+  "instance8.get_trapfilecont": [],
+  "instance7.init": [],
+  "instance7.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "instance7.get_npclist": [],
+  "instance7.get_shopconfig": [],
+  "instance7.get_itemfilecont": [],
+  "instance7.get_trapfilecont": [],
+  "instance7.get_startingitemfilecont": [],
+  "kujibase.init": [],
+  "kujibase.kujidraw": [
+    {
+      "name": "kujiid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "is_dryrun",
+      "byref": false
+    }
+  ],
+  "set_gametype.init": [],
+  "set_gametype.check_gametype_set_valid": [
+    {
+      "name": "gt",
+      "byref": false
+    }
+  ],
+  "set_gametype.user_set_gamevars_list_init": [
+    {
+      "name": "registered_gamevars",
+      "byref": false
+    }
+  ],
+  "set_gametype.reset_gametype": [],
+  "set_gametype.user_display_gamevars_setting": [
+    {
+      "name": "show",
+      "byref": false
+    }
+  ],
+  "set_gametype.get_gametype_setting_html": [],
+  "set_gametype.user_set_gamevars_process": [
+    {
+      "name": "gamevar_key",
+      "byref": false
+    },
+    {
+      "name": "gamevar_val",
+      "byref": false
+    },
+    {
+      "name": "valid_gamevars",
+      "byref": true
+    }
+  ],
+  "set_gametype.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "gtype6.init": [],
+  "gtype6.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "gtype6.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "gtype6.card_validate_display": [
+    {
+      "name": "cardChosen",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    },
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "hideDisableButton",
+      "byref": false
+    }
+  ],
+  "npc_action.init": [],
+  "npc_action.is_npc_action_allowed": [],
+  "npc_action.get_npc_action_list": [],
+  "npc_action.npc_action_main": [],
+  "npc_action.npc_action_single": [
+    {
+      "name": "npc",
+      "byref": false
+    },
+    {
+      "name": "act",
+      "byref": false
+    }
+  ],
+  "npc_action.npc_action_single_core": [
+    {
+      "name": "npc",
+      "byref": false
+    },
+    {
+      "name": "act",
+      "byref": false
+    },
+    {
+      "name": "setting_act",
+      "byref": false
+    }
+  ],
+  "npc_action.post_npc_action_single": [
+    {
+      "name": "npc",
+      "byref": false
+    }
+  ],
+  "npc_action.get_npc_action_list_chosen": [
+    {
+      "name": "action_list",
+      "byref": false
+    },
+    {
+      "name": "rate_total",
+      "byref": false
+    }
+  ],
+  "npc_action.npc_action_checknpc": [
+    {
+      "name": "narr",
+      "byref": false
+    }
+  ],
+  "npc_action.npc_action_loadnpc": [
+    {
+      "name": "npid_arr",
+      "byref": false
+    }
+  ],
+  "npc_action.calculate_active_obbs": [
+    {
+      "name": "ldata",
+      "byref": true
+    },
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "npc_action.post_act": [],
+  "npc_action.bot_action": [],
+  "npc_action.evonpc": [
+    {
+      "name": "xtype",
+      "byref": false
+    },
+    {
+      "name": "xname",
+      "byref": false
+    }
+  ],
+  "get_qiegao_in_battle.init": [],
+  "get_qiegao_in_battle.calc_qiegao_drop": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": true
+    }
+  ],
+  "get_qiegao_in_battle.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "get_qiegao_in_battle.battle_get_qiegao": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "get_qiegao_in_battle.battle_get_qiegao_update": [
+    {
+      "name": "qiegaogain",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance12.init": [],
+  "instance12.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "instance12.card_validate_display": [
+    {
+      "name": "cardChosen",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    },
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "hideDisableButton",
+      "byref": false
+    }
+  ],
+  "instance12.get_plsnum": [
+    {
+      "name": "use_config",
+      "byref": false
+    }
+  ],
+  "instance12.get_all_plsno": [
+    {
+      "name": "use_config",
+      "byref": false
+    }
+  ],
+  "instance12.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "instance12.get_npclist": [],
+  "instance12.get_shopconfig": [],
+  "instance12.get_itemfilecont": [],
+  "instance12.mapitem_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "no",
+      "byref": false
+    }
+  ],
+  "instance12.get_startingitemfilecont": [],
+  "instance12.get_startingwepfilecont": [],
+  "instance12.get_trapfilecont": [],
+  "instance12.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "instance12.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "instance12.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance12.check_in_shop_area": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "instance12.get_area_wavenum": [],
+  "instance12.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "instance12.event_available": [],
+  "instance12.calculate_itemfind_obbs": [],
+  "instance12.calculate_findman_obbs": [
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "instance12.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "instance12.calculate_post_hack_proc_rate": [],
+  "instance12.inst12_get_score": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance12.gameover_set_credits": [],
+  "gtype7.init": [],
+  "gtype7.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "gtype7.get_npclist": [],
+  "gtype7.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "gtype7.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "gtype7.card_validate_display": [
+    {
+      "name": "cardChosen",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    },
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "hideDisableButton",
+      "byref": false
+    }
+  ],
+  "gtype7.prepare_new_game": [],
+  "itemnumlist.init": [],
+  "itemnumlist.itemnumlist_num_area_proc": [
+    {
+      "name": "slist",
+      "byref": true
+    },
+    {
+      "name": "ikey",
+      "byref": false
+    },
+    {
+      "name": "iname",
+      "byref": false
+    },
+    {
+      "name": "thisnum",
+      "byref": false
+    },
+    {
+      "name": "thisarea",
+      "byref": false
+    }
+  ],
+  "itemnumlist.itemnumlist_write": [
+    {
+      "name": "file",
+      "byref": false
+    },
+    {
+      "name": "cont",
+      "byref": false
+    }
+  ],
+  "itemnumlist.itemnumlist_create": [
+    {
+      "name": "filename",
+      "byref": false
+    },
+    {
+      "name": "iplacefilelist",
+      "byref": false
+    }
+  ],
+  "itemnumlist.itemnumlist_create_proc": [
+    {
+      "name": "iplacefilelist",
+      "byref": false
+    }
+  ],
+  "addnpc_event.init": [],
+  "addnpc_event.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "addnpc_event.addnpc_event": [
+    {
+      "name": "ntype",
+      "byref": false
+    },
+    {
+      "name": "nsub",
+      "byref": false
+    },
+    {
+      "name": "num",
+      "byref": false
+    }
+  ],
+  "supplycrate_event.init": [],
+  "supplycrate_event.kill": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    }
+  ],
+  "supplycrate_event.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "item_randskills.init": [],
+  "item_randskills.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_randskills.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_randskills.use_skcore_success": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_randskills.get_skcore_skilllist": [
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": true
+    }
+  ],
+  "item_randskills.add_skcore_choices": [
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": true
+    }
+  ],
+  "item_randskills.get_rand_clubskill": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "count",
+      "byref": false
+    },
+    {
+      "name": "sktype",
+      "byref": false
+    }
+  ],
+  "item_randskills.choose_rand_clubskill": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "count",
+      "byref": false
+    },
+    {
+      "name": "sktype",
+      "byref": false
+    }
+  ],
+  "item_randskills.get_skilllist": [
+    {
+      "name": "sktype",
+      "byref": false
+    }
+  ],
+  "item_randskills.get_if_skilltype": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "sktype",
+      "byref": false
+    }
+  ],
+  "item_randskills.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "item_randskills.parse_skcore_skilldesc": [
+    {
+      "name": "skillid",
+      "byref": false
+    }
+  ],
+  "ex_phy_def.init": [],
+  "ex_phy_def.get_ex_phy_def_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_def.check_ex_phy_def_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_def.check_physical_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_def.get_physical_dmg_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "rage.init": [],
+  "rage.get_max_rage": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "rage.calculate_rest_rageup": [
+    {
+      "name": "rtime",
+      "byref": false
+    }
+  ],
+  "rage.rest": [
+    {
+      "name": "restcommand",
+      "byref": false
+    }
+  ],
+  "rage.calculate_attack_rage_gain": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "receiver",
+      "byref": false
+    },
+    {
+      "name": "fixed_val",
+      "byref": false
+    }
+  ],
+  "rage.calculate_attack_rage_gain_base": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "fixed_val",
+      "byref": false
+    }
+  ],
+  "rage.calculate_attack_rage_gain_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "rage.calculate_attack_rage_gain_change": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "rageup",
+      "byref": false
+    }
+  ],
+  "rage.get_rage": [
+    {
+      "name": "rageup",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "rage.strike_finish": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "rage.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "rage.attack_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "rage.attack_finish": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.init": [],
+  "ex_rapid_attr.get_rapid_times": [
+    {
+      "name": "pa",
+      "byref": false
+    },
+    {
+      "name": "pd",
+      "byref": false
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.get_rapid_wepimp_increase": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.calculate_wepimp_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.get_rapid_inf_rate_loss": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.calculate_inf_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.get_rapid_damage_modifier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "hit_time",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.get_rapid_dmg_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.get_primary_dmg_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.get_rapid_accuracy_loss": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.check_rapid": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.weapon_strike": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_attr.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_silencer.init": [],
+  "ex_attr_silencer.weapon_wg_addnoise": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_silencer.weapon_wj_addnoise": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_silencer.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_dmg_att.init": [],
+  "ex_dmg_att.get_basic_ex_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.get_ex_dmg_restriction": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_single_original_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.get_ex_inf_dmg_punish": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_inf_multiple": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_single_dmg_multiple": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_single_dmg_change": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "edmg",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_inf_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.get_ex_inf_rate_modifier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.check_ex_inf_infliction": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.get_ex_inf_main": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "ignore_log",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.showlog_ex_single_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_single_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "fixed_dmg",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_attack_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.check_ex_attack_available": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.ex_attack_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_attack_dmg_base": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_attack_dmg_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.ex_attack_key_change": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.calculate_ex_attack_dmg_change": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "tdmg",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.strike": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.add_ex_att_noise": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.strike_finish": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_att.post_traphit_events": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "tritm",
+      "byref": false
+    },
+    {
+      "name": "damage",
+      "byref": false
+    }
+  ],
+  "ex_attr_charge.init": [],
+  "ex_attr_charge.get_ex_charge_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_charge.check_charge_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_charge.get_external_def_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_charge.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_hp_def.init": [],
+  "ex_hp_def.calculate_hp_rev_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_hp_def.get_dmg_def_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_hp_def.check_dmg_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_hp_def.apply_total_damage_modifier_limit": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_hp_def.player_damaged_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_direct.init": [],
+  "ex_direct.get_ex_direct_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_direct.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_direct.skill_enabled_core": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "ex_seckill.init": [],
+  "ex_seckill.get_ex_seckill_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_seckill.apply_total_damage_modifier_seckill": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_cursed.init": [],
+  "ex_cursed.itemdrop_valid_check": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "itmpos",
+      "byref": false
+    }
+  ],
+  "ex_cursed.itemoff_valid_check": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "ex_cursed.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_cursed.senditem_check": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "ex_cursed.check_enkan": [],
+  "ex_cursed.geming_objvalid": [
+    {
+      "name": "t1",
+      "byref": false
+    },
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "ex_def_down.init": [],
+  "ex_def_down.get_def_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_armor_crack.init": [],
+  "ex_armor_crack.calculate_inf_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_armor_crack.get_armor_crack_extra_wounds": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "position",
+      "byref": false
+    }
+  ],
+  "ex_armor_crack.calculate_weapon_wound_base": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "hurtposition",
+      "byref": false
+    }
+  ],
+  "ex_attr_digit.init": [],
+  "ex_attr_digit.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "ex_weapon_crack.init": [],
+  "ex_weapon_crack.calculate_wepimp": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "is_hit",
+      "byref": false
+    }
+  ],
+  "ex_weapon_crack.apply_weapon_imp": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_deflect.init": [],
+  "ex_deflect.get_att_change": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "att",
+      "byref": false
+    }
+  ],
+  "randmix.init": [],
+  "randmix.create_randmix_config": [],
+  "randmix.create_randmix_list": [],
+  "randmix.create_randmix_result": [
+    {
+      "name": "stuff",
+      "byref": false
+    },
+    {
+      "name": "stuffnum",
+      "byref": false
+    }
+  ],
+  "randmix.randmix_getitemname": [
+    {
+      "name": "kind",
+      "byref": false
+    },
+    {
+      "name": "minnum",
+      "byref": false
+    },
+    {
+      "name": "maxnum",
+      "byref": false
+    },
+    {
+      "name": "aready",
+      "byref": true
+    }
+  ],
+  "gtype1.init": [],
+  "gtype1.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "gtype1.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "gtype1.card_validate_display": [
+    {
+      "name": "cardChosen",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    },
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "hideDisableButton",
+      "byref": false
+    }
+  ],
+  "gtype1.prepare_new_game": [],
+  "gtype1.get_uee_deathlog": [],
+  "gtype1.prepare_new_game_gtype1": [],
+  "gtype1.check_player_discover": [
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "gtype1.get_npclist": [],
+  "gtype1.get_enpcinfo": [],
+  "gtype1.get_shopconfig": [],
+  "gtype1.meetman_alternative": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "gtype1.calculate_hide_obbs": [
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "gtype1.senditem_check_teammate": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "gtype1.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "gtype1.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "gtype1.gtype1_post_rank_event": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "cl",
+      "byref": false
+    },
+    {
+      "name": "rk",
+      "byref": false
+    }
+  ],
+  "gtype1.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "gtype1.lvlup": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "gtype1.event_available": [],
+  "gtype1.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "gtype1.check_can_destroy": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "gtype1.deathnote_process": [
+    {
+      "name": "dnname",
+      "byref": false
+    },
+    {
+      "name": "dndeath",
+      "byref": false
+    },
+    {
+      "name": "dngender",
+      "byref": false
+    },
+    {
+      "name": "dnicon",
+      "byref": false
+    }
+  ],
+  "wep_b_extra_reloading.init": [],
+  "wep_b_extra_reloading.wep_b_extra_reloading_check": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "wep_b_extra_reloading.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "wep_b_extra_reloading.itemuse_uga": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "wep_b_extra_reloading.weapon_break": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "instance9.init": [],
+  "instance9.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "instance9.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "instance9.get_npclist": [],
+  "instance9.get_shopconfig": [],
+  "instance9.get_itemfilecont": [],
+  "instance9.get_startingitemfilecont": [],
+  "instance9.get_startingwepfilecont": [],
+  "instance9.get_trapfilecont": [],
+  "instance9.calculate_attack_rage_gain_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "instance9.calculate_attack_weapon_skill_gain_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "instance9.calculate_attack_exp_gain_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "instance9.rs_areatime": [],
+  "instance9.mapitem_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "no",
+      "byref": false
+    }
+  ],
+  "instance9.shopitem_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "instance9.event_available": [],
+  "instance9.get_uee_deathlog": [],
+  "ex_rapid_def.init": [],
+  "ex_rapid_def.get_ex_rapid_def_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_def.check_ex_rapid_def_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_def.check_ex_rapid_def_exists": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_def.check_ex_rapid_def": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_rapid_def.get_rapid_damage_modifier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "hit_time",
+      "byref": false
+    }
+  ],
+  "ex_attr_trap.init": [],
+  "ex_attr_trap.calculate_trapdetect_rate": [],
+  "ex_attr_trap.get_trap_escape_rate": [],
+  "ex_attr_trap.calculate_trapdef_proc_rate": [],
+  "ex_attr_trap.check_trapdef_proc": [],
+  "ex_attr_trap.trap_deal_damage": [],
+  "ex_attr_trap.trap_miss_broken": [],
+  "ex_attr_trap.trap_miss_reused": [],
+  "ex_attr_trap.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.init": [],
+  "ex_dmg_def.get_ex_dmg_def_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.check_ex_dmg_def_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.check_ex_single_dmg_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.calculate_ex_inf_multiple": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.check_ex_inf_infliction": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.calculate_ex_single_dmg_multiple": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_dmg_def.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_nullify.init": [],
+  "ex_dmg_nullify.get_ex_dmg_nullify_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_nullify.check_ex_dmg_nullify": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_nullify.check_ex_attack_available": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_dmg_nullify.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "item_uu.init": [],
+  "item_uu.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_uu.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_uu.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_umb.init": [],
+  "item_umb.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_umb.itemuse_um": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_umb.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "item_recipe.init": [],
+  "item_recipe.get_recipe_mixinfo": [],
+  "item_recipe.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_recipe.generate_single_itemtip": [
+    {
+      "name": "stuff",
+      "byref": false
+    }
+  ],
+  "item_recipe.show_recipe": [
+    {
+      "name": "recipekey",
+      "byref": false
+    }
+  ],
+  "item_recipe.check_single_item": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "stuff",
+      "byref": false
+    }
+  ],
+  "item_recipe.check_item_extra": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "extra",
+      "byref": false
+    }
+  ],
+  "item_recipe.check_recipe_extra": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "recipe_extra",
+      "byref": false
+    }
+  ],
+  "item_recipe.check_sum_possible": [
+    {
+      "name": "sum",
+      "byref": false
+    },
+    {
+      "name": "numbers",
+      "byref": false
+    },
+    {
+      "name": "m",
+      "byref": true
+    }
+  ],
+  "item_recipe.recipe_mix_place_check": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "itmp",
+      "byref": false
+    }
+  ],
+  "item_recipe.act": [],
+  "item_recipe.recipe_mix": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "itmp",
+      "byref": false
+    },
+    {
+      "name": "minfo",
+      "byref": false
+    }
+  ],
+  "item_recipe.recipe_mix_proc": [
+    {
+      "name": "seq",
+      "byref": false
+    },
+    {
+      "name": "itmp",
+      "byref": false
+    },
+    {
+      "name": "minfo",
+      "byref": false
+    }
+  ],
+  "item_recipe.get_recipe_mix_sequence": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "minfo",
+      "byref": false
+    }
+  ],
+  "item_recipe.recipe_mix_success": [],
+  "item_recipe.get_learned_recipes": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "item_recipe.learn_recipe_process": [
+    {
+      "name": "minfo",
+      "byref": false
+    }
+  ],
+  "item_recipe.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "achievement_base.init": [],
+  "achievement_base.ach_show_init": [],
+  "achievement_base.check_ach_valid": [
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.check_achtype_available": [
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "achievement_base.encode_achievements": [
+    {
+      "name": "aarr",
+      "byref": false
+    },
+    {
+      "name": "old_version",
+      "byref": false
+    }
+  ],
+  "achievement_base.decode_achievements": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "achievement_base.encode_achievements_o": [
+    {
+      "name": "aarr",
+      "byref": false
+    }
+  ],
+  "achievement_base.decode_achievements_o": [
+    {
+      "name": "astr",
+      "byref": false
+    }
+  ],
+  "achievement_base.check_ach_got": [
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "val",
+      "byref": false
+    }
+  ],
+  "achievement_base.update_achievements_by_udata": [
+    {
+      "name": "udata",
+      "byref": true
+    },
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "achievement_base.update_achievements": [],
+  "achievement_base.post_gameover_events": [],
+  "achievement_base.get_valid_achievements": [
+    {
+      "name": "u_achievements",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_achievements_single_type": [
+    {
+      "name": "aarr",
+      "byref": false
+    },
+    {
+      "name": "at",
+      "byref": false
+    }
+  ],
+  "achievement_base.refresh_daily_quest": [
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "achievement_base.refresh_daily_quest_core": [
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "achievement_base.show_ach_title": [
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "achlv",
+      "byref": false
+    },
+    {
+      "name": "tp",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_ach_title_2": [
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "achlv",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_ach_title_3": [
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "adata",
+      "byref": false
+    }
+  ],
+  "achievement_base.get_daily_type": [
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_finalize_process": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_create_prize_message": [
+    {
+      "name": "pa",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "getqiegao",
+      "byref": false
+    },
+    {
+      "name": "getcard",
+      "byref": false
+    },
+    {
+      "name": "getcardblink",
+      "byref": false
+    },
+    {
+      "name": "getlogitem",
+      "byref": false
+    },
+    {
+      "name": "getlogitemnum",
+      "byref": false
+    },
+    {
+      "name": "ext",
+      "byref": false
+    },
+    {
+      "name": "getkarma",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_finalize": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "ud",
+      "byref": true
+    },
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_finalize_check_progress": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "t",
+      "byref": false
+    },
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.get_achievement_default_var": [
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.parse_achievement_progress_var": [
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "x",
+      "byref": false
+    }
+  ],
+  "achievement_base.achievement_secret_decode": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_achievement_single": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_achievement_icon": [
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "top_flag",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_achievement_single_desc": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    },
+    {
+      "name": "tval",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_prize_single": [
+    {
+      "name": "cn",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.show_prize_single_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_check_positive_player": [
+    {
+      "name": "pl",
+      "byref": false
+    },
+    {
+      "name": "pe",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_global_ach_check": [
+    {
+      "name": "ud",
+      "byref": true
+    }
+  ],
+  "achievement_base.ach_global_ach_check_single": [
+    {
+      "name": "ud",
+      "byref": true
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_global_ach_check_progress": [
+    {
+      "name": "ud",
+      "byref": true
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_global_ach_finalize": [
+    {
+      "name": "ud",
+      "byref": true
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_global_ach_finalize_save": [
+    {
+      "name": "ud",
+      "byref": true
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_global_ach_finalize_save_getnum": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "achievement_base.ach_global_ach_last_acomplish": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "achid",
+      "byref": false
+    }
+  ],
+  "ending.init": [],
+  "ending.ending_by_shootings_available": [],
+  "ending.ending_changing_gamevars_available": [],
+  "ending.get_gametype_setting_html": [],
+  "ending.ending_psyche_attack_txt_parse": [
+    {
+      "name": "str",
+      "byref": false
+    },
+    {
+      "name": "rate",
+      "byref": false
+    },
+    {
+      "name": "rep",
+      "byref": false
+    }
+  ],
+  "ending.init_playerdata": [],
+  "ending.itemmix_success": [],
+  "song.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "song.init": [],
+  "song.ss_get_affected_players": [
+    {
+      "name": "pos",
+      "byref": false
+    }
+  ],
+  "song.ss_data_proc_single": [
+    {
+      "name": "sname",
+      "byref": false
+    },
+    {
+      "name": "pdata",
+      "byref": true
+    },
+    {
+      "name": "effect",
+      "byref": false
+    },
+    {
+      "name": "sscost",
+      "byref": false
+    }
+  ],
+  "song.ss_check_s": [
+    {
+      "name": "dname",
+      "byref": false
+    }
+  ],
+  "song.ss_record_tempbuff": [
+    {
+      "name": "key",
+      "byref": false
+    },
+    {
+      "name": "value",
+      "byref": false
+    },
+    {
+      "name": "bufftime",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "song.ss_data_proc": [
+    {
+      "name": "sname",
+      "byref": false
+    },
+    {
+      "name": "effect",
+      "byref": false
+    },
+    {
+      "name": "sscost",
+      "byref": false
+    }
+  ],
+  "song.ss_cost_proc": [
+    {
+      "name": "cost",
+      "byref": false
+    }
+  ],
+  "song.ss_factor": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "song.get_available_songlist": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "song.ss_sing": [
+    {
+      "name": "sn",
+      "byref": false
+    }
+  ],
+  "song.learn_song_process": [
+    {
+      "name": "sn",
+      "byref": false
+    }
+  ],
+  "song.get_learned_songs_with_skill1003": [],
+  "song.save_learned_songs_with_skill1003": [
+    {
+      "name": "ls",
+      "byref": false
+    }
+  ],
+  "song.get_song_effect": [
+    {
+      "name": "songcfg",
+      "byref": false
+    }
+  ],
+  "song.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "song.check_sname": [
+    {
+      "name": "sname",
+      "byref": false
+    }
+  ],
+  "song.act": [],
+  "song.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "extra_event.init": [],
+  "extra_event.extra_event_get_branch_text_core": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    }
+  ],
+  "extra_event.is_extra_event_available": [],
+  "extra_event.extra_event_main": [],
+  "extra_event.extra_event_core": [
+    {
+      "name": "now_event",
+      "byref": true
+    },
+    {
+      "name": "now_pace",
+      "byref": true
+    },
+    {
+      "name": "selection",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_selection_process": [
+    {
+      "name": "now_event",
+      "byref": true
+    },
+    {
+      "name": "now_pace",
+      "byref": true
+    },
+    {
+      "name": "selection",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_para_load": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_para_prepare": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_text_parse": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    },
+    {
+      "name": "text",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_text_parse_callback": [
+    {
+      "name": "matches",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_get_eid_pace": [],
+  "extra_event.extra_event_save_eid_pace": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_get_occurred_times": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_save_occurred_times": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    },
+    {
+      "name": "arr",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_get_event_para": [
+    {
+      "name": "now_event",
+      "byref": false
+    },
+    {
+      "name": "now_pace",
+      "byref": false
+    }
+  ],
+  "extra_event.extra_event_save_event_para": [
+    {
+      "name": "para",
+      "byref": false
+    }
+  ],
+  "extra_event.is_event_exitable": [
+    {
+      "name": "eid",
+      "byref": false
+    }
+  ],
+  "extra_event.event_main": [],
+  "extra_event.act": [],
+  "extra_event.pre_act": [],
+  "extra_event.event_get_skill": [
+    {
+      "name": "skillid",
+      "byref": false
+    }
+  ],
+  "news_observe.init": [],
+  "news_observe.check_observe_groomid_allowed": [
+    {
+      "name": "gamedata",
+      "byref": false
+    }
+  ],
+  "news_observe.get_observe_roomlist": [],
+  "news_observe.get_observe_groomid": [],
+  "news_observe.set_observe_groomid": [
+    {
+      "name": "obsv_id",
+      "byref": false
+    }
+  ],
+  "news_observe.parse_interface_gameinfo": [],
+  "news_observe.check_observe_act_allowed": [],
+  "news_observe.observe_main": [
+    {
+      "name": "obsv_id",
+      "byref": false
+    }
+  ],
+  "news_observe.act": [],
+  "news_observe.getnews": [
+    {
+      "name": "start",
+      "byref": false
+    },
+    {
+      "name": "range",
+      "byref": false
+    },
+    {
+      "name": "room_prefix",
+      "byref": false
+    }
+  ],
+  "news_observe.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "empowers.init": [],
+  "empowers.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "empowers.check_nail": [
+    {
+      "name": "itm",
+      "byref": false
+    }
+  ],
+  "empowers.use_nail": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    }
+  ],
+  "empowers.check_hone": [
+    {
+      "name": "itm",
+      "byref": false
+    }
+  ],
+  "empowers.use_hone": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    }
+  ],
+  "empowers.use_weapon_improvement": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "empowers.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "empowers.use_sewing_kit": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "empowers.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "ex_mhp_temp_up.init": [],
+  "ex_mhp_temp_up.itemuse_edible_get_mhp": [],
+  "ex_mhp_temp_up.ex_mhp_temp_lose": [],
+  "ex_mhp_temp_up.itemdrop_valid_check": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "itmpos",
+      "byref": false
+    }
+  ],
+  "ex_mhp_temp_up.itemoff_valid_check": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "ex_mhp_temp_up.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_mhp_temp_up.act": [],
+  "ex_mhp_temp_up.upgrade28": [],
+  "instance_close_button.init": [],
+  "instance_close_button.check_instance_close_available": [],
+  "instance_close_button.instance_close": [],
+  "instance_close_button.pre_act": [],
+  "instance_close_button.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "miracletrap.init": [],
+  "miracletrap.trapcheck": [],
+  "miracletrap.trap": [],
+  "miracletrap.get_trap_damage": [],
+  "miracletrap.check_trapdef_proc": [],
+  "tutorial.init": [],
+  "tutorial.get_item_allow_find_and_use": [],
+  "tutorial.init_current_tutorial": [],
+  "tutorial.parse_tutorial_condition_arr": [
+    {
+      "name": "carr",
+      "byref": false
+    }
+  ],
+  "tutorial.check_tutorial_condition_arr": [
+    {
+      "name": "carr",
+      "byref": false
+    }
+  ],
+  "tutorial.get_tutorial": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "tutorial.get_current_tutorial_step": [],
+  "tutorial.get_tutorial_setting": [
+    {
+      "name": "tno",
+      "byref": false
+    },
+    {
+      "name": "tstep",
+      "byref": false
+    },
+    {
+      "name": "expara",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_pushforward_process": [
+    {
+      "name": "tp",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_checknpc": [
+    {
+      "name": "atype",
+      "byref": false
+    },
+    {
+      "name": "asub",
+      "byref": false
+    },
+    {
+      "name": "ateam",
+      "byref": false
+    },
+    {
+      "name": "addnpc_if_needed",
+      "byref": false
+    },
+    {
+      "name": "return_full_data",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_movenpc": [
+    {
+      "name": "mtype",
+      "byref": false
+    },
+    {
+      "name": "msub",
+      "byref": false
+    },
+    {
+      "name": "mteam",
+      "byref": false
+    },
+    {
+      "name": "moveto",
+      "byref": false
+    },
+    {
+      "name": "mpid",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_changevar_npc": [
+    {
+      "name": "ctype",
+      "byref": false
+    },
+    {
+      "name": "csub",
+      "byref": false
+    },
+    {
+      "name": "cteam",
+      "byref": false
+    },
+    {
+      "name": "cvar",
+      "byref": false
+    },
+    {
+      "name": "cpid",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_changehp_npc": [
+    {
+      "name": "ctype",
+      "byref": false
+    },
+    {
+      "name": "csub",
+      "byref": false
+    },
+    {
+      "name": "cteam",
+      "byref": false
+    },
+    {
+      "name": "chp",
+      "byref": false
+    },
+    {
+      "name": "cpid",
+      "byref": false
+    }
+  ],
+  "tutorial.act": [],
+  "tutorial.tutorial_fail_safing": [
+    {
+      "name": "ct",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_addchat": [
+    {
+      "name": "addc_arr",
+      "byref": false
+    }
+  ],
+  "tutorial.get_addnpclist": [],
+  "tutorial.pose_change": [
+    {
+      "name": "npose",
+      "byref": false
+    }
+  ],
+  "tutorial.tactic_change": [
+    {
+      "name": "ntactic",
+      "byref": false
+    }
+  ],
+  "tutorial.move": [
+    {
+      "name": "moveto",
+      "byref": false
+    }
+  ],
+  "tutorial.search": [],
+  "tutorial.discover": [
+    {
+      "name": "schmode",
+      "byref": false
+    }
+  ],
+  "tutorial.discover_item": [],
+  "tutorial.itemget_process": [],
+  "tutorial.discover_player": [],
+  "tutorial.get_battlecmd_filename": [],
+  "tutorial.get_battleresult_filename": [],
+  "tutorial.get_corpse_filename": [],
+  "tutorial.get_sp_shop_filename": [],
+  "tutorial.get_itemshop_filename": [],
+  "tutorial.get_itemmix_filename": [],
+  "tutorial.meetman_alternative": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "tutorial.senditem_check": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "tutorial.player_damaged_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "tutorial.tutorial_win": [],
+  "tutorial.get_hitrate_change": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "hitrate",
+      "byref": false
+    }
+  ],
+  "tutorial.apply_weapon_inf": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "tutorial.check_ex_inf_infliction": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "tutorial.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "tutorial.heal_inf": [
+    {
+      "name": "hurtposition",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "tutorial.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "tutorial.getcorpse_action": [
+    {
+      "name": "edata",
+      "byref": true
+    },
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "tutorial.itembuy": [
+    {
+      "name": "item",
+      "byref": false
+    },
+    {
+      "name": "shop",
+      "byref": false
+    },
+    {
+      "name": "bnum",
+      "byref": false
+    }
+  ],
+  "tutorial.player_selectclub": [
+    {
+      "name": "id",
+      "byref": false
+    }
+  ],
+  "tutorial.itemmix_success": [],
+  "tutorial.addnews": [
+    {
+      "name": "t",
+      "byref": false
+    },
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    }
+  ],
+  "tutorial.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "tutorial.init_areatiming": [],
+  "tutorial.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "tutorial.is_gamestate_combo": [
+    {
+      "name": "disp",
+      "byref": false
+    }
+  ],
+  "tutorial.club_choice_probability_process": [
+    {
+      "name": "clublist",
+      "byref": false
+    }
+  ],
+  "tutorial.get_club_choice_array": [],
+  "tutorial.search_area": [],
+  "tutorial.event_core": [
+    {
+      "name": "dice",
+      "byref": false
+    },
+    {
+      "name": "dice2",
+      "byref": false
+    }
+  ],
+  "randrecipe.init": [],
+  "randrecipe.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "randrecipe.get_recipe_mixinfo": [],
+  "randrecipe.create_randrecipe_config": [
+    {
+      "name": "num",
+      "byref": false
+    }
+  ],
+  "randrecipe.generate_randrecipe": [
+    {
+      "name": "itmk",
+      "byref": false
+    }
+  ],
+  "randrecipe.generate_randrecipe_stuff": [
+    {
+      "name": "type",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "result",
+      "byref": true
+    }
+  ],
+  "randrecipe.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "activity_ranking.init": [],
+  "activity_ranking.prepare_aranking_table": [
+    {
+      "name": "activity_name",
+      "byref": false
+    }
+  ],
+  "activity_ranking.aranking_send": [
+    {
+      "name": "acmd",
+      "byref": false
+    },
+    {
+      "name": "apara1",
+      "byref": false
+    },
+    {
+      "name": "apara2",
+      "byref": false
+    }
+  ],
+  "activity_ranking.load_aranking": [
+    {
+      "name": "activity_name",
+      "byref": false
+    },
+    {
+      "name": "limit",
+      "byref": false
+    }
+  ],
+  "activity_ranking.save_ulist_aranking": [
+    {
+      "name": "activity_name",
+      "byref": false
+    },
+    {
+      "name": "ulist",
+      "byref": false
+    }
+  ],
+  "aprilfool2018.init": [],
+  "aprilfool2018.get_npclist": [],
+  "aprilfool2018.init_npcdata": [
+    {
+      "name": "npc",
+      "byref": false
+    },
+    {
+      "name": "plslist",
+      "byref": false
+    }
+  ],
+  "aprilfool2018.shopitem_row_data_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "instance3.init": [],
+  "instance3.get_shopconfig": [],
+  "instance3.get_itemfilecont": [],
+  "instance3.get_npclist": [],
+  "instance3.evonpc_npcdata_process": [
+    {
+      "name": "enpc",
+      "byref": false
+    },
+    {
+      "name": "xtype",
+      "byref": false
+    },
+    {
+      "name": "xname",
+      "byref": false
+    }
+  ],
+  "instance3.get_addnpclist": [],
+  "instance3.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "instance3.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "instance3.rs_areatime": [],
+  "instance3.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "instance3.gameover": [
+    {
+      "name": "time",
+      "byref": false
+    },
+    {
+      "name": "gmode",
+      "byref": false
+    },
+    {
+      "name": "winname",
+      "byref": false
+    }
+  ],
+  "instance3.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "instance3.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "instance3.enter_battlefield_cardproc": [
+    {
+      "name": "ebp",
+      "byref": false
+    },
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "instance3.instance3_add_skills": [
+    {
+      "name": "proc",
+      "byref": false
+    },
+    {
+      "name": "alvl",
+      "byref": false
+    }
+  ],
+  "instance3.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance3.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "instance3.search_area": [],
+  "instance3.kill": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    }
+  ],
+  "instance3.event_core": [
+    {
+      "name": "dice",
+      "byref": false
+    },
+    {
+      "name": "dice2",
+      "byref": false
+    }
+  ],
+  "instance3.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "instance3.instance3_calc_qiegao_prize": [
+    {
+      "name": "alvl",
+      "byref": false
+    }
+  ],
+  "instance3.post_winnercheck_events": [
+    {
+      "name": "winner",
+      "byref": false
+    }
+  ],
+  "instance3.init_battle": [
+    {
+      "name": "ismeet",
+      "byref": false
+    }
+  ],
+  "instance3.npcchat_get_chatlog": [
+    {
+      "name": "chattag",
+      "byref": false
+    },
+    {
+      "name": "sid",
+      "byref": false
+    },
+    {
+      "name": "nchat",
+      "byref": false
+    }
+  ],
+  "ex_uselog.init": [],
+  "ex_uselog.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_uselog.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "ex_attr_song.init": [],
+  "ex_attr_song.get_song_effect": [
+    {
+      "name": "songcfg",
+      "byref": false
+    }
+  ],
+  "ex_attr_song.ss_factor": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "instance11.init": [],
+  "instance11.map_display_get_pls_color": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "instance11.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "instance11.get_plsnum": [
+    {
+      "name": "use_config",
+      "byref": false
+    }
+  ],
+  "instance11.get_all_plsno": [
+    {
+      "name": "use_config",
+      "byref": false
+    }
+  ],
+  "instance11.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "instance11.get_npclist": [],
+  "instance11.get_shop_tag_list": [],
+  "instance11.get_shopconfig": [],
+  "instance11.check_in_shop_area": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "instance11.get_itemfilecont": [],
+  "instance11.get_startingitemfilecont": [],
+  "instance11.get_startingwepfilecont": [],
+  "instance11.get_trapfilecont": [],
+  "instance11.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "instance11.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "instance11.init_areatiming": [],
+  "instance11.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance11.check_observe_act_allowed": [],
+  "instance11.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "instance11.post_act": [],
+  "instance11.act": [],
+  "instance11.observe_jump_to_room": [
+    {
+      "name": "rid",
+      "byref": false
+    }
+  ],
+  "instance11.check_item_observer": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    }
+  ],
+  "instance11.itemdrop": [
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "instance11.itemmove": [
+    {
+      "name": "from",
+      "byref": false
+    },
+    {
+      "name": "to",
+      "byref": false
+    }
+  ],
+  "instance11.octitem_rotate": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "rotpos",
+      "byref": false
+    },
+    {
+      "name": "showlog",
+      "byref": false
+    }
+  ],
+  "instance11.meetman_alternative": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "instance11.senditem_check_teammate": [
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "wepchange.init": [],
+  "wepchange.weaponswap": [],
+  "wepchange.get_weaponswap_obj_extra_process": [
+    {
+      "name": "wep",
+      "byref": false
+    },
+    {
+      "name": "wepk",
+      "byref": false
+    },
+    {
+      "name": "wepe",
+      "byref": false
+    },
+    {
+      "name": "weps",
+      "byref": false
+    },
+    {
+      "name": "wepsk",
+      "byref": false
+    },
+    {
+      "name": "wobj",
+      "byref": false
+    }
+  ],
+  "wepchange.get_weaponswap_obj": [
+    {
+      "name": "wn",
+      "byref": false
+    }
+  ],
+  "wepchange.act": [],
+  "wepchange.use_nail": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    }
+  ],
+  "wepchange.use_hone": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    }
+  ],
+  "wepchange.use_weapon_improvement": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "smartmix.init": [],
+  "smartmix.smartmix_find_recipe": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "tp",
+      "byref": false
+    }
+  ],
+  "smartmix.smartmix_check_available": [],
+  "smartmix.parse_smartmix_recipelink": [
+    {
+      "name": "itemindex",
+      "byref": false
+    },
+    {
+      "name": "stext",
+      "byref": false
+    },
+    {
+      "name": "sstyle",
+      "byref": false
+    }
+  ],
+  "smartmix.get_itemmix_filename": [],
+  "smartmix.smartmix_show": [],
+  "smartmix.act": [],
+  "smartmix.is_lastmix_allowed": [],
+  "smartmix.itemmix": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "itemselect",
+      "byref": false
+    }
+  ],
+  "smartmix.itemmix_proc": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "minfo",
+      "byref": false
+    }
+  ],
+  "smartmix.itemmix_success": [],
+  "smartmix.save_lastmix": [
+    {
+      "name": "mlist",
+      "byref": false
+    },
+    {
+      "name": "minfo",
+      "byref": false
+    },
+    {
+      "name": "msel",
+      "byref": false
+    }
+  ],
+  "smartmix.get_lastmix": [],
+  "instance5.init": [],
+  "instance5.get_shopconfig": [],
+  "instance5.get_npclist": [],
+  "instance5.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "instance5.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "instance5.rs_areatime": [],
+  "instance5.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "instance5.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "instance5.get_club_choice_array": [],
+  "instance5.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "instance5.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "logistics.init": [],
+  "logistics.get_cardshop_list": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "logistics.card_check_o_blink": [
+    {
+      "name": "cardid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "logistics.logistics_buy": [
+    {
+      "name": "itemid",
+      "byref": false
+    },
+    {
+      "name": "type",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "logistics.get_card_price": [
+    {
+      "name": "nowcard",
+      "byref": false
+    }
+  ],
+  "logistics.logistics_get_itemlist_from_udata": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "logistics.logistics_put_itemlist_to_udata": [
+    {
+      "name": "itemlist",
+      "byref": true
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "logistics.logistics_itemget": [
+    {
+      "name": "itemid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "num",
+      "byref": false
+    }
+  ],
+  "logistics.logistics_itemuse": [
+    {
+      "name": "itemid",
+      "byref": false
+    },
+    {
+      "name": "para",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "logistics.get_showcase_cardlist_from_udata": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "logistics.put_showcase_cardlist_to_udata": [
+    {
+      "name": "s_cardlist",
+      "byref": true
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "logistics.set_showcase_card": [
+    {
+      "name": "cardchoice",
+      "byref": false
+    },
+    {
+      "name": "cardpos",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "logistics.get_showcase_gameitemlist_from_udata": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "logistics.put_showcase_gameitemlist_to_udata": [
+    {
+      "name": "s_gameitemlist",
+      "byref": true
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "logistics.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "logistics.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "logistics.act": [],
+  "logistics.set_showcase_gameitem": [
+    {
+      "name": "itmp",
+      "byref": false
+    },
+    {
+      "name": "itmn",
+      "byref": false
+    },
+    {
+      "name": "pos",
+      "byref": false
+    }
+  ],
+  "logistics.get_showcase_logitemlist_from_udata": [
+    {
+      "name": "udata",
+      "byref": false
+    }
+  ],
+  "logistics.put_showcase_logitemlist_to_udata": [
+    {
+      "name": "s_logitemlist",
+      "byref": true
+    },
+    {
+      "name": "udata",
+      "byref": true
+    }
+  ],
+  "logistics.set_showcase_logitem": [
+    {
+      "name": "itemid",
+      "byref": false
+    },
+    {
+      "name": "itempos",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tp",
+      "byref": false
+    }
+  ],
+  "logistics.addnews": [
+    {
+      "name": "t",
+      "byref": false
+    },
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    }
+  ],
+  "logistics.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "autopower.init": [],
+  "autopower.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_uys.init": [],
+  "item_uys.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_uys.autosewingkit": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "item_uys.autosewingkit_single": [
+    {
+      "name": "nowi",
+      "byref": false
+    },
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "sewingkit",
+      "byref": true
+    },
+    {
+      "name": "sewing_results",
+      "byref": false
+    }
+  ],
+  "item_uys.autosewingkit_finish_event": [
+    {
+      "name": "sewing_results",
+      "byref": false
+    },
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "sewingkit",
+      "byref": true
+    }
+  ],
+  "item_uys.act": [],
+  "searchmemory.init": [],
+  "searchmemory.searchmemory_available": [],
+  "searchmemory.init_searchmemory": [
+    {
+      "name": "smstring",
+      "byref": false
+    }
+  ],
+  "searchmemory.init_playerdata": [],
+  "searchmemory.load_playerdata": [
+    {
+      "name": "pdata",
+      "byref": false
+    }
+  ],
+  "searchmemory.playerdata_construct_process": [
+    {
+      "name": "data",
+      "byref": false
+    }
+  ],
+  "searchmemory.get_searchmemory_now_ids": [
+    {
+      "name": "tp",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.player_save": [
+    {
+      "name": "data",
+      "byref": false
+    },
+    {
+      "name": "in_proc",
+      "byref": false
+    }
+  ],
+  "searchmemory.calc_memory_slotnum": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.calc_memory_recordnum": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.get_seen_num": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.add_memory_core": [
+    {
+      "name": "marr",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.add_memory": [
+    {
+      "name": "marr",
+      "byref": false
+    },
+    {
+      "name": "showlog",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.add_memory_itm_process": [
+    {
+      "name": "marr",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.get_slot_edge": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.check_out_of_slot_edge": [
+    {
+      "name": "mn",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.seek_memory_by_id": [
+    {
+      "name": "id",
+      "byref": false
+    },
+    {
+      "name": "ikind",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.change_memory_unseen": [
+    {
+      "name": "mn",
+      "byref": false
+    },
+    {
+      "name": "showlog",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.remove_memory_core": [
+    {
+      "name": "mn",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.get_memory_name": [
+    {
+      "name": "marr",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.remove_memory": [
+    {
+      "name": "mn",
+      "byref": false
+    },
+    {
+      "name": "shwlog",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "searchmemory.focus_item": [
+    {
+      "name": "iarr",
+      "byref": false
+    }
+  ],
+  "searchmemory.itemdrop": [
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "searchmemory.act": [],
+  "searchmemory.meetman": [
+    {
+      "name": "sid",
+      "byref": false
+    }
+  ],
+  "searchmemory.discover_item_filter": [
+    {
+      "name": "iarr",
+      "byref": false
+    }
+  ],
+  "searchmemory.searchmemory_discover": [
+    {
+      "name": "mn",
+      "byref": false
+    }
+  ],
+  "searchmemory.searchmemory_discover_valid_check": [
+    {
+      "name": "marr",
+      "byref": false
+    }
+  ],
+  "searchmemory.searchmemory_discover_core": [
+    {
+      "name": "marr",
+      "byref": false
+    },
+    {
+      "name": "search_flag",
+      "byref": false
+    }
+  ],
+  "searchmemory.calculate_active_obbs": [
+    {
+      "name": "ldata",
+      "byref": true
+    },
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "searchmemory.move_to_area": [
+    {
+      "name": "moveto",
+      "byref": false
+    }
+  ],
+  "searchmemory.get_searchmemory_coldtime": [],
+  "searchmemory.check_keep_enemy_in_searchmemory": [],
+  "searchmemory.check_keep_corpse_in_searchmemory": [],
+  "searchmemory.getcorpse_action": [
+    {
+      "name": "edata",
+      "byref": true
+    },
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "searchmemory.searchmemory_display_prepare": [],
+  "searchmemory.searchmemory_senditem": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    }
+  ],
+  "searchmemory.is_searchmemory_extra_displayed": [],
+  "instance_quit_button.init": [],
+  "instance_quit_button.check_instance_quit_available": [],
+  "instance_quit_button.instance_quit": [],
+  "instance_quit_button.post_instance_quit_event": [],
+  "instance_quit_button.pre_act": [],
+  "instance_quit_button.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "blessstone.init": [],
+  "blessstone.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "blessstone.use_blessstone": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "blessstone.act": [],
+  "blessstone.use_hone": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    }
+  ],
+  "blessstone.use_sewing_kit": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "blessstone.autosewingkit_finish_event": [
+    {
+      "name": "sewing_results",
+      "byref": false
+    },
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "sewingkit",
+      "byref": true
+    }
+  ],
+  "blessstone.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.init": [],
+  "item_ext_armor.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.get_itmsk_desc_single_comp_process": [
+    {
+      "name": "skk",
+      "byref": false
+    },
+    {
+      "name": "skn",
+      "byref": false
+    },
+    {
+      "name": "sks",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.use_armor": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "pos",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.use_armor_ext_armor_process": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "positem",
+      "byref": true
+    }
+  ],
+  "item_ext_armor.armor_changename_to_ext": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "positem",
+      "byref": true
+    }
+  ],
+  "item_ext_armor.armor_hurt": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "which",
+      "byref": false
+    },
+    {
+      "name": "hurtvalue",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.suit_break": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "whicharmor",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.itemoff": [
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.getcorpse_action": [
+    {
+      "name": "edata",
+      "byref": true
+    },
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.armor_get_su": [
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.armor_put_su": [
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "suarr",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.armor_remove_su": [
+    {
+      "name": "positem",
+      "byref": true
+    },
+    {
+      "name": "getitem",
+      "byref": true
+    }
+  ],
+  "item_ext_armor.armor_changename_from_ext": [
+    {
+      "name": "positem",
+      "byref": true
+    },
+    {
+      "name": "getitem",
+      "byref": true
+    }
+  ],
+  "item_ext_armor.armor_clean_suit_sk": [
+    {
+      "name": "itmsk",
+      "byref": true
+    }
+  ],
+  "item_ext_armor.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.itemdrop_valid_check": [
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "itmpos",
+      "byref": false
+    }
+  ],
+  "item_ext_armor.init_npcdata": [
+    {
+      "name": "npc",
+      "byref": false
+    },
+    {
+      "name": "plslist",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.init": [],
+  "ex_phy_nullify.get_ex_phy_nullify_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.check_physical_nullify": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.get_physical_dmg_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.check_physical_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.put_charge_success_words": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.get_physical_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.use_sewing_kit": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_phy_nullify.autosewingkit_single": [
+    {
+      "name": "nowi",
+      "byref": false
+    },
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "sewingkit",
+      "byref": true
+    },
+    {
+      "name": "sewing_results",
+      "byref": false
+    }
+  ],
+  "ex_phy_nullify.geming_objvalid": [
+    {
+      "name": "t1",
+      "byref": false
+    },
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "itmk",
+      "byref": false
+    },
+    {
+      "name": "itme",
+      "byref": false
+    },
+    {
+      "name": "itms",
+      "byref": false
+    },
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "ex_equipskill.init": [],
+  "ex_equipskill.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_equipskill.check_skill_available": [
+    {
+      "name": "skillid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "ex_equipskill.get_itmsk_desc_single_comp_process": [
+    {
+      "name": "skk",
+      "byref": false
+    },
+    {
+      "name": "skn",
+      "byref": false
+    },
+    {
+      "name": "sks",
+      "byref": false
+    }
+  ],
+  "ex_equipskill.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "ex_storage.init": [],
+  "ex_storage.storage_encode_itmarr": [
+    {
+      "name": "arr",
+      "byref": false
+    }
+  ],
+  "ex_storage.storage_decode_itmarr": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "ex_storage.get_item_storage": [
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "ex_storage.storage_sendin": [
+    {
+      "name": "itmn",
+      "byref": false
+    },
+    {
+      "name": "pos",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "showlog",
+      "byref": false
+    }
+  ],
+  "ex_storage.get_empty_stpos": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "ex_storage.storage_sendin_core": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "pos",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "ex_storage.storage_fetchout": [
+    {
+      "name": "bagn",
+      "byref": false
+    },
+    {
+      "name": "pos",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "showlog",
+      "byref": false
+    }
+  ],
+  "ex_storage.storage_fetchout_core": [
+    {
+      "name": "bagn",
+      "byref": false
+    },
+    {
+      "name": "pos",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "ex_storage.use_storage": [],
+  "ex_storage.act": [],
+  "ex_storage.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "ex_storage.wep_b_extra_reloading_check": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_storage.use_armor": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "pos",
+      "byref": false
+    }
+  ],
+  "ex_storage.armor_remove_su": [
+    {
+      "name": "positem",
+      "byref": true
+    },
+    {
+      "name": "getitem",
+      "byref": true
+    }
+  ],
+  "ex_storage.suit_break": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "whicharmor",
+      "byref": false
+    }
+  ],
+  "item_armor_empower.init": [],
+  "item_armor_empower.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "item_armor_empower.use_armor_empower": [
+    {
+      "name": "itmn",
+      "byref": false
+    }
+  ],
+  "item_armor_empower.armor_empower": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "empitem",
+      "byref": true
+    }
+  ],
+  "item_armor_empower.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "item_armor_empower.act": [],
+  "item_armor_empower.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.init": [],
+  "item_uvo_extra.add_card_uvo_extra": [
+    {
+      "name": "get_cards",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tmp",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.remove_card_uvo_extra": [
+    {
+      "name": "cardid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tmp",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.get_cards_uvo_extra": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "tmp",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.encode_uvo_extra": [
+    {
+      "name": "arr",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.decode_uvo_extra": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.item_uv_getcard": [
+    {
+      "name": "get_card_id",
+      "byref": false
+    },
+    {
+      "name": "get_cardinfo",
+      "byref": false
+    },
+    {
+      "name": "itm",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_uvo_extra.act": [],
+  "item_uvo_extra.use_card_uvo_extra": [
+    {
+      "name": "cardid",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_uvo_extra.use_card_uvo_process": [
+    {
+      "name": "card_valid_info",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_uvo_extra.mix_cards_uvo_extra": [
+    {
+      "name": "cardid1",
+      "byref": false
+    },
+    {
+      "name": "cardid2",
+      "byref": false
+    },
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "item_uvo_extra.get_card_rare_uvo": [
+    {
+      "name": "rare1",
+      "byref": false
+    },
+    {
+      "name": "rare2",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.get_card_id_uvo": [
+    {
+      "name": "rare",
+      "byref": false
+    },
+    {
+      "name": "pack",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.gameover_set_credits": [],
+  "item_uvo_extra.player_kill_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.senditem_extra": [
+    {
+      "name": "ldata",
+      "byref": false
+    },
+    {
+      "name": "edata",
+      "byref": false
+    }
+  ],
+  "item_uvo_extra.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "ex_residue.init": [],
+  "ex_residue.get_res_itm": [
+    {
+      "name": "itmsk",
+      "byref": false
+    }
+  ],
+  "ex_residue.put_res_itm": [
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "resarr",
+      "byref": false
+    }
+  ],
+  "ex_residue.itms_reduce": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "reducen",
+      "byref": false
+    }
+  ],
+  "ex_residue.itemmix_reduce": [
+    {
+      "name": "item",
+      "byref": false
+    }
+  ],
+  "ex_residue.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_residue.itemmix_recipe_check": [
+    {
+      "name": "mixitem",
+      "byref": false
+    }
+  ],
+  "ex_residue.weapon_break": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_residue.armor_break": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "whicharmor",
+      "byref": false
+    }
+  ],
+  "ex_residue.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "ex_gender_attr.init": [],
+  "ex_gender_attr.get_gender_bewitch_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_gender_attr.get_gender_enrage_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_gender_attr.check_gender_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_gender_attr.get_physical_dmg_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.init": [],
+  "ex_attr_pierce.get_ex_pierce_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.get_attr_pierce_proc_rate": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_phy_pierce_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_attr_pierce_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_ex_rapid_def_exists": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_physical_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_physical_nullify": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_ex_single_dmg_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    },
+    {
+      "name": "key",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_ex_dmg_nullify": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.calculate_physical_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.calculate_ex_attack_dmg": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.strike_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_attr_pierce.check_dmg_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_alternative.init": [],
+  "ex_alternative.get_altlist": [
+    {
+      "name": "itmsk",
+      "byref": false
+    },
+    {
+      "name": "rand",
+      "byref": false
+    }
+  ],
+  "ex_alternative.alt_change": [
+    {
+      "name": "theitem",
+      "byref": true
+    },
+    {
+      "name": "atype",
+      "byref": false
+    },
+    {
+      "name": "idx",
+      "byref": false
+    }
+  ],
+  "ex_alternative.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "ex_alternative.get_altwords": [
+    {
+      "name": "alts",
+      "byref": false
+    },
+    {
+      "name": "atype",
+      "byref": false
+    },
+    {
+      "name": "suf",
+      "byref": false
+    },
+    {
+      "name": "hid",
+      "byref": false
+    }
+  ],
+  "ex_alternative.get_itmsk_desc_single_comp_process": [
+    {
+      "name": "skk",
+      "byref": false
+    },
+    {
+      "name": "skn",
+      "byref": false
+    },
+    {
+      "name": "sks",
+      "byref": false
+    }
+  ],
+  "ex_alternative.check_comp_itmsk_visible": [
+    {
+      "name": "cinfo",
+      "byref": false
+    }
+  ],
+  "ex_alternative.parse_itmsk_desc": [
+    {
+      "name": "sk_value",
+      "byref": false
+    }
+  ],
+  "ex_purity.init": [],
+  "ex_purity.get_ex_attack_array": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_purity.attack_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_purity.check_phy_pierce_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_purity.check_attr_pierce_proc": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_purity.check_ex_rapid_def_exists": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "ex_purity.check_physical_def_attr": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "instance10.init": [],
+  "instance10.parse_itmuse_desc": [
+    {
+      "name": "n",
+      "byref": false
+    },
+    {
+      "name": "k",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "s",
+      "byref": false
+    },
+    {
+      "name": "sk",
+      "byref": false
+    }
+  ],
+  "instance10.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "instance10.card_validate_get_forbidden_cards": [
+    {
+      "name": "card_disabledlist",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    }
+  ],
+  "instance10.card_validate_display": [
+    {
+      "name": "cardChosen",
+      "byref": false
+    },
+    {
+      "name": "card_ownlist",
+      "byref": false
+    },
+    {
+      "name": "packlist",
+      "byref": false
+    },
+    {
+      "name": "hideDisableButton",
+      "byref": false
+    }
+  ],
+  "instance10.init_enter_battlefield_items": [
+    {
+      "name": "ebp",
+      "byref": false
+    }
+  ],
+  "instance10.get_npclist": [],
+  "instance10.get_shopconfig": [],
+  "instance10.get_shop_tag_list": [],
+  "instance10.get_itemfilecont": [],
+  "instance10.get_startingitemfilecont": [],
+  "instance10.get_startingwepfilecont": [],
+  "instance10.get_trapfilecont": [],
+  "instance10.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "instance10.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "instance10.rs_areatime": [],
+  "instance10.get_area_wavenum": [],
+  "instance10.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "instance10.map_display_check_pls_available": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "instance10.map_display_get_pls_color": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "instance10.check_in_shop_area": [
+    {
+      "name": "p",
+      "byref": false
+    }
+  ],
+  "instance10.itemmix_success": [],
+  "instance10.use_skcore_success": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance10.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "instance10.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance10.remove_task": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "taskid",
+      "byref": false
+    }
+  ],
+  "instance10.act": [],
+  "instance10.check_can_enter": [
+    {
+      "name": "pno",
+      "byref": false
+    }
+  ],
+  "instance10.instance10_get_pa_pls_available": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "instance10.instance10_get_pa_pls_available_core": [
+    {
+      "name": "stage",
+      "byref": false
+    },
+    {
+      "name": "end2_flag",
+      "byref": false
+    }
+  ],
+  "instance10.get_mixinfo": [],
+  "instance10.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "bubblebox.init": [],
+  "bubblebox.bubblebox_delete_trailing_spaces": [
+    {
+      "name": "s",
+      "byref": false
+    }
+  ],
+  "bubblebox.bubblebox_set_default": [],
+  "bubblebox.bubblebox_set_style": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "bubblebox.bubblebox_get_style": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "gtype2.init": [],
+  "gtype2.prepare_new_game": [],
+  "gtype2.check_player_discover": [
+    {
+      "name": "edata",
+      "byref": true
+    }
+  ],
+  "gtype2.checkcombo": [
+    {
+      "name": "time",
+      "byref": false
+    }
+  ],
+  "gtype2.rs_game": [
+    {
+      "name": "xmode",
+      "byref": false
+    }
+  ],
+  "gtype2.itemuse": [
+    {
+      "name": "theitem",
+      "byref": true
+    }
+  ],
+  "gtype2.check_initnpcadd": [
+    {
+      "name": "typ",
+      "byref": false
+    }
+  ],
+  "gtype2.get_shopconfig": [],
+  "gtype2.post_enterbattlefield_events": [
+    {
+      "name": "pa",
+      "byref": true
+    }
+  ],
+  "gtype2.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "gtype2.parse_news": [
+    {
+      "name": "nid",
+      "byref": false
+    },
+    {
+      "name": "news",
+      "byref": false
+    },
+    {
+      "name": "hour",
+      "byref": false
+    },
+    {
+      "name": "min",
+      "byref": false
+    },
+    {
+      "name": "sec",
+      "byref": false
+    },
+    {
+      "name": "a",
+      "byref": false
+    },
+    {
+      "name": "b",
+      "byref": false
+    },
+    {
+      "name": "c",
+      "byref": false
+    },
+    {
+      "name": "d",
+      "byref": false
+    },
+    {
+      "name": "e",
+      "byref": false
+    },
+    {
+      "name": "exarr",
+      "byref": false
+    }
+  ],
+  "gtype3.init": [],
+  "gtype3.get_enter_battlefield_card": [
+    {
+      "name": "card",
+      "byref": false
+    }
+  ],
+  "gtype3.prepare_new_game": [],
+  "gtype3.check_addarea_gameover": [
+    {
+      "name": "atime",
+      "byref": false
+    }
+  ],
+  "gtype5.init": [],
+  "gtype5.get_npclist": [],
+  "gtype5.get_enpcinfo": [],
+  "gtype5.get_shopconfig": [],
+  "gtype5.get_itemfilecont": [],
+  "gtype5.get_trapfilecont": [],
+  "gtype5.get_startingitemfilecont": [],
+  "gtype5.get_startingwepfilecont": [],
+  "glowbutton.init": [],
+  "glowbutton.glowbutton_delete_trailing_spaces": [
+    {
+      "name": "s",
+      "byref": false
+    }
+  ],
+  "glowbutton.glowbutton_set_mousedown_event": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "glowbutton.glowbutton_set_default": [],
+  "glowbutton.glowbutton_set_style": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "glowbutton.glowbutton_get_style": [
+    {
+      "name": "str",
+      "byref": false
+    }
+  ],
+  "halloween2017.init": [],
+  "halloween2017.check_available_h2017": [],
+  "halloween2017.create_treat_h2017": [
+    {
+      "name": "tnum",
+      "byref": false
+    }
+  ],
+  "halloween2017.calc_treat_num_h2017": [
+    {
+      "name": "damage",
+      "byref": false
+    }
+  ],
+  "halloween2017.get_attack_method": [
+    {
+      "name": "pdata",
+      "byref": true
+    }
+  ],
+  "halloween2017.battle_prepare": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "halloween2017.battle_finish": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "halloween2017.get_def_multiplier": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ],
+  "halloween2017.player_attack_enemy": [
+    {
+      "name": "pa",
+      "byref": true
+    },
+    {
+      "name": "pd",
+      "byref": true
+    },
+    {
+      "name": "active",
+      "byref": false
+    }
+  ]
+}

@@ -1,78 +1,62 @@
-# 改资源与改机制
+# 原生 Node.js 开发
 
-## 与旧版的对应关系
+`XX` 分支的游戏规则、账号、HTTP、调度和模板均由 `native/` 内的 JavaScript 执行。运行游戏不需要 PHP 或 PHP WebAssembly。原版 3,578 个文件保留在 `engine/`，用作资源和行为对照；它们不是生产逻辑的第二个执行层。
 
-游戏逻辑仍为原版 PHP 模块。Node 负责运行与调度，所以不用先学 TypeScript 才能添加道具、NPC 或技能。`engine/` 下就是原仓库根目录；新服包含该分支完整 3,578 个受版本控制文件。
+## 定位与修改
 
-| 原路径 | 本项目源路径 | 用途 |
-| --- | --- | --- |
-| `include/modules/` | `engine/include/modules/` | 模块、技能、模式、物品、战斗与结局 |
-| `gamedata/modules.list.php` | `engine/gamedata/modules.list.php` | 加载顺序及启停；顺序决定钩子覆盖链 |
-| `include/modules/*/config/` | 同路径加 `engine/` | 各模块自己的数据和参数 |
-| `gamedata/` | `engine/gamedata/` | 地图、SQL、展示数据及游戏资源 |
-| `templates/default/` | `engine/templates/default/` | 原界面模板 |
-| `img/`、`map/` | `engine/img/`、`engine/map/` | 原图片和地图资源 |
-| `include/javascript/` | `engine/include/javascript/` | 原交互、快捷键、响应解码和录像 |
-| PHP/Apache/daemon 配置 | `.env`、`runtime/`、`server.mjs` | Node 托管运行层 |
-| 新窗口界面 | `public/modern/modern.js`、`modern.css` | 窗口布局与视觉样式 |
+| 修改目标 | 实际路径 |
+| --- | --- |
+| 人物、探索、战斗、地图、物品、经验等基础规则 | `native/gameplay/` |
+| NPC、队伍、商店、合成、姿态与伤害状态 | `native/gameplay/base-extra/` |
+| 582 个技能 | `native/generated/modules/skill*.mjs` |
+| 卡片、副本、属性、结局及其他扩展 | `native/generated/remaining/modules/` |
+| 模块调用链与引用 | `native/modules/registry.mjs` |
+| 模板服务和 882 个静态模板 | `native/templates/` |
+| 账号、管理、消息、房间、维护、录像 | `native/accounts/`、`native/system/` |
+| HTTP 控制器及真实请求服务 | `native/http/` |
+| 图片、地图、原浏览器脚本、文本型物品表 | `engine/img/`、`engine/map/`、`engine/include/javascript/`、原资源路径 |
+| 现代界面 | `public/modern/modern.js`、`modern.css` |
+| 私有站点配置和模块启用清单 | 原生状态目录内的 `native-admin-config.json`、`native-module-state.json` |
 
-先用搜索定位真实条目，不要凭创作资料中另一个版本的路径修改。这个 Unstable 是模块版：例如战斗在 `base/attack`、`base/battle` 及属性/技能模块中，不能照搬常磐版 `include/game/revcombat.*` 的路径。
+静态迁移产物也是普通 JavaScript，可以直接调试、修改和提交。不要在生产服改 PHP 文件后期待规则自动变化。部分带 `.php` 后缀的文件是原版访问保护头加 CSV 文本资源，仍按数据读取；配置数组已迁为 JSON 或静态 JS。
 
-## 常见改造步骤
+修改机制前先定位原函数、调用链和相应测试。保留依赖、钩子顺序、参数引用、随机数调用顺序和数值类型。新模块须提供 `name`、依赖、`state`、`functions`，在静态目录注册，然后进入启用清单；网页不能执行任意路径的代码。调用覆盖链须 `await ctx.next(...)` 或 `await ctx.call(...)`，外部入口用 `session.call(...)`。完整 API 见 [原生模块说明](../native/modules/README.md)。
 
-1. 停服并备份。修改仓库 `engine/` 内目标配置、图片或模块源文件，保留原编码和标识符。
-2. 如果加技能，复制与目标行为最接近的现有模块，填写 `module.inc.php` 的名称、依赖、代码/模板列表，把模块加入 `gamedata/modules.list.php` 的正确位置。
-3. 保留 `namespace`、`eval(__MAGIC__)`、`eval(import_module(...))`、`$chprocess` 的原约定。它们是钩子和变量引用系统，不能当无用模板删掉。
-4. 执行 `npm run compile`，它会同步修改、进行原模块合法性检查，并重新生成 ADV1/ADV2/ADV3 缓存。错误详情在 `var/compile-*.log`。Docker 下修改源后重建镜像并启动也会同步编译。
-5. 启动服务器，至少在经典/现代两种界面中验证新操作、失败条件、道具消耗和录像。涉及战斗要检查双方状态与技能连锁，涉及房间要用两个账号验证。
+停止服务器后运行：
 
-原模块管理页仍可用于查看和编辑模块清单。Node 版固定执行架构，不允许从该页重新启用 PHP daemon 或关闭录像所需的编译级别。网页保存的候选清单在 `var/game/gamedata/modules.list.temp.php`；停止服务后使用 `npm run compile -- --staged` 应用候选，再把最终清单同步回仓库，避免仅存在服务器上。
-
-生成目录 `var/game/gamedata/modinit`、`run`、`templates`、`javascript` 不是源文件，不要在这里修技能。直接修改 `var/game/include/modules` 只适合临时排查：后续源更新与它冲突时会停止同步，需手动合并；正式修改应回到 `engine/`。
-
-自动编译检查模块 PHP/HTM、模块编译器、模板、加载清单以及实际配置内容。图片和 HTTP 入口包装的变化只同步，不强制重编译 770 个模块。显式 `npm run compile` 总会编译，适用于临时修改运行副本后的验证。内部回调端口在每次启动时同步到生成配置，不影响编译指纹。
-
-## 示例一：增加一种开局地图补给
-
-以下示例仅供开发者照做，没有预先改变原游戏数据。在 `engine/include/modules/base/itemmain/config/mapitem.config.php` 的“端点”段，现有 `0,1,7,精神制剂,HS,300,1,,` 表示开局在地图 1 放 7 件、每件恢复 300 体力的单次补给。要添加测试品，可另加一行：
-
-```text
-0,1,2,测试用精神制剂,HS,150,1,,
+```sh
+npm run compile
+npm run test:native
+npm run verify:source
+npm start
 ```
 
-前八个逗号分隔字段依次是刷新禁区回数、地图编号、件数、名称、类型、效果、耐久或使用次数、附加属性。`0` 为开局，`99` 为每禁刷新，`98` 为一禁后每禁刷新；地图 `99` 表示随机地图。地图编号和名称对应 `engine/include/modules/core/map/config/map.config.php`；`HS` 的“体力恢复”处理在 `engine/include/modules/base/items/edible/main.php`。保留文件顶部 PHP 访问保护与现有文本格式，名称中不要放英文逗号或换行。
+`compile` 校验实际原生模块依赖、顺序、模板注册及构建哈希；它不运行 PHP ADV，也不改存档。管理页保存的候选清单经校验后可在页面应用；停服应用同一候选用 `npm run compile -- --staged`。源码变更仍需重启 Node。不能通过删除锁、数据库或存档绕过失败。
 
-停服后执行 `npm run compile`，启动隔离测试服并新开普通游戏。旧局数据库里已经刷出的道具不会自动替换。到端点检查测试品是否出现，拾取后在体力不足时使用，验证实际恢复量、上限截断以及使用后消失；同时确认原精神制剂仍存在。这个改动没有新增类型，所以不必注册新模块。特殊副本可覆盖 `get_itemfilecont()` 并使用自己的表，不能只改基础表便假定所有副本一起改变。
+## 构建工具与覆盖风险
 
-## 示例二：调整头部受伤的命中惩罚
+`scripts/native-compiler/` 是开发期静态转换工具，使用开发依赖 `php-parser` 读取固定来源文件，输出可检查的 async JavaScript。生产不加载 parser，不解析 PHP，不执行 AST，也不使用 eval。首次迁移保留这些工具是为了复现来源和审计语义；它们不应成为新增机制必须依赖的 PHP 开发流程。
 
-`engine/include/modules/base/skills/skill2/main.php` 是真实的头部受伤技能。它在载入人物时检查 `$pa['inf']` 是否包含 `h`，通过 `skillbase` 临时获得技能 2。`get_hitrate_multiplier(&$pa,&$pd,$active)` 先调用已有钩子链，再在攻击方具有该技能时将倍率乘以 `0.75`。若希望把这一层惩罚改为减少 10%，只把函数中的数值改为 `0.90`，保留其余调用：
+工具会覆盖对应生成目录。已经直接修改原生 JS 时，先保存差异并审查生成结果，禁止无条件重建后丢掉修改。需要从对照源重新移植时，按这个顺序运行并检查各报告的 failures 为空：
 
-```php
-function get_hitrate_multiplier(&$pa,&$pd,$active)
-{
-    if (eval(__MAGIC__)) return $___RET_VALUE;
-    $ret = $chprocess($pa,$pd,$active);
-    if (\skillbase\skill_query(2,$pa))
-        $ret *= 0.90;
-    return $ret;
-}
+```sh
+node scripts/native-compiler/build-modules.mjs
+node scripts/native-compiler/build-modules.mjs --remaining
+node scripts/native-compiler/build-resources.mjs
+node scripts/native-compiler/build-pages.mjs
+node scripts/native-compiler/build-templates.mjs
 ```
 
-这里 `$pa` 是攻击方、`$pd` 是防御方；保留引用参数、`eval(__MAGIC__)` 和 `$chprocess` 才能与其他命中技能叠加。它不是把最终命中率固定为 90%。该技能已有 `module.inc.php` 与加载清单条目，无需新增条目；若另建技能，应使用未占用的技能编号、独立 namespace，并声明实际依赖，不能复制后仍叫 `skill2`。
+改模板可编辑已提交的静态模板并同步其构建清单哈希，或修改原 HTM 再用模板构建器重建；后者会被来源核验报告为主动改造。不得重写 `upstream/manifest.json` 隐藏差异。移植产生的兼容数值、数组、引用和字节操作在 `native/generated/context.mjs`、`native/templates/values.mjs` 等公共函数中；不要绕开它们改变旧机制。
 
-停服编译，在隔离服比较其他条件一致的有头伤、无头伤人物：钩子前倍率为 `R` 时，这一层分别应给出 `R × 0.90` 和 `R`，治疗头伤后应恢复无伤分支。再与另一种命中修正同时启用，验证连锁仍生效，并检查一次真实攻击及录像播放。少量攻击的命中次数受随机数影响，不能用“连中几次”证明倍率正确；数值检查应在调试入口调用真实钩子链或增加针对该机制的差分测试。完成验证后再把数值改造用于正式服。
+## 数据、测试和 UI
 
-## 站点配置
+`.env` 只放部署参数。管理页持久配置保存为私有 JSON，重启继续生效。默认模块清单来自不可变来源清单，保留原本关闭的 9 个模块、模式可用时间和运营开关。修改公开可用性是另一个产品决定，不属于等价移植。
 
-`DB_*`、`PUBLIC_URL`、`TABLE_PREFIX`、站长名称由 `.env` 覆盖。通用游戏配置仍在运行目录的 `include/modules/core/sys/config/*.config.php`。首次从原 `.sample.php` 创建，后续不覆盖游戏设置。修改通用模块配置后也要重新编译。
+集成测试只使用 `scripts/test-db.ps1` 准备的独立 MariaDB（127.0.0.1:33317、`var/test-db`），每项另建随机数据库和 `var/tests` 子目录。测试不得借用 `.env` 的正式数据库。缺少 PHP 对照时，相关差分测试会明确跳过；部分数据库测试也会跳过，而最终默认入口验收缺少专用数据库会直接失败，浏览器验收缺少浏览器也会失败。出现 skip 不能算完成验收。本机原生 PHP 7.4 仅用作开发对照。
 
-初次安装保持原游戏参数和手动开局配置。启用某个原本关闭的活动、模式或功能，是运营决定，不作为移植时的默认改动。
+机制变更须验证成功和拒绝分支、状态重载及录像。运行层变更执行 `npm test`。真实 HTTP/浏览器整合在 `tests/native-full-http.test.mjs` 与 `tests/native-full-gameplay.test.mjs`，模式矩阵在 `tests/native-modes.test.mjs`。Windows 沙箱可能阻止 Edge 子进程；使用独立测试 profile 运行浏览器，不接入个人浏览器。
 
-## 新界面
+经典界面和原协议保留。现代界面移动原 DOM，不复制控件；必须保留 ID、表单归属、快捷键和录像 DOM 路径。改变 UI 后检查两种界面、异步刷新、真实表单发送和录像点击回放。素材仍保留来源，设定中明确保密的内容不得写进公开界面。
 
-现代界面只重组真实 DOM，不复制玩家信息、不重新计算游戏数值。每个窗口有标题栏、最小化按钮和尺寸控制；布局和模式保存在当前浏览器 localStorage。游戏服务器不会因为用户拖动窗口而修改玩家状态。
-
-对 UI 做改造时，必须保留原控件的 ID、name、表单归属、事件和快捷键；服务器会替换 `main`、`cmd_interface` 等区域，不能只给初次页面挂事件。录像的操作坐标依赖经典 DOM 树，现代代码在原树上记录/定位后再恢复窗口布局。改动后运行 `public/modern/browser-test.mjs` 的浏览器回归。
-
-视觉采用克制的暗色公共终端、钢蓝和细青色边界，沿用原图片和道具色彩。不要把设定库明确要求保密的底层真相写进公开 UI 文案。新增素材要同时记录来源和使用条件；本次默认界面不新增外部付费素材依赖。
+部署与恢复见 [DEPLOYMENT.md](DEPLOYMENT.md)，测试范围与主动差异见 [NATIVE-MIGRATION.md](NATIVE-MIGRATION.md)。

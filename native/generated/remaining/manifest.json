@@ -1,0 +1,5319 @@
+{
+  "outputs": [
+    {
+      "module": "bmp_util",
+      "output": "modules/bmp_util.mjs",
+      "generatedHash": "0eff551de165486910ac9c031ee7a41ab7d1d4fe65f9c9575f8e18c880a93325",
+      "functions": [
+        "bmp_binwriteint",
+        "gen_bmp"
+      ],
+      "calls": [
+        "bmp_util\\bmp_binwriteint",
+        "chr",
+        "floor",
+        "pack"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/bmp_util/main.php",
+          "hash": "b4c907830e53b019959ab8d0d6b32b0093d36d10a2b22f359642d0bb5d933397"
+        }
+      ]
+    },
+    {
+      "module": "replay",
+      "output": "modules/replay.mjs",
+      "generatedHash": "6e2b72f1d1503498ef1cf607bc9133bfa357599bed5e9bcc04df6f95f13b5539",
+      "functions": [
+        "get_html_color",
+        "get_ident_textcolor",
+        "post_gameover_events",
+        "replay_validify_record",
+        "replay_record_op",
+        "get_replay_by_gnum",
+        "get_replay_remote"
+      ],
+      "calls": [
+        "base64_decode",
+        "base64_encode",
+        "bmp_util\\gen_bmp",
+        "chr",
+        "count",
+        "curl_post",
+        "explode",
+        "file_exists",
+        "file_get_contents",
+        "file_put_contents",
+        "floor",
+        "fold",
+        "gdecode",
+        "gencode",
+        "gurl",
+        "gzencode",
+        "in_array",
+        "is_dir",
+        "json_encode",
+        "md5",
+        "min",
+        "openfile",
+        "ord",
+        "replay\\get_html_color",
+        "replay\\get_replay_remote",
+        "replay\\replay_validify_record",
+        "room_check_subroom",
+        "room_prefix_kind",
+        "round",
+        "sizeof",
+        "strlen",
+        "strpos",
+        "sys\\is_winner",
+        "template",
+        "unfold",
+        "unlink"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/replay/main.php",
+          "hash": "aeac5680c366318654cb9cbb960fc7cc59c22099abc73bf82e2f30b50e2993a3"
+        }
+      ]
+    },
+    {
+      "module": "map_display",
+      "output": "modules/map_display.mjs",
+      "generatedHash": "ec903624589a85bc686c68f3379359ec03aa7bda0446cdcc242c131d756dbd0f",
+      "functions": [
+        "get_map_display_config",
+        "map_display_y2coor",
+        "map_display_check_pls_available",
+        "map_display_get_pls_color"
+      ],
+      "calls": [
+        "chr",
+        "floor",
+        "map\\check_in_forbidden_area",
+        "map\\get_all_plsno",
+        "map_display\\map_display_y2coor"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/map_display/main.php",
+          "hash": "37a744475640e480ca1308ec01111f3d64ef1fde922a778bd757c8944a75e370"
+        },
+        {
+          "source": "include/modules/base/map_display/config/map_display.config.php",
+          "hash": "9243b303d553c260de42f39a7609e70507bf2b960517e22e741e0ba0c55716ff"
+        }
+      ]
+    },
+    {
+      "module": "bufficons",
+      "output": "modules/bufficons.mjs",
+      "generatedHash": "1901ef8381f9542d720614845cf975d9d4cafb06df2ba3cb285dd620c29b2763",
+      "functions": [
+        "bufficon_show",
+        "bufficons_display",
+        "bufficons_display_single",
+        "bufficons_set_timestamp",
+        "bufficons_check_buff_state",
+        "bufficons_check_buff_state_shell",
+        "bufficons_activate_buff",
+        "bufficons_impose_buff"
+      ],
+      "calls": [
+        "bufficons\\bufficon_show",
+        "bufficons\\bufficons_check_buff_state",
+        "bufficons\\bufficons_check_buff_state_shell",
+        "bufficons\\bufficons_display_single",
+        "bufficons\\bufficons_set_timestamp",
+        "defined",
+        "get_now",
+        "is_numeric",
+        "max",
+        "round",
+        "skillbase\\check_skill_info",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_check_unlocked",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/bufficons/main.php",
+          "hash": "c996c23b46925c449abcfe2888d6dcc24e5b65b85ad930822b29221b690f097f"
+        }
+      ]
+    },
+    {
+      "module": "elorating",
+      "output": "modules/elorating.mjs",
+      "generatedHash": "8b3c92fda466dd23fc73cb5e9af4ced0520933e663646a39649a437f689626e8",
+      "functions": [
+        "init_enter_battlefield_items",
+        "get_servermark",
+        "elorating_math_erf",
+        "elorating_math_ierf",
+        "elorating_math_probit",
+        "elorating_calculate_win_probability",
+        "elorating_stimulate_game",
+        "elorating_calculate_update",
+        "elorating_update",
+        "get_gameover_udata_update_fields",
+        "post_gameover_events",
+        "elorating_draw_line",
+        "elorating_get_title",
+        "elorating_get_color",
+        "elorating_get_graph_color",
+        "elorating_draw_point",
+        "elorating_draw",
+        "elorating_show"
+      ],
+      "calls": [
+        "abs",
+        "array_merge",
+        "base64_decode_number",
+        "base64_encode_number",
+        "ceil",
+        "count",
+        "elorating\\elorating_calculate_update",
+        "elorating\\elorating_calculate_win_probability",
+        "elorating\\elorating_draw_line",
+        "elorating\\elorating_draw_point",
+        "elorating\\elorating_get_graph_color",
+        "elorating\\elorating_math_erf",
+        "elorating\\elorating_math_ierf",
+        "elorating\\elorating_math_probit",
+        "elorating\\elorating_stimulate_game",
+        "elorating\\elorating_update",
+        "elorating\\get_servermark",
+        "exp",
+        "floor",
+        "function_exists",
+        "gurl",
+        "in_array",
+        "max",
+        "min",
+        "pow",
+        "rand",
+        "room_check_subroom",
+        "room_gettype_from_gtype",
+        "room_prefix_kind",
+        "round",
+        "sqrt",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "uniqid"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/elorating/main.php",
+          "hash": "0fca9aa98e922e0fea03c188ae0973514154ac7eb98b1e78075ab974236c9e56"
+        },
+        {
+          "source": "include/modules/extra/misc/elorating/config/elorating.config.php",
+          "hash": "0f3c0cc9673a6e7789597e74aac0ebe31a87bed99388d8b42b4b188310a0a892"
+        }
+      ]
+    },
+    {
+      "module": "edible",
+      "output": "modules/edible.mjs",
+      "generatedHash": "1732c5b0bd708bd59ea49944892e2a0b4f8b75330acc8c43bfde2ff84c018a8e",
+      "functions": [
+        "get_edible_spup",
+        "get_edible_hpup",
+        "edible_recover",
+        "itemuse_edible_get_msp",
+        "itemuse_edible_get_mhp",
+        "itemuse_edible",
+        "itemuse"
+      ],
+      "calls": [
+        "edible\\edible_recover",
+        "edible\\get_edible_hpup",
+        "edible\\get_edible_spup",
+        "edible\\itemuse_edible",
+        "edible\\itemuse_edible_get_mhp",
+        "edible\\itemuse_edible_get_msp",
+        "itemmain\\itms_reduce",
+        "max",
+        "min",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/edible/main.php",
+          "hash": "94d635c5537fa5d480cd49e833078aadd2e16e58b30314b8e4abb3d106031a1f"
+        }
+      ]
+    },
+    {
+      "module": "boxes",
+      "output": "modules/boxes.mjs",
+      "generatedHash": "a6c5c6e9758b7899ee71344c66e25a47155c7efd09af8e34aedb9bcad061f63b",
+      "functions": [
+        "itemuse_boxes",
+        "boxes_row_data_seperate",
+        "boxes_row_data_process",
+        "itemuse",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_keys",
+        "boxes\\boxes_row_data_process",
+        "boxes\\boxes_row_data_seperate",
+        "boxes\\itemuse_boxes",
+        "count",
+        "explode",
+        "in_array",
+        "itemmain\\itemget",
+        "itemmain\\itms_reduce",
+        "openfile",
+        "rand",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/boxes/main.php",
+          "hash": "cbbaabccd384c69a53adad36c9372175361fdde786edf0e5d065bf69c90c73f7"
+        }
+      ]
+    },
+    {
+      "module": "scpdrink",
+      "output": "modules/scpdrink.mjs",
+      "generatedHash": "0eedf7297caff4813b50d3acbc1c87e2231ba8770728b086106f505fce43c1f7",
+      "functions": [
+        "itemuse",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "clubbase\\club_acquire",
+        "clubbase\\club_lost",
+        "defined",
+        "itemmain\\itms_reduce",
+        "player\\kill",
+        "player\\load_playerdata",
+        "player\\player_save",
+        "player\\update_sdata",
+        "rand",
+        "round",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/scpdrink/main.php",
+          "hash": "ce47ba8548815187bff5d47a87e42d6b4d8f7c5ee972bfedff88958fd690ea2c"
+        }
+      ]
+    },
+    {
+      "module": "item_ub",
+      "output": "modules/item_ub.mjs",
+      "generatedHash": "cdbd93a9cafcc01f8cdcde06f86d397b101dd99e14a90af496c683461b9bc63d",
+      "functions": [
+        "itemuse_ub",
+        "ub_check",
+        "itemuse"
+      ],
+      "calls": [
+        "in_array",
+        "item_ub\\itemuse_ub",
+        "item_ub\\ub_check",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/item_ub/main.php",
+          "hash": "b25d79a6c8b071d7f57c038d054b4147e08ff4b3068db05169a9cfae6e377e52"
+        }
+      ]
+    },
+    {
+      "module": "item_uee",
+      "output": "modules/item_uee.mjs",
+      "generatedHash": "5ea89e50051ef04d9456eddec5f56ee186bffd774bcd046f121a632799829dc2",
+      "functions": [
+        "parse_itmuse_desc",
+        "calculate_hack_proc_rate",
+        "calculate_post_hack_proc_rate",
+        "get_uee_deathlog",
+        "post_hack_events",
+        "itemuse_uee",
+        "itemuse_uee_core",
+        "itemuse",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "item_uee\\calculate_hack_proc_rate",
+        "item_uee\\calculate_post_hack_proc_rate",
+        "item_uee\\get_uee_deathlog",
+        "item_uee\\itemuse_uee",
+        "item_uee\\itemuse_uee_core",
+        "item_uee\\post_hack_events",
+        "player\\kill",
+        "player\\load_playerdata",
+        "player\\player_save",
+        "player\\update_sdata",
+        "rand",
+        "save_gameinfo",
+        "strpos",
+        "sys\\systemputchat"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/item_uee/main.php",
+          "hash": "6674c01cb54666cf33603eb00eeab19497417a99c93c9a141bd8312230473d90"
+        }
+      ]
+    },
+    {
+      "module": "item_addarea",
+      "output": "modules/item_addarea.mjs",
+      "generatedHash": "b970c3edae763df80327e5375718c5e702efcfc94a399975d1c731f0a5b12c8e",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "in_array",
+        "itemmain\\itms_reduce",
+        "save_gameinfo",
+        "strpos",
+        "sys\\systemputchat"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_addarea/main.php",
+          "hash": "a1bb453d8becfe0e7164df43aa84a19f1740fd7ad9b71b92e929f9543dcd2ccd"
+        }
+      ]
+    },
+    {
+      "module": "radar",
+      "output": "modules/radar.mjs",
+      "generatedHash": "a236d627acf1c99907ba4d043a25c613e015edde114cd3d1b4bf901d8de0e643",
+      "functions": [
+        "pre_radar_event",
+        "check_radar_digit",
+        "radar_itmsk_to_digit",
+        "use_radar",
+        "check_include_radar_cmdpage",
+        "post_radar_event",
+        "radar_parse_namelist",
+        "get_radar_npc_type_list",
+        "item_radar_reduce",
+        "itemuse"
+      ],
+      "calls": [
+        "array_diff",
+        "array_merge",
+        "defined",
+        "gameflow_duel\\is_gamestate_duel",
+        "implode",
+        "in_array",
+        "is_numeric",
+        "itemmain\\check_in_itmsk",
+        "map\\check_can_enter",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "radar\\check_include_radar_cmdpage",
+        "radar\\check_radar_digit",
+        "radar\\get_radar_npc_type_list",
+        "radar\\item_radar_reduce",
+        "radar\\post_radar_event",
+        "radar\\pre_radar_event",
+        "radar\\radar_itmsk_to_digit",
+        "radar\\radar_parse_namelist",
+        "radar\\use_radar",
+        "str_replace",
+        "strpos",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/radar/main.php",
+          "hash": "9e09f636ae2720ef6161828c02f04a80f18d751df148f6c0814bea675c19d5e3"
+        }
+      ]
+    },
+    {
+      "module": "randnpc",
+      "output": "modules/randnpc.mjs",
+      "generatedHash": "887fe08b369e7713347d3b27b8bb8c44394b82cffe57b2e02c6910128c8d7ddc",
+      "functions": [
+        "generate_randnpc",
+        "generate_single_randnpc",
+        "generate_randnpc_item",
+        "generate_randnpc_itmsk",
+        "generate_randnpc_skills",
+        "add_randnpc",
+        "itemuse"
+      ],
+      "calls": [
+        "addnews",
+        "array_diff",
+        "array_merge",
+        "array_rand",
+        "array_randompick",
+        "array_unique",
+        "ceil",
+        "implode",
+        "is_array",
+        "is_numeric",
+        "itemmain\\get_itmsk_array",
+        "map\\get_safe_plslist",
+        "max",
+        "min",
+        "npc\\init_npcdata",
+        "player\\player_format_with_db_structure",
+        "pow",
+        "rand",
+        "randnpc\\add_randnpc",
+        "randnpc\\generate_randnpc",
+        "randnpc\\generate_randnpc_item",
+        "randnpc\\generate_randnpc_itmsk",
+        "randnpc\\generate_randnpc_skills",
+        "randnpc\\generate_single_randnpc",
+        "round",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/randnpc/main.php",
+          "hash": "8db497449834501476103d27f112a41e9cd8a00f0b846cf6cddb06bd5d9158d2"
+        },
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/randnpc/config/randnpc.config.php",
+          "hash": "f356abdb7f8cc251d0b4e2dac0b3da61147a0f81bd49dd9b5c92a70d55639790"
+        }
+      ]
+    },
+    {
+      "module": "npc_pick_item",
+      "output": "modules/npc_pick_item.mjs",
+      "generatedHash": "69883f2b8c7d7462a7bdaacb628db1191f30be65d5a87922660e7648fc5b2301",
+      "functions": [
+        "is_npc_pick_allowed",
+        "lay_mapitem",
+        "itemlist_data_process",
+        "mapitem_single_data_attr_process"
+      ],
+      "calls": [
+        "array_keys",
+        "explode",
+        "floor",
+        "implode",
+        "in_array",
+        "map\\get_area_wavenum",
+        "npc_pick_item\\is_npc_pick_allowed",
+        "rand",
+        "sizeof",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/npc_pick_item/main.php",
+          "hash": "3afa4741331ded68b4c9dbd6eab9b4691017c533e6db3864339d5b3ef71557df"
+        }
+      ]
+    },
+    {
+      "module": "itemmix_sync",
+      "output": "modules/itemmix_sync.mjs",
+      "generatedHash": "81984d427804755ba88b5aa2ad1c44b8bc22d769fa794d9532fd4b4f864fe0e7",
+      "functions": [
+        "get_itemmix_sync_filename",
+        "itemmix_prepare_sync",
+        "itemmix_star_culc_sync",
+        "itemmix_get_star",
+        "itemmix_sync_check",
+        "itemmix_get_result"
+      ],
+      "calls": [
+        "count",
+        "explode",
+        "in_array",
+        "itemmain\\check_in_itmsk",
+        "itemmix\\itemmix_name_proc",
+        "itemmix_sync\\get_itemmix_sync_filename",
+        "itemmix_sync\\itemmix_get_star",
+        "itemmix_sync\\itemmix_prepare_sync",
+        "itemmix_sync\\itemmix_star_culc_sync",
+        "itemmix_sync\\itemmix_sync_check",
+        "openfile",
+        "strlen",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/itemmix/itemmix_sync/main.php",
+          "hash": "bfa0033a4da114ed587a44e2d0ec2d39de566239391611d60b4c572f8a287bab"
+        }
+      ]
+    },
+    {
+      "module": "item_uee_extra",
+      "output": "modules/item_uee_extra.mjs",
+      "generatedHash": "fa04a8248d47127bfc9f0ec8b365007e7bf0989711f57630fe0f7c9e0708124f",
+      "functions": [
+        "uee_extra_get_hack_num",
+        "itemuse_uee_core",
+        "itemuse_uee_extra_reset",
+        "itemuse_uee_extra"
+      ],
+      "calls": [
+        "addnews",
+        "array_unique",
+        "count",
+        "item_uee_extra\\itemuse_uee_extra",
+        "item_uee_extra\\itemuse_uee_extra_reset",
+        "item_uee_extra\\uee_extra_get_hack_num",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "range",
+        "save_gameinfo",
+        "skill503\\check_unlocked503",
+        "skillbase\\skill_query",
+        "sys\\systemputchat",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_uee_extra/main.php",
+          "hash": "2b444e38e83c883fbc88292da621a38d158e15e82eb384da54612da284eb32ff"
+        }
+      ]
+    },
+    {
+      "module": "itemmix_overlay",
+      "output": "modules/itemmix_overlay.mjs",
+      "generatedHash": "13e9663ed281886fdb213a1c6093b963e057419526731a1ac76b6756da42038e",
+      "functions": [
+        "get_itemmix_overlay_filename",
+        "itemmix_prepare_overlay",
+        "itemmix_star_culc_overlay",
+        "check_valid_overlay_material",
+        "itemmix_overlay_check",
+        "itemmix_get_result"
+      ],
+      "calls": [
+        "count",
+        "explode",
+        "itemmain\\check_in_itmsk",
+        "itemmix_overlay\\check_valid_overlay_material",
+        "itemmix_overlay\\get_itemmix_overlay_filename",
+        "itemmix_overlay\\itemmix_overlay_check",
+        "itemmix_overlay\\itemmix_prepare_overlay",
+        "itemmix_overlay\\itemmix_star_culc_overlay",
+        "itemmix_sync\\itemmix_get_star",
+        "openfile",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/itemmix/itemmix_overlay/main.php",
+          "hash": "1adced30c8163dd6435b2519b5f5b4b3562ffc3bff7229fa79f411d237dae6d6"
+        }
+      ]
+    },
+    {
+      "module": "item_misc",
+      "output": "modules/item_misc.mjs",
+      "generatedHash": "c140808a07a87eb66720a0bc0d197a09a4dd2e743e62508186c96a1fd5a9611c",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse",
+        "divining",
+        "divining1",
+        "divining2",
+        "deathnote",
+        "deathnote_process",
+        "deathnote_process_core",
+        "act",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "addnpc_event\\addnpc_event",
+        "clubbase\\club_acquire",
+        "constant",
+        "defined",
+        "ex_storage\\storage_encode_itmarr",
+        "explode",
+        "gameflow_duel\\duel",
+        "item_misc\\deathnote",
+        "item_misc\\deathnote_process",
+        "item_misc\\deathnote_process_core",
+        "item_misc\\divining",
+        "item_misc\\divining1",
+        "item_misc\\divining2",
+        "itemmain\\itemget",
+        "itemmain\\itms_reduce",
+        "max",
+        "noise\\addnoise",
+        "ob_clean",
+        "ob_get_contents",
+        "pass_compare",
+        "player\\fetch_playerdata",
+        "player\\kill",
+        "player\\load_playerdata",
+        "player\\player_save",
+        "player\\update_sdata",
+        "rand",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_query",
+        "sleep",
+        "str_replace",
+        "strlen",
+        "strpos",
+        "substr",
+        "sys\\addchat",
+        "sys\\addnews",
+        "sys\\gameover",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/item_misc/main.php",
+          "hash": "1219cae0f9a1cc1daf3c640e90167f3d790b621f5ebe6cec892bc0773c63cc82"
+        }
+      ]
+    },
+    {
+      "module": "advteam",
+      "output": "modules/advteam.mjs",
+      "generatedHash": "f7973e3e1f619e28ddaabfbd30cf30abc9ef87860a0226d93cf065318a720059",
+      "functions": [
+        "get_advteam_html",
+        "act"
+      ],
+      "calls": [
+        "in_array",
+        "player\\fetch_playerdata_by_pid",
+        "strpos",
+        "substr",
+        "team\\findteam",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/advteam/main.php",
+          "hash": "313d788eda85a2f2d3fe5ec42282ffd8795977ab27854a121b18dd5da0c303dd"
+        }
+      ]
+    },
+    {
+      "module": "instance0",
+      "output": "modules/instance0.mjs",
+      "generatedHash": "956024707d744bcd8ad0526b10d6e19c5cd555abf231452a534dcf7ef3aa7b32",
+      "functions": [
+        "checkcombo"
+      ],
+      "calls": [
+        "map\\get_area_wavenum"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance0/main.php",
+          "hash": "e969c358ed97eacc65e3477d1077f6bc78813abf697b9e5df535619442f622bf"
+        }
+      ]
+    },
+    {
+      "module": "ex_vanish",
+      "output": "modules/ex_vanish.mjs",
+      "generatedHash": "35ddb62a7cd95674e64509c2806f65d81c9d1c29162883d310ebeea2babf2851",
+      "functions": [
+        "player_kill_enemy",
+        "itemget"
+      ],
+      "calls": [
+        "array_slice",
+        "count",
+        "end",
+        "implode",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\item_destroy_core",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_vanish/main.php",
+          "hash": "d145e9d76b45675668a0a01b0b9fd1a2d872fc57796cb271c703f211e4578731"
+        }
+      ]
+    },
+    {
+      "module": "clubbase",
+      "output": "modules/clubbase.mjs",
+      "generatedHash": "1b96e3b1c4a78437e990b61303965db20b2df2f02bbf2fbfdee6e81974b36f7d",
+      "functions": [
+        "club_acquire",
+        "club_lost",
+        "club_randseed_calc",
+        "club_choice_probability_process",
+        "get_club_choice_array",
+        "player_selectclub",
+        "act",
+        "init_npcdata",
+        "init_npcdata_skills",
+        "init_npcdata_skills_get_custom",
+        "skill_query_unlocked",
+        "check_battle_skill_available",
+        "check_battle_skill_unactivatable",
+        "get_battle_skill_entry_array",
+        "get_battle_skill_entry",
+        "get_profile_skill_buttons",
+        "get_skillpage",
+        "load_user_battleskill_command",
+        "load_user_combat_command",
+        "check_npc_clubskill_load",
+        "get_npcskillpage",
+        "skill_check_alternative_state"
+      ],
+      "calls": [
+        "Array_merge",
+        "bufficons\\bufficons_check_buff_state",
+        "clubbase\\check_battle_skill_available",
+        "clubbase\\check_npc_clubskill_load",
+        "clubbase\\club_acquire",
+        "clubbase\\club_choice_probability_process",
+        "clubbase\\club_randseed_calc",
+        "clubbase\\get_battle_skill_entry_array",
+        "clubbase\\get_club_choice_array",
+        "clubbase\\init_npcdata_skills",
+        "clubbase\\init_npcdata_skills_get_custom",
+        "clubbase\\load_user_battleskill_command",
+        "clubbase\\player_selectclub",
+        "constant",
+        "count",
+        "defined",
+        "function_exists",
+        "in_array",
+        "is_array",
+        "md5",
+        "min",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "ord",
+        "skillbase\\check_skill_info",
+        "skillbase\\get_acquired_skill_array",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "skillbase\\skillbase_load",
+        "skillbase\\skillbase_save",
+        "startmicrotime",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "trim",
+        "weapon\\get_skillkind"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubbase/main.php",
+          "hash": "d026ae3bb5cce7cdc484915cf719bcbf19cd87b9dc823657a73b8dd663b68df2"
+        },
+        {
+          "source": "include/modules/extra/club/clubbase/config/clubbase.config.php",
+          "hash": "21781801c0430136bb0493e5bcf4e1490c1f446fec9951454803373ad60d9855"
+        }
+      ]
+    },
+    {
+      "module": "item_um",
+      "output": "modules/item_um.mjs",
+      "generatedHash": "18d4a763d781b93b68c64478170072876e94fee6cdec266a80f2a6d324093b57",
+      "functions": [
+        "calc_skillmed_value",
+        "calc_skillmed_efct",
+        "itemuse_um",
+        "itemuse"
+      ],
+      "calls": [
+        "array_unique",
+        "array_values",
+        "item_um\\calc_skillmed_efct",
+        "item_um\\calc_skillmed_value",
+        "item_um\\itemuse_um",
+        "itemmain\\itms_reduce",
+        "lvlctl\\calc_upexp",
+        "lvlctl\\getexp",
+        "pow",
+        "rand",
+        "round",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/item_um/main.php",
+          "hash": "ff22a489a8ccb5393c13912bb4fe0d05156592ea62985bd582ecad30a1af8b24"
+        }
+      ]
+    },
+    {
+      "module": "mapattr",
+      "output": "modules/mapattr.mjs",
+      "generatedHash": "24578972a554a5c49074ee226f70d8d1b00703f95e675b62dc1c50a794eb58fb",
+      "functions": [
+        "calculate_itemfind_obbs",
+        "calculate_findman_obbs",
+        "calculate_meetman_rate",
+        "calculate_real_trap_obbs"
+      ],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/base/mapattr/main.php",
+          "hash": "290775915dd380ec585b1fe03bf880b92fad2cb94038fbbe0a96e25db3f388de"
+        },
+        {
+          "source": "include/modules/base/mapattr/config/mapattr.config.php",
+          "hash": "1e34ffd5890c90dda40ec3ee62d2a8d79c0f4604d6c299a43b9964dc5871a2af"
+        }
+      ]
+    },
+    {
+      "module": "item_uv",
+      "output": "modules/item_uv.mjs",
+      "generatedHash": "d40c872d4546f24a2ce22aaede284bb72746f38b9b281cd66c115f342fe74779",
+      "functions": [
+        "parse_itmuse_desc",
+        "calc_skillbook_efct",
+        "itemuse",
+        "item_uv_getcard",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_keys",
+        "array_rand",
+        "array_unique",
+        "array_values",
+        "cardbase\\get_card_calc_blink",
+        "cardbase\\get_card_message",
+        "count",
+        "defined",
+        "is_numeric",
+        "item_uv\\calc_skillbook_efct",
+        "item_uv\\item_uv_getcard",
+        "itemmain\\itms_reduce",
+        "ob_clean",
+        "ob_get_contents",
+        "rand",
+        "round",
+        "skillbase\\check_skill_info",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_query",
+        "strlen",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/item_uv/main.php",
+          "hash": "d319eedf1dbab52c6eceeeda66d2f2b72ab99ad0c74ab5ac55efffef5d07be81"
+        }
+      ]
+    },
+    {
+      "module": "item_empowers_extra",
+      "output": "modules/item_empowers_extra.mjs",
+      "generatedHash": "e55725337f631fe2a719596f419c6ce1bdb1fcc4df4e1522feeff3fabab2a65b",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse",
+        "get_ec_lvl"
+      ],
+      "calls": [
+        "array_diff",
+        "array_randompick",
+        "count",
+        "in_array",
+        "is_array",
+        "item_empowers_extra\\get_ec_lvl",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\get_itmsk_array",
+        "itemmain\\itms_reduce",
+        "min",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "rand",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_empowers_extra/main.php",
+          "hash": "9ff2e72e2bd2d6b098c01453593ff639545c4db90b7d6815221f397202601b2c"
+        }
+      ]
+    },
+    {
+      "module": "club1",
+      "output": "modules/club1.mjs",
+      "generatedHash": "b0a5c481551a442f1a3ab9acab993ef2ad7fe7fcd7a8a06780fc25cdf7fe4ee7",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club1/main.php",
+          "hash": "435302ef0043a516c26394978915afd208f1664c13d4180d87305db50af4c01b"
+        }
+      ]
+    },
+    {
+      "module": "club2",
+      "output": "modules/club2.mjs",
+      "generatedHash": "93269bb28c167be4c9f65c05caa9d60213f5f9c2e092001c8f341f62538cb556",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club2/main.php",
+          "hash": "b8077d17ecb7d12a98735abcd0d61c0630f54c1f12b3bd2f59fc2aab7fb372bd"
+        }
+      ]
+    },
+    {
+      "module": "club3",
+      "output": "modules/club3.mjs",
+      "generatedHash": "e0c1785ae4d91eeaa3090aaaf921294542d27c905d3fb962963dc30f8ab736d8",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club3/main.php",
+          "hash": "60741b093973fc8feeadd65eac94e0583cd11174bb5b90e9bac9453124f015dd"
+        }
+      ]
+    },
+    {
+      "module": "club4",
+      "output": "modules/club4.mjs",
+      "generatedHash": "634d3aeca9d206d0bf02f1e5388b8e6544c8338532e211238e923865ef52b9a5",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club4/main.php",
+          "hash": "7732e741f52b108b052f61af5a3ba233272097e79d7390a397b483a656903141"
+        }
+      ]
+    },
+    {
+      "module": "club5",
+      "output": "modules/club5.mjs",
+      "generatedHash": "23e246d75f477288b780f1e2b8e1d58709b68426bb39514b1ace397b34564b73",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club5/main.php",
+          "hash": "85f007c5bdb571f1af9ba6adfaee67b98278c69ad15c1ed96ed0587e59836b1e"
+        }
+      ]
+    },
+    {
+      "module": "club9",
+      "output": "modules/club9.mjs",
+      "generatedHash": "04da71ce1327b7b987428f002db4b50d13dee696ccb223b2c7b683f39f5e2338",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club9/main.php",
+          "hash": "f577cc67f6360519a791f9ace2f335876b5dec2b22bd036b0530b53e014db6da"
+        }
+      ]
+    },
+    {
+      "module": "club10",
+      "output": "modules/club10.mjs",
+      "generatedHash": "b705692b734caa075f6fda4ea1db509b2d7546a9ee6e15b803c33d52b0472305",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club10/main.php",
+          "hash": "4047090843b11adbf3124a9abf768f160232cf1c76457070bf3774b5f576149f"
+        }
+      ]
+    },
+    {
+      "module": "club99",
+      "output": "modules/club99.mjs",
+      "generatedHash": "73b1b717703c9d1936a3e371808979f4524c3ccdd263a99b2eaf5e878c6c8581",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club99/main.php",
+          "hash": "992c16e298b9a5b0396998678e1118fdf111eeb32fcddb5742aae9153109fc16"
+        }
+      ]
+    },
+    {
+      "module": "club17",
+      "output": "modules/club17.mjs",
+      "generatedHash": "63391dcc81fcb1a8d8025131ecb082bbc9675c191322382f974e7f2b1d2b23e2",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club17/main.php",
+          "hash": "70c991629abab9dcfefaeae9db75147a8289ae0c16d8e6ba9daa421281016994"
+        }
+      ]
+    },
+    {
+      "module": "club20",
+      "output": "modules/club20.mjs",
+      "generatedHash": "abafb50ef824b13bad443d31c48da03c19c161b69f00ca898ecd73076c32fe5c",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club20/main.php",
+          "hash": "14cfdc0a8eea8cd1ae65405fd153960203ed65f7407e0e1599fbe334ece224f1"
+        }
+      ]
+    },
+    {
+      "module": "club13",
+      "output": "modules/club13.mjs",
+      "generatedHash": "7084958fde2de10f8d33ede65491cae7443b3b02d38bcfbe049bb6373dbc964e",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club13/main.php",
+          "hash": "79014992eeecc222697e1e1a782cb11d1ca8885220d4843a02622458bc7a2ca3"
+        }
+      ]
+    },
+    {
+      "module": "club14",
+      "output": "modules/club14.mjs",
+      "generatedHash": "cebe72b5949a4261def1bf3140c66dbf0865baf93b4481521b060894d2eff439",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club14/main.php",
+          "hash": "cbc1c41938ccb8f243a0a28f4a89f4f91b0e64b4244e47aeb30a6dd30ea52a6b"
+        }
+      ]
+    },
+    {
+      "module": "sklearn_util",
+      "output": "modules/sklearn_util.mjs",
+      "generatedHash": "3ec03aef7e145f2e0a29d77e7f91a7e1ee7a19c87c51ad951067de78df6beb66",
+      "functions": [
+        "sklearn_basecheck",
+        "get_skilllearn_table",
+        "parse_skilllearn_desc",
+        "sklearn_skill_lost"
+      ],
+      "calls": [
+        "constant",
+        "defined",
+        "in_array",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "sklearn_util\\parse_skilllearn_desc",
+        "sklearn_util\\sklearn_basecheck",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "trim"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/sklearn_util/main.php",
+          "hash": "fa2cfe9108936928ed428ac95204539edd4f1b2287b22524c9a87353501a84e4"
+        }
+      ]
+    },
+    {
+      "module": "club6",
+      "output": "modules/club6.mjs",
+      "generatedHash": "f620ae4fa0e88fc4edafa7006c68522efa9cc706fb028d14c5696afe25be2352",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club6/main.php",
+          "hash": "34e1c8021b849ecea8e15ae30c3ac0ba287f74ce51b72d1a42b4404f83375bd4"
+        }
+      ]
+    },
+    {
+      "module": "club8",
+      "output": "modules/club8.mjs",
+      "generatedHash": "86fbcab86fec9fc7624906de8e1ec2c9e713b4d757cfc6361f13ea0264de9628",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club8/main.php",
+          "hash": "223be36890506ba3c509b8cfbb3b7f875eff89256536ceafc5e128afef77b62d"
+        }
+      ]
+    },
+    {
+      "module": "club7",
+      "output": "modules/club7.mjs",
+      "generatedHash": "d4873c35ae58735f0f9303f89dc2f113aa4a790cfd8f14ecc5c7f53c83bc4f71",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club7/main.php",
+          "hash": "37aa09cf7305b9f675f8f0c2e7114c155c4ed88c156fceec03bf0dbeed0f4860"
+        }
+      ]
+    },
+    {
+      "module": "club11",
+      "output": "modules/club11.mjs",
+      "generatedHash": "5015c272c6e34881d755a1478d430acaf1d96b074680646868a22dd8d3b2fd8b",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club11/main.php",
+          "hash": "96b7d2053eedf8e6fbe94883ca2c77d9a3a191286934dde0bfa8a0f7c76045d0"
+        }
+      ]
+    },
+    {
+      "module": "club19",
+      "output": "modules/club19.mjs",
+      "generatedHash": "f846d8932569122e924990ed0bd9d36215b3470961af41fc2a90af8fc7dc251b",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club19/main.php",
+          "hash": "211f0c0a00b7a8567d44e6d1939858151e8f39ac36afd09f39a53338fbebb049"
+        }
+      ]
+    },
+    {
+      "module": "club24",
+      "output": "modules/club24.mjs",
+      "generatedHash": "26f4ad8b501ff9182d7e7b3da4fae32e11462d12ee25b8f23c58697dcee23a6f",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club24/main.php",
+          "hash": "1991efff5e13b615f75bc3b9a8a63907c146dbf9b28438d791f9f186dbdf4c5d"
+        }
+      ]
+    },
+    {
+      "module": "club18",
+      "output": "modules/club18.mjs",
+      "generatedHash": "74b48239594cdbc400929d85a035bacc0b552bf850ffd78bd621fb13dfe7e0cb",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club18/main.php",
+          "hash": "6d62f5ef81b598fa48bad148bba33fd0c7a0e92840b33ecef4e89274bbd8d0a8"
+        }
+      ]
+    },
+    {
+      "module": "club21",
+      "output": "modules/club21.mjs",
+      "generatedHash": "f5365abd52edc3074e5f572d4e1cd276aba3d914df6b06abb4687031149d28d0",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club21/main.php",
+          "hash": "e0df2852def67a4c7d709598ac3fecfcaa4658d1ab7beb2e2944e8202f31fbf8"
+        }
+      ]
+    },
+    {
+      "module": "club97",
+      "output": "modules/club97.mjs",
+      "generatedHash": "87e82f48f61b3f6e3b83735066b2d14b35835f8c40315b373363a6df4d40fe15",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club97/main.php",
+          "hash": "9809fdf1565eaf6a8e424549dea9b0cf968b475104b5c034e8eb9f377da4be90"
+        }
+      ]
+    },
+    {
+      "module": "club94",
+      "output": "modules/club94.mjs",
+      "generatedHash": "cf6872962a414eb2fe2f94ee23f8df216e9e2c1208c5c433944b3a872de29efe",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club94/main.php",
+          "hash": "43bf57f9c9d9cd03c46d984557b2c08599fd3c398b326dd9c78a1fecaa02619c"
+        }
+      ]
+    },
+    {
+      "module": "club95",
+      "output": "modules/club95.mjs",
+      "generatedHash": "336bf57aebc1e2b890fef31dc6da31437876448e70dd9dd1d18d97c629513dcb",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club95/main.php",
+          "hash": "f884c9423f929c4d75cc9d52a3795a2c64201b97095549ee4ce763fe70921574"
+        }
+      ]
+    },
+    {
+      "module": "club96",
+      "output": "modules/club96.mjs",
+      "generatedHash": "41f067aa32f11d4ec494ac92a1002609ad98ce05c691e199fa579d65d3cd0537",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club96/main.php",
+          "hash": "86ee2fb9dbf4800c5406d06ae5eadd5f4cb563e41c949f7bde89ccf81d7d3248"
+        }
+      ]
+    },
+    {
+      "module": "club15",
+      "output": "modules/club15.mjs",
+      "generatedHash": "477f26d6094b65d74f6a96dc354fc51a697fa44a5b0cca46939d22748190a4f1",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club15/main.php",
+          "hash": "fb3d327ce9d1486b449830f5b2b1487a2b99901641a95c63e61ebabcf5bbfdae"
+        }
+      ]
+    },
+    {
+      "module": "club25",
+      "output": "modules/club25.mjs",
+      "generatedHash": "7b292bf5347d670d61c5084a30a25d591007b9608cb47f2a11c00bb2991bd567",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club25/main.php",
+          "hash": "a5ddaddf1a06ef3f029f225953836d16ff248ba42430e8c1d885290bcbb7f3ff"
+        }
+      ]
+    },
+    {
+      "module": "club26",
+      "output": "modules/club26.mjs",
+      "generatedHash": "469e4b4765badf681a164acc56c9e5fae539e767944a17d7cf8a278439afc9de",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club26/main.php",
+          "hash": "fc949a4671cf6d005d37e9145711192b76aeb346d2ab8335878ae7be9e7f550c"
+        }
+      ]
+    },
+    {
+      "module": "club27",
+      "output": "modules/club27.mjs",
+      "generatedHash": "5ddf5fa9d8bb2589fc0627c9a8077e3631354f9e97738afb25c6bcc2e3200ed8",
+      "functions": [],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/club/clubs/club27/main.php",
+          "hash": "d050fc75c91239a34e069b564b2c4176b7a52c667bfec8a74ec74a1667878dc7"
+        }
+      ]
+    },
+    {
+      "module": "skill_temp",
+      "output": "modules/skill_temp.mjs",
+      "generatedHash": "78e5cf0a08a531fc3379128ae6abf47b2aab48dbd421b1c6c3f86dbf5e768760",
+      "functions": [
+        "check_skillinfo_allowed_for_skill_temp",
+        "check_skill_available",
+        "skill_temp_acquire",
+        "set_skill_temp_time",
+        "bufficons_check_buff_state",
+        "bufficons_display_single",
+        "show_tsk_hint",
+        "init_buff_timing",
+        "act"
+      ],
+      "calls": [
+        "defined",
+        "floor",
+        "function_exists",
+        "skill_temp\\bufficons_check_buff_state",
+        "skill_temp\\check_skillinfo_allowed_for_skill_temp",
+        "skill_temp\\init_buff_timing",
+        "skill_temp\\set_skill_temp_time",
+        "skill_temp\\show_tsk_hint",
+        "skillbase\\check_skill_info",
+        "skillbase\\get_acquired_skill_array",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_delvalue",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "sprintf"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/skill_temp/main.php",
+          "hash": "ecfabb3f97ec8280887d8ceb6ec37e4c03e19506d149ddc6e91a9a6b3f31571d"
+        }
+      ]
+    },
+    {
+      "module": "poison",
+      "output": "modules/poison.mjs",
+      "generatedHash": "4e9dc6918c9ae7f928f7827433a2283e9f2016ce0751b63fc5af6726094e151a",
+      "functions": [
+        "parse_itmk_words",
+        "send_poison_enemylog",
+        "itemuse",
+        "poison",
+        "poison_record_pid",
+        "poison_check_pid",
+        "check_poison_factor",
+        "act",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\replace_in_itmsk",
+        "defined",
+        "is_numeric",
+        "itemmain\\itms_reduce",
+        "logger\\logsave",
+        "min",
+        "ob_clean",
+        "ob_get_contents",
+        "player\\fetch_playerdata_by_pid",
+        "player\\kill",
+        "player\\load_playerdata",
+        "player\\player_save",
+        "player\\update_sdata",
+        "poison\\check_poison_factor",
+        "poison\\poison",
+        "poison\\poison_check_pid",
+        "poison\\poison_record_pid",
+        "poison\\send_poison_enemylog",
+        "round",
+        "strpos",
+        "substr",
+        "substr_replace",
+        "template",
+        "wound\\get_inf"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/poison/main.php",
+          "hash": "735969ccbf7f5c356f307d9557a9a0751c102da9195b08555b9f64501da4f0bc"
+        }
+      ]
+    },
+    {
+      "module": "item_uc",
+      "output": "modules/item_uc.mjs",
+      "generatedHash": "75edf083889cc1dc9b34dd7707815c3e9b1e2c0bfd9177cc731747d9aa0f85bb",
+      "functions": [
+        "itemuse"
+      ],
+      "calls": [
+        "itemmain\\itms_reduce",
+        "str_replace",
+        "strlen",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/item_uc/main.php",
+          "hash": "8f4f0cde72e0fb8c39ac4b202e7d1acebf1e86d986ed8a0dd125f380519bd834"
+        }
+      ]
+    },
+    {
+      "module": "event",
+      "output": "modules/event.mjs",
+      "generatedHash": "183bc64e11287c331b94a6d96893466562583327c2afd60c6373fd00f8344046",
+      "functions": [
+        "event_available",
+        "discover",
+        "check_event_happen",
+        "check_event_happen_special",
+        "can_continue_post_event_proc",
+        "event_main",
+        "event_core",
+        "event_death",
+        "death_kagari",
+        "event_suffer_inf",
+        "event_suffer_dmg",
+        "event_get_field",
+        "event_get_item",
+        "event_get_money",
+        "event_get_rp",
+        "event_winrate_process",
+        "event_escrate_process",
+        "check_pls34_enterable",
+        "parse_news"
+      ],
+      "calls": [
+        "array_keys",
+        "array_randompick",
+        "defined",
+        "event\\can_continue_post_event_proc",
+        "event\\check_event_happen",
+        "event\\check_event_happen_special",
+        "event\\check_pls34_enterable",
+        "event\\death_kagari",
+        "event\\event_available",
+        "event\\event_core",
+        "event\\event_death",
+        "event\\event_escrate_process",
+        "event\\event_get_field",
+        "event\\event_get_item",
+        "event\\event_get_money",
+        "event\\event_get_rp",
+        "event\\event_main",
+        "event\\event_suffer_dmg",
+        "event\\event_suffer_inf",
+        "event\\event_winrate_process",
+        "ex_dmg_att\\get_ex_inf_main",
+        "floor",
+        "gameflow_duel\\is_gamestate_duel",
+        "in_array",
+        "itemmain\\itemget",
+        "map\\get_all_plsno",
+        "map\\get_safe_plslist",
+        "player\\create_dummy_playerdata",
+        "player\\fetch_playerdata",
+        "player\\kill",
+        "player\\load_playerdata",
+        "player\\player_save",
+        "player\\update_sdata",
+        "rand",
+        "round",
+        "sizeof",
+        "strlen",
+        "strpos",
+        "wound\\apply_inf_main"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/event/main.php",
+          "hash": "51ca20f89567cba8661ace09f3e29d9df596a1db3c76dc3c64b2be59e4d3300b"
+        },
+        {
+          "source": "include/modules/base/event/config/event.config.php",
+          "hash": "50ab1d3971aeedd7f258a35cdfc6085350a6083859770c789532b2ac6d17b738"
+        }
+      ]
+    },
+    {
+      "module": "npcchat_bubble",
+      "output": "modules/npcchat_bubble.mjs",
+      "generatedHash": "34b7be789a0275a1ab3ee0c0c813b50bdabf855f4ebf0bf9309978bae9d079fd",
+      "functions": [
+        "npcchat_print",
+        "npcchat_tag_process",
+        "npcchat_get_chatlog",
+        "npcchat_bubble_cleanqm",
+        "player_kill_enemy",
+        "npcchat_bubble_show"
+      ],
+      "calls": [
+        "npcchat\\npcchat",
+        "npcchat\\npcchat_decorate",
+        "npcchat_bubble\\npcchat_bubble_cleanqm",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/npcchat_bubble/main.php",
+          "hash": "27d848c70d6adc1e087310a0120838f116f9c1e92478a58bee875da66cf2fdd3"
+        }
+      ]
+    },
+    {
+      "module": "item_slip",
+      "output": "modules/item_slip.mjs",
+      "generatedHash": "32a9570b1a8c1ca2d2ab1fe1378e140badc89580e186c1ad907b5e361d648a3b",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse",
+        "mapitem_single_data_attr_process",
+        "item_slip_set_puzzle",
+        "get_mixinfo",
+        "item_slip_get_puzzle",
+        "post_gameover_events",
+        "evonpc_npcdata_process"
+      ],
+      "calls": [
+        "array_keys",
+        "array_randompick",
+        "chmod",
+        "explode",
+        "file_exists",
+        "floor",
+        "gameflow_duel\\is_gamestate_duel",
+        "gurl",
+        "implode",
+        "in_array",
+        "is_numeric",
+        "item_slip\\item_slip_get_puzzle",
+        "item_slip\\item_slip_set_puzzle",
+        "rand",
+        "str_replace",
+        "strlen",
+        "strpos",
+        "substr",
+        "sys\\save_gameinfo",
+        "unlink",
+        "writeover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_slip/main.php",
+          "hash": "d370b0e7b136ab0cf6a4f3828827f5ec1c376f89144483bbcf187cfc3a9078c9"
+        }
+      ]
+    },
+    {
+      "module": "ammunition",
+      "output": "modules/ammunition.mjs",
+      "generatedHash": "6b04f9f9cba73e06d46b0878be08dbf7c1394634f891742a3b8ea705c3ffc33e",
+      "functions": [
+        "parse_itmk_desc",
+        "check_ammukind",
+        "itemuse_ugb",
+        "itemuse"
+      ],
+      "calls": [
+        "ammunition\\check_ammukind",
+        "ammunition\\itemuse_ugb",
+        "itemmain\\check_in_itmsk",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/ammunition/main.php",
+          "hash": "f2f984bcfd9f1b227afd51b5d27b9b93eee265861961c89036d506b81f3c4ce2"
+        }
+      ]
+    },
+    {
+      "module": "npcinfo",
+      "output": "modules/npcinfo.mjs",
+      "generatedHash": "1dcef861bb82d081320088b006760b59f2d05d29751f1c7ab8f9a4e1b64b6dcb",
+      "functions": [
+        "npcinfo_gen_item_description",
+        "npcinfo_get_npc_description",
+        "npcinfo_get_npc_description_all"
+      ],
+      "calls": [
+        "array_merge",
+        "ceil",
+        "itemmain\\count_itmsk_num",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "npc\\init_npcdata",
+        "npcinfo\\npcinfo_get_npc_description",
+        "sizeof",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/npcinfo/main.php",
+          "hash": "c74295b1655cc827ecfa6bd5ffc887225b087b5b8577b2162e56da7f80476584"
+        }
+      ]
+    },
+    {
+      "module": "cardbase",
+      "output": "modules/cardbase.mjs",
+      "generatedHash": "7afe7850872a9f26610b8197b2c99033d3e8d9c0b62fd44db582a543c34f9aa6",
+      "functions": [
+        "get_cardlist_energy_from_udata",
+        "get_cardlist_energy_from_card_data",
+        "put_cardlist_energy_to_udata",
+        "put_cardlist_energy_to_card_data",
+        "init_card_data_single",
+        "get_decoded_card_data",
+        "put_encoded_card_data",
+        "card_energy_update",
+        "cardlist_decode",
+        "cardlist_encode",
+        "get_user_cards",
+        "get_user_cards_process",
+        "get_energy_recover_rate",
+        "get_user_cardinfo",
+        "save_cardenergy_to_db",
+        "save_cardenergy",
+        "get_card_message",
+        "get_enter_battlefield_card",
+        "cardchange",
+        "enter_battlefield_cardproc",
+        "card_valid_info_process",
+        "enter_battlefield_cardproc_valueproc",
+        "check_card_in_ownlist",
+        "get_card",
+        "get_card_process",
+        "get_card_calc_blink",
+        "get_card_alternative",
+        "get_card_transfer_to_qiegao",
+        "get_qiegao",
+        "get_card_pack",
+        "get_card_pack_list",
+        "in_card_pack",
+        "kuji",
+        "card_sort",
+        "check_pack_availble",
+        "pack_filter",
+        "parse_interface_profile",
+        "parse_card_show_data",
+        "check_realcard",
+        "init_battle",
+        "post_enterbattlefield_events",
+        "parse_card_index",
+        "parse_card_gaining_method",
+        "card_validate",
+        "card_validate_get_forbidden_cards",
+        "card_validate_display",
+        "icon_parser_valid"
+      ],
+      "calls": [
+        "achievement_base\\check_achtype_available",
+        "array_diff",
+        "array_filter",
+        "array_keys",
+        "array_merge",
+        "array_randompick",
+        "array_unique",
+        "cardbase\\card_energy_update",
+        "cardbase\\card_valid_info_process",
+        "cardbase\\card_validate_get_forbidden_cards",
+        "cardbase\\cardchange",
+        "cardbase\\cardlist_decode",
+        "cardbase\\check_pack_availble",
+        "cardbase\\check_realcard",
+        "cardbase\\enter_battlefield_cardproc_valueproc",
+        "cardbase\\get_card_process",
+        "cardbase\\get_card_transfer_to_qiegao",
+        "cardbase\\get_cardlist_energy_from_card_data",
+        "cardbase\\get_cardlist_energy_from_udata",
+        "cardbase\\get_decoded_card_data",
+        "cardbase\\get_energy_recover_rate",
+        "cardbase\\get_user_cardinfo",
+        "cardbase\\get_user_cards_process",
+        "cardbase\\init_card_data_single",
+        "cardbase\\parse_card_show_data",
+        "cardbase\\put_cardlist_energy_to_card_data",
+        "cardbase\\put_cardlist_energy_to_udata",
+        "cardbase\\put_encoded_card_data",
+        "cardbase\\save_cardenergy_to_db",
+        "chmod",
+        "constant",
+        "convert_tm",
+        "count",
+        "debug_backtrace",
+        "defined",
+        "explode",
+        "fetch_udata_by_username",
+        "file_exists",
+        "file_get_contents",
+        "filemtime",
+        "gdecode",
+        "gencode",
+        "gexit",
+        "implode",
+        "in_array",
+        "is_array",
+        "is_numeric",
+        "kujibase\\kujidraw",
+        "map\\check_pls",
+        "max",
+        "md5sub",
+        "message_create",
+        "min",
+        "pow",
+        "preg_match",
+        "rand",
+        "sizeof",
+        "skillbase\\check_skill_info",
+        "skillbase\\skill_getvalue_direct",
+        "skillbase\\skill_setvalue",
+        "str_replace",
+        "strpos",
+        "strtolower",
+        "substr",
+        "update_udata_by_username",
+        "var_export",
+        "weather\\check_fog"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/card/cardbase/main.php",
+          "hash": "d22289d1bccec37c413bd8e86e4e55a6af58cc3ac5677ea2000417cf514fc638"
+        },
+        {
+          "source": "include/modules/extra/card/cardbase/config/card.config.php",
+          "hash": "86169c55f54e26c14a6c72d5527e58ea0e43cfcb955650e5f4f8ee8a2e70bd2b"
+        }
+      ]
+    },
+    {
+      "module": "instance6",
+      "output": "modules/instance6.mjs",
+      "generatedHash": "e192c6524099ae6d040435647dbf79b52e66156486b5517a2f641f053523844f",
+      "functions": [
+        "get_shopconfig",
+        "checkcombo",
+        "get_npclist",
+        "rs_game",
+        "check_addarea_gameover"
+      ],
+      "calls": [
+        "map\\get_area_wavenum",
+        "openfile",
+        "sys\\gameover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance6/main.php",
+          "hash": "3a12c7cfb0c5ef9d8d5b9e34149d99926cfed900f75f3b43e4b384d415d19796"
+        },
+        {
+          "source": "include/modules/extra/instance/instance6/config/npc.data.config.php",
+          "hash": "d6b1e9e525b8648c71b8421ede0ba248c301c2b0e7bf21c66db8d6518d5089d5"
+        }
+      ]
+    },
+    {
+      "module": "attrbase",
+      "output": "modules/attrbase.mjs",
+      "generatedHash": "66c17638f3ef5dd7456dc12cad55f5f99d63bae6032a0c24249b80aa694cdcbb",
+      "functions": [
+        "get_ex_def_array",
+        "get_ex_def_array_core",
+        "get_ex_attack_array",
+        "get_ex_attack_array_core",
+        "attr_dmg_check_not_wpg",
+        "get_comp_itmsk_info",
+        "check_single_sk_head_equal",
+        "check_in_itmsk",
+        "replace_in_itmsk",
+        "check_itmsk",
+        "get_itmsk_words_single",
+        "get_itmsk_desc_single",
+        "check_comp_itmsk_visible",
+        "count_itmsk_num",
+        "get_itmsk_desc_single_comp_process",
+        "base64_encode_comp_itmsk",
+        "base64_decode_comp_itmsk",
+        "config_process_encode_comp_itmsk",
+        "config_process_encode_comp_itmsk_callback",
+        "config_process_encode_comp_itmsk_sepr_transfer",
+        "config_process_encode_comp_itmsk_sepr_transfer_callback",
+        "mapitem_row_data_process",
+        "mapitem_row_data_seperate",
+        "shopitem_row_data_process",
+        "shopitem_row_data_seperate",
+        "boxes_row_data_process",
+        "boxes_row_data_seperate",
+        "itemmix_success",
+        "init_npcdata",
+        "evonpc",
+        "enter_battlefield_cardproc_valueproc",
+        "startingitem_row_data_seperate",
+        "init_enter_battlefield_items",
+        "event_get_item",
+        "parse_itemmix_resultshow"
+      ],
+      "calls": [
+        "array_merge",
+        "attrbase\\attr_dmg_check_not_wpg",
+        "attrbase\\base64_encode_comp_itmsk",
+        "attrbase\\check_comp_itmsk_visible",
+        "attrbase\\check_single_sk_head_equal",
+        "attrbase\\config_process_encode_comp_itmsk",
+        "attrbase\\config_process_encode_comp_itmsk_sepr_transfer",
+        "attrbase\\get_comp_itmsk_info",
+        "attrbase\\get_ex_attack_array_core",
+        "attrbase\\get_ex_def_array_core",
+        "attrbase\\get_itmsk_desc_single_comp_process",
+        "base64_decode",
+        "base64_encode",
+        "defined",
+        "explode",
+        "implode",
+        "in_array",
+        "is_array",
+        "is_string",
+        "itemmain\\get_itmsk_array",
+        "preg_match",
+        "preg_replace_callback",
+        "str_replace",
+        "strlen",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/attrbase/main.php",
+          "hash": "6c083c4a404802a346772b1d3dfc8f00d5a03802ba1c29a0cf4bc41f98c202c1"
+        }
+      ]
+    },
+    {
+      "module": "instance8",
+      "output": "modules/instance8.mjs",
+      "generatedHash": "bd3fcdc44e1ac2c5cdf9b727e3d370d09bf4f975ae7f11c7fecb91f0e72950ec",
+      "functions": [
+        "load_gameinfo_post_work_extra",
+        "init_enter_battlefield_items",
+        "get_npclist",
+        "get_shopconfig",
+        "get_itemfilecont",
+        "get_startingitemfilecont",
+        "get_startingwepfilecont",
+        "get_trapfilecont"
+      ],
+      "calls": [
+        "openfile"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance8_proud/main.php",
+          "hash": "d60be8ebc959893f06c6e98f49d262e4191c7173412fe52cceb214efd8d33e9e"
+        },
+        {
+          "source": "include/modules/extra/instance/instance8_proud/config/npc.data.config.php",
+          "hash": "d0d004c6ad5079051d09b5b0a8441586fc9d039102281f0f3a58511a541fc995"
+        }
+      ]
+    },
+    {
+      "module": "instance7",
+      "output": "modules/instance7.mjs",
+      "generatedHash": "4e92585db90fa981e192444a1dba19801e57e35d810b573d8f69191543f84289",
+      "functions": [
+        "get_enter_battlefield_card",
+        "get_npclist",
+        "get_shopconfig",
+        "get_itemfilecont",
+        "get_trapfilecont",
+        "get_startingitemfilecont"
+      ],
+      "calls": [
+        "openfile"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance7_tutorial/main.php",
+          "hash": "77efb397ac567e2ae5a4c8fc0d06cb9d76a236c8db5a0b0f3cfa271df80fdae8"
+        },
+        {
+          "source": "include/modules/extra/instance/instance7_tutorial/config/npc.data.config.php",
+          "hash": "39cc57838b5b555e6e057db994f51b6baec1b418de6b34107c5f8bcbe6432f1e"
+        }
+      ]
+    },
+    {
+      "module": "kujibase",
+      "output": "modules/kujibase.mjs",
+      "generatedHash": "04b9c2c888eef7850a7765f3750b0fab6cd2d80f3028a8cd278d788c06f2a743",
+      "functions": [
+        "kujidraw"
+      ],
+      "calls": [
+        "cardbase\\get_card_alternative",
+        "cardbase\\get_card_calc_blink",
+        "cardbase\\get_qiegao",
+        "cardbase\\pack_filter",
+        "count",
+        "in_array",
+        "rand",
+        "update_udata_by_username"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/card/kujibase/main.php",
+          "hash": "5f9543a53cc77251daf14a92173ff3a3311d08210f9d3fab1b43e221d02c64d7"
+        },
+        {
+          "source": "include/modules/extra/card/kujibase/config/kuji.config.php",
+          "hash": "9902eb67d8f8544308380efb20caebb3cbeee86aeb906714419a66b7c0bbef16"
+        }
+      ]
+    },
+    {
+      "module": "set_gametype",
+      "output": "modules/set_gametype.mjs",
+      "generatedHash": "ab514f8cdac919058c4e9028cb8d0d195f59247040ae60d698d837801c4c9fd2",
+      "functions": [
+        "check_gametype_set_valid",
+        "user_set_gamevars_list_init",
+        "reset_gametype",
+        "user_display_gamevars_setting",
+        "get_gametype_setting_html",
+        "user_set_gamevars_process",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "dump_template",
+        "in_array",
+        "set_gametype\\get_gametype_setting_html"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/set_gametype/main.php",
+          "hash": "9fb012150f5a9e7e23919dde8efd4080bf6cff034377ed29f0880d2f8b827535"
+        }
+      ]
+    },
+    {
+      "module": "gtype6",
+      "output": "modules/gtype6.mjs",
+      "generatedHash": "f87b7e56a2d14f3ad7c8c92f22e1bbce87a352b1ee8cf47dc50dfbf370bad068",
+      "functions": [
+        "get_enter_battlefield_card",
+        "card_validate_get_forbidden_cards",
+        "card_validate_display"
+      ],
+      "calls": [],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/gtype6_randomcard/main.php",
+          "hash": "c6d96a433aa7a98ff032c7f9ab60991e1ac33496564a752692921f40c4d64230"
+        }
+      ]
+    },
+    {
+      "module": "npc_action",
+      "output": "modules/npc_action.mjs",
+      "generatedHash": "dcdf365c2bbd374882b17554febaf6a489fb0adb2c60104b6c6166ddca183d3a",
+      "functions": [
+        "is_npc_action_allowed",
+        "get_npc_action_list",
+        "npc_action_main",
+        "npc_action_single",
+        "npc_action_single_core",
+        "post_npc_action_single",
+        "get_npc_action_list_chosen",
+        "npc_action_checknpc",
+        "npc_action_loadnpc",
+        "calculate_active_obbs",
+        "post_act",
+        "bot_action",
+        "evonpc"
+      ],
+      "calls": [
+        "array_diff",
+        "array_intersect",
+        "array_keys",
+        "array_merge",
+        "array_randompick",
+        "array_unique",
+        "attack\\add_format",
+        "count",
+        "curl_post",
+        "enemy\\battle_wrapper",
+        "enemy\\check_enemy_meet_active",
+        "explode",
+        "implode",
+        "in_array",
+        "is_array",
+        "metman\\check_alive_discover",
+        "npc\\get_safe_plslist",
+        "npc_action\\get_npc_action_list",
+        "npc_action\\get_npc_action_list_chosen",
+        "npc_action\\is_npc_action_allowed",
+        "npc_action\\npc_action_checknpc",
+        "npc_action\\npc_action_loadnpc",
+        "npc_action\\npc_action_main",
+        "npc_action\\npc_action_single",
+        "npc_action\\npc_action_single_core",
+        "npc_action\\post_npc_action_single",
+        "player\\fetch_playerdata_by_pid",
+        "player\\load_playerdata",
+        "player\\player_save",
+        "rand",
+        "room_get_tablepre",
+        "room_id2prefix",
+        "save_gameinfo",
+        "str_replace",
+        "substr",
+        "sys\\addchat",
+        "sys\\load_gameinfo",
+        "url_dir"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/npc_action/main.php",
+          "hash": "528cbd991735d700ffbcd1738274c7d36b5453238b0b2aacc4ca9c074285d30d"
+        },
+        {
+          "source": "include/modules/extra/npc_action/config/npc_action.config.php",
+          "hash": "f16b412e15c13d7e6d7352309fb5e67454dd8bcc37c3da9497642d70670d3b86"
+        }
+      ]
+    },
+    {
+      "module": "get_qiegao_in_battle",
+      "output": "modules/get_qiegao_in_battle.mjs",
+      "generatedHash": "045bc1e5d6cc7f2e58ce0134982fbbe60c15160bf19fe8400b4dcb17bd36bd94",
+      "functions": [
+        "calc_qiegao_drop",
+        "player_kill_enemy",
+        "battle_get_qiegao",
+        "battle_get_qiegao_update"
+      ],
+      "calls": [
+        "cardbase\\get_qiegao",
+        "get_qiegao_in_battle\\battle_get_qiegao",
+        "get_qiegao_in_battle\\battle_get_qiegao_update",
+        "get_qiegao_in_battle\\calc_qiegao_drop",
+        "in_array",
+        "map\\get_area_wavenum",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/get_qiegao_in_battle/main.php",
+          "hash": "60c3ae495dafa96abf4950f10a72e0b7d88d361e909d24c167143941c03ae413"
+        }
+      ]
+    },
+    {
+      "module": "instance12",
+      "output": "modules/instance12.mjs",
+      "generatedHash": "054805582a1a07d09623570a8eb01631fa989777866ebc91b53c097524a5e716",
+      "functions": [
+        "card_validate_get_forbidden_cards",
+        "card_validate_display",
+        "get_plsnum",
+        "get_all_plsno",
+        "init_enter_battlefield_items",
+        "get_npclist",
+        "get_shopconfig",
+        "get_itemfilecont",
+        "mapitem_row_data_process",
+        "get_startingitemfilecont",
+        "get_startingwepfilecont",
+        "get_trapfilecont",
+        "checkcombo",
+        "rs_game",
+        "post_enterbattlefield_events",
+        "check_in_shop_area",
+        "get_area_wavenum",
+        "check_addarea_gameover",
+        "event_available",
+        "calculate_itemfind_obbs",
+        "calculate_findman_obbs",
+        "itemuse",
+        "calculate_post_hack_proc_rate",
+        "inst12_get_score",
+        "gameover_set_credits"
+      ],
+      "calls": [
+        "array_keys",
+        "array_merge",
+        "array_values",
+        "floor",
+        "in_array",
+        "instance12\\inst12_get_score",
+        "max",
+        "message_create",
+        "openfile",
+        "rand",
+        "sizeof",
+        "skillbase\\skill_getvalue",
+        "strpos",
+        "sys\\gameover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance12_dream/main.php",
+          "hash": "40a130c4f6dc900c3633a9c5dd48ca4f3606985e8159ef960eb5ccd2bf582d86"
+        },
+        {
+          "source": "include/modules/extra/instance/instance12_dream/config/plsinfo.config.php",
+          "hash": "4d8edd0286bbf28dbf9d5393f0f77f3cbcbfb7dff97719573bc26502b43d1829"
+        },
+        {
+          "source": "include/modules/extra/instance/instance12_dream/config/npc.data.config.php",
+          "hash": "315e424a1b0ac7546152c971018694eb0a2482ad235b68ab04b8251663700bc0"
+        }
+      ]
+    },
+    {
+      "module": "gtype7",
+      "output": "modules/gtype7.mjs",
+      "generatedHash": "bfe213d3d4f8db2687256f7dbaac9126e6cdc4976faa54efa8041805a05720e0",
+      "functions": [
+        "init_enter_battlefield_items",
+        "get_npclist",
+        "get_enter_battlefield_card",
+        "card_validate_get_forbidden_cards",
+        "card_validate_display",
+        "prepare_new_game"
+      ],
+      "calls": [
+        "date",
+        "explode",
+        "room_check_subroom"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/gtype7_cardbrawl/main.php",
+          "hash": "5719315cb6c91404b7e89dd46f988c8d4fd8583a09598fa93e1f457b39f07f26"
+        },
+        {
+          "source": "include/modules/extra/instance/gtype7_cardbrawl/config/npc.data.config.php",
+          "hash": "f8cecf799795352473d8eb0ddf24e8cd3e82309b7ab715f5149b67d1f5a48807"
+        }
+      ]
+    },
+    {
+      "module": "itemnumlist",
+      "output": "modules/itemnumlist.mjs",
+      "generatedHash": "723d9bc51e514548d5eccf92a67a08f4570260a4edd94e487a47ade1e9b6abf0",
+      "functions": [
+        "itemnumlist_num_area_proc",
+        "itemnumlist_write",
+        "itemnumlist_create",
+        "itemnumlist_create_proc"
+      ],
+      "calls": [
+        "array_merge",
+        "array_sum",
+        "array_unique",
+        "chmod",
+        "count",
+        "explode",
+        "file_exists",
+        "filemtime",
+        "implode",
+        "in_array",
+        "is_array",
+        "itemmix_sync\\itemmix_get_star",
+        "itemnumlist\\itemnumlist_create_proc",
+        "itemnumlist\\itemnumlist_num_area_proc",
+        "itemnumlist\\itemnumlist_write",
+        "max",
+        "min",
+        "openfile",
+        "sizeof",
+        "strpos",
+        "trim"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/itemnumlist/main.php",
+          "hash": "78dde0bc6e51d09eec94c7701ebdd89cc5d4cb163ab452ae47fe61e1811320d4"
+        }
+      ]
+    },
+    {
+      "module": "addnpc_event",
+      "output": "modules/addnpc_event.mjs",
+      "generatedHash": "62f8d7fb9cf0059b4416793bff71aaffe4f3e991f4ba0a2c6f2292fc7935a718",
+      "functions": [
+        "player_kill_enemy",
+        "addnpc_event"
+      ],
+      "calls": [
+        "addnpc\\addnpc",
+        "addnpc_event\\addnpc_event",
+        "in_array",
+        "npcchat\\npcchat",
+        "reset",
+        "sys\\addchat"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/addnpc_event/main.php",
+          "hash": "23ce428253026889c3ffa4f5ae49fba693819309228d16058578cb3501a1606f"
+        }
+      ]
+    },
+    {
+      "module": "supplycrate_event",
+      "output": "modules/supplycrate_event.mjs",
+      "generatedHash": "6bf48a287da5ab24f8465c873ceeb4a82679ef7f5ecbe2d93dba45115fb269af",
+      "functions": [
+        "kill",
+        "player_kill_enemy"
+      ],
+      "calls": [
+        "addnpc\\addnpc",
+        "in_array",
+        "rand",
+        "save_gameinfo",
+        "sys\\addchat"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/supplycrate_event/main.php",
+          "hash": "6d3ce8f5a2755f3b8403f5c38d18a30202fe7f27b5311ae11719fb2fe6f99432"
+        },
+        {
+          "source": "include/modules/extra/misc/supplycrate_event/config/crate.config.php",
+          "hash": "c2c3b3bd1cb462482be678d0d593c1590a3664c8f8a5bad25d82af27284ae341"
+        }
+      ]
+    },
+    {
+      "module": "item_randskills",
+      "output": "modules/item_randskills.mjs",
+      "generatedHash": "a3f03b1479f08c8fefd2ffcf6877caa0b38b4b5a6740f00d4698eb3b281ab58c",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse",
+        "use_skcore_success",
+        "get_skcore_skilllist",
+        "add_skcore_choices",
+        "get_rand_clubskill",
+        "choose_rand_clubskill",
+        "get_skilllist",
+        "get_if_skilltype",
+        "check_comp_itmsk_visible",
+        "parse_skcore_skilldesc"
+      ],
+      "calls": [
+        "array_diff",
+        "array_key_exists",
+        "array_randompick",
+        "array_values",
+        "attrbase\\base64_decode_comp_itmsk",
+        "attrbase\\base64_encode_comp_itmsk",
+        "constant",
+        "count",
+        "defined",
+        "explode",
+        "implode",
+        "in_array",
+        "is_array",
+        "item_randskills\\add_skcore_choices",
+        "item_randskills\\choose_rand_clubskill",
+        "item_randskills\\get_if_skilltype",
+        "item_randskills\\get_rand_clubskill",
+        "item_randskills\\get_skcore_skilllist",
+        "item_randskills\\get_skilllist",
+        "item_randskills\\use_skcore_success",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itms_reduce",
+        "itemmain\\replace_in_itmsk",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "skillbase\\get_acquired_skill_array",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_lost",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "trim"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_randskills/main.php",
+          "hash": "a3d550fe5d1c88055ec60bbadee061c188a9476ebb6855689f8a8b0dd7f31f53"
+        }
+      ]
+    },
+    {
+      "module": "ex_phy_def",
+      "output": "modules/ex_phy_def.mjs",
+      "generatedHash": "5fdf1bbe938a5075496643091224456ce0d1adfd4b5d09f5cfb167e3867da2c1",
+      "functions": [
+        "get_ex_phy_def_proc_rate",
+        "check_ex_phy_def_proc",
+        "check_physical_def_attr",
+        "get_physical_dmg_multiplier"
+      ],
+      "calls": [
+        "array_merge",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_def_array",
+        "ex_phy_def\\check_ex_phy_def_proc",
+        "ex_phy_def\\check_physical_def_attr",
+        "ex_phy_def\\get_ex_phy_def_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_phy_def/main.php",
+          "hash": "3d12ff6afdd6a4fa144cb08fad7314f1993b4f78d9e436aaa0b94003c56406ca"
+        }
+      ]
+    },
+    {
+      "module": "rage",
+      "output": "modules/rage.mjs",
+      "generatedHash": "08b34960421bcea4ba766d0fd2bf02af66598ffe18c560c0a0209bb991726e31",
+      "functions": [
+        "get_max_rage",
+        "calculate_rest_rageup",
+        "rest",
+        "calculate_attack_rage_gain",
+        "calculate_attack_rage_gain_base",
+        "calculate_attack_rage_gain_multiplier",
+        "calculate_attack_rage_gain_change",
+        "get_rage",
+        "strike_finish",
+        "itemuse",
+        "attack_prepare",
+        "attack_finish"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "itemmain\\itms_reduce",
+        "rage\\calculate_attack_rage_gain",
+        "rage\\calculate_attack_rage_gain_base",
+        "rage\\calculate_attack_rage_gain_change",
+        "rage\\calculate_attack_rage_gain_multiplier",
+        "rage\\calculate_rest_rageup",
+        "rage\\get_max_rage",
+        "rage\\get_rage",
+        "round",
+        "strpos",
+        "weapon\\calculate_attack_lvl"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/rage/main.php",
+          "hash": "a1533cf23f9edbacf44e730ed555a71633f03bc059d67e86c923bce5649c0fd1"
+        },
+        {
+          "source": "include/modules/extra/attr/rage/config/rage.config.php",
+          "hash": "0a90064bb2a7001643ee129eec4544c8ea534a73db4b0e8106e27941571d3be1"
+        }
+      ]
+    },
+    {
+      "module": "ex_rapid_attr",
+      "output": "modules/ex_rapid_attr.mjs",
+      "generatedHash": "d68e19de57123aa70cfdf45e9a3431f2427d8e35114ab603c93105f06f725676",
+      "functions": [
+        "get_rapid_times",
+        "get_rapid_wepimp_increase",
+        "calculate_wepimp_rate",
+        "get_rapid_inf_rate_loss",
+        "calculate_inf_rate",
+        "get_rapid_damage_modifier",
+        "get_rapid_dmg_multiplier",
+        "get_primary_dmg_multiplier",
+        "get_rapid_accuracy_loss",
+        "check_rapid",
+        "weapon_strike",
+        "strike_prepare"
+      ],
+      "calls": [
+        "array_merge",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "ex_rapid_attr\\check_rapid",
+        "ex_rapid_attr\\get_rapid_accuracy_loss",
+        "ex_rapid_attr\\get_rapid_damage_modifier",
+        "ex_rapid_attr\\get_rapid_dmg_multiplier",
+        "ex_rapid_attr\\get_rapid_inf_rate_loss",
+        "ex_rapid_attr\\get_rapid_times",
+        "ex_rapid_attr\\get_rapid_wepimp_increase",
+        "floor",
+        "min",
+        "rand",
+        "weapon\\calculate_physical_dmg",
+        "weapon\\post_weapon_strike_events"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_rapid_attr/main.php",
+          "hash": "ba5a870ecefd824e17a075c0004616f0bed0c4e25135acc3560e15dbcc433263"
+        }
+      ]
+    },
+    {
+      "module": "ex_attr_silencer",
+      "output": "modules/ex_attr_silencer.mjs",
+      "generatedHash": "8fbb292810acb649290050c01b2ea8838b564c78489f21f55eb4178ca2dc0ef1",
+      "functions": [
+        "weapon_wg_addnoise",
+        "weapon_wj_addnoise",
+        "itemuse"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itms_reduce",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_attr_silencer/main.php",
+          "hash": "92f42ef74c738250228c24228f79bea7555284ad721850d7f53fedf3d02411cb"
+        }
+      ]
+    },
+    {
+      "module": "ex_dmg_att",
+      "output": "modules/ex_dmg_att.mjs",
+      "generatedHash": "9e4d6e4290c6c7f4092a600e544aebf2a97267ff9155a4b1d121606a891038e4",
+      "functions": [
+        "get_basic_ex_dmg",
+        "get_ex_dmg_restriction",
+        "calculate_ex_single_original_dmg",
+        "get_ex_inf_dmg_punish",
+        "calculate_ex_inf_multiple",
+        "calculate_ex_single_dmg_multiple",
+        "calculate_ex_single_dmg_change",
+        "calculate_ex_inf_rate",
+        "get_ex_inf_rate_modifier",
+        "check_ex_inf_infliction",
+        "get_ex_inf_main",
+        "showlog_ex_single_dmg",
+        "calculate_ex_single_dmg",
+        "calculate_ex_attack_dmg",
+        "check_ex_attack_available",
+        "ex_attack_prepare",
+        "calculate_ex_attack_dmg_base",
+        "calculate_ex_attack_dmg_multiplier",
+        "ex_attack_key_change",
+        "calculate_ex_attack_dmg_change",
+        "strike",
+        "strike_prepare",
+        "add_ex_att_noise",
+        "strike_finish",
+        "post_traphit_events"
+      ],
+      "calls": [
+        "addnews",
+        "array_search",
+        "attack\\add_format",
+        "attack\\apply_multiplier",
+        "attack\\equalsign_format",
+        "attrbase\\attr_dmg_check_not_wpg",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "battle\\battlelog_parser",
+        "defined",
+        "ex_dmg_att\\add_ex_att_noise",
+        "ex_dmg_att\\calculate_ex_attack_dmg",
+        "ex_dmg_att\\calculate_ex_attack_dmg_base",
+        "ex_dmg_att\\calculate_ex_attack_dmg_change",
+        "ex_dmg_att\\calculate_ex_attack_dmg_multiplier",
+        "ex_dmg_att\\calculate_ex_inf_multiple",
+        "ex_dmg_att\\calculate_ex_inf_rate",
+        "ex_dmg_att\\calculate_ex_single_dmg",
+        "ex_dmg_att\\calculate_ex_single_dmg_change",
+        "ex_dmg_att\\calculate_ex_single_dmg_multiple",
+        "ex_dmg_att\\calculate_ex_single_original_dmg",
+        "ex_dmg_att\\check_ex_attack_available",
+        "ex_dmg_att\\check_ex_inf_infliction",
+        "ex_dmg_att\\ex_attack_key_change",
+        "ex_dmg_att\\ex_attack_prepare",
+        "ex_dmg_att\\get_basic_ex_dmg",
+        "ex_dmg_att\\get_ex_dmg_restriction",
+        "ex_dmg_att\\get_ex_inf_dmg_punish",
+        "ex_dmg_att\\get_ex_inf_main",
+        "ex_dmg_att\\get_ex_inf_rate_modifier",
+        "ex_dmg_att\\showlog_ex_single_dmg",
+        "min",
+        "noise\\addnoise",
+        "rand",
+        "round",
+        "skillbase\\skill_query",
+        "str_replace",
+        "strpos",
+        "wound\\get_inf"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_dmg_att/main.php",
+          "hash": "f61ca9a7405b5e533da5a02c95727f9653c5d81f64436a251ea71d9f0f15c264"
+        },
+        {
+          "source": "include/modules/extra/attr/ex_dmg_att/config/ex_dmg_att.config.php",
+          "hash": "cc37c8b808e2d433b33ff0276790cd79ec8803a93a13a01a29a44effd8e98285"
+        }
+      ]
+    },
+    {
+      "module": "ex_attr_charge",
+      "output": "modules/ex_attr_charge.mjs",
+      "generatedHash": "26e0147757759798b6c0704686185cb1fc8ab36043bb4bb6f7fd2451cd4d28f1",
+      "functions": [
+        "get_ex_charge_proc_rate",
+        "check_charge_proc",
+        "get_external_def_multiplier",
+        "strike_prepare"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "ex_attr_charge\\check_charge_proc",
+        "ex_attr_charge\\get_ex_charge_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_attr_charge/main.php",
+          "hash": "18490b3e906dcf875d7cfff6d77972c9f1c06b4e7cebaaa257626d7322766a4d"
+        }
+      ]
+    },
+    {
+      "module": "ex_hp_def",
+      "output": "modules/ex_hp_def.mjs",
+      "generatedHash": "ad18a2556cb291662477371e293350b4f24793715e1c6d17d1154b1f898c6029",
+      "functions": [
+        "calculate_hp_rev_dmg",
+        "get_dmg_def_proc_rate",
+        "check_dmg_def_attr",
+        "apply_total_damage_modifier_limit",
+        "player_damaged_enemy"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "attrbase\\get_ex_def_array",
+        "ex_hp_def\\calculate_hp_rev_dmg",
+        "ex_hp_def\\check_dmg_def_attr",
+        "ex_hp_def\\get_dmg_def_proc_rate",
+        "rand",
+        "round"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_hp_def/main.php",
+          "hash": "7ded56876d079a801e40f264ae3eaea93a6629037ef31159a718fc6d09b01d65"
+        }
+      ]
+    },
+    {
+      "module": "ex_direct",
+      "output": "modules/ex_direct.mjs",
+      "generatedHash": "3d673a0004208e1d8ecadbdc84b4845ddd727f147c35b8acb99218b15e6a44ee",
+      "functions": [
+        "get_ex_direct_proc_rate",
+        "strike_prepare",
+        "skill_enabled_core"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "battle\\battlelog_parser",
+        "ex_direct\\get_ex_direct_proc_rate",
+        "rand",
+        "skillbase\\check_skill_info"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_direct/main.php",
+          "hash": "828b6da28361940bc748f8cef2a0dedbf388d0076b353a9cd23c176acc9b1caf"
+        }
+      ]
+    },
+    {
+      "module": "ex_seckill",
+      "output": "modules/ex_seckill.mjs",
+      "generatedHash": "1b6bdac438656c49bcade1f3fd2b32bf44b393cc8cf0c87f40abe0fece114e2e",
+      "functions": [
+        "get_ex_seckill_proc_rate",
+        "apply_total_damage_modifier_seckill"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "ex_seckill\\get_ex_seckill_proc_rate",
+        "itemmain\\item_destroy_core",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_seckill/main.php",
+          "hash": "169981845a5fa62d11b72c1b93f290b3906af2a992e566def2939a23758f3b9d"
+        }
+      ]
+    },
+    {
+      "module": "ex_cursed",
+      "output": "modules/ex_cursed.mjs",
+      "generatedHash": "0c226aeb4971ad6e314e8dc38e077ff91aef3e492d0b13c17eaf2a4f854a69e3",
+      "functions": [
+        "itemdrop_valid_check",
+        "itemoff_valid_check",
+        "itemuse",
+        "senditem_check",
+        "check_enkan",
+        "geming_objvalid"
+      ],
+      "calls": [
+        "ex_cursed\\check_enkan",
+        "itemmain\\check_in_itmsk",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_cursed/main.php",
+          "hash": "a15a220bb5d68553a66c0176abbe83652fe89b93a0605a122be72d5651b3af22"
+        }
+      ]
+    },
+    {
+      "module": "ex_def_down",
+      "output": "modules/ex_def_down.mjs",
+      "generatedHash": "89d7089f8d1664ab0dee5dbb1fb6b6b6815ef5ff86dc416b30725269ebd4daff",
+      "functions": [
+        "get_def_multiplier"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_def_array"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_def_down/main.php",
+          "hash": "95ae9c12c5068a5e5cca2db560bb09e44acb70a145bff97c95459cdbfbe9a633"
+        }
+      ]
+    },
+    {
+      "module": "ex_armor_crack",
+      "output": "modules/ex_armor_crack.mjs",
+      "generatedHash": "81c3b2822b05ad6a80ada27032214b862e6fee29bdb28a241c19409be383ca41",
+      "functions": [
+        "calculate_inf_rate",
+        "get_armor_crack_extra_wounds",
+        "calculate_weapon_wound_base"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "ceil",
+        "ex_armor_crack\\get_armor_crack_extra_wounds",
+        "rand",
+        "sqrt"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_armor_crack/main.php",
+          "hash": "bbbba7d79d675a52c6ccfa9837d0585473a5709b6da47e32e2ff87a761e49f04"
+        }
+      ]
+    },
+    {
+      "module": "ex_attr_digit",
+      "output": "modules/ex_attr_digit.mjs",
+      "generatedHash": "d906d67a06c3dacdade6b4e66c7885e94766b49c54f728777f25667916b964de",
+      "functions": [
+        "check_comp_itmsk_visible"
+      ],
+      "calls": [
+        "in_array"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_attr_digit/main.php",
+          "hash": "4351febb6240f8e258045b0f086b92f582ffbd50ee4fd9b8bae40b74d389a3c6"
+        }
+      ]
+    },
+    {
+      "module": "ex_weapon_crack",
+      "output": "modules/ex_weapon_crack.mjs",
+      "generatedHash": "7d0150de5b0b28a71f68a3451dd01fae30cd291a9afb8250a8e5774b90ab02a8",
+      "functions": [
+        "calculate_wepimp",
+        "apply_weapon_imp"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "attrbase\\get_ex_def_array",
+        "in_array",
+        "max",
+        "min",
+        "rand",
+        "round",
+        "sqrt",
+        "weapon\\weapon_break",
+        "wound\\get_inf"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_weapon_crack/main.php",
+          "hash": "ff21db39e28bcad2f00689b3be58abcb119b37a3865109d66ef71de9a319b89f"
+        }
+      ]
+    },
+    {
+      "module": "ex_deflect",
+      "output": "modules/ex_deflect.mjs",
+      "generatedHash": "1877be7042091799ea1c0b84cc7a621e4bc4246e794e6112f79cc61087b0d3ba",
+      "functions": [
+        "get_att_change"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "round",
+        "weapon\\get_att_base"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_deflect/main.php",
+          "hash": "56cca0a010941547dadda5c3a9b947af635abfbec1ea6fa5e20530997cc5a04b"
+        }
+      ]
+    },
+    {
+      "module": "randmix",
+      "output": "modules/randmix.mjs",
+      "generatedHash": "5fe7535337fe9add9261a654bd5d1481dba912df8537e70579d35695b0044074",
+      "functions": [
+        "create_randmix_config",
+        "create_randmix_list",
+        "create_randmix_result",
+        "randmix_getitemname"
+      ],
+      "calls": [
+        "array_keys",
+        "array_merge",
+        "array_rand",
+        "array_randompick",
+        "ceil",
+        "chmod",
+        "in_array",
+        "is_array",
+        "itemnumlist\\itemnumlist_create",
+        "max",
+        "mb_strlen",
+        "mb_substr",
+        "min",
+        "rand",
+        "randmix\\create_randmix_list",
+        "randmix\\create_randmix_result",
+        "randmix\\randmix_getitemname",
+        "round",
+        "sqrt",
+        "str_replace",
+        "strpos",
+        "var_dump"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/randmix/main.php",
+          "hash": "d284c7ef56f66d1d88b3a3a26b3b2799f3b5cfdd95bfc72f6af9d03c0a5790d1"
+        }
+      ]
+    },
+    {
+      "module": "gtype1",
+      "output": "modules/gtype1.mjs",
+      "generatedHash": "4735264ccf2b621708f8cc61b7b0a6785c8f92fddc3b7e29f108045d3ea5afff",
+      "functions": [
+        "get_enter_battlefield_card",
+        "card_validate_get_forbidden_cards",
+        "card_validate_display",
+        "prepare_new_game",
+        "get_uee_deathlog",
+        "prepare_new_game_gtype1",
+        "check_player_discover",
+        "get_npclist",
+        "get_enpcinfo",
+        "get_shopconfig",
+        "meetman_alternative",
+        "calculate_hide_obbs",
+        "senditem_check_teammate",
+        "checkcombo",
+        "rs_game",
+        "gtype1_post_rank_event",
+        "check_addarea_gameover",
+        "lvlup",
+        "event_available",
+        "parse_news",
+        "check_can_destroy",
+        "deathnote_process"
+      ],
+      "calls": [
+        "addnews",
+        "date",
+        "explode",
+        "gtype1\\gtype1_post_rank_event",
+        "gtype1\\prepare_new_game_gtype1",
+        "itemnumlist\\itemnumlist_create",
+        "map\\get_area_wavenum",
+        "message_create",
+        "metman\\init_battle",
+        "openfile",
+        "player\\fetch_playerdata",
+        "player\\fetch_playerdata_by_pid",
+        "player\\player_save",
+        "room_check_subroom",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_setvalue",
+        "str_replace",
+        "sys\\gameover",
+        "team\\findteam"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/gtype1/main/main.php",
+          "hash": "c3f30012bea62f92d5a03c827793e336bb5bd045d493b45e809b4201823c353b"
+        },
+        {
+          "source": "include/modules/extra/instance/gtype1/main/config/npc.data.config.php",
+          "hash": "cb519242e8e6efccc46b21536b67edaeb05ae595acd59c6c689c1a3eaf76ddd4"
+        },
+        {
+          "source": "include/modules/extra/instance/gtype1/main/config/evonpc.config.php",
+          "hash": "84bf9163fea6addfeb50ae99c13901b16ab2fc8f23486345abb03d3763faef14"
+        }
+      ]
+    },
+    {
+      "module": "wep_b_extra_reloading",
+      "output": "modules/wep_b_extra_reloading.mjs",
+      "generatedHash": "10f30ad9204d67b49fcbdb79eb3b6f4d0a0c4d517f806b1a26ae8840e04cc8e6",
+      "functions": [
+        "wep_b_extra_reloading_check",
+        "itemuse",
+        "itemuse_uga",
+        "weapon_break"
+      ],
+      "calls": [
+        "strpos",
+        "wep_b\\itemuse_uga",
+        "wep_b\\wep_b_get_ari",
+        "wep_b_extra_reloading\\wep_b_extra_reloading_check"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/wep_b_extra_reloading/main.php",
+          "hash": "198a6a92717674141525acc688e9c03ee3cef521327bcb0cd2e504fc22ab109b"
+        }
+      ]
+    },
+    {
+      "module": "instance9",
+      "output": "modules/instance9.mjs",
+      "generatedHash": "5b1827f633a063d44cdb0899aa1fa6280dc7ae47ab01c6144ddc1340b928a8ec",
+      "functions": [
+        "card_validate_get_forbidden_cards",
+        "init_enter_battlefield_items",
+        "get_npclist",
+        "get_shopconfig",
+        "get_itemfilecont",
+        "get_startingitemfilecont",
+        "get_startingwepfilecont",
+        "get_trapfilecont",
+        "calculate_attack_rage_gain_multiplier",
+        "calculate_attack_weapon_skill_gain_multiplier",
+        "calculate_attack_exp_gain_multiplier",
+        "rs_areatime",
+        "mapitem_row_data_process",
+        "shopitem_row_data_process",
+        "event_available",
+        "get_uee_deathlog"
+      ],
+      "calls": [
+        "in_array",
+        "map\\get_area_interval",
+        "openfile",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance9_rush/main.php",
+          "hash": "64f5c0a1977a6f128c5234222390298850573e32f35bc803295ce4dce980161d"
+        },
+        {
+          "source": "include/modules/extra/instance/instance9_rush/config/npc.data.config.php",
+          "hash": "d2c8487a953bac57991fc18d9df5cad06f66783df533ca0b391d3f5ea4ab8382"
+        }
+      ]
+    },
+    {
+      "module": "ex_rapid_def",
+      "output": "modules/ex_rapid_def.mjs",
+      "generatedHash": "1f40daf7c312afffaa510752f3c7afa2ff00a6bb75d9f37dc9f7653f11ab3a41",
+      "functions": [
+        "get_ex_rapid_def_proc_rate",
+        "check_ex_rapid_def_proc",
+        "check_ex_rapid_def_exists",
+        "check_ex_rapid_def",
+        "get_rapid_damage_modifier"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_def_array",
+        "battle\\battlelog_parser",
+        "ex_rapid_def\\check_ex_rapid_def",
+        "ex_rapid_def\\check_ex_rapid_def_exists",
+        "ex_rapid_def\\check_ex_rapid_def_proc",
+        "ex_rapid_def\\get_ex_rapid_def_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_rapid_def/main.php",
+          "hash": "3622ca7ca314b8fb55a520a9acf09113fc77ec89c91e08542c533db83068cc8b"
+        }
+      ]
+    },
+    {
+      "module": "ex_attr_trap",
+      "output": "modules/ex_attr_trap.mjs",
+      "generatedHash": "1762cb8cbb6651436a7597e3845a1352e05b50e66fe9a06024822fb1b437b5c8",
+      "functions": [
+        "calculate_trapdetect_rate",
+        "get_trap_escape_rate",
+        "calculate_trapdef_proc_rate",
+        "check_trapdef_proc",
+        "trap_deal_damage",
+        "trap_miss_broken",
+        "trap_miss_reused",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "attrbase\\check_itmsk",
+        "ex_attr_trap\\calculate_trapdef_proc_rate",
+        "ex_attr_trap\\calculate_trapdetect_rate",
+        "ex_attr_trap\\check_trapdef_proc",
+        "logger\\logsave",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_attr_trap/main.php",
+          "hash": "d502c182bbcd33589e66123d29dc3f132ecb6873f650029fda66ace5972ca47c"
+        }
+      ]
+    },
+    {
+      "module": "ex_dmg_def",
+      "output": "modules/ex_dmg_def.mjs",
+      "generatedHash": "0005c3075c2436cb1b55583d71e4cbe67069e2119747b216674571389777b122",
+      "functions": [
+        "get_ex_dmg_def_proc_rate",
+        "check_ex_dmg_def_proc",
+        "check_ex_single_dmg_def_attr",
+        "calculate_ex_inf_multiple",
+        "check_ex_inf_infliction",
+        "calculate_ex_single_dmg_multiple",
+        "strike_prepare"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_def_array",
+        "ex_dmg_def\\check_ex_dmg_def_proc",
+        "ex_dmg_def\\check_ex_single_dmg_def_attr",
+        "ex_dmg_def\\get_ex_dmg_def_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_dmg_def/main.php",
+          "hash": "0fb4e5a55c5455dea7c739f649988c271991cb33bd61648a77142cf29ec0287f"
+        }
+      ]
+    },
+    {
+      "module": "ex_dmg_nullify",
+      "output": "modules/ex_dmg_nullify.mjs",
+      "generatedHash": "1ed41b4b101d960a53bc577463af6429859327fa9eb5c235a922d273ca37cb1e",
+      "functions": [
+        "get_ex_dmg_nullify_proc_rate",
+        "check_ex_dmg_nullify",
+        "check_ex_attack_available",
+        "strike_prepare"
+      ],
+      "calls": [
+        "attack\\add_format",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "attrbase\\get_ex_def_array",
+        "ex_dmg_nullify\\check_ex_dmg_nullify",
+        "ex_dmg_nullify\\get_ex_dmg_nullify_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_dmg_nullify/main.php",
+          "hash": "f8a602924d1983192cebcf02be94092ed4cfa1d3dbf7a28d6913622d51918685"
+        }
+      ]
+    },
+    {
+      "module": "item_uu",
+      "output": "modules/item_uu.mjs",
+      "generatedHash": "07e1a86e9bf76f07f5372781251e8965b8ce8465bde74949a011c29d79264d88",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse",
+        "parse_news"
+      ],
+      "calls": [
+        "implode",
+        "itemmain\\itms_reduce",
+        "strpos",
+        "sys\\addnews"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_uu/main.php",
+          "hash": "5b3ad702529325a32e413eb102866b21644eebecd39e0e76c95f8993df77a2fc"
+        }
+      ]
+    },
+    {
+      "module": "item_umb",
+      "output": "modules/item_umb.mjs",
+      "generatedHash": "c43ec896750ac3dc1ff8f14a779c4dd35cd8d538c31dc233d75f72b1f9be8f2a",
+      "functions": [
+        "parse_itmuse_desc",
+        "itemuse_um",
+        "check_comp_itmsk_visible"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "is_numeric",
+        "itemmain\\itms_reduce",
+        "skill806\\skill806_attrtext",
+        "skill_temp\\skill_temp_acquire",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_umb/main.php",
+          "hash": "b0b54612666aea65e7b682bda5a5d5ee15a7a482b4d4c9b1e234ace87ab9a87c"
+        }
+      ]
+    },
+    {
+      "module": "item_recipe",
+      "output": "modules/item_recipe.mjs",
+      "generatedHash": "b9652e8d9e8ed5533ba24677abdcff97bb670c77a9c5fcd793a8f1ab2ed961ea",
+      "functions": [
+        "get_recipe_mixinfo",
+        "itemuse",
+        "generate_single_itemtip",
+        "show_recipe",
+        "check_single_item",
+        "check_item_extra",
+        "check_recipe_extra",
+        "check_sum_possible",
+        "recipe_mix_place_check",
+        "act",
+        "recipe_mix",
+        "recipe_mix_proc",
+        "get_recipe_mix_sequence",
+        "recipe_mix_success",
+        "get_learned_recipes",
+        "learn_recipe_process",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_search",
+        "array_unique",
+        "attrbase\\config_process_encode_comp_itmsk",
+        "count",
+        "debug_backtrace",
+        "defined",
+        "explode",
+        "implode",
+        "in_array",
+        "is_array",
+        "item_recipe\\check_item_extra",
+        "item_recipe\\check_recipe_extra",
+        "item_recipe\\check_single_item",
+        "item_recipe\\check_sum_possible",
+        "item_recipe\\generate_single_itemtip",
+        "item_recipe\\get_learned_recipes",
+        "item_recipe\\get_recipe_mix_sequence",
+        "item_recipe\\get_recipe_mixinfo",
+        "item_recipe\\learn_recipe_process",
+        "item_recipe\\recipe_mix",
+        "item_recipe\\recipe_mix_place_check",
+        "item_recipe\\recipe_mix_proc",
+        "item_recipe\\recipe_mix_success",
+        "item_recipe\\show_recipe",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itemget",
+        "itemmix\\itemmix_name_proc",
+        "itemmix\\itemmix_reduce",
+        "itemmix\\parse_itemmix_resultshow",
+        "itemmix_sync\\itemmix_get_star",
+        "ob_clean",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "sizeof",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_setvalue",
+        "strlen",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_recipe/main.php",
+          "hash": "d8ed6fe9e16c77e6ddefcb16b32d20612b8c36bc562ebe9191ec83aebf0bbb6f"
+        },
+        {
+          "source": "include/modules/extra/item_extra/item_recipe/config/recipe.config.php",
+          "hash": "6df7255f49aebad1753240b01e7694ce99006dbfd5a1a394114c500948dbdfb7"
+        }
+      ]
+    },
+    {
+      "module": "achievement_base",
+      "output": "modules/achievement_base.mjs",
+      "generatedHash": "a081ff189d1ca96606215d42229088c0e48d4cddaf401a75567b01f6e57ba621",
+      "functions": [
+        "ach_show_init",
+        "check_ach_valid",
+        "check_achtype_available",
+        "post_enterbattlefield_events",
+        "encode_achievements",
+        "decode_achievements",
+        "encode_achievements_o",
+        "decode_achievements_o",
+        "check_ach_got",
+        "update_achievements_by_udata",
+        "update_achievements",
+        "post_gameover_events",
+        "get_valid_achievements",
+        "show_achievements_single_type",
+        "refresh_daily_quest",
+        "refresh_daily_quest_core",
+        "show_ach_title",
+        "show_ach_title_2",
+        "show_ach_title_3",
+        "get_daily_type",
+        "ach_finalize_process",
+        "ach_create_prize_message",
+        "ach_finalize",
+        "ach_finalize_check_progress",
+        "get_achievement_default_var",
+        "parse_achievement_progress_var",
+        "achievement_secret_decode",
+        "show_achievement_single",
+        "show_achievement_icon",
+        "show_achievement_single_desc",
+        "show_prize_single",
+        "show_prize_single_card",
+        "ach_check_positive_player",
+        "ach_global_ach_check",
+        "ach_global_ach_check_single",
+        "ach_global_ach_check_progress",
+        "ach_global_ach_finalize",
+        "ach_global_ach_finalize_save",
+        "ach_global_ach_finalize_save_getnum",
+        "ach_global_ach_last_acomplish"
+      ],
+      "calls": [
+        "achievement_base\\ach_create_prize_message",
+        "achievement_base\\ach_finalize",
+        "achievement_base\\ach_finalize_check_progress",
+        "achievement_base\\ach_finalize_process",
+        "achievement_base\\ach_global_ach_check_progress",
+        "achievement_base\\ach_global_ach_check_single",
+        "achievement_base\\ach_global_ach_finalize",
+        "achievement_base\\ach_global_ach_finalize_save",
+        "achievement_base\\ach_global_ach_finalize_save_getnum",
+        "achievement_base\\ach_global_ach_last_acomplish",
+        "achievement_base\\achievement_secret_decode",
+        "achievement_base\\check_ach_got",
+        "achievement_base\\check_ach_valid",
+        "achievement_base\\check_achtype_available",
+        "achievement_base\\decode_achievements",
+        "achievement_base\\decode_achievements_o",
+        "achievement_base\\encode_achievements",
+        "achievement_base\\encode_achievements_o",
+        "achievement_base\\get_achievement_default_var",
+        "achievement_base\\get_daily_type",
+        "achievement_base\\parse_achievement_progress_var",
+        "achievement_base\\refresh_daily_quest_core",
+        "achievement_base\\show_ach_title",
+        "achievement_base\\show_ach_title_2",
+        "achievement_base\\show_ach_title_3",
+        "achievement_base\\show_achievement_icon",
+        "achievement_base\\show_achievement_single",
+        "achievement_base\\show_achievement_single_desc",
+        "achievement_base\\show_prize_single",
+        "achievement_base\\show_prize_single_card",
+        "achievement_base\\update_achievements",
+        "achievement_base\\update_achievements_by_udata",
+        "apm\\calc_apm",
+        "array_diff",
+        "array_keys",
+        "array_merge",
+        "array_randompick",
+        "base64_decode_number",
+        "base64_encode_number",
+        "cardbase\\get_card_calc_blink",
+        "cardbase\\get_cardlist_energy_from_udata",
+        "constant",
+        "count",
+        "define",
+        "defined",
+        "explode",
+        "file_exists",
+        "function_exists",
+        "gdecode",
+        "gencode",
+        "gversion_compare",
+        "implode",
+        "in_array",
+        "is_array",
+        "message_create",
+        "min",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "preg_replace",
+        "sizeof",
+        "skill326\\cardlist_decode326",
+        "skillbase\\check_skill_info",
+        "skillbase\\get_acquired_skill_array",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_query",
+        "skillbase\\skillbase_load",
+        "str_replace",
+        "strip_tags",
+        "strlen",
+        "substr",
+        "template",
+        "update_udata_by_username"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/achievement/achievement_base/main.php",
+          "hash": "b3f704a822e3ec9b85619b6da8e2673c328a6867d67f285a7fa5f9e02a6bcaa2"
+        },
+        {
+          "source": "include/modules/extra/achievement/achievement_base/config/achievement_base.config.php",
+          "hash": "bc930f95d98574ed57e7534edbcbddb5278c959bc32b81d439d23ccf8e511935"
+        }
+      ]
+    },
+    {
+      "module": "ending",
+      "output": "modules/ending.mjs",
+      "generatedHash": "1b5b1d39e938074538d5f60ce4876fbadd6ddd2abbc5a2b7493e6b85591bb735",
+      "functions": [
+        "ending_by_shootings_available",
+        "ending_changing_gamevars_available",
+        "get_gametype_setting_html",
+        "ending_psyche_attack_txt_parse",
+        "init_playerdata",
+        "itemmix_success"
+      ],
+      "calls": [
+        "defined",
+        "ending\\ending_by_shootings_available",
+        "explode",
+        "in_array",
+        "mb_strlen",
+        "mb_substr",
+        "rand",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "sys\\is_winner"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/ending/main.php",
+          "hash": "c00f62d8deb7bc135a0be22d8777b77ac5475a5768413a9f9703783cfafe0977"
+        },
+        {
+          "source": "include/modules/base/ending/config/ending.config.php",
+          "hash": "dc6a4053fa3b526f626a6ac2fbf60d4352ed2d2e7a69368395b36fca3cde0f83"
+        }
+      ]
+    },
+    {
+      "module": "song",
+      "output": "modules/song.mjs",
+      "generatedHash": "3e36f1cf22827d481e2df47d5572f45196685ab5b5323b06ce3b5faa3b7d49ce",
+      "functions": [
+        "parse_itmuse_desc",
+        "ss_get_affected_players",
+        "ss_data_proc_single",
+        "ss_check_s",
+        "ss_record_tempbuff",
+        "ss_data_proc",
+        "ss_cost_proc",
+        "ss_factor",
+        "get_available_songlist",
+        "ss_sing",
+        "learn_song_process",
+        "get_learned_songs_with_skill1003",
+        "save_learned_songs_with_skill1003",
+        "get_song_effect",
+        "itemuse",
+        "check_sname",
+        "act",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_unique",
+        "defined",
+        "explode",
+        "implode",
+        "in_array",
+        "is_array",
+        "is_numeric",
+        "itemmain\\itms_reduce",
+        "logger\\logsave",
+        "max",
+        "noise\\addnoise",
+        "ob_clean",
+        "ob_get_contents",
+        "player\\fetch_playerdata_by_pid",
+        "player\\get_max_rage",
+        "player\\player_save",
+        "rand",
+        "range",
+        "round",
+        "sizeof",
+        "skill_temp\\set_skill_temp_time",
+        "skillbase\\check_skill_info",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "song\\check_sname",
+        "song\\get_available_songlist",
+        "song\\get_learned_songs_with_skill1003",
+        "song\\get_song_effect",
+        "song\\learn_song_process",
+        "song\\save_learned_songs_with_skill1003",
+        "song\\ss_check_s",
+        "song\\ss_cost_proc",
+        "song\\ss_data_proc",
+        "song\\ss_data_proc_single",
+        "song\\ss_factor",
+        "song\\ss_get_affected_players",
+        "song\\ss_record_tempbuff",
+        "song\\ss_sing",
+        "str_replace",
+        "strlen",
+        "strpos",
+        "substr",
+        "sys\\addchat",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/song/main.php",
+          "hash": "bcd2ab2d2c279ec611cdc4bc206143a2a80260c95e28f73704bf8d1d4770feed"
+        },
+        {
+          "source": "include/modules/base/items/song/config/song.config.php",
+          "hash": "fca26a19a3bfd1226aaa00b7f4c5d5be4e226b0611deaf8425b9b05d6d199dee"
+        }
+      ]
+    },
+    {
+      "module": "extra_event",
+      "output": "modules/extra_event.mjs",
+      "generatedHash": "e81b7f718e2db0a79ff889bea91b584d060219c41a13ce6f417daead35f45acc",
+      "functions": [
+        "extra_event_get_branch_text_core",
+        "is_extra_event_available",
+        "extra_event_main",
+        "extra_event_core",
+        "extra_event_selection_process",
+        "extra_event_para_load",
+        "extra_event_para_prepare",
+        "extra_event_text_parse",
+        "extra_event_text_parse_callback",
+        "extra_event_get_eid_pace",
+        "extra_event_save_eid_pace",
+        "extra_event_get_occurred_times",
+        "extra_event_save_occurred_times",
+        "extra_event_get_event_para",
+        "extra_event_save_event_para",
+        "is_event_exitable",
+        "event_main",
+        "act",
+        "pre_act",
+        "event_get_skill"
+      ],
+      "calls": [
+        "array_randompick",
+        "ceil",
+        "defined",
+        "event\\event_get_field",
+        "event\\event_get_money",
+        "extra_event\\event_get_skill",
+        "extra_event\\extra_event_core",
+        "extra_event\\extra_event_get_branch_text_core",
+        "extra_event\\extra_event_get_eid_pace",
+        "extra_event\\extra_event_get_event_para",
+        "extra_event\\extra_event_get_occurred_times",
+        "extra_event\\extra_event_main",
+        "extra_event\\extra_event_para_load",
+        "extra_event\\extra_event_para_prepare",
+        "extra_event\\extra_event_save_eid_pace",
+        "extra_event\\extra_event_save_event_para",
+        "extra_event\\extra_event_save_occurred_times",
+        "extra_event\\extra_event_selection_process",
+        "extra_event\\is_event_exitable",
+        "extra_event\\is_extra_event_available",
+        "gdecode",
+        "gencode",
+        "in_array",
+        "is_array",
+        "is_numeric",
+        "item_randskills\\choose_rand_clubskill",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "preg_replace_callback",
+        "rand",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/extra_event/main.php",
+          "hash": "dd0e5984680b68dad848bf3a07a598a63133ef68d191c18542bb0841ee836921"
+        },
+        {
+          "source": "include/modules/extra/misc/extra_event/config/extra_event.config.php",
+          "hash": "67e11123ebdcda7878ff0d053f8b00c82bbcf319789fcebf2953711f8a3f4551"
+        }
+      ]
+    },
+    {
+      "module": "news_observe",
+      "output": "modules/news_observe.mjs",
+      "generatedHash": "6a289519de4e57819fd8bc52f2825660c2f387469a3eeb4cad4661112c68e36f",
+      "functions": [
+        "check_observe_groomid_allowed",
+        "get_observe_roomlist",
+        "get_observe_groomid",
+        "set_observe_groomid",
+        "parse_interface_gameinfo",
+        "check_observe_act_allowed",
+        "observe_main",
+        "act",
+        "getnews",
+        "itemuse"
+      ],
+      "calls": [
+        "array_keys",
+        "in_array",
+        "news_observe\\check_observe_act_allowed",
+        "news_observe\\check_observe_groomid_allowed",
+        "news_observe\\get_observe_roomlist",
+        "news_observe\\observe_main",
+        "news_observe\\set_observe_groomid",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "room_id2prefix",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/news_observe/main.php",
+          "hash": "161674f88da5eeb86012795e67abf68fce6a31d9588072a3b834e258b18098be"
+        }
+      ]
+    },
+    {
+      "module": "empowers",
+      "output": "modules/empowers.mjs",
+      "generatedHash": "e19e6d59445580605cf4c68a8c7fbeeef2d4dd3188375fd117c697696bd2a5c2",
+      "functions": [
+        "parse_itmuse_desc",
+        "check_nail",
+        "use_nail",
+        "check_hone",
+        "use_hone",
+        "use_weapon_improvement",
+        "itemuse",
+        "use_sewing_kit",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_keys",
+        "ceil",
+        "dualwep\\get_sec_attack_method",
+        "empowers\\check_hone",
+        "empowers\\check_nail",
+        "empowers\\use_hone",
+        "empowers\\use_nail",
+        "empowers\\use_sewing_kit",
+        "empowers\\use_weapon_improvement",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itms_reduce",
+        "preg_match",
+        "rand",
+        "str_replace",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/empowers/main.php",
+          "hash": "ee0fecca96fdc42ec73aa043a9267f4d8f161273624231d8b3a7825499a58dc5"
+        }
+      ]
+    },
+    {
+      "module": "ex_mhp_temp_up",
+      "output": "modules/ex_mhp_temp_up.mjs",
+      "generatedHash": "8b5e1145373e4ce36abb50995fe0f3e39efe1cffecb9557b24c1dcaf82eb76e7",
+      "functions": [
+        "itemuse_edible_get_mhp",
+        "ex_mhp_temp_lose",
+        "itemdrop_valid_check",
+        "itemoff_valid_check",
+        "itemuse",
+        "act",
+        "upgrade28"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\check_itmsk",
+        "attrbase\\get_ex_def_array",
+        "ex_mhp_temp_up\\ex_mhp_temp_lose",
+        "itemmain\\get_itmsk_array",
+        "player\\create_dummy_playerdata",
+        "skill28\\check_unlocked28",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_query",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_mhp_temp_up/main.php",
+          "hash": "2e3de6429c9e6207b1e988539794d23675fcfd8b46b31ef640fdd23f36d438da"
+        }
+      ]
+    },
+    {
+      "module": "instance_close_button",
+      "output": "modules/instance_close_button.mjs",
+      "generatedHash": "bd15a7078cc63f2077493ad365b77362f7d1d4ff1bfc9600e996d2f60466e085",
+      "functions": [
+        "check_instance_close_available",
+        "instance_close",
+        "pre_act",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "function_exists",
+        "gameflow_combo\\is_gamestate_combo",
+        "in_array",
+        "instance_close_button\\check_instance_close_available",
+        "instance_close_button\\instance_close",
+        "room_upos_check",
+        "save_gameinfo",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance_close_button/main.php",
+          "hash": "de98539c1bce22b1cf559e565406be4c4937e379263373bdcd77f40f5af255f1"
+        }
+      ]
+    },
+    {
+      "module": "miracletrap",
+      "output": "modules/miracletrap.mjs",
+      "generatedHash": "efb01dcca3982f8495faf488bbb7ac9833010feff6d216a591652a939fd41c54",
+      "functions": [
+        "trapcheck",
+        "trap",
+        "get_trap_damage",
+        "check_trapdef_proc"
+      ],
+      "calls": [
+        "trap\\trap_hit",
+        "trap\\trapget"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/base/items/miracletrap/main.php",
+          "hash": "08b0ab5d81f51698d880e5e1d3377983d5d71504141b2d859f0873e9e02cb1b5"
+        }
+      ]
+    },
+    {
+      "module": "tutorial",
+      "output": "modules/tutorial.mjs",
+      "generatedHash": "21f28444e1961efa7371a9e4b9a65b425159a1508b6ef687632cfa2fafcc8709",
+      "functions": [
+        "get_item_allow_find_and_use",
+        "init_current_tutorial",
+        "parse_tutorial_condition_arr",
+        "check_tutorial_condition_arr",
+        "get_tutorial",
+        "get_current_tutorial_step",
+        "get_tutorial_setting",
+        "tutorial_pushforward_process",
+        "tutorial_checknpc",
+        "tutorial_movenpc",
+        "tutorial_changevar_npc",
+        "tutorial_changehp_npc",
+        "act",
+        "tutorial_fail_safing",
+        "tutorial_addchat",
+        "get_addnpclist",
+        "pose_change",
+        "tactic_change",
+        "move",
+        "search",
+        "discover",
+        "discover_item",
+        "itemget_process",
+        "discover_player",
+        "get_battlecmd_filename",
+        "get_battleresult_filename",
+        "get_corpse_filename",
+        "get_sp_shop_filename",
+        "get_itemshop_filename",
+        "get_itemmix_filename",
+        "meetman_alternative",
+        "senditem_check",
+        "player_damaged_enemy",
+        "tutorial_win",
+        "get_hitrate_change",
+        "apply_weapon_inf",
+        "check_ex_inf_infliction",
+        "itemuse",
+        "heal_inf",
+        "player_kill_enemy",
+        "getcorpse_action",
+        "itembuy",
+        "player_selectclub",
+        "itemmix_success",
+        "addnews",
+        "rs_game",
+        "init_areatiming",
+        "checkcombo",
+        "is_gamestate_combo",
+        "club_choice_probability_process",
+        "get_club_choice_array",
+        "search_area",
+        "event_core"
+      ],
+      "calls": [
+        "addnpc\\addnpc",
+        "array_merge",
+        "array_randompick",
+        "array_search",
+        "defined",
+        "enemy\\battle_wrapper",
+        "enemy\\findenemy",
+        "event\\event_get_money",
+        "explode",
+        "floor",
+        "in_array",
+        "is_array",
+        "is_float",
+        "is_int",
+        "is_numeric",
+        "itemmain\\focus_item",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "itemshop\\check_in_shop_area",
+        "localtime",
+        "map\\get_plsnum",
+        "max",
+        "metman\\meetman",
+        "ob_clean",
+        "ob_get_contents",
+        "player\\fetch_original_playerdata_by_id",
+        "player\\fetch_playerdata_by_pid",
+        "rand",
+        "save_gameinfo",
+        "sizeof",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_setvalue",
+        "sprintf",
+        "str_replace",
+        "strpos",
+        "substr",
+        "team\\findteam",
+        "template",
+        "trim",
+        "tutorial\\addnews",
+        "tutorial\\check_tutorial_condition_arr",
+        "tutorial\\discover_item",
+        "tutorial\\discover_player",
+        "tutorial\\get_addnpclist",
+        "tutorial\\get_current_tutorial_step",
+        "tutorial\\get_tutorial",
+        "tutorial\\get_tutorial_setting",
+        "tutorial\\parse_tutorial_condition_arr",
+        "tutorial\\tutorial_addchat",
+        "tutorial\\tutorial_changevar_npc",
+        "tutorial\\tutorial_checknpc",
+        "tutorial\\tutorial_fail_safing",
+        "tutorial\\tutorial_movenpc",
+        "tutorial\\tutorial_pushforward_process",
+        "tutorial\\tutorial_win",
+        "wound\\apply_weapon_wound_real",
+        "wound\\get_inf"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance7_tutorial/tutorial/main.php",
+          "hash": "3a45808ebaa13e8f49902d622161e29628ab51ec463ce65eb8bccaae56694ed4"
+        },
+        {
+          "source": "include/modules/extra/instance/instance7_tutorial/tutorial/config/tutorial_1.config.php",
+          "hash": "3f56cd6cb7517b1d6a069cbf982cfcc90b0d283299634318f7482ca1ea26dc11"
+        }
+      ]
+    },
+    {
+      "module": "randrecipe",
+      "output": "modules/randrecipe.mjs",
+      "generatedHash": "ead9b519f02005ad59ab9aeaed5fb3cff366ccb5265eaf5a16a43967f527c614",
+      "functions": [
+        "rs_game",
+        "get_recipe_mixinfo",
+        "create_randrecipe_config",
+        "generate_randrecipe",
+        "generate_randrecipe_stuff",
+        "itemuse"
+      ],
+      "calls": [
+        "array_merge_recursive",
+        "array_rand",
+        "array_randompick",
+        "array_unique",
+        "ceil",
+        "file_exists",
+        "implode",
+        "in_array",
+        "item_recipe\\generate_single_itemtip",
+        "itemmix\\parse_itemmix_resultshow",
+        "min",
+        "rand",
+        "randrecipe\\create_randrecipe_config",
+        "randrecipe\\generate_randrecipe",
+        "randrecipe\\generate_randrecipe_stuff",
+        "round",
+        "str_replace",
+        "strpos",
+        "substr",
+        "var_export"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/randrecipe/main.php",
+          "hash": "225e01a04971fb7ade1310086d75c83816d0bc0ebea6cef16f634ca381d9dd1a"
+        },
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/randrecipe/config/randrecipe.config.php",
+          "hash": "fe1914f4280de0e4cd812277c23554f9aee288c94a61d6b8f0ffcc90ac09a03d"
+        }
+      ]
+    },
+    {
+      "module": "activity_ranking",
+      "output": "modules/activity_ranking.mjs",
+      "generatedHash": "f910485ed01b906b4aede58fe333c659b5db534ad9878dc432dde6fa545da131",
+      "functions": [
+        "prepare_aranking_table",
+        "aranking_send",
+        "load_aranking",
+        "save_ulist_aranking"
+      ],
+      "calls": [
+        "activity_ranking\\aranking_send",
+        "activity_ranking\\prepare_aranking_table",
+        "curl_post",
+        "file_get_contents",
+        "gdecode",
+        "gencode",
+        "in_array",
+        "is_array",
+        "str_replace",
+        "strpos",
+        "timestamp_salt"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/activities/activity_ranking/main.php",
+          "hash": "e9a24a96bf5b229d6dba98dc59bfcce38820d21665c4edc86f43caf60909ca87"
+        }
+      ]
+    },
+    {
+      "module": "aprilfool2018",
+      "output": "modules/aprilfool2018.mjs",
+      "generatedHash": "8bbd779cb6ad16811a7fe6aa740f0364f201b3367c0744ac42a0ff4eb8c7c2cc",
+      "functions": [
+        "get_npclist",
+        "init_npcdata",
+        "shopitem_row_data_process"
+      ],
+      "calls": [
+        "achievement_base\\check_achtype_available",
+        "in_array",
+        "sys\\addnews"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/activities/aprilfool2018/main/main.php",
+          "hash": "6d6762d172f7ceede2cfb28c2a7655888024dbd53b8e350280243ab3cdb6ef52"
+        },
+        {
+          "source": "include/modules/extra/activities/aprilfool2018/main/config/specialnpc.config.php",
+          "hash": "aff5eb801177891351cfc26f294a5a85e2436700117200caf56bcb23d5df56e9"
+        }
+      ]
+    },
+    {
+      "module": "instance3",
+      "output": "modules/instance3.mjs",
+      "generatedHash": "b25a982f884c547cd1ff1829c447c55114599d4dbd3aa3991a7a29cca5330ee8",
+      "functions": [
+        "get_shopconfig",
+        "get_itemfilecont",
+        "get_npclist",
+        "evonpc_npcdata_process",
+        "get_addnpclist",
+        "checkcombo",
+        "rs_game",
+        "rs_areatime",
+        "check_addarea_gameover",
+        "gameover",
+        "init_enter_battlefield_items",
+        "get_enter_battlefield_card",
+        "enter_battlefield_cardproc",
+        "instance3_add_skills",
+        "post_enterbattlefield_events",
+        "itemuse",
+        "search_area",
+        "kill",
+        "event_core",
+        "parse_news",
+        "instance3_calc_qiegao_prize",
+        "post_winnercheck_events",
+        "init_battle",
+        "npcchat_get_chatlog"
+      ],
+      "calls": [
+        "addnews",
+        "array_randompick",
+        "defined",
+        "ending\\ending_psyche_attack_txt_parse",
+        "event\\event_get_money",
+        "floor",
+        "in_array",
+        "instance3\\instance3_add_skills",
+        "instance3\\instance3_calc_qiegao_prize",
+        "map\\get_area_wavenum",
+        "max",
+        "message_create",
+        "openfile",
+        "player\\fetch_playerdata",
+        "player\\kill",
+        "player\\player_save",
+        "rand",
+        "range",
+        "save_gameinfo",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "sys\\gameover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance3_ascension/main.php",
+          "hash": "ae7b1b4708429a8d09e798460e2834e1e2bc9d90db9d000ab38b334f2b20bcdc"
+        },
+        {
+          "source": "include/modules/extra/instance/instance3_ascension/config/npc.data.config.php",
+          "hash": "09641dfe45bec82f8cabdcce8900622b3ec9fed05501a4903ea9684fa99c24ac"
+        }
+      ]
+    },
+    {
+      "module": "ex_uselog",
+      "output": "modules/ex_uselog.mjs",
+      "generatedHash": "e66f000cdfc8e6420bdae1c7c7a961f6e73738ad719ca3e255cd66323452b910",
+      "functions": [
+        "itemuse",
+        "check_comp_itmsk_visible"
+      ],
+      "calls": [
+        "attrbase\\base64_decode_comp_itmsk",
+        "itemmain\\check_in_itmsk",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_uselog/main.php",
+          "hash": "227bf181838d59b409a01fe007bb099d0e214fd9e4e1b3e9fd92d3d83bc74c58"
+        }
+      ]
+    },
+    {
+      "module": "ex_attr_song",
+      "output": "modules/ex_attr_song.mjs",
+      "generatedHash": "b262388cb3e4f560ac82bf62fdef7e355c63293fd17ea3461ada2bc64db0fd1f",
+      "functions": [
+        "get_song_effect",
+        "ss_factor"
+      ],
+      "calls": [
+        "attrbase\\check_itmsk",
+        "attrbase\\get_ex_def_array",
+        "itemmain\\check_in_itmsk",
+        "player\\create_dummy_playerdata"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_attr_song/main.php",
+          "hash": "bc27916648ad968fe039bf7ebbb5e1a98fa3eec7e14a60a3ac25bc9c5b0bb973"
+        }
+      ]
+    },
+    {
+      "module": "instance11",
+      "output": "modules/instance11.mjs",
+      "generatedHash": "eb5d60ff2292b1db4c0612be3efb47b8a23305e0d0999b9432a111340e44f4e2",
+      "functions": [
+        "map_display_get_pls_color",
+        "card_validate_get_forbidden_cards",
+        "get_plsnum",
+        "get_all_plsno",
+        "init_enter_battlefield_items",
+        "get_npclist",
+        "get_shop_tag_list",
+        "get_shopconfig",
+        "check_in_shop_area",
+        "get_itemfilecont",
+        "get_startingitemfilecont",
+        "get_startingwepfilecont",
+        "get_trapfilecont",
+        "checkcombo",
+        "rs_game",
+        "init_areatiming",
+        "post_enterbattlefield_events",
+        "check_observe_act_allowed",
+        "itemuse",
+        "post_act",
+        "act",
+        "observe_jump_to_room",
+        "check_item_observer",
+        "itemdrop",
+        "itemmove",
+        "octitem_rotate",
+        "meetman_alternative",
+        "senditem_check_teammate"
+      ],
+      "calls": [
+        "array_keys",
+        "array_randompick",
+        "array_unique",
+        "count",
+        "implode",
+        "in_array",
+        "instance11\\check_item_observer",
+        "instance11\\check_observe_act_allowed",
+        "instance11\\observe_jump_to_room",
+        "instance11\\octitem_rotate",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itemget",
+        "itemmain\\replace_in_itmsk",
+        "news_observe\\get_observe_groomid",
+        "news_observe\\get_observe_roomlist",
+        "news_observe\\observe_main",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "openfile",
+        "range",
+        "set_current_roomid",
+        "sizeof",
+        "str_split",
+        "strlen",
+        "strpos",
+        "substr",
+        "team\\findteam",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance11_observe/main.php",
+          "hash": "cc5113a5d6ce0aa1074b20bef58af75d3b71820552c3396109a2a0da03fecc3a"
+        },
+        {
+          "source": "include/modules/extra/instance/instance11_observe/config/plsinfo.config.php",
+          "hash": "d5822926b1b68228b99402686c9955688024a61df0eea8efe9496bcdca7faaa4"
+        },
+        {
+          "source": "include/modules/extra/instance/instance11_observe/config/npc.data.config.php",
+          "hash": "f8ae0efdb0c580c0f24522aea07079dfe778da3b878e0bf8d9d11fa917b2d644"
+        },
+        {
+          "source": "include/modules/extra/instance/instance11_observe/config/shop.config.php",
+          "hash": "978e62bb149e0249267a567a21be1bf19d08e4f6e66d5a629eceaf6998a83ddd"
+        }
+      ]
+    },
+    {
+      "module": "wepchange",
+      "output": "modules/wepchange.mjs",
+      "generatedHash": "afd45e0cedab5b43b7114a445d629c27d9151beb29b9fe23ec481ee1a9379a92",
+      "functions": [
+        "weaponswap",
+        "get_weaponswap_obj_extra_process",
+        "get_weaponswap_obj",
+        "act",
+        "use_nail",
+        "use_hone",
+        "use_weapon_improvement"
+      ],
+      "calls": [
+        "count",
+        "explode",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itemoff",
+        "max",
+        "openfile",
+        "preg_replace",
+        "strpos",
+        "wepchange\\get_weaponswap_obj",
+        "wepchange\\get_weaponswap_obj_extra_process",
+        "wepchange\\weaponswap"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/wepchange/main.php",
+          "hash": "408d425fe9fbc5d7735d858a0217b101497c806895368721f62daba964e43c7d"
+        }
+      ]
+    },
+    {
+      "module": "smartmix",
+      "output": "modules/smartmix.mjs",
+      "generatedHash": "013300d857b2770800b47bda7f31fe63b98bc435be8e816f37a18917572ac812",
+      "functions": [
+        "smartmix_find_recipe",
+        "smartmix_check_available",
+        "parse_smartmix_recipelink",
+        "get_itemmix_filename",
+        "smartmix_show",
+        "act",
+        "is_lastmix_allowed",
+        "itemmix",
+        "itemmix_proc",
+        "itemmix_success",
+        "save_lastmix",
+        "get_lastmix"
+      ],
+      "calls": [
+        "defined",
+        "full_combination",
+        "gdecode",
+        "gencode",
+        "htmlspecialchars_decode",
+        "in_array",
+        "itemmix\\get_mixinfo",
+        "itemmix\\itemmix_get_result",
+        "itemmix\\itemmix_name_proc",
+        "itemmix\\parse_itemmix_resultshow",
+        "itemmix_overlay\\itemmix_overlay_check",
+        "itemmix_sync\\itemmix_sync_check",
+        "ob_clean",
+        "ob_get_contents",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "smartmix\\get_itemmix_filename",
+        "smartmix\\get_lastmix",
+        "smartmix\\is_lastmix_allowed",
+        "smartmix\\parse_smartmix_recipelink",
+        "smartmix\\save_lastmix",
+        "smartmix\\smartmix_check_available",
+        "smartmix\\smartmix_find_recipe",
+        "smartmix\\smartmix_show",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/smartmix/main.php",
+          "hash": "665104de3bafab301f94414b9dc1219ecb5456dd210320b87287e510b8ccb60f"
+        }
+      ]
+    },
+    {
+      "module": "instance5",
+      "output": "modules/instance5.mjs",
+      "generatedHash": "7c0cc4cc7740398cfd9a6b737247fe1d537a3a61959b10242ec2a195d74a4b06",
+      "functions": [
+        "get_shopconfig",
+        "get_npclist",
+        "checkcombo",
+        "rs_game",
+        "rs_areatime",
+        "check_addarea_gameover",
+        "itemuse",
+        "get_club_choice_array",
+        "parse_itmuse_desc",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "defined",
+        "map\\get_area_wavenum",
+        "openfile",
+        "player\\kill",
+        "skillbase\\skill_getvalue",
+        "strpos",
+        "sys\\gameover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance5/main.php",
+          "hash": "c1385a425e9f4625aab0bf3d3073e768321517b0d7e070a8c11ac102c908ab08"
+        },
+        {
+          "source": "include/modules/extra/instance/instance5/config/npc.data.config.php",
+          "hash": "bc9ebaa14208cab6dbbbff7572af5fbb7d10ae5da2651ffa54e074fff68ef4b9"
+        }
+      ]
+    },
+    {
+      "module": "logistics",
+      "output": "modules/logistics.mjs",
+      "generatedHash": "a784ffd02fe67ee62be5f027ba0dbb63e1e96a1aec29bbea7b1c320663a264f3",
+      "functions": [
+        "get_cardshop_list",
+        "card_check_o_blink",
+        "logistics_buy",
+        "get_card_price",
+        "logistics_get_itemlist_from_udata",
+        "logistics_put_itemlist_to_udata",
+        "logistics_itemget",
+        "logistics_itemuse",
+        "get_showcase_cardlist_from_udata",
+        "put_showcase_cardlist_to_udata",
+        "set_showcase_card",
+        "get_showcase_gameitemlist_from_udata",
+        "put_showcase_gameitemlist_to_udata",
+        "parse_itmuse_desc",
+        "itemuse",
+        "act",
+        "set_showcase_gameitem",
+        "get_showcase_logitemlist_from_udata",
+        "put_showcase_logitemlist_to_udata",
+        "set_showcase_logitem",
+        "addnews",
+        "post_enterbattlefield_events"
+      ],
+      "calls": [
+        "array_diff",
+        "array_merge",
+        "cardbase\\get_card_alternative",
+        "cardbase\\get_card_calc_blink",
+        "cardbase\\get_cardlist_energy_from_udata",
+        "cardbase\\get_qiegao",
+        "cardbase\\put_cardlist_energy_to_udata",
+        "count",
+        "date",
+        "explode",
+        "fatenum_create",
+        "fetch_udata_by_username",
+        "fmod",
+        "in_array",
+        "logistics\\card_check_o_blink",
+        "logistics\\get_card_price",
+        "logistics\\get_cardshop_list",
+        "logistics\\get_showcase_cardlist_from_udata",
+        "logistics\\get_showcase_gameitemlist_from_udata",
+        "logistics\\get_showcase_logitemlist_from_udata",
+        "logistics\\logistics_get_itemlist_from_udata",
+        "logistics\\logistics_itemget",
+        "logistics\\logistics_put_itemlist_to_udata",
+        "logistics\\put_showcase_cardlist_to_udata",
+        "logistics\\put_showcase_gameitemlist_to_udata",
+        "logistics\\put_showcase_logitemlist_to_udata",
+        "logistics\\set_showcase_gameitem",
+        "logistics\\set_showcase_logitem",
+        "max",
+        "message_create",
+        "ob_clean",
+        "ob_get_contents",
+        "rand",
+        "round",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "update_udata_by_username",
+        "user_settings\\get_u_settings",
+        "user_settings\\save_u_settings"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/logistics/main.php",
+          "hash": "124584ba7055662b10a898c8c459e6333c05aa425e8705c1a6faeb7a0a50fd4d"
+        },
+        {
+          "source": "include/modules/extra/misc/logistics/logistics_extra.php",
+          "hash": "a13250588367a67b0798ac1523d0a0cb80185d135f32a6f6cbd00985012103b4"
+        },
+        {
+          "source": "include/modules/extra/misc/logistics/config/logistics.config.php",
+          "hash": "6cc84d01895ad0e80390b9ac7d7d47d1a84c4da4fda5cada063f71277301de18"
+        }
+      ]
+    },
+    {
+      "module": "autopower",
+      "output": "modules/autopower.mjs",
+      "generatedHash": "add88b453e13f5d2b1c70e10efc9715972618748ec0d48f8d30e9ab74d6278e1",
+      "functions": [
+        "itemuse"
+      ],
+      "calls": [
+        "cooldown\\set_coldtime",
+        "count",
+        "in_array",
+        "min",
+        "preg_match",
+        "round",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/autopower/main.php",
+          "hash": "a58a6d4f86bb419f4dbd8b5d66d67e116ee3a2a813af3c4f8964dcdc1443b95b"
+        }
+      ]
+    },
+    {
+      "module": "item_uys",
+      "output": "modules/item_uys.mjs",
+      "generatedHash": "a80dc8879b73263dbfe7d8d3fce544a844d3e63355c8d190eb8157020399086b",
+      "functions": [
+        "itemuse",
+        "autosewingkit",
+        "autosewingkit_single",
+        "autosewingkit_finish_event",
+        "act"
+      ],
+      "calls": [
+        "cooldown\\set_coldtime",
+        "floor",
+        "item_uys\\autosewingkit",
+        "item_uys\\autosewingkit_finish_event",
+        "item_uys\\autosewingkit_single",
+        "min",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "rand",
+        "round",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_uys/main.php",
+          "hash": "882e350ad1cddbf46a95a28f1259eb27f019e6c36b62d64ff28ef13cd5731392"
+        }
+      ]
+    },
+    {
+      "module": "searchmemory",
+      "output": "modules/searchmemory.mjs",
+      "generatedHash": "38844c508f6189b03d7f494897da648560035a4cc9b62a5b39215b1697f91d50",
+      "functions": [
+        "searchmemory_available",
+        "init_searchmemory",
+        "init_playerdata",
+        "load_playerdata",
+        "playerdata_construct_process",
+        "get_searchmemory_now_ids",
+        "player_save",
+        "calc_memory_slotnum",
+        "calc_memory_recordnum",
+        "get_seen_num",
+        "add_memory_core",
+        "add_memory",
+        "add_memory_itm_process",
+        "get_slot_edge",
+        "check_out_of_slot_edge",
+        "seek_memory_by_id",
+        "change_memory_unseen",
+        "remove_memory_core",
+        "get_memory_name",
+        "remove_memory",
+        "focus_item",
+        "itemdrop",
+        "act",
+        "meetman",
+        "discover_item_filter",
+        "searchmemory_discover",
+        "searchmemory_discover_valid_check",
+        "searchmemory_discover_core",
+        "calculate_active_obbs",
+        "move_to_area",
+        "get_searchmemory_coldtime",
+        "check_keep_enemy_in_searchmemory",
+        "check_keep_corpse_in_searchmemory",
+        "getcorpse_action",
+        "searchmemory_display_prepare",
+        "searchmemory_senditem",
+        "is_searchmemory_extra_displayed"
+      ],
+      "calls": [
+        "array_clone",
+        "array_reverse",
+        "attack\\add_format",
+        "cooldown\\check_in_coldtime",
+        "cooldown\\get_search_coldtime",
+        "cooldown\\set_coldtime",
+        "explore\\allow_search_check",
+        "explore\\search_area",
+        "floor",
+        "gameflow_combo\\is_gamestate_combo",
+        "gdecode",
+        "gencode",
+        "getmicrotime",
+        "in_array",
+        "is_array",
+        "is_string",
+        "itemmain\\itemget",
+        "metman\\discover_player_filter_alive",
+        "metman\\discover_player_filter_corpse",
+        "metman\\meetman",
+        "min",
+        "player\\check_fog",
+        "player\\fetch_playerdata_by_pid",
+        "rand",
+        "searchmemory\\add_memory",
+        "searchmemory\\add_memory_core",
+        "searchmemory\\add_memory_itm_process",
+        "searchmemory\\calc_memory_recordnum",
+        "searchmemory\\calc_memory_slotnum",
+        "searchmemory\\change_memory_unseen",
+        "searchmemory\\check_keep_corpse_in_searchmemory",
+        "searchmemory\\check_keep_enemy_in_searchmemory",
+        "searchmemory\\check_out_of_slot_edge",
+        "searchmemory\\focus_item",
+        "searchmemory\\get_memory_name",
+        "searchmemory\\get_searchmemory_now_ids",
+        "searchmemory\\get_slot_edge",
+        "searchmemory\\init_searchmemory",
+        "searchmemory\\remove_memory",
+        "searchmemory\\remove_memory_core",
+        "searchmemory\\searchmemory_available",
+        "searchmemory\\searchmemory_discover",
+        "searchmemory\\searchmemory_discover_core",
+        "searchmemory\\searchmemory_discover_valid_check",
+        "searchmemory\\seek_memory_by_id",
+        "sizeof",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/searchmemory/main.php",
+          "hash": "fd013b4800695161502737e4b901534144dd71b50adffd141054d05b324196b0"
+        },
+        {
+          "source": "include/modules/extra/searchmemory/config/searchmemory.config.php",
+          "hash": "92d97b8d21e2c90084531fedb5778fc1dac2e99b19a2eeb7165ef90631177b32"
+        }
+      ]
+    },
+    {
+      "module": "instance_quit_button",
+      "output": "modules/instance_quit_button.mjs",
+      "generatedHash": "1cbaff00fadb89756478bd22d881051df01ba546649619c6c3c19efdd4bac9c4",
+      "functions": [
+        "check_instance_quit_available",
+        "instance_quit",
+        "post_instance_quit_event",
+        "pre_act",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "in_array",
+        "instance_quit_button\\check_instance_quit_available",
+        "instance_quit_button\\instance_quit",
+        "instance_quit_button\\post_instance_quit_event",
+        "save_gameinfo",
+        "set_current_roomid",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance_quit_button/main.php",
+          "hash": "1164edf2037902691e3b9cde972f7c524fe6ef774b2b24d6b220d678b5648ad9"
+        }
+      ]
+    },
+    {
+      "module": "blessstone",
+      "output": "modules/blessstone.mjs",
+      "generatedHash": "12bf0dc5c6dd3e1be1e53b3c6ca47b43365c361077087b0b8d189b19a5b0bbf3",
+      "functions": [
+        "itemuse",
+        "use_blessstone",
+        "act",
+        "use_hone",
+        "use_sewing_kit",
+        "autosewingkit_finish_event",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "blessstone\\use_blessstone",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\replace_in_itmsk",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "preg_match",
+        "rand",
+        "round",
+        "str_replace",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/blessstone/main.php",
+          "hash": "a1fea62e2038fd2e3567e3014f1366e3273aadd7b2e03b951775780e1bc1a942"
+        }
+      ]
+    },
+    {
+      "module": "item_ext_armor",
+      "output": "modules/item_ext_armor.mjs",
+      "generatedHash": "4c8e1617ca9938e9e603afbcaf5e266dbb36bd30540bdc31ab050c02e9a74a10",
+      "functions": [
+        "parse_itmuse_desc",
+        "get_itmsk_desc_single_comp_process",
+        "use_armor",
+        "use_armor_ext_armor_process",
+        "armor_changename_to_ext",
+        "armor_hurt",
+        "suit_break",
+        "itemoff",
+        "getcorpse_action",
+        "armor_get_su",
+        "armor_put_su",
+        "armor_remove_su",
+        "armor_changename_from_ext",
+        "armor_clean_suit_sk",
+        "check_comp_itmsk_visible",
+        "itemdrop_valid_check",
+        "init_npcdata"
+      ],
+      "calls": [
+        "array_diff",
+        "attrbase\\base64_decode_comp_itmsk",
+        "attrbase\\base64_encode_comp_itmsk",
+        "explode",
+        "implode",
+        "in_array",
+        "item_ext_armor\\armor_changename_from_ext",
+        "item_ext_armor\\armor_changename_to_ext",
+        "item_ext_armor\\armor_clean_suit_sk",
+        "item_ext_armor\\armor_get_su",
+        "item_ext_armor\\armor_put_su",
+        "item_ext_armor\\armor_remove_su",
+        "item_ext_armor\\suit_break",
+        "item_ext_armor\\use_armor_ext_armor_process",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\get_itmsk_array",
+        "itemmain\\itemget",
+        "itemmain\\itemoff_valid_check",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "itemmain\\replace_in_itmsk",
+        "max",
+        "min",
+        "preg_replace",
+        "strpos",
+        "substr",
+        "substr_count"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_ext_armor/main.php",
+          "hash": "18dc420b8a8da5a2d0fff6ec5e3aacdd674f056f4dd0553f4efe20ac93de1505"
+        }
+      ]
+    },
+    {
+      "module": "ex_phy_nullify",
+      "output": "modules/ex_phy_nullify.mjs",
+      "generatedHash": "67bc1c5c583271b55072d91dbea33b5eafc3d45691a6905a75f7c74c820717a6",
+      "functions": [
+        "get_ex_phy_nullify_proc_rate",
+        "check_physical_nullify",
+        "get_physical_dmg_multiplier",
+        "check_physical_def_attr",
+        "put_charge_success_words",
+        "get_physical_dmg",
+        "strike_prepare",
+        "use_sewing_kit",
+        "autosewingkit_single",
+        "geming_objvalid"
+      ],
+      "calls": [
+        "array_merge",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_def_array",
+        "cooldown\\set_coldtime",
+        "ex_phy_nullify\\check_physical_nullify",
+        "ex_phy_nullify\\get_ex_phy_nullify_proc_rate",
+        "itemmain\\check_in_itmsk",
+        "rand",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_phy_nullify/main.php",
+          "hash": "5c025133d13dfa664a9505d23aa232692f262c1aa6024e1f64e3c95264e932f8"
+        }
+      ]
+    },
+    {
+      "module": "ex_equipskill",
+      "output": "modules/ex_equipskill.mjs",
+      "generatedHash": "54bfbf34c02ac51cd5c4c6eba50d3b0553fc262fd9f392ffb63d7204ccfc6396",
+      "functions": [
+        "itemuse",
+        "check_skill_available",
+        "get_itmsk_desc_single_comp_process",
+        "check_comp_itmsk_visible"
+      ],
+      "calls": [
+        "attrbase\\get_ex_def_array",
+        "defined",
+        "in_array",
+        "itemmain\\check_in_itmsk",
+        "player\\create_dummy_playerdata",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_delvalue",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "strpos"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_equipskill/main.php",
+          "hash": "51df3979ac72ac8a82b8ac77c72f6327e0623188c01b993499f3b5595b540bd7"
+        }
+      ]
+    },
+    {
+      "module": "ex_storage",
+      "output": "modules/ex_storage.mjs",
+      "generatedHash": "4e20bb29507732185ce51b97a570057f0f26221a3e4134500076d41bb333a0ca",
+      "functions": [
+        "storage_encode_itmarr",
+        "storage_decode_itmarr",
+        "get_item_storage",
+        "storage_sendin",
+        "get_empty_stpos",
+        "storage_sendin_core",
+        "storage_fetchout",
+        "storage_fetchout_core",
+        "use_storage",
+        "act",
+        "check_comp_itmsk_visible",
+        "wep_b_extra_reloading_check",
+        "use_armor",
+        "armor_remove_su",
+        "suit_break"
+      ],
+      "calls": [
+        "attrbase\\base64_decode_comp_itmsk",
+        "attrbase\\base64_encode_comp_itmsk",
+        "attrbase\\check_itmsk",
+        "ex_cursed\\check_enkan",
+        "ex_storage\\get_empty_stpos",
+        "ex_storage\\get_item_storage",
+        "ex_storage\\storage_decode_itmarr",
+        "ex_storage\\storage_encode_itmarr",
+        "ex_storage\\storage_fetchout",
+        "ex_storage\\storage_fetchout_core",
+        "ex_storage\\storage_sendin",
+        "ex_storage\\storage_sendin_core",
+        "ex_storage\\use_storage",
+        "explode",
+        "implode",
+        "in_array",
+        "is_numeric",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\item_destroy_core",
+        "itemmain\\itemget",
+        "itemmain\\replace_in_itmsk",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "sizeof",
+        "str_replace",
+        "strlen",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_storage/main.php",
+          "hash": "eed4e4e44bd8681b2a04fba4e8c08293ed153ae88fbd983507cb05566f66ca09"
+        }
+      ]
+    },
+    {
+      "module": "item_armor_empower",
+      "output": "modules/item_armor_empower.mjs",
+      "generatedHash": "90ed47b571a6fb671e29cbdbbe5980d14e6a4f4f2572f4057ae7ef3beef0ddef",
+      "functions": [
+        "parse_itmuse_desc",
+        "use_armor_empower",
+        "armor_empower",
+        "itemuse",
+        "act",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_diff",
+        "array_randompick",
+        "ceil",
+        "item_armor_empower\\armor_empower",
+        "item_armor_empower\\use_armor_empower",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\get_itmsk_array",
+        "itemmain\\itms_reduce",
+        "itemmain\\replace_in_itmsk",
+        "min",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "rand",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_armor_empower/main.php",
+          "hash": "0d4a1661ba14f38788ff4bc0e4da31301af8e8a8b2c7b60ea2b80c9e865dfee0"
+        }
+      ]
+    },
+    {
+      "module": "item_uvo_extra",
+      "output": "modules/item_uvo_extra.mjs",
+      "generatedHash": "156201f0de5bc6fa73a2d88c0cbfb02d0731829b5edecf7afc6fc813f735b9ae",
+      "functions": [
+        "add_card_uvo_extra",
+        "remove_card_uvo_extra",
+        "get_cards_uvo_extra",
+        "encode_uvo_extra",
+        "decode_uvo_extra",
+        "item_uv_getcard",
+        "act",
+        "use_card_uvo_extra",
+        "use_card_uvo_process",
+        "mix_cards_uvo_extra",
+        "get_card_rare_uvo",
+        "get_card_id_uvo",
+        "gameover_set_credits",
+        "player_kill_enemy",
+        "senditem_extra",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_count_values",
+        "array_keys",
+        "array_merge",
+        "array_rand",
+        "array_randompick",
+        "array_search",
+        "attrbase\\config_process_encode_comp_itmsk",
+        "cardbase\\cardchange",
+        "cardbase\\get_card_calc_blink",
+        "cardbase\\get_card_message",
+        "count",
+        "defined",
+        "explode",
+        "implode",
+        "in_array",
+        "is_array",
+        "is_numeric",
+        "item_uvo_extra\\add_card_uvo_extra",
+        "item_uvo_extra\\decode_uvo_extra",
+        "item_uvo_extra\\encode_uvo_extra",
+        "item_uvo_extra\\get_card_id_uvo",
+        "item_uvo_extra\\get_card_rare_uvo",
+        "item_uvo_extra\\get_cards_uvo_extra",
+        "item_uvo_extra\\mix_cards_uvo_extra",
+        "item_uvo_extra\\remove_card_uvo_extra",
+        "item_uvo_extra\\use_card_uvo_extra",
+        "item_uvo_extra\\use_card_uvo_process",
+        "itemmain\\startingitem_row_data_seperate",
+        "logger\\logsave",
+        "message_create",
+        "ob_clean",
+        "ob_get_contents",
+        "openfile",
+        "player\\player_save",
+        "rand",
+        "skill1006\\multi_itemget",
+        "skillbase\\check_skill_info",
+        "skillbase\\get_acquired_skill_array",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/item_extra/item_uvo_extra/main.php",
+          "hash": "90269b39783c393e779660366005543368f97d5222864d6dc4ff99b18f9ec6d0"
+        }
+      ]
+    },
+    {
+      "module": "ex_residue",
+      "output": "modules/ex_residue.mjs",
+      "generatedHash": "cebcee4a75ce553d254742dc29aa19fdf96cf06ec6eff67b50002595afba194c",
+      "functions": [
+        "get_res_itm",
+        "put_res_itm",
+        "itms_reduce",
+        "itemmix_reduce",
+        "itemuse",
+        "itemmix_recipe_check",
+        "weapon_break",
+        "armor_break",
+        "check_comp_itmsk_visible"
+      ],
+      "calls": [
+        "attrbase\\base64_decode_comp_itmsk",
+        "attrbase\\base64_encode_comp_itmsk",
+        "defined",
+        "ex_residue\\get_res_itm",
+        "ex_residue\\put_res_itm",
+        "explode",
+        "in_array",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\itemdrop_query",
+        "itemmain\\itemget",
+        "itemmain\\itemuse",
+        "itemmain\\replace_in_itmsk",
+        "player\\player_save",
+        "preg_match",
+        "searchmemory\\searchmemory_available",
+        "skill1006\\add_beacon",
+        "strpos",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_residue/main.php",
+          "hash": "15e0b9f32bc5b571475639f9e85685851ae4b7cc160cff9da812f7b4eba1e6fd"
+        }
+      ]
+    },
+    {
+      "module": "ex_gender_attr",
+      "output": "modules/ex_gender_attr.mjs",
+      "generatedHash": "99b5fa991ec491208e93ce532121e1fcc477d8a1b0ce12dd081ed416beb2f54e",
+      "functions": [
+        "get_gender_bewitch_proc_rate",
+        "get_gender_enrage_proc_rate",
+        "check_gender_proc",
+        "get_physical_dmg_multiplier"
+      ],
+      "calls": [
+        "array_merge",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "ex_gender_attr\\check_gender_proc",
+        "ex_gender_attr\\get_gender_bewitch_proc_rate",
+        "ex_gender_attr\\get_gender_enrage_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_gender_attr/main.php",
+          "hash": "3faeb97ea59766081d1553866d4066960041aa4eae345350f47f8cfc6877e27c"
+        }
+      ]
+    },
+    {
+      "module": "ex_attr_pierce",
+      "output": "modules/ex_attr_pierce.mjs",
+      "generatedHash": "2486800c0dd96a9963b38f70bf23ccab601cde3ab231d0290438475ab9046e4e",
+      "functions": [
+        "get_ex_pierce_proc_rate",
+        "get_attr_pierce_proc_rate",
+        "check_phy_pierce_proc",
+        "check_attr_pierce_proc",
+        "check_ex_rapid_def_exists",
+        "check_physical_def_attr",
+        "check_physical_nullify",
+        "check_ex_single_dmg_def_attr",
+        "check_ex_dmg_nullify",
+        "calculate_physical_dmg",
+        "calculate_ex_attack_dmg",
+        "strike_prepare",
+        "check_dmg_def_attr"
+      ],
+      "calls": [
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "attrbase\\get_ex_def_array",
+        "battle\\battlelog_parser",
+        "ex_attr_pierce\\check_attr_pierce_proc",
+        "ex_attr_pierce\\check_phy_pierce_proc",
+        "ex_attr_pierce\\get_attr_pierce_proc_rate",
+        "ex_attr_pierce\\get_ex_pierce_proc_rate",
+        "rand"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_attr_pierce/main.php",
+          "hash": "670755045ded6e93b3c6c0ba6c4ad528d8a4b24507140c548feff2a86537318d"
+        }
+      ]
+    },
+    {
+      "module": "ex_alternative",
+      "output": "modules/ex_alternative.mjs",
+      "generatedHash": "e2c255b5444d337555f6aa409cd59e4c9caa717523bf2f7b2e855d217a22f309",
+      "functions": [
+        "get_altlist",
+        "alt_change",
+        "itemuse",
+        "get_altwords",
+        "get_itmsk_desc_single_comp_process",
+        "check_comp_itmsk_visible",
+        "parse_itmsk_desc"
+      ],
+      "calls": [
+        "array_combine",
+        "array_randompick",
+        "attrbase\\base64_decode_comp_itmsk",
+        "attrbase\\base64_encode_comp_itmsk",
+        "count",
+        "ex_alternative\\alt_change",
+        "ex_alternative\\get_altlist",
+        "ex_alternative\\get_altwords",
+        "explode",
+        "implode",
+        "itemmain\\check_in_itmsk",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "itemmain\\replace_in_itmsk",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "range",
+        "strip_tags",
+        "strpos",
+        "substr",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_alternative/main.php",
+          "hash": "7b594b232280bb31fae93c2d09e6933340fe28a38c64f679d517cd9cb034fae2"
+        }
+      ]
+    },
+    {
+      "module": "ex_purity",
+      "output": "modules/ex_purity.mjs",
+      "generatedHash": "e52ea419c4d12050dba16c40a1804e4c486d005270e62e480ac2cc19bcb2fcc7",
+      "functions": [
+        "get_ex_attack_array",
+        "attack_prepare",
+        "check_phy_pierce_proc",
+        "check_attr_pierce_proc",
+        "check_ex_rapid_def_exists",
+        "check_physical_def_attr"
+      ],
+      "calls": [
+        "array_diff",
+        "attrbase\\check_in_itmsk",
+        "attrbase\\get_ex_attack_array",
+        "battle\\battlelog_parser"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/attr/ex_purity/main.php",
+          "hash": "4d64bb14f925e3ed16d9583a508994902aa870626bf9539a9a13de7933d3c38b"
+        }
+      ]
+    },
+    {
+      "module": "instance10",
+      "output": "modules/instance10.mjs",
+      "generatedHash": "305893a7ab99dfbc98ee51cbb4559ddbf6ebceb75350bea334e98c9b4795a7e6",
+      "functions": [
+        "parse_itmuse_desc",
+        "get_enter_battlefield_card",
+        "card_validate_get_forbidden_cards",
+        "card_validate_display",
+        "init_enter_battlefield_items",
+        "get_npclist",
+        "get_shopconfig",
+        "get_shop_tag_list",
+        "get_itemfilecont",
+        "get_startingitemfilecont",
+        "get_startingwepfilecont",
+        "get_trapfilecont",
+        "checkcombo",
+        "rs_game",
+        "rs_areatime",
+        "get_area_wavenum",
+        "check_addarea_gameover",
+        "map_display_check_pls_available",
+        "map_display_get_pls_color",
+        "check_in_shop_area",
+        "itemmix_success",
+        "use_skcore_success",
+        "itemuse",
+        "post_enterbattlefield_events",
+        "remove_task",
+        "act",
+        "check_can_enter",
+        "instance10_get_pa_pls_available",
+        "instance10_get_pa_pls_available_core",
+        "get_mixinfo",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "array_diff",
+        "array_merge",
+        "array_randompick",
+        "array_slice",
+        "in_array",
+        "instance10\\instance10_get_pa_pls_available",
+        "instance10\\instance10_get_pa_pls_available_core",
+        "item_uee_extra\\itemuse_uee_extra",
+        "item_uee_extra\\itemuse_uee_extra_reset",
+        "item_uee_extra\\uee_extra_get_hack_num",
+        "itemmain\\check_in_itmsk",
+        "max",
+        "ob_end_clean",
+        "ob_get_contents",
+        "ob_start",
+        "openfile",
+        "player\\player_save",
+        "rand",
+        "randnpc\\add_randnpc",
+        "round",
+        "save_gameinfo",
+        "skill960\\add_task",
+        "skill960\\get_rand_task",
+        "skill960\\remove_task",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_lost",
+        "skillbase\\skill_query",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "sys\\check_alivelist_teamwin",
+        "sys\\gameover",
+        "template"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/main.php",
+          "hash": "d9bbb535dea08c52081e42b071b0fdc11d5796d4b71a2fc0d7869b0bcd0676f8"
+        },
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/config/npc.data.config.php",
+          "hash": "9db65ef825f69b7fd8e0d75ca076ae888725c589c4eddfd9d813f3bd1a000675"
+        },
+        {
+          "source": "include/modules/extra/instance/instance10_rogue/config/shop.config.php",
+          "hash": "f536b01f8b372d065711681e6894797156ba3f3d2ee3065e01a5e217e7e0b978"
+        }
+      ]
+    },
+    {
+      "module": "bubblebox",
+      "output": "modules/bubblebox.mjs",
+      "generatedHash": "a334fa7cac4372a17d9db86e18f3c73569ca64719b13292142397137f9d95c13",
+      "functions": [
+        "bubblebox_delete_trailing_spaces",
+        "bubblebox_set_default",
+        "bubblebox_set_style",
+        "bubblebox_get_style"
+      ],
+      "calls": [
+        "bubblebox\\bubblebox_delete_trailing_spaces",
+        "bubblebox\\bubblebox_set_default",
+        "ctype_space",
+        "strlen",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/bubblebox/main.php",
+          "hash": "c750ce244078d5511165dd461f46cd20c05a0b9ae440c579e7911fe90fc6d623"
+        }
+      ]
+    },
+    {
+      "module": "gtype2",
+      "output": "modules/gtype2.mjs",
+      "generatedHash": "bfe02655457ff7d910e090e2ed3a0c58059f82362b4914048271f91b856a3cbe",
+      "functions": [
+        "prepare_new_game",
+        "check_player_discover",
+        "checkcombo",
+        "rs_game",
+        "itemuse",
+        "check_initnpcadd",
+        "get_shopconfig",
+        "post_enterbattlefield_events",
+        "check_addarea_gameover",
+        "parse_news"
+      ],
+      "calls": [
+        "addnews",
+        "cardbase\\get_card",
+        "cardbase\\get_qiegao",
+        "in_array",
+        "itemmain\\itms_reduce",
+        "map\\get_area_wavenum",
+        "openfile",
+        "player\\fetch_playerdata",
+        "player\\fetch_playerdata_by_pid",
+        "skillbase\\skill_acquire",
+        "skillbase\\skill_getvalue",
+        "skillbase\\skill_setvalue",
+        "strpos",
+        "sys\\gameover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/gtype2/main/main.php",
+          "hash": "0209c7bc5f71e4f671b2959b137b17730ce7c3d29def13eea8b37976bd9d43b7"
+        }
+      ]
+    },
+    {
+      "module": "gtype3",
+      "output": "modules/gtype3.mjs",
+      "generatedHash": "b0a30a784116d137cf6f8a9efc53048713da4fa462db938357b7a8a787345122",
+      "functions": [
+        "get_enter_battlefield_card",
+        "prepare_new_game",
+        "check_addarea_gameover"
+      ],
+      "calls": [
+        "map\\get_area_wavenum",
+        "sys\\gameover"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/gtype3/main/main.php",
+          "hash": "b78596f53b0dca4bb8aee978906fe86925953196d1a5b641aab44130ea2ce418"
+        }
+      ]
+    },
+    {
+      "module": "gtype5",
+      "output": "modules/gtype5.mjs",
+      "generatedHash": "f70ba50257a46e639140031980a8639a39cb5c151b7c496884ffc14b9121474c",
+      "functions": [
+        "get_npclist",
+        "get_enpcinfo",
+        "get_shopconfig",
+        "get_itemfilecont",
+        "get_trapfilecont",
+        "get_startingitemfilecont",
+        "get_startingwepfilecont"
+      ],
+      "calls": [
+        "openfile"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/instance/gtype5/main/main.php",
+          "hash": "0c94176926c5e8c7c32a8e2709e93702388ffe60b8cd6bae024314338ac2a207"
+        },
+        {
+          "source": "include/modules/extra/instance/gtype5/main/config/npc.data.config.php",
+          "hash": "d6d69274563f72aba4ee1129bc132d071527e06ea239640c0d51c2b0134fec4a"
+        },
+        {
+          "source": "include/modules/extra/instance/gtype5/main/config/evonpc.config.php",
+          "hash": "90f3b95264bcd8fe69feded57132cd4b734eb7a17464d80a087db8a907e46f06"
+        }
+      ]
+    },
+    {
+      "module": "glowbutton",
+      "output": "modules/glowbutton.mjs",
+      "generatedHash": "02c5ba8b8787c5c2f15fb7afa5dc73b2125947f4a08847d5716daa7fe3d7ab4e",
+      "functions": [
+        "glowbutton_delete_trailing_spaces",
+        "glowbutton_set_mousedown_event",
+        "glowbutton_set_default",
+        "glowbutton_set_style",
+        "glowbutton_get_style"
+      ],
+      "calls": [
+        "ctype_space",
+        "glowbutton\\glowbutton_delete_trailing_spaces",
+        "glowbutton\\glowbutton_set_default",
+        "strlen",
+        "substr"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/misc/glowbutton/main.php",
+          "hash": "a510e0eea8f91ecfe2f9294c30d7856151b022c5568c5058b04f2aa555139cf3"
+        }
+      ]
+    },
+    {
+      "module": "halloween2017",
+      "output": "modules/halloween2017.mjs",
+      "generatedHash": "aeeff964855cb8cc9466ca2624a05e497c8f3774a0db9f2600426c74789b4445",
+      "functions": [
+        "check_available_h2017",
+        "create_treat_h2017",
+        "calc_treat_num_h2017",
+        "get_attack_method",
+        "battle_prepare",
+        "battle_finish",
+        "get_def_multiplier",
+        "player_attack_enemy"
+      ],
+      "calls": [
+        "battle\\battlelog_parser",
+        "halloween2017\\calc_treat_num_h2017",
+        "halloween2017\\check_available_h2017",
+        "halloween2017\\create_treat_h2017",
+        "itemmain\\itemget",
+        "round",
+        "sqrt"
+      ],
+      "sources": [
+        {
+          "source": "include/modules/extra/activities/halloween2017/main/main.php",
+          "hash": "fe9521d288935e8600e7987dc199b69b8ba7fb55a3b90af4e9ae498955280eed"
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "parseErrors": []
+}

@@ -1,0 +1,37 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdir,mkdtemp,rm } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import inventory from '../native/inventory.json' with {type:'json'};
+import { definitions as skills, infoById } from '../native/generated/catalog.mjs';
+import { definitions as remaining } from '../native/generated/remaining/catalog.mjs';
+import { itemmixModule } from '../native/gameplay/base-extra/itemmix.mjs';
+import { nativeGameplayModules } from '../native/catalog.mjs';
+import { createNativeRequestHost } from '../native/http/request-host.mjs';
+import { prepareInputRequest } from '../native/gameplay/input.mjs';
+import { createRoomBroadcast } from '../native/system/room-poll.mjs';
+import { createMaintenanceGate } from '../native/http/maintenance.mjs';
+import { installNative } from '../native/install/installer.mjs';
+import { createCookiePass } from '../native/accounts/primitives.mjs';
+import { isolatedDatabase } from './helpers/native-database.mjs';
+
+const root=fileURLToPath(new URL('../',import.meta.url));
+test('full original module selection bootstraps against real native host and database',{timeout:120000},async t=>{
+  const db=await isolatedDatabase(t,'full_host');if(!db)return;
+  const parent=path.join(root,'var/tests');await mkdir(parent,{recursive:true});const stateRoot=await mkdtemp(path.join(parent,'native-full-host-'));
+  const broadcast=createRoomBroadcast(),maintenance=createMaintenanceGate(),hosts=[];
+  t.after(async()=>{for(const host of hosts)await host.close();broadcast.close();await maintenance.close();assert.ok(path.resolve(stateRoot).startsWith(path.resolve(parent)+path.sep));await rm(stateRoot,{recursive:true,force:true});});
+  await installNative({database:db.database,stateRoot,admin:{username:'全量测试',password:'FullFixtureOnly!'}});
+  const manual=new Set(nativeGameplayModules.map(module=>module.name));
+  const additionalModules=[...skills,...remaining,itemmixModule].filter(module=>!manual.has(module.name));
+  const request={pathname:'/login.php',input:prepareInputRequest({cookies:{bra_user:'全量测试',bra_pass:createCookiePass('FullFixtureOnly!')}}),server:{SERVER_PORT:'80'},pageStartTime:1700000000};
+  const options={configuration:inventory.modules.map(({name,enabled})=>({name,enabled})),additionalModules,infoById,databaseOptions:db.credentials,sourceRoot:path.join(root,'engine'),stateRoot,publicUrl:'http://127.0.0.1',request,broadcast,maintenance,clock:{now:()=>1700000000},randomSeed:77,systemConfig:{gtablepre:'bra_',gamefounder:'全量测试'}};
+  const host=await createNativeRequestHost(options);hosts.push(host);
+  for(const module of inventory.modules)assert.equal(host.session.hasModule(module.name),module.enabled,module.name);
+  assert.equal((await host.accounts.authenticate(host.scope)).username,'全量测试');
+  await host.session.call('sys','routine');
+  assert.match(await host.templates.render('login_page',host.scope),/<form/);
+  assert.ok(Object.keys(host.session.state('cardbase').cards).length>100);
+  t.diagnostic(`Initialized all ${inventory.totals.enabledModules} enabled modules; next acceptance stages cover complete gameplay requests.`);
+});

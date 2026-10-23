@@ -1,0 +1,82 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {isolatedDatabase} from './helpers/native-database.mjs';
+import {installNative} from '../native/install/installer.mjs';
+import {createDatabase} from '../native/storage/database.mjs';
+import {createLockServices} from '../native/storage/locks.mjs';
+import {createPlayerAssets} from '../native/storage/player-assets.mjs';
+import {createAccountService} from '../native/accounts/service.mjs';
+import {createAccountAdminService} from '../native/accounts/admin.mjs';
+import {createUserService} from '../native/accounts/users.mjs';
+import {createVerificationService} from '../native/accounts/verification.mjs';
+import {createMessageService} from '../native/system/messages.mjs';
+import {createNativeHttpServer} from '../native/http/server.mjs';
+import {dispatchAccountPage} from '../native/http/account-pages.mjs';
+import {createBubbleboxFunctions} from '../native/http/bubbles.mjs';
+import {createTemplateServices,createOutput} from '../native/templates/index.mjs';
+import {ModuleRegistry} from '../native/modules/registry.mjs';
+import {playerModule} from '../native/gameplay/player.mjs';
+import {sysDefaultState} from '../native/gameplay/sys.mjs';
+import {gdecode} from '../native/protocol/codec.mjs';
+import {createGameAdminService} from '../native/accounts/game-admin.mjs';
+import {createAdminConfigurationService} from '../native/accounts/configuration.mjs';
+import {mapModule} from '../native/gameplay/map.mjs';
+import {skillbaseModule,createSkillCatalog} from '../native/gameplay/skills.mjs';
+import weatherConfig from '../native/gameplay/base-extra/weather-config.json' with {type:'json'};
+import {createFileServices} from '../native/storage/files.mjs';
+
+test('real native HTTP account pages render original templates, cookies, registration, messages and protected backup download',async t=>{
+ const fixture=await isolatedDatabase(t,'http_accounts');if(!fixture)return;const {database,credentials,root}=fixture;
+ const base=path.join(root,'var/tests');await fs.mkdir(base,{recursive:true});const stateRoot=await fs.mkdtemp(path.join(base,'native-http-accounts-'));
+ t.after(async()=>{assert.ok(path.resolve(stateRoot).startsWith(path.resolve(base)+path.sep));await fs.rm(stateRoot,{recursive:true,force:true});});
+ await installNative({database,stateRoot,admin:{username:'管理员',password:'test-admin-password'},starttime:1729612800});
+ const now=1729612800,verification=await createVerificationService({gameUrl:'https://fixture.test/',clock:()=>now}),assets=await createPlayerAssets(path.join(root,'engine/img'));
+ const errors=[];let server;
+ server=createNativeHttpServer({sourceRoot:path.join(root,'engine'),stateRoot,publicUrl:'http://127.0.0.1',modern:false,onError:error=>errors.push(error),dispatch:async request=>{
+   const connection=await createDatabase(credentials),locks=await createLockServices(stateRoot),script=request.pathname.slice(1,-4);
+   const users=createUserService({database:connection,locks:locks.locks,script});
+   try{
+    const sys=sysDefaultState({gtablepre:'bra_',tablepre:'bra_',now,gamefounder:'管理员',charset:'utf-8',gtitle:'Native account fixture',arealist:[],areanum:0,areatime:0});
+    const definitions=[{name:'sys',state:()=>sys},mapModule,{name:'weather',state:weatherConfig.values},{name:'input'},playerModule,skillbaseModule];
+    const session=await new ModuleRegistry(definitions).createSession({services:{database:connection,playerAssets:assets,skills:createSkillCatalog(definitions)}});
+    const scope={...session.state('sys'),...session.state('player'),...request.input.values,now,cuser:request.input.cookies.bra_user,cpass:request.input.cookies.bra_pass,script};scope.GLOBALS={_ERROR:scope._ERROR};
+    const output=createOutput();let templates;const functions=createBubbleboxFunctions({templates:()=>templates,output});
+    templates=createTemplateServices({session,enabledModules:['player'],constants:{CURSCRIPT:script},functions,output,globals:scope});
+    const cards={getCardList:user=>Object.values(gdecode(user.card_data)).map(row=>row.cardid)};
+    const accounts=createAccountService({users,verification,cards,config:{founder:'管理员'},clock:()=>now});
+    const messages=createMessageService({database:connection,users,accounts,cards,templates,clock:()=>now});
+    const admin=createAccountAdminService({database:connection,users,accounts,stateRoot,founder:'管理员',clock:()=>now,maintenance:server.maintenance,achievements:{decode:user=>gdecode(user.u_achievements)}});
+    const configuration=createAdminConfigurationService({stateRoot,accounts,admin,clock:()=>now});
+    const gameAdmin=createGameAdminService({accounts,admin,session,database:connection,maintenance:server.maintenance,configuration,files:await createFileServices({stateRoot,sourceRoot:path.join(root,'engine'),locks:locks.locks})});
+    return await dispatchAccountPage({accounts,messages,admin,gameAdmin,templates},request,scope);
+   }finally{await users.close();await locks.close();await connection.close();}
+ }});
+ const address=await server.listen();t.after(()=>server.close());const url=`http://127.0.0.1:${address.port}`;
+ const post=(route,data,cookie='')=>fetch(url+route,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded',Cookie:cookie},body:new URLSearchParams(data),redirect:'manual'});
+ let response=await fetch(url+'/login.php');assert.equal(response.status,200);assert.match(await response.text(),/name="login" action="login.php"/);
+ response=await fetch(url+'/register.php');assert.equal(response.status,200);const registerHtml=await response.text();assert.match(registerHtml,/id="register_token"/);assert.match(registerHtml,/pc_icon_selecting/);assert.match(registerHtml,/img\/f_0.gif/);
+ const token=registerHtml.match(/name="register_token" value="([^"]+)"/)[1],answer=verification.question(token,now).correct_i;
+ response=await post('/register.php',{cmd:'post_register',username:'HTTP玩家',npass:'player-password',rnpass:'player-password',register_token:token,vq_answer:String(answer),gender:'m',icon:'1',motto:'hello',killmsg:'bye',lastword:'next'});
+ const registered=gdecode(await response.text());assert.match(registered.innerHTML.info,/成功/);assert.equal(response.headers.getSetCookie().length,2);assert.ok(response.headers.getSetCookie().some(value=>value.startsWith('bra_pass=')&&value.endsWith('HttpOnly')));
+ let playerCookie=response.headers.getSetCookie().map(value=>value.split(';')[0]).join('; ');
+ response=await post('/login.php',{username:'HTTP玩家',password:'wrong'});assert.equal(response.status,200);assert.match(await response.text(),/ERROR_2.png/);
+ response=await post('/login.php',{username:'HTTP玩家',password:'player-password'});assert.equal(response.status,302);assert.equal(response.headers.get('location'),'index.php');assert.equal(response.headers.getSetCookie().length,3);playerCookie=response.headers.getSetCookie().map(value=>value.split(';')[0]).join('; ');
+ await database.execute("INSERT INTO bra_messages (receiver,sender,title,content,enclosure,timestamp) VALUES ('HTTP玩家','sys','HTTP奖励','reward','getqiegao_15',1729612800)");
+ response=await fetch(url+'/messages.php',{headers:{Cookie:playerCookie}});assert.equal(response.status,200);assert.match(await response.text(),/HTTP奖励/);
+ response=await post('/messages.php',{mode:'check',sl1:'1'},playerCookie);const claimed=gdecode(await response.text());assert.match(claimed.innerHTML.info,/15切糕/);assert.match(claimed.innerHTML.messages,/附件已收/);
+ assert.equal((await database.query("SELECT gold FROM bra_users WHERE username='HTTP玩家'"))[0].gold,'115');
+ response=await post('/admin.php',{mode:'urlist',pagecmd:'download'},playerCookie);assert.equal(response.status,200);assert.match(await response.text(),/ERROR_2.png/);assert.equal(response.headers.get('content-disposition'),null);
+ response=await post('/login.php',{username:'管理员',password:'test-admin-password'});const adminCookie=response.headers.getSetCookie().map(value=>value.split(';')[0]).join('; ');
+ response=await fetch(url+'/admin.php',{headers:{Cookie:adminCookie}});assert.equal(response.status,200);assert.match(await response.text(),/管理员|管理/);
+ for(const mode of ['configmng','globalgamemng','gamecfgmng','banlistmng','gmlist','urlist','pcmng','npcmng','gameinfomng','antiAFKmng','roomclose','adminlogcheck','dbmng']){
+  response=await post('/admin.php',{mode},adminCookie);assert.equal(response.status,200,mode+': '+errors.map(error=>error.message).join('; '));assert.doesNotMatch(await response.text(),/ERROR_2.png|Internal Server Error/,mode);
+ }
+ response=await post('/admin.php',{mode:'configmng',command:'edit',gtitle:'HTTP管理标题'},adminCookie);assert.equal(response.status,200);assert.match(await response.text(),/服务参数已修改/);
+ response=await post('/admin.php',{mode:'configmng'},adminCookie);assert.match(await response.text(),/HTTP管理标题/);
+ response=await post('/admin.php',{mode:'urlist',pagecmd:'recover',recover_file:'../escape.php'},adminCookie);assert.equal(response.status,200);assert.match(await response.text(),/恢复参数错误/);
+ response=await post('/admin.php',{mode:'urlist',pagecmd:'download'},adminCookie);assert.equal(response.status,200);assert.equal(response.headers.get('content-type'),'application/octet-stream');assert.match(response.headers.get('content-disposition'),/^attachment; filename=userdb_/);assert.match(await response.text(),/"username":"HTTP玩家"/);
+ response=await post('/login.php',{mode:'quit'},playerCookie);assert.equal(response.status,302);assert.ok(response.headers.getSetCookie().every(value=>value.includes('=deleted;')&&value.includes('Max-Age=0')));
+ assert.deepEqual(errors.map(error=>error.message),[]);
+});

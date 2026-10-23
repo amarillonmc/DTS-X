@@ -1,0 +1,14 @@
+{
+  "source": "engine/include/modules/base/armor_art/config/armor_art.config.php",
+  "sha256": "c795fe442774a577c968774a2e1b5364b8bb62cd15194193cd2c64c025d23ed1",
+  "values": {
+    "armor_art_equip_list": [
+      "art"
+    ],
+    "armor_art_iteminfo": {
+      "A": "饰物",
+      "Ag": "同志饰物",
+      "Al": "热恋饰物"
+    }
+  }
+}

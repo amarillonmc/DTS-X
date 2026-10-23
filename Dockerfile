@@ -5,7 +5,7 @@ RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund \
     && node -e "require('fs-ext-extra-prebuilt')" \
     && npm cache clean --force
 COPY engine ./engine
-COPY runtime ./runtime
+COPY native ./native
 COPY scripts ./scripts
 COPY public ./public
 COPY upstream ./upstream

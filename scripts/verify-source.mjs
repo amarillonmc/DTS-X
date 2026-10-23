@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { projectRoot } from '../runtime/config.mjs';
+import { projectRoot } from '../native/config.mjs';
 const manifest = JSON.parse(await fs.readFile(path.join(projectRoot, 'upstream/manifest.json'), 'utf8'));
 const changes = [];
 for (const file of manifest.files) {

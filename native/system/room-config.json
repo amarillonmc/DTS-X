@@ -1,0 +1,519 @@
+{
+  "source": "engine/include/roommng/roommng.config.php",
+  "sha256": "6847e291ee5658d3d191993e2896d7ba9efae0300b26dbf42fee05c58710039a",
+  "values": {
+    "max_room_num": 10,
+    "max_private_room_num": 3,
+    "room_poll_port_low": 25000,
+    "room_poll_port_high": 35000,
+    "soleroom_resettime": 3600,
+    "soleroom_private_resettime": 1800,
+    "roomtypelist": {
+      "0": {
+        "name": "SOLO模式",
+        "gtype": 10,
+        "available": true,
+        "soleroom": false,
+        "without-ready": false,
+        "without-valid": false,
+        "cannot-forbid": true,
+        "min-team": 2,
+        "pnum": 2,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0,
+          1
+        ],
+        "color": [
+          "ff0022",
+          "5900ff"
+        ],
+        "teamID": [
+          "红队",
+          "蓝队"
+        ],
+        "show-team-leader": 0,
+        "game-option": {
+          "opening-gamestate": {
+            "title": "入场后游戏状况",
+            "type": "radio",
+            "options": [
+              {
+                "value": "40",
+                "name": "进入连斗",
+                "title": "入场后连斗，容易遭遇角色，不容易摸道具",
+                "default": true
+              },
+              {
+                "value": "30",
+                "name": "停止激活",
+                "title": "入场后只停止激活，发现率正常，死亡180人或者2禁后进入连斗"
+              }
+            ]
+          },
+          "card-select": {
+            "title": "卡片设置",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "name": "自选卡片",
+                "title": "参与者在“账号资料”里自选卡片再入场",
+                "default": true
+              },
+              {
+                "value": "1",
+                "name": "仅挑战者",
+                "title": "参与者强制使用挑战者入场"
+              },
+              {
+                "value": "2",
+                "name": "与房主相同",
+                "title": "其他参与者使用与房主相同的卡入场"
+              }
+            ]
+          }
+        }
+      },
+      "4": {
+        "name": "组队模式",
+        "gtype": 14,
+        "available": true,
+        "soleroom": false,
+        "without-ready": false,
+        "without-valid": false,
+        "min-team": 2,
+        "pnum": 25,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          5,
+          5,
+          5,
+          5,
+          10,
+          10,
+          10,
+          10,
+          10,
+          15,
+          15,
+          15,
+          15,
+          15,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "color": {
+          "0": "ff0022",
+          "5": "5900ff",
+          "10": "8cff00",
+          "15": "ffc700",
+          "20": "fefefe"
+        },
+        "teamID": {
+          "0": "红队",
+          "5": "蓝队",
+          "10": "绿队",
+          "15": "黄队",
+          "20": "白队"
+        },
+        "show-team-leader": 1,
+        "game-option": {
+          "group-num": {
+            "title": "队伍数目",
+            "type": "radio",
+            "options": [
+              {
+                "value": "2",
+                "name": "二队",
+                "title": "两支队伍互相对抗",
+                "default": true
+              },
+              {
+                "value": "3",
+                "name": "三队",
+                "title": "三支队伍互相对抗"
+              },
+              {
+                "value": "4",
+                "name": "四队",
+                "title": "四支队伍互相对抗"
+              },
+              {
+                "value": "5",
+                "name": "五队",
+                "title": "五支队伍互相对抗"
+              }
+            ]
+          },
+          "opening-gamestate": {
+            "title": "入场后游戏状况",
+            "type": "radio",
+            "options": [
+              {
+                "value": "40",
+                "name": "进入连斗",
+                "title": "入场后连斗，容易遭遇角色，不容易摸道具",
+                "default": true
+              },
+              {
+                "value": "30",
+                "name": "停止激活",
+                "title": "入场后只停止激活，发现率正常，死亡180人或者2禁后进入连斗"
+              }
+            ]
+          },
+          "card-select": {
+            "title": "卡片设置",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "name": "自选卡片",
+                "title": "参与者在“账号资料”里自选卡片再入场",
+                "default": true
+              },
+              {
+                "value": "1",
+                "name": "仅挑战者",
+                "title": "参与者强制使用挑战者入场"
+              },
+              {
+                "value": "2",
+                "name": "与房主相同",
+                "title": "其他参与者使用与房主相同的卡入场"
+              },
+              {
+                "value": "3",
+                "name": "与队长相同",
+                "title": "队员使用与队长相同的卡入场"
+              }
+            ]
+          }
+        }
+      },
+      "5": {
+        "name": "<font class=\"yellow b\">伐木挑战</font>",
+        "gtype": 15,
+        "available": true,
+        "soleroom": false,
+        "without-ready": false,
+        "without-valid": true,
+        "pnum": 1,
+        "ready-expire-time": 60,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          ""
+        ],
+        "show-team-leader": 0,
+        "card": [
+          "0"
+        ],
+        "game-option": {
+          "area-mode": {
+            "title": "1禁时间设置",
+            "type": "radio",
+            "options": [
+              {
+                "value": "normal",
+                "name": "经典模式",
+                "title": "限制时间为3禁，1禁时间与开始时间有关，可能为30-40分钟不等。可练习游戏基本操作，也可以挑战伐木成就。",
+                "default": true
+              },
+              {
+                "value": "extreme",
+                "name": "极限模式",
+                "title": "限制时间为1禁，1禁时间严格为40分钟。为熟练玩家提供最充裕的时间来挑战伐木成就。"
+              }
+            ]
+          },
+          "keep_corpse_in_searchmemory": {
+            "title": "尸体拾取设置",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "name": "拾取后留在视野中",
+                "title": "拾取尸体物品后，尸体依然保留在视野中，但有一定的冷却时间。",
+                "default": true
+              },
+              {
+                "value": "0",
+                "name": "拾取后需重新探索发现",
+                "title": "拾取尸体物品后需要再次探索才能找到尸体，与正常模式相同。"
+              }
+            ]
+          }
+        }
+      },
+      "6": {
+        "name": "<font class=\"green b\">PVE解离模式</font>",
+        "gtype": 16,
+        "available": true,
+        "soleroom": false,
+        "without-ready": false,
+        "without-valid": true,
+        "pnum": 3,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0,
+          0,
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "挑战者"
+        ],
+        "show-team-leader": 1,
+        "card": [
+          "90",
+          "91",
+          "92"
+        ],
+        "game-option": {
+          "keep_corpse_in_searchmemory": {
+            "title": "尸体拾取设置",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "name": "拾取后留在视野中",
+                "title": "拾取尸体物品后，尸体依然保留在视野中，但有一定的冷却时间。",
+                "default": true
+              },
+              {
+                "value": "0",
+                "name": "拾取后需重新探索发现",
+                "title": "拾取尸体物品后需要再次探索才能找到尸体，与正常模式相同。"
+              }
+            ]
+          }
+        }
+      },
+      "7": {
+        "name": "<font class=\"red b\">教程模式</font>",
+        "gtype": 17,
+        "available": true,
+        "soleroom": true,
+        "without-ready": true,
+        "without-valid": true,
+        "reset_player_after_leave": true,
+        "pnum": 1,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "小白鼠"
+        ],
+        "show-team-leader": 0,
+        "card": [
+          "0"
+        ]
+      },
+      "8": {
+        "name": "<font class=\"cyan b\">荣耀模式</font>",
+        "gtype": 18,
+        "available": true,
+        "available-start": 1506816000,
+        "available-end": 0,
+        "soleroom": false,
+        "without-ready": true,
+        "without-valid": false,
+        "req-mod": "instance8",
+        "pnum": 1,
+        "globalnum": 5,
+        "privatenum": 2,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "试炼者"
+        ],
+        "show-team-leader": 0
+      },
+      "9": {
+        "name": "<font class=\"red b\">极速模式</font>",
+        "gtype": 19,
+        "available": true,
+        "available-start": 1509408000,
+        "available-end": 0,
+        "soleroom": false,
+        "without-ready": true,
+        "without-valid": false,
+        "req-mod": "instance9",
+        "pnum": 1,
+        "globalnum": 5,
+        "privatenum": 2,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "试炼者"
+        ],
+        "show-team-leader": 0
+      },
+      "10": {
+        "name": "<font class=\"yellow b\">幻界叫唤</font>",
+        "gtype": 5,
+        "available": false,
+        "available-start": 1506816000,
+        "available-end": 0,
+        "soleroom": false,
+        "without-ready": true,
+        "without-valid": false,
+        "req-mod": "gtype5",
+        "pnum": 1,
+        "globalnum": 1,
+        "privatenum": 1,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "试炼者"
+        ],
+        "show-team-leader": 0
+      },
+      "11": {
+        "name": "<font class=\"vermilion b\">试炼模式</font>",
+        "gtype": 13,
+        "available": true,
+        "soleroom": false,
+        "without-ready": false,
+        "without-valid": true,
+        "req-mod": "instance3",
+        "pnum": 1,
+        "ready-expire-time": 180,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          ""
+        ],
+        "show-team-leader": 0,
+        "game-option": {
+          "lvl": {
+            "title": "进阶等级",
+            "type": "number",
+            "min": "0",
+            "max": "30",
+            "no-notice-when-modified": 1,
+            "tip-function": "get_instance3_debuff_tips",
+            "tip-box-height": "80px",
+            "tip-need-ok": 1
+          }
+        }
+      },
+      "12": {
+        "name": "<font class=\"gold b\">肉鸽模式</font>",
+        "gtype": 20,
+        "available": true,
+        "available-start": 4200000000,
+        "soleroom": false,
+        "without-ready": true,
+        "without-valid": false,
+        "req-mod": "instance10",
+        "pnum": 1,
+        "globalnum": 5,
+        "privatenum": 2,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          ""
+        ],
+        "show-team-leader": 0
+      },
+      "13": {
+        "name": "<font class=\"ltazure b\">蹲站模式</font>",
+        "gtype": 21,
+        "available": true,
+        "soleroom": true,
+        "without-ready": true,
+        "without-valid": false,
+        "reset_player_after_leave": true,
+        "req-mod": "instance11",
+        "pnum": 1,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "吃瓜群众"
+        ],
+        "show-team-leader": 0,
+        "card": [
+          "0"
+        ]
+      },
+      "14": {
+        "name": "<font class=\"seagreen b\">梦境演练</font>",
+        "gtype": 22,
+        "available": true,
+        "soleroom": false,
+        "without-ready": false,
+        "without-valid": false,
+        "req-mod": "instance12",
+        "pnum": 1,
+        "globalnum": 0,
+        "privatenum": 1,
+        "leader-position": [
+          0
+        ],
+        "color": [
+          "ff0022"
+        ],
+        "teamID": [
+          "试炼者"
+        ],
+        "show-team-leader": 0
+      }
+    }
+  }
+}

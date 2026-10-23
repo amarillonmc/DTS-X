@@ -1,0 +1,71 @@
+{
+  "outputs": [
+    {
+      "source": "include/itemplace.func.php",
+      "output": "resource0.mjs",
+      "sourceHash": "0a90b330c6ca43a7777057ce75ad69177af79c1bd6d62c44b6ce3b9d8b845747",
+      "generatedHash": "9c2466d5cd55260fce53b0074d05c0a4808e767bcbc205a9c44bb0927f885b83",
+      "calls": [
+        "array_diff",
+        "array_merge",
+        "defined",
+        "explode",
+        "implode",
+        "in_array",
+        "itemmain\\mapitem_row_data_seperate",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "itemshop\\shopitem_row_data_seperate",
+        "openfile",
+        "preg_replace",
+        "sizeof",
+        "strpos",
+        "trim",
+        "wepchange\\get_weaponswap_obj"
+      ]
+    },
+    {
+      "source": "include/modules/base/itemmix/itemmix/config/itemmix.config.php",
+      "output": "resource1.mjs",
+      "sourceHash": "c0814d412dba564404b56fad601da30bcd755a89bffa3af442b1a4f57a6ad2f5",
+      "generatedHash": "78443ffe724893281fc3ee3082c9f55ea2c9d790ca35e21cff005649e4142ec3",
+      "calls": []
+    },
+    {
+      "source": "include/modules/base/npc/config/npc.data.config.php",
+      "output": "resource2.mjs",
+      "sourceHash": "2dd04eefd4d5c5585d9044b6cb5588508f01dee45b11044cc7480998a4c9486b",
+      "generatedHash": "a836a682ef030dcb16285b2c69b530db4dafb576ae24c1ccaeff644ef55bb4ac",
+      "calls": []
+    },
+    {
+      "source": "include/modules/base/addnpc/config/addnpc.config.php",
+      "output": "resource3.mjs",
+      "sourceHash": "29cf4145e4d25fdeb9fb6637475832fd1f4ac5555799185fe120cf9f2f67da15",
+      "generatedHash": "a7d83b667f7edebd84ab360e3b8eef423b66a54d976e3805b35a1d6d036c9cf6",
+      "calls": []
+    },
+    {
+      "source": "include/modules/extra/club/skills/skill21/config/evonpc.config.php",
+      "output": "resource4.mjs",
+      "sourceHash": "372866ea2956cbdf8b4937058a535c54c71201cd3dc0e9eba465ac7e33d2bcd7",
+      "generatedHash": "e75089b67086221cd85a1dfb392a7e9a607693be3bcd62896e7cfce390c01302",
+      "calls": []
+    },
+    {
+      "source": "include/modules/extra/instance/instance8_proud/config/npc.data.config.php",
+      "output": "resource5.mjs",
+      "sourceHash": "d0d004c6ad5079051d09b5b0a8441586fc9d039102281f0f3a58511a541fc995",
+      "generatedHash": "74b70ffffa98a2005ad6aa6bdcdc1bf9998b73f7b4e0bce563109e73a75befc7",
+      "calls": []
+    },
+    {
+      "source": "include/modules/extra/instance/instance9_rush/config/npc.data.config.php",
+      "output": "resource6.mjs",
+      "sourceHash": "d2c8487a953bac57991fc18d9df5cad06f66783df533ca0b391d3f5ea4ab8382",
+      "generatedHash": "41aad6ac8c5f8e9db201eca3f212a70b0ed1915c67c6579864056e022f87efaf",
+      "calls": []
+    }
+  ],
+  "failures": []
+}

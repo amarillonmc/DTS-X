@@ -1,6 +1,8 @@
 <?php
 // Real upstream archive/read functions, original SQL schema and mysqli driver.
 // All files and the randomly named database belong to this isolated test only.
+// Connection failures must not print mysqli password arguments in stack traces.
+ini_set('zend.exception_ignore_args', '1');
 define('IN_GAME', true);
 define('IN_MODULEMNG', true);
 define('DTS_NODE_RUNTIME', true);

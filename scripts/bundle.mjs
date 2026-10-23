@@ -1,14 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { projectRoot } from '../runtime/config.mjs';
+import { projectRoot } from '../native/config.mjs';
 
 // Use an explicit source allowlist: never package .env, a running game, database
 // files, node_modules, browser profiles or the neighbouring source repositories.
 const sources = [
-  'README.md', 'AGENTS.md', '.env.example', '.gitignore', '.dockerignore',
+  'README.md', 'AGENTS.md', '.env.example', '.gitignore', '.gitattributes', '.dockerignore',
   'Dockerfile', 'compose.yaml', 'package.json', 'package-lock.json', 'server.mjs',
-  'engine', 'runtime', 'public', 'scripts', 'tests', 'upstream', 'doc', 'docs',
+  'engine', 'native', 'runtime', 'public', 'scripts', 'tests', 'upstream', 'doc', 'docs',
 ];
 const excluded = [
   'public/modern/test-output', 'public/modern/test-tools', 'runtime/probe',

@@ -1,0 +1,21 @@
+{
+  "source": "engine/include/modules/base/armor/config/armor.config.php",
+  "sha256": "0e09e70d2dc623952819b06a6ce0bd8dbee3bed70e7e004ac872cbe35ca91e4d",
+  "values": {
+    "nosta": "∞",
+    "noarb": "内衣",
+    "armor_equip_list": [
+      "arb",
+      "arh",
+      "ara",
+      "arf"
+    ],
+    "armor_iteminfo": {
+      "DN": "内衣",
+      "DB": "身体装备",
+      "DH": "头部装备",
+      "DA": "手臂装备",
+      "DF": "腿部装备"
+    }
+  }
+}

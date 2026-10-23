@@ -1,0 +1,5114 @@
+{
+  "sourceCommit": "ba8f607a57d5352327113f41b32676d16fe7c3ba",
+  "modules": [
+    {
+      "name": "input",
+      "path": "core/input/",
+      "templates": []
+    },
+    {
+      "name": "sys",
+      "path": "core/sys/",
+      "templates": []
+    },
+    {
+      "name": "map",
+      "path": "core/map/",
+      "templates": [
+        "include/modules/core/map/profile_areainfo.htm"
+      ]
+    },
+    {
+      "name": "bmp_util",
+      "path": "extra/misc/bmp_util/",
+      "templates": []
+    },
+    {
+      "name": "gameflow_base",
+      "path": "core/gameflow/gameflow_base/",
+      "templates": []
+    },
+    {
+      "name": "player",
+      "path": "core/player/",
+      "templates": []
+    },
+    {
+      "name": "gameflow_antiafk",
+      "path": "core/gameflow/gameflow_antiafk/",
+      "templates": []
+    },
+    {
+      "name": "logger",
+      "path": "base/logger/",
+      "templates": []
+    },
+    {
+      "name": "skillbase",
+      "path": "base/skillbase/",
+      "templates": []
+    },
+    {
+      "name": "replay",
+      "path": "extra/misc/replay/",
+      "templates": [
+        "include/modules/extra/misc/replay/gnum_no_replay.htm",
+        "include/modules/extra/misc/replay/gnum_data.htm"
+      ]
+    },
+    {
+      "name": "map_display",
+      "path": "base/map_display/",
+      "templates": []
+    },
+    {
+      "name": "explore",
+      "path": "base/explore/",
+      "templates": [
+        "include/modules/base/explore/explore.htm"
+      ]
+    },
+    {
+      "name": "noise",
+      "path": "base/noise/",
+      "templates": []
+    },
+    {
+      "name": "lvlctl",
+      "path": "base/lvlctl/",
+      "templates": []
+    },
+    {
+      "name": "bufficons",
+      "path": "extra/misc/bufficons/",
+      "templates": [
+        "include/modules/extra/misc/bufficons/icon_style_1.htm",
+        "include/modules/extra/misc/bufficons/icon_style_2.htm",
+        "include/modules/extra/misc/bufficons/icon_style_3.htm",
+        "include/modules/extra/misc/bufficons/profile.htm",
+        "include/modules/extra/misc/bufficons/corner_text.htm"
+      ]
+    },
+    {
+      "name": "skill4",
+      "path": "base/skills/skill4/",
+      "templates": []
+    },
+    {
+      "name": "npc",
+      "path": "base/npc/",
+      "templates": []
+    },
+    {
+      "name": "itemmain",
+      "path": "base/itemmain/",
+      "templates": [
+        "include/modules/base/itemmain/itemmerge.htm",
+        "include/modules/base/itemmain/itemmove.htm",
+        "include/modules/base/itemmain/itemdrop.htm",
+        "include/modules/base/itemmain/itemmerge0.htm",
+        "include/modules/base/itemmain/itemdrop0.htm",
+        "include/modules/base/itemmain/itemfind.htm",
+        "include/modules/base/itemmain/itmcommand.htm",
+        "include/modules/base/itemmain/itmcommand_subpage.htm",
+        "include/modules/base/itemmain/profile_equipments.htm",
+        "include/modules/base/itemmain/profile_equipments_short.htm",
+        "include/modules/base/itemmain/profile_backpack.htm",
+        "include/modules/base/itemmain/profile_backpack_short.htm"
+      ]
+    },
+    {
+      "name": "elorating",
+      "path": "extra/misc/elorating/",
+      "templates": [
+        "include/modules/extra/misc/elorating/elorating.htm"
+      ]
+    },
+    {
+      "name": "metman",
+      "path": "base/metman/",
+      "templates": [
+        "include/modules/base/metman/meetman.htm",
+        "include/modules/base/metman/meetman_cmd.htm",
+        "include/modules/base/metman/ui_main.htm",
+        "include/modules/base/metman/my_profile.htm",
+        "include/modules/base/metman/enemy_profile.htm"
+      ]
+    },
+    {
+      "name": "itemmix",
+      "path": "base/itemmix/itemmix/",
+      "templates": [
+        "include/modules/base/itemmix/itemmix/itemmix.htm",
+        "include/modules/base/itemmix/itemmix/itemmix_cmd.htm",
+        "include/modules/base/itemmix/itemmix/itemmix_options.htm",
+        "include/modules/base/itemmix/itemmix/itemmix_option_start.htm",
+        "include/modules/base/itemmix/itemmix/itemmix_option_end.htm"
+      ]
+    },
+    {
+      "name": "itemshop",
+      "path": "base/itemshop/",
+      "templates": [
+        "include/modules/base/itemshop/sp_shop.htm",
+        "include/modules/base/itemshop/shop.htm",
+        "include/modules/base/itemshop/itemshop_cmd.htm"
+      ]
+    },
+    {
+      "name": "edible",
+      "path": "base/items/edible/",
+      "templates": []
+    },
+    {
+      "name": "boxes",
+      "path": "base/items/boxes/",
+      "templates": []
+    },
+    {
+      "name": "scpdrink",
+      "path": "base/items/scpdrink/",
+      "templates": []
+    },
+    {
+      "name": "item_ub",
+      "path": "base/items/item_ub/",
+      "templates": []
+    },
+    {
+      "name": "item_uee",
+      "path": "base/items/item_uee/",
+      "templates": []
+    },
+    {
+      "name": "apm",
+      "path": "base/apm/",
+      "templates": [
+        "include/modules/base/apm/profile.htm"
+      ]
+    },
+    {
+      "name": "item_addarea",
+      "path": "extra/item_extra/item_addarea/",
+      "templates": []
+    },
+    {
+      "name": "radar",
+      "path": "base/items/radar/",
+      "templates": [
+        "include/modules/base/items/radar/radar.htm",
+        "include/modules/base/items/radar/radarcmd.htm"
+      ]
+    },
+    {
+      "name": "randnpc",
+      "path": "extra/instance/instance10_rogue/randnpc/",
+      "templates": []
+    },
+    {
+      "name": "npc_pick_item",
+      "path": "extra/misc/npc_pick_item/",
+      "templates": []
+    },
+    {
+      "name": "corpse",
+      "path": "base/corpse/",
+      "templates": [
+        "include/modules/base/corpse/corpse.htm"
+      ]
+    },
+    {
+      "name": "trap",
+      "path": "base/items/trap/",
+      "templates": []
+    },
+    {
+      "name": "itemmix_sync",
+      "path": "base/itemmix/itemmix_sync/",
+      "templates": []
+    },
+    {
+      "name": "item_uee_extra",
+      "path": "extra/item_extra/item_uee_extra/",
+      "templates": [
+        "include/modules/extra/item_extra/item_uee_extra/use_uee_cmd.htm",
+        "include/modules/extra/item_extra/item_uee_extra/use_uee_extra.htm"
+      ]
+    },
+    {
+      "name": "enemy",
+      "path": "base/enemy/",
+      "templates": [
+        "include/modules/base/enemy/battlecmd.htm"
+      ]
+    },
+    {
+      "name": "gameflow_duel",
+      "path": "core/gameflow/gameflow_duel/",
+      "templates": []
+    },
+    {
+      "name": "itemmix_overlay",
+      "path": "base/itemmix/itemmix_overlay/",
+      "templates": []
+    },
+    {
+      "name": "team",
+      "path": "base/team/",
+      "templates": [
+        "include/modules/base/team/findteam.htm",
+        "include/modules/base/team/team.htm",
+        "include/modules/base/team/team_command.htm"
+      ]
+    },
+    {
+      "name": "battle",
+      "path": "base/battle/",
+      "templates": [
+        "include/modules/base/battle/battleresult.htm"
+      ]
+    },
+    {
+      "name": "item_misc",
+      "path": "base/items/item_misc/",
+      "templates": []
+    },
+    {
+      "name": "gameflow_combo",
+      "path": "core/gameflow/gameflow_combo/",
+      "templates": []
+    },
+    {
+      "name": "advteam",
+      "path": "extra/misc/advteam/",
+      "templates": [
+        "include/modules/extra/misc/advteam/team.htm"
+      ]
+    },
+    {
+      "name": "attack",
+      "path": "base/attack/",
+      "templates": []
+    },
+    {
+      "name": "instance0",
+      "path": "extra/instance/instance0/",
+      "templates": []
+    },
+    {
+      "name": "weapon",
+      "path": "base/weapon/weapon/",
+      "templates": [
+        "include/modules/base/weapon/weapon/att_method.htm",
+        "include/modules/base/weapon/weapon/profile_wep.htm",
+        "include/modules/base/weapon/weapon/profile_wep_short.htm",
+        "include/modules/base/weapon/weapon/profile_wepskill.htm"
+      ]
+    },
+    {
+      "name": "npcchat",
+      "path": "base/npcchat/",
+      "templates": []
+    },
+    {
+      "name": "ex_vanish",
+      "path": "extra/attr/ex_vanish/",
+      "templates": []
+    },
+    {
+      "name": "clubbase",
+      "path": "extra/club/clubbase/",
+      "templates": [
+        "include/modules/extra/club/clubbase/club_profile.htm",
+        "include/modules/extra/club/clubbase/skilldesc_start.htm",
+        "include/modules/extra/club/clubbase/skilldesc_mid1.htm",
+        "include/modules/extra/club/clubbase/skilldesc_mid2.htm",
+        "include/modules/extra/club/clubbase/skilldesc_end.htm",
+        "include/modules/extra/club/clubbase/skillpage.htm",
+        "include/modules/extra/club/clubbase/profileskillpage.htm",
+        "include/modules/extra/club/clubbase/skillpage_profile.htm",
+        "include/modules/extra/club/clubbase/npcskillpage.htm",
+        "include/modules/extra/club/clubbase/npcskill_button.htm",
+        "include/modules/extra/club/clubbase/battlecmd_common.htm"
+      ]
+    },
+    {
+      "name": "wep_n",
+      "path": "base/weapon/wep_n/",
+      "templates": []
+    },
+    {
+      "name": "wep_p",
+      "path": "base/weapon/wep_p/",
+      "templates": []
+    },
+    {
+      "name": "wep_k",
+      "path": "base/weapon/wep_k/",
+      "templates": []
+    },
+    {
+      "name": "wep_c",
+      "path": "base/weapon/wep_c/",
+      "templates": []
+    },
+    {
+      "name": "wep_d",
+      "path": "base/weapon/wep_d/",
+      "templates": []
+    },
+    {
+      "name": "wep_f",
+      "path": "base/weapon/wep_f/",
+      "templates": []
+    },
+    {
+      "name": "item_um",
+      "path": "base/items/item_um/",
+      "templates": []
+    },
+    {
+      "name": "mapattr",
+      "path": "base/mapattr/",
+      "templates": []
+    },
+    {
+      "name": "wound",
+      "path": "base/wound/",
+      "templates": [
+        "include/modules/base/wound/wound_profile.htm",
+        "include/modules/base/wound/wound_profile_battle.htm",
+        "include/modules/base/wound/wound_picture.htm"
+      ]
+    },
+    {
+      "name": "skill2",
+      "path": "base/skills/skill2/",
+      "templates": []
+    },
+    {
+      "name": "skill3",
+      "path": "base/skills/skill3/",
+      "templates": []
+    },
+    {
+      "name": "item_uv",
+      "path": "base/items/item_uv/",
+      "templates": []
+    },
+    {
+      "name": "item_empowers_extra",
+      "path": "extra/item_extra/item_empowers_extra/",
+      "templates": [
+        "include/modules/extra/item_extra/item_empowers_extra/use_empowercore.htm"
+      ]
+    },
+    {
+      "name": "skill21",
+      "path": "extra/club/skills/skill21/",
+      "templates": [
+        "include/modules/extra/club/skills/skill21/desc.htm"
+      ]
+    },
+    {
+      "name": "skill533",
+      "path": "extra/card/skills/skill533/",
+      "templates": []
+    },
+    {
+      "name": "skill11",
+      "path": "extra/club/skills/skill11/",
+      "templates": [
+        "include/modules/extra/club/skills/skill11/desc.htm"
+      ]
+    },
+    {
+      "name": "skill10",
+      "path": "extra/club/skills/skill10/",
+      "templates": [
+        "include/modules/extra/club/skills/skill10/desc.htm"
+      ]
+    },
+    {
+      "name": "skill305",
+      "path": "extra/achievement/skills/skill305/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill305/desc.htm"
+      ]
+    },
+    {
+      "name": "skill306",
+      "path": "extra/achievement/skills/skill306/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill306/desc.htm"
+      ]
+    },
+    {
+      "name": "skill324",
+      "path": "extra/achievement/skills/skill324/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill324/desc.htm"
+      ]
+    },
+    {
+      "name": "skill328",
+      "path": "extra/activities/nationalday2017/skill328/",
+      "templates": [
+        "include/modules/extra/activities/nationalday2017/skill328/desc.htm"
+      ]
+    },
+    {
+      "name": "skill330",
+      "path": "extra/activities/halloween2017/skill330/",
+      "templates": [
+        "include/modules/extra/activities/halloween2017/skill330/desc.htm"
+      ]
+    },
+    {
+      "name": "skill411",
+      "path": "extra/card/skills/skill411/",
+      "templates": []
+    },
+    {
+      "name": "skill413",
+      "path": "extra/card/skills/skill413/",
+      "templates": []
+    },
+    {
+      "name": "skill308",
+      "path": "extra/achievement/skills/skill308/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill308/desc.htm"
+      ]
+    },
+    {
+      "name": "skill309",
+      "path": "extra/achievement/skills/skill309/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill309/desc.htm"
+      ]
+    },
+    {
+      "name": "skill317",
+      "path": "extra/achievement/skills/skill317/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill317/desc.htm"
+      ]
+    },
+    {
+      "name": "skill319",
+      "path": "extra/achievement/skills/skill319/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill319/desc.htm"
+      ]
+    },
+    {
+      "name": "skill320",
+      "path": "extra/achievement/skills/skill320/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill320/desc.htm"
+      ]
+    },
+    {
+      "name": "skill431",
+      "path": "extra/card/skills/skill431/",
+      "templates": [
+        "include/modules/extra/card/skills/skill431/desc.htm"
+      ]
+    },
+    {
+      "name": "skill22",
+      "path": "extra/club/skills/skill22/",
+      "templates": []
+    },
+    {
+      "name": "skill316",
+      "path": "extra/achievement/skills/skill316/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill316/desc.htm"
+      ]
+    },
+    {
+      "name": "skill321",
+      "path": "extra/achievement/skills/skill321/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill321/desc.htm"
+      ]
+    },
+    {
+      "name": "skill310",
+      "path": "extra/achievement/skills/skill310/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill310/desc.htm"
+      ]
+    },
+    {
+      "name": "skill311",
+      "path": "extra/achievement/skills/skill311/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill311/desc.htm"
+      ]
+    },
+    {
+      "name": "skill312",
+      "path": "extra/achievement/skills/skill312/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill312/desc.htm"
+      ]
+    },
+    {
+      "name": "skill314",
+      "path": "extra/achievement/skills/skill314/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill314/desc.htm"
+      ]
+    },
+    {
+      "name": "skill443",
+      "path": "extra/card/skills/skill443/",
+      "templates": [
+        "include/modules/extra/card/skills/skill443/desc.htm"
+      ]
+    },
+    {
+      "name": "skill477",
+      "path": "extra/card/skills/skill477/",
+      "templates": [
+        "include/modules/extra/card/skills/skill477/desc.htm"
+      ]
+    },
+    {
+      "name": "skill479",
+      "path": "extra/card/skills/skill479/",
+      "templates": [
+        "include/modules/extra/card/skills/skill479/desc.htm"
+      ]
+    },
+    {
+      "name": "skill327",
+      "path": "extra/activities/nationalday2017/skill327/",
+      "templates": [
+        "include/modules/extra/activities/nationalday2017/skill327/desc.htm"
+      ]
+    },
+    {
+      "name": "skill437",
+      "path": "extra/card/skills/skill437/",
+      "templates": [
+        "include/modules/extra/card/skills/skill437/desc.htm"
+      ]
+    },
+    {
+      "name": "skill442",
+      "path": "extra/card/skills/skill442/",
+      "templates": [
+        "include/modules/extra/card/skills/skill442/desc.htm"
+      ]
+    },
+    {
+      "name": "skill452",
+      "path": "extra/card/skills/skill452/",
+      "templates": [
+        "include/modules/extra/card/skills/skill452/desc.htm"
+      ]
+    },
+    {
+      "name": "skill459",
+      "path": "extra/card/skills/skill459/",
+      "templates": [
+        "include/modules/extra/card/skills/skill459/desc.htm"
+      ]
+    },
+    {
+      "name": "skill1001",
+      "path": "extra/instance/skill1001/",
+      "templates": [
+        "include/modules/extra/instance/skill1001/desc.htm"
+      ]
+    },
+    {
+      "name": "skill204",
+      "path": "extra/club/skills/skill204/",
+      "templates": [
+        "include/modules/extra/club/skills/skill204/desc.htm"
+      ]
+    },
+    {
+      "name": "skill485",
+      "path": "extra/card/skills/skill485/",
+      "templates": [
+        "include/modules/extra/card/skills/skill485/desc.htm"
+      ]
+    },
+    {
+      "name": "skill486",
+      "path": "extra/card/skills/skill486/",
+      "templates": [
+        "include/modules/extra/card/skills/skill486/desc.htm"
+      ]
+    },
+    {
+      "name": "skill488",
+      "path": "extra/card/skills/skill488/",
+      "templates": [
+        "include/modules/extra/card/skills/skill488/desc.htm"
+      ]
+    },
+    {
+      "name": "skill52",
+      "path": "extra/club/skills/skill52/",
+      "templates": [
+        "include/modules/extra/club/skills/skill52/desc.htm"
+      ]
+    },
+    {
+      "name": "skill71",
+      "path": "extra/club/skills/skill71/",
+      "templates": [
+        "include/modules/extra/club/skills/skill71/desc.htm",
+        "include/modules/extra/club/skills/skill71/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill414",
+      "path": "extra/card/skills/skill414/",
+      "templates": [
+        "include/modules/extra/card/skills/skill414/desc.htm"
+      ]
+    },
+    {
+      "name": "skill519",
+      "path": "extra/card/skills/skill519/",
+      "templates": [
+        "include/modules/extra/card/skills/skill519/desc.htm"
+      ]
+    },
+    {
+      "name": "skill520",
+      "path": "extra/card/skills/skill520/",
+      "templates": [
+        "include/modules/extra/card/skills/skill520/desc.htm"
+      ]
+    },
+    {
+      "name": "skill446",
+      "path": "extra/card/skills/skill446/",
+      "templates": [
+        "include/modules/extra/card/skills/skill446/desc.htm"
+      ]
+    },
+    {
+      "name": "skill447",
+      "path": "extra/card/skills/skill447/",
+      "templates": [
+        "include/modules/extra/card/skills/skill447/desc.htm"
+      ]
+    },
+    {
+      "name": "skill453",
+      "path": "extra/card/skills/skill453/",
+      "templates": [
+        "include/modules/extra/card/skills/skill453/desc.htm"
+      ]
+    },
+    {
+      "name": "skill455",
+      "path": "extra/card/skills/skill455/",
+      "templates": [
+        "include/modules/extra/card/skills/skill455/desc.htm"
+      ]
+    },
+    {
+      "name": "skill456",
+      "path": "extra/card/skills/skill456/",
+      "templates": [
+        "include/modules/extra/card/skills/skill456/desc.htm"
+      ]
+    },
+    {
+      "name": "skill253",
+      "path": "extra/club/skills/skill253/",
+      "templates": [
+        "include/modules/extra/club/skills/skill253/desc.htm",
+        "include/modules/extra/club/skills/skill253/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill483",
+      "path": "extra/card/skills/skill483/",
+      "templates": [
+        "include/modules/extra/card/skills/skill483/desc.htm"
+      ]
+    },
+    {
+      "name": "skill1002",
+      "path": "extra/instance/skill1002/",
+      "templates": [
+        "include/modules/extra/instance/skill1002/desc.htm"
+      ]
+    },
+    {
+      "name": "skill499",
+      "path": "extra/card/skills/skill499/",
+      "templates": [
+        "include/modules/extra/card/skills/skill499/desc.htm"
+      ]
+    },
+    {
+      "name": "skill69",
+      "path": "extra/club/skills/skill69/",
+      "templates": [
+        "include/modules/extra/club/skills/skill69/desc.htm"
+      ]
+    },
+    {
+      "name": "skill18",
+      "path": "extra/club/skills/skill18/",
+      "templates": [
+        "include/modules/extra/club/skills/skill18/desc.htm"
+      ]
+    },
+    {
+      "name": "skill15",
+      "path": "extra/club/skills/skill15/",
+      "templates": [
+        "include/modules/extra/club/skills/skill15/desc.htm"
+      ]
+    },
+    {
+      "name": "skill16",
+      "path": "extra/club/skills/skill16/",
+      "templates": [
+        "include/modules/extra/club/skills/skill16/desc.htm"
+      ]
+    },
+    {
+      "name": "skill17",
+      "path": "extra/club/skills/skill17/",
+      "templates": [
+        "include/modules/extra/club/skills/skill17/desc.htm"
+      ]
+    },
+    {
+      "name": "skill13",
+      "path": "extra/club/skills/skill13/",
+      "templates": [
+        "include/modules/extra/club/skills/skill13/desc.htm"
+      ]
+    },
+    {
+      "name": "skill14",
+      "path": "extra/club/skills/skill14/",
+      "templates": [
+        "include/modules/extra/club/skills/skill14/desc.htm"
+      ]
+    },
+    {
+      "name": "skill480",
+      "path": "extra/card/skills/skill480/",
+      "templates": [
+        "include/modules/extra/card/skills/skill480/desc.htm"
+      ]
+    },
+    {
+      "name": "skill1010",
+      "path": "extra/gmskills/skill1010/",
+      "templates": [
+        "include/modules/extra/gmskills/skill1010/desc.htm",
+        "include/modules/extra/gmskills/skill1010/profilecmd.htm",
+        "include/modules/extra/gmskills/skill1010/mani_page.htm"
+      ]
+    },
+    {
+      "name": "skill39",
+      "path": "extra/club/skills/skill39/",
+      "templates": [
+        "include/modules/extra/club/skills/skill39/desc.htm"
+      ]
+    },
+    {
+      "name": "skill29",
+      "path": "extra/club/skills/skill29/",
+      "templates": [
+        "include/modules/extra/club/skills/skill29/desc.htm"
+      ]
+    },
+    {
+      "name": "skill421",
+      "path": "extra/card/skills/skill421/",
+      "templates": []
+    },
+    {
+      "name": "skill40",
+      "path": "extra/club/skills/skill40/",
+      "templates": [
+        "include/modules/extra/club/skills/skill40/desc.htm"
+      ]
+    },
+    {
+      "name": "club1",
+      "path": "extra/club/clubs/club1/",
+      "templates": []
+    },
+    {
+      "name": "club2",
+      "path": "extra/club/clubs/club2/",
+      "templates": []
+    },
+    {
+      "name": "club3",
+      "path": "extra/club/clubs/club3/",
+      "templates": []
+    },
+    {
+      "name": "club4",
+      "path": "extra/club/clubs/club4/",
+      "templates": []
+    },
+    {
+      "name": "club5",
+      "path": "extra/club/clubs/club5/",
+      "templates": []
+    },
+    {
+      "name": "club9",
+      "path": "extra/club/clubs/club9/",
+      "templates": []
+    },
+    {
+      "name": "club10",
+      "path": "extra/club/clubs/club10/",
+      "templates": []
+    },
+    {
+      "name": "club99",
+      "path": "extra/club/clubs/club99/",
+      "templates": []
+    },
+    {
+      "name": "club17",
+      "path": "extra/club/clubs/club17/",
+      "templates": []
+    },
+    {
+      "name": "club20",
+      "path": "extra/club/clubs/club20/",
+      "templates": []
+    },
+    {
+      "name": "club13",
+      "path": "extra/club/clubs/club13/",
+      "templates": []
+    },
+    {
+      "name": "club14",
+      "path": "extra/club/clubs/club14/",
+      "templates": []
+    },
+    {
+      "name": "sklearn_util",
+      "path": "extra/club/sklearn_util/",
+      "templates": [
+        "include/modules/extra/club/sklearn_util/skilllearn_table.htm",
+        "include/modules/extra/club/sklearn_util/skilllearn_desc.htm"
+      ]
+    },
+    {
+      "name": "club6",
+      "path": "extra/club/clubs/club6/",
+      "templates": []
+    },
+    {
+      "name": "club8",
+      "path": "extra/club/clubs/club8/",
+      "templates": []
+    },
+    {
+      "name": "club7",
+      "path": "extra/club/clubs/club7/",
+      "templates": []
+    },
+    {
+      "name": "club11",
+      "path": "extra/club/clubs/club11/",
+      "templates": []
+    },
+    {
+      "name": "club19",
+      "path": "extra/club/clubs/club19/",
+      "templates": []
+    },
+    {
+      "name": "skill58",
+      "path": "extra/club/skills/skill58/",
+      "templates": [
+        "include/modules/extra/club/skills/skill58/desc.htm"
+      ]
+    },
+    {
+      "name": "club24",
+      "path": "extra/club/clubs/club24/",
+      "templates": []
+    },
+    {
+      "name": "club18",
+      "path": "extra/club/clubs/club18/",
+      "templates": []
+    },
+    {
+      "name": "skill211",
+      "path": "extra/club/skills/skill211/",
+      "templates": [
+        "include/modules/extra/club/skills/skill211/desc.htm"
+      ]
+    },
+    {
+      "name": "skill212",
+      "path": "extra/club/skills/skill212/",
+      "templates": [
+        "include/modules/extra/club/skills/skill212/desc.htm"
+      ]
+    },
+    {
+      "name": "skill214",
+      "path": "extra/club/skills/skill214/",
+      "templates": [
+        "include/modules/extra/club/skills/skill214/desc.htm"
+      ]
+    },
+    {
+      "name": "skill234",
+      "path": "extra/club/skills/skill234/",
+      "templates": [
+        "include/modules/extra/club/skills/skill234/profilecmd.htm",
+        "include/modules/extra/club/skills/skill234/desc.htm"
+      ]
+    },
+    {
+      "name": "skill235",
+      "path": "extra/club/skills/skill235/",
+      "templates": [
+        "include/modules/extra/club/skills/skill235/profilecmd.htm",
+        "include/modules/extra/club/skills/skill235/desc.htm"
+      ]
+    },
+    {
+      "name": "skill420",
+      "path": "extra/card/skills/skill420/",
+      "templates": [
+        "include/modules/extra/card/skills/skill420/desc.htm"
+      ]
+    },
+    {
+      "name": "skill424",
+      "path": "extra/instance/gtype1/skill424/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill424/profilecmd.htm",
+        "include/modules/extra/instance/gtype1/skill424/desc.htm"
+      ]
+    },
+    {
+      "name": "skill428",
+      "path": "extra/instance/gtype1/skill428/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill428/desc.htm"
+      ]
+    },
+    {
+      "name": "club21",
+      "path": "extra/club/clubs/club21/",
+      "templates": []
+    },
+    {
+      "name": "skill240",
+      "path": "extra/club/skills/skill240/",
+      "templates": [
+        "include/modules/extra/club/skills/skill240/desc.htm"
+      ]
+    },
+    {
+      "name": "skill241",
+      "path": "extra/club/skills/skill241/",
+      "templates": [
+        "include/modules/extra/club/skills/skill241/desc.htm"
+      ]
+    },
+    {
+      "name": "skill247",
+      "path": "extra/club/skills/skill247/",
+      "templates": [
+        "include/modules/extra/club/skills/skill247/desc.htm"
+      ]
+    },
+    {
+      "name": "skill454",
+      "path": "extra/card/skills/skill454/",
+      "templates": [
+        "include/modules/extra/card/skills/skill454/desc.htm"
+      ]
+    },
+    {
+      "name": "skill457",
+      "path": "extra/card/skills/skill457/",
+      "templates": [
+        "include/modules/extra/card/skills/skill457/desc.htm"
+      ]
+    },
+    {
+      "name": "skill249",
+      "path": "extra/club/skills/skill249/",
+      "templates": [
+        "include/modules/extra/club/skills/skill249/desc.htm"
+      ]
+    },
+    {
+      "name": "skill250",
+      "path": "extra/club/skills/skill250/",
+      "templates": [
+        "include/modules/extra/club/skills/skill250/desc.htm"
+      ]
+    },
+    {
+      "name": "skill460",
+      "path": "extra/card/skills/skill460/",
+      "templates": []
+    },
+    {
+      "name": "skill461",
+      "path": "extra/card/skills/skill461/",
+      "templates": [
+        "include/modules/extra/card/skills/skill461/desc.htm"
+      ]
+    },
+    {
+      "name": "skill251",
+      "path": "extra/club/skills/skill251/",
+      "templates": [
+        "include/modules/extra/club/skills/skill251/desc.htm"
+      ]
+    },
+    {
+      "name": "skill255",
+      "path": "extra/club/skills/skill255/",
+      "templates": [
+        "include/modules/extra/club/skills/skill255/desc.htm"
+      ]
+    },
+    {
+      "name": "skill462",
+      "path": "extra/card/skills/skill462/",
+      "templates": [
+        "include/modules/extra/card/skills/skill462/desc.htm"
+      ]
+    },
+    {
+      "name": "skill257",
+      "path": "extra/club/skills/skill257/",
+      "templates": [
+        "include/modules/extra/club/skills/skill257/desc.htm"
+      ]
+    },
+    {
+      "name": "skill474",
+      "path": "extra/card/skills/skill474/",
+      "templates": [
+        "include/modules/extra/card/skills/skill474/desc.htm"
+      ]
+    },
+    {
+      "name": "skill484",
+      "path": "extra/card/skills/skill484/",
+      "templates": []
+    },
+    {
+      "name": "skill491",
+      "path": "extra/card/skills/skill491/",
+      "templates": [
+        "include/modules/extra/card/skills/skill491/desc.htm"
+      ]
+    },
+    {
+      "name": "club97",
+      "path": "extra/club/clubs/club97/",
+      "templates": []
+    },
+    {
+      "name": "skill267",
+      "path": "extra/club/skills/skill267/",
+      "templates": [
+        "include/modules/extra/club/skills/skill267/desc.htm"
+      ]
+    },
+    {
+      "name": "skill268",
+      "path": "extra/club/skills/skill268/",
+      "templates": [
+        "include/modules/extra/club/skills/skill268/desc.htm"
+      ]
+    },
+    {
+      "name": "club94",
+      "path": "extra/club/clubs/club94/",
+      "templates": []
+    },
+    {
+      "name": "club95",
+      "path": "extra/club/clubs/club95/",
+      "templates": []
+    },
+    {
+      "name": "club96",
+      "path": "extra/club/clubs/club96/",
+      "templates": []
+    },
+    {
+      "name": "skill494",
+      "path": "extra/instance/gtype1/skill494/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill494/desc.htm"
+      ]
+    },
+    {
+      "name": "skill495",
+      "path": "extra/instance/gtype1/skill495/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill495/desc.htm"
+      ]
+    },
+    {
+      "name": "skill501",
+      "path": "extra/card/skills/skill501/",
+      "templates": [
+        "include/modules/extra/card/skills/skill501/desc.htm"
+      ]
+    },
+    {
+      "name": "skill83",
+      "path": "extra/club/skills/skill83/",
+      "templates": [
+        "include/modules/extra/club/skills/skill83/desc.htm"
+      ]
+    },
+    {
+      "name": "skill256",
+      "path": "extra/club/skills/skill256/",
+      "templates": [
+        "include/modules/extra/club/skills/skill256/desc.htm"
+      ]
+    },
+    {
+      "name": "skill433",
+      "path": "extra/card/skills/skill433/",
+      "templates": [
+        "include/modules/extra/card/skills/skill433/desc.htm"
+      ]
+    },
+    {
+      "name": "skill221",
+      "path": "extra/club/skills/skill221/",
+      "templates": [
+        "include/modules/extra/club/skills/skill221/desc.htm"
+      ]
+    },
+    {
+      "name": "skill41",
+      "path": "extra/club/skills/skill41/",
+      "templates": [
+        "include/modules/extra/club/skills/skill41/desc.htm"
+      ]
+    },
+    {
+      "name": "skill45",
+      "path": "extra/club/skills/skill45/",
+      "templates": [
+        "include/modules/extra/club/skills/skill45/desc.htm",
+        "include/modules/extra/club/skills/skill45/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill46",
+      "path": "extra/club/skills/skill46/",
+      "templates": [
+        "include/modules/extra/club/skills/skill46/desc.htm",
+        "include/modules/extra/club/skills/skill46/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill60",
+      "path": "extra/club/skills/skill60/",
+      "templates": [
+        "include/modules/extra/club/skills/skill60/desc.htm",
+        "include/modules/extra/club/skills/skill60/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill61",
+      "path": "extra/club/skills/skill61/",
+      "templates": [
+        "include/modules/extra/club/skills/skill61/desc.htm"
+      ]
+    },
+    {
+      "name": "skill62",
+      "path": "extra/club/skills/skill62/",
+      "templates": [
+        "include/modules/extra/club/skills/skill62/desc.htm"
+      ]
+    },
+    {
+      "name": "skill63",
+      "path": "extra/club/skills/skill63/",
+      "templates": [
+        "include/modules/extra/club/skills/skill63/desc.htm",
+        "include/modules/extra/club/skills/skill63/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill64",
+      "path": "extra/club/skills/skill64/",
+      "templates": [
+        "include/modules/extra/club/skills/skill64/desc.htm"
+      ]
+    },
+    {
+      "name": "skill66",
+      "path": "extra/club/skills/skill66/",
+      "templates": [
+        "include/modules/extra/club/skills/skill66/desc.htm"
+      ]
+    },
+    {
+      "name": "skill74",
+      "path": "extra/club/skills/skill74/",
+      "templates": [
+        "include/modules/extra/club/skills/skill74/desc.htm",
+        "include/modules/extra/club/skills/skill74/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill213",
+      "path": "extra/club/skills/skill213/",
+      "templates": [
+        "include/modules/extra/club/skills/skill213/desc.htm"
+      ]
+    },
+    {
+      "name": "skill216",
+      "path": "extra/club/skills/skill216/",
+      "templates": [
+        "include/modules/extra/club/skills/skill216/desc.htm",
+        "include/modules/extra/club/skills/skill216/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill404",
+      "path": "extra/card/skills/skill404/",
+      "templates": [
+        "include/modules/extra/card/skills/skill404/desc.htm"
+      ]
+    },
+    {
+      "name": "skill405",
+      "path": "extra/card/skills/skill405/",
+      "templates": [
+        "include/modules/extra/card/skills/skill405/desc.htm"
+      ]
+    },
+    {
+      "name": "skill406",
+      "path": "extra/card/skills/skill406/",
+      "templates": [
+        "include/modules/extra/card/skills/skill406/desc.htm"
+      ]
+    },
+    {
+      "name": "skill400",
+      "path": "extra/card/skills/skill400/",
+      "templates": [
+        "include/modules/extra/card/skills/skill400/desc.htm"
+      ]
+    },
+    {
+      "name": "skill402",
+      "path": "extra/card/skills/skill402/",
+      "templates": [
+        "include/modules/extra/card/skills/skill402/desc.htm"
+      ]
+    },
+    {
+      "name": "skill401",
+      "path": "extra/card/skills/skill401/",
+      "templates": [
+        "include/modules/extra/card/skills/skill401/desc.htm"
+      ]
+    },
+    {
+      "name": "skill225",
+      "path": "extra/club/skills/skill225/",
+      "templates": [
+        "include/modules/extra/club/skills/skill225/desc.htm"
+      ]
+    },
+    {
+      "name": "skill226",
+      "path": "extra/club/skills/skill226/",
+      "templates": [
+        "include/modules/extra/club/skills/skill226/desc.htm"
+      ]
+    },
+    {
+      "name": "skill229",
+      "path": "extra/club/skills/skill229/",
+      "templates": [
+        "include/modules/extra/club/skills/skill229/desc.htm"
+      ]
+    },
+    {
+      "name": "skill408",
+      "path": "extra/card/skills/skill408/",
+      "templates": [
+        "include/modules/extra/card/skills/skill408/desc.htm"
+      ]
+    },
+    {
+      "name": "skill409",
+      "path": "extra/card/skills/skill409/",
+      "templates": [
+        "include/modules/extra/card/skills/skill409/desc.htm"
+      ]
+    },
+    {
+      "name": "skill415",
+      "path": "extra/card/skills/skill415/",
+      "templates": [
+        "include/modules/extra/card/skills/skill415/desc.htm"
+      ]
+    },
+    {
+      "name": "skill412",
+      "path": "extra/card/skills/skill412/",
+      "templates": [
+        "include/modules/extra/card/skills/skill412/desc.htm"
+      ]
+    },
+    {
+      "name": "skill416",
+      "path": "extra/card/skills/skill416/",
+      "templates": [
+        "include/modules/extra/card/skills/skill416/desc.htm"
+      ]
+    },
+    {
+      "name": "skill419",
+      "path": "extra/card/skills/skill419/",
+      "templates": [
+        "include/modules/extra/card/skills/skill419/desc.htm"
+      ]
+    },
+    {
+      "name": "skill423",
+      "path": "extra/card/skills/skill423/",
+      "templates": []
+    },
+    {
+      "name": "skill239",
+      "path": "extra/club/skills/skill239/",
+      "templates": [
+        "include/modules/extra/club/skills/skill239/desc.htm"
+      ]
+    },
+    {
+      "name": "skill438",
+      "path": "extra/card/skills/skill438/",
+      "templates": [
+        "include/modules/extra/card/skills/skill438/desc.htm"
+      ]
+    },
+    {
+      "name": "skill439",
+      "path": "extra/card/skills/skill439/",
+      "templates": [
+        "include/modules/extra/card/skills/skill439/desc.htm"
+      ]
+    },
+    {
+      "name": "skill440",
+      "path": "extra/card/skills/skill440/",
+      "templates": [
+        "include/modules/extra/card/skills/skill440/desc.htm",
+        "include/modules/extra/card/skills/skill440/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill449",
+      "path": "extra/card/skills/skill449/",
+      "templates": [
+        "include/modules/extra/card/skills/skill449/desc.htm"
+      ]
+    },
+    {
+      "name": "skill450",
+      "path": "extra/card/skills/skill450/",
+      "templates": [
+        "include/modules/extra/card/skills/skill450/desc.htm"
+      ]
+    },
+    {
+      "name": "skill464",
+      "path": "extra/card/skills/skill464/",
+      "templates": [
+        "include/modules/extra/card/skills/skill464/desc.htm"
+      ]
+    },
+    {
+      "name": "skill466",
+      "path": "extra/card/skills/skill466/",
+      "templates": [
+        "include/modules/extra/card/skills/skill466/desc.htm"
+      ]
+    },
+    {
+      "name": "skill469",
+      "path": "extra/card/skills/skill469/",
+      "templates": [
+        "include/modules/extra/card/skills/skill469/desc.htm"
+      ]
+    },
+    {
+      "name": "skill470",
+      "path": "extra/card/skills/skill470/",
+      "templates": [
+        "include/modules/extra/card/skills/skill470/desc.htm"
+      ]
+    },
+    {
+      "name": "skill471",
+      "path": "extra/card/skills/skill471/",
+      "templates": [
+        "include/modules/extra/card/skills/skill471/desc.htm"
+      ]
+    },
+    {
+      "name": "skill473",
+      "path": "extra/card/skills/skill473/",
+      "templates": [
+        "include/modules/extra/card/skills/skill473/desc.htm"
+      ]
+    },
+    {
+      "name": "skill262",
+      "path": "extra/club/skills/skill262/",
+      "templates": [
+        "include/modules/extra/club/skills/skill262/desc.htm",
+        "include/modules/extra/club/skills/skill262/sk262ui.htm"
+      ]
+    },
+    {
+      "name": "skill263",
+      "path": "extra/club/skills/skill263/",
+      "templates": [
+        "include/modules/extra/club/skills/skill263/desc.htm"
+      ]
+    },
+    {
+      "name": "skill264",
+      "path": "extra/club/skills/skill264/",
+      "templates": [
+        "include/modules/extra/club/skills/skill264/desc.htm"
+      ]
+    },
+    {
+      "name": "skill476",
+      "path": "extra/instance/gtype3/skill476/",
+      "templates": [
+        "include/modules/extra/instance/gtype3/skill476/desc.htm"
+      ]
+    },
+    {
+      "name": "skill269",
+      "path": "extra/club/skills/skill269/",
+      "templates": [
+        "include/modules/extra/club/skills/skill269/desc.htm",
+        "include/modules/extra/club/skills/skill269/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill78",
+      "path": "extra/club/skills/skill78/",
+      "templates": [
+        "include/modules/extra/club/skills/skill78/desc.htm"
+      ]
+    },
+    {
+      "name": "skill496",
+      "path": "extra/card/skills/skill496/",
+      "templates": [
+        "include/modules/extra/card/skills/skill496/desc.htm"
+      ]
+    },
+    {
+      "name": "skill506",
+      "path": "extra/card/skills/skill506/",
+      "templates": []
+    },
+    {
+      "name": "skill515",
+      "path": "extra/card/skills/skill515/",
+      "templates": [
+        "include/modules/extra/card/skills/skill515/desc.htm"
+      ]
+    },
+    {
+      "name": "skill516",
+      "path": "extra/card/skills/skill516/",
+      "templates": [
+        "include/modules/extra/card/skills/skill516/desc.htm"
+      ]
+    },
+    {
+      "name": "club15",
+      "path": "extra/club/clubs/club15/",
+      "templates": []
+    },
+    {
+      "name": "skill518",
+      "path": "extra/card/skills/skill518/",
+      "templates": [
+        "include/modules/extra/card/skills/skill518/desc.htm"
+      ]
+    },
+    {
+      "name": "skill84",
+      "path": "extra/club/skills/skill84/",
+      "templates": []
+    },
+    {
+      "name": "skill527",
+      "path": "extra/card/skills/skill527/",
+      "templates": [
+        "include/modules/extra/card/skills/skill527/desc.htm",
+        "include/modules/extra/card/skills/skill527/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill528",
+      "path": "extra/card/skills/skill528/",
+      "templates": [
+        "include/modules/extra/card/skills/skill528/desc.htm"
+      ]
+    },
+    {
+      "name": "skill529",
+      "path": "extra/card/skills/skill529/",
+      "templates": []
+    },
+    {
+      "name": "skill531",
+      "path": "extra/card/skills/skill531/",
+      "templates": [
+        "include/modules/extra/card/skills/skill531/desc.htm"
+      ]
+    },
+    {
+      "name": "skill532",
+      "path": "extra/card/skills/skill532/",
+      "templates": [
+        "include/modules/extra/card/skills/skill532/desc.htm"
+      ]
+    },
+    {
+      "name": "skill552",
+      "path": "extra/card/skills/skill552/",
+      "templates": [
+        "include/modules/extra/card/skills/skill552/profilecmd.htm",
+        "include/modules/extra/card/skills/skill552/desc.htm"
+      ]
+    },
+    {
+      "name": "skill1012",
+      "path": "extra/gmskills/skill1012/",
+      "templates": [
+        "include/modules/extra/gmskills/skill1012/desc.htm",
+        "include/modules/extra/gmskills/skill1012/profilecmd.htm",
+        "include/modules/extra/gmskills/skill1012/sub_page.htm"
+      ]
+    },
+    {
+      "name": "skill553",
+      "path": "extra/card/skills/skill553/",
+      "templates": []
+    },
+    {
+      "name": "skill555",
+      "path": "extra/card/skills/skill555/",
+      "templates": [
+        "include/modules/extra/card/skills/skill555/desc.htm"
+      ]
+    },
+    {
+      "name": "skill560",
+      "path": "extra/card/skills/skill560/",
+      "templates": [
+        "include/modules/extra/card/skills/skill560/desc.htm",
+        "include/modules/extra/card/skills/skill560/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill534",
+      "path": "extra/card/skills/skill534/",
+      "templates": [
+        "include/modules/extra/card/skills/skill534/profilecmd.htm",
+        "include/modules/extra/card/skills/skill534/castsk534.htm",
+        "include/modules/extra/card/skills/skill534/desc.htm"
+      ]
+    },
+    {
+      "name": "skill561",
+      "path": "extra/card/skills/skill561/",
+      "templates": [
+        "include/modules/extra/card/skills/skill561/desc.htm"
+      ]
+    },
+    {
+      "name": "skill556",
+      "path": "extra/card/skills/skill556/",
+      "templates": [
+        "include/modules/extra/card/skills/skill556/desc.htm",
+        "include/modules/extra/card/skills/skill556/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill275",
+      "path": "extra/club/skills/skill275/",
+      "templates": []
+    },
+    {
+      "name": "skill276",
+      "path": "extra/club/skills/skill276/",
+      "templates": []
+    },
+    {
+      "name": "skill536",
+      "path": "extra/card/skills/skill536/",
+      "templates": []
+    },
+    {
+      "name": "skill565",
+      "path": "extra/card/skills/skill565/",
+      "templates": []
+    },
+    {
+      "name": "skill537",
+      "path": "extra/card/skills/skill537/",
+      "templates": [
+        "include/modules/extra/card/skills/skill537/desc.htm"
+      ]
+    },
+    {
+      "name": "skill569",
+      "path": "extra/card/skills/skill569/",
+      "templates": []
+    },
+    {
+      "name": "skill571",
+      "path": "extra/card/skills/skill571/",
+      "templates": []
+    },
+    {
+      "name": "skill572",
+      "path": "extra/card/skills/skill572/",
+      "templates": []
+    },
+    {
+      "name": "skill577",
+      "path": "extra/card/skills/skill577/",
+      "templates": []
+    },
+    {
+      "name": "skill581",
+      "path": "extra/card/skills/skill581/",
+      "templates": [
+        "include/modules/extra/card/skills/skill581/desc.htm"
+      ]
+    },
+    {
+      "name": "skill582",
+      "path": "extra/card/skills/skill582/",
+      "templates": [
+        "include/modules/extra/card/skills/skill582/desc.htm"
+      ]
+    },
+    {
+      "name": "skill583",
+      "path": "extra/card/skills/skill583/",
+      "templates": []
+    },
+    {
+      "name": "skill589",
+      "path": "extra/card/skills/skill589/",
+      "templates": [
+        "include/modules/extra/card/skills/skill589/profilecmd.htm",
+        "include/modules/extra/card/skills/skill589/desc.htm"
+      ]
+    },
+    {
+      "name": "skill590",
+      "path": "extra/card/skills/skill590/",
+      "templates": [
+        "include/modules/extra/card/skills/skill590/desc.htm"
+      ]
+    },
+    {
+      "name": "skill539",
+      "path": "extra/card/skills/skill539/",
+      "templates": [
+        "include/modules/extra/card/skills/skill539/desc.htm"
+      ]
+    },
+    {
+      "name": "skill591",
+      "path": "extra/card/skills/skill591/",
+      "templates": [
+        "include/modules/extra/card/skills/skill591/desc.htm"
+      ]
+    },
+    {
+      "name": "skill594",
+      "path": "extra/card/skills/skill594/",
+      "templates": []
+    },
+    {
+      "name": "skill702",
+      "path": "extra/card/skills/skill702/",
+      "templates": [
+        "include/modules/extra/card/skills/skill702/desc.htm"
+      ]
+    },
+    {
+      "name": "skill704",
+      "path": "extra/card/skills/skill704/",
+      "templates": []
+    },
+    {
+      "name": "skill703",
+      "path": "extra/card/skills/skill703/",
+      "templates": [
+        "include/modules/extra/card/skills/skill703/desc.htm"
+      ]
+    },
+    {
+      "name": "skill706",
+      "path": "extra/card/skills/skill706/",
+      "templates": [
+        "include/modules/extra/card/skills/skill706/desc.htm"
+      ]
+    },
+    {
+      "name": "skill708",
+      "path": "extra/card/skills/skill708/",
+      "templates": [
+        "include/modules/extra/card/skills/skill708/desc.htm"
+      ]
+    },
+    {
+      "name": "skill301",
+      "path": "extra/achievement/skills/skill301/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill301/desc.htm"
+      ]
+    },
+    {
+      "name": "skill307",
+      "path": "extra/achievement/skills/skill307/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill307/desc.htm"
+      ]
+    },
+    {
+      "name": "skill318",
+      "path": "extra/achievement/skills/skill318/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill318/desc.htm"
+      ]
+    },
+    {
+      "name": "skill322",
+      "path": "extra/achievement/skills/skill322/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill322/desc.htm"
+      ]
+    },
+    {
+      "name": "skill323",
+      "path": "extra/achievement/skills/skill323/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill323/desc.htm"
+      ]
+    },
+    {
+      "name": "skill715",
+      "path": "extra/card/skills/skill715/",
+      "templates": [
+        "include/modules/extra/card/skills/skill715/desc.htm"
+      ]
+    },
+    {
+      "name": "skill586",
+      "path": "extra/card/skills/skill586/",
+      "templates": [
+        "include/modules/extra/card/skills/skill586/profilecmd.htm",
+        "include/modules/extra/card/skills/skill586/castsk586.htm",
+        "include/modules/extra/card/skills/skill586/desc.htm",
+        "include/modules/extra/card/skills/skill586/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill902",
+      "path": "extra/instance/instance3_ascension/skill902/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill902/desc.htm"
+      ]
+    },
+    {
+      "name": "skill907",
+      "path": "extra/instance/instance3_ascension/skill907/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill907/desc.htm"
+      ]
+    },
+    {
+      "name": "skill904",
+      "path": "extra/instance/instance3_ascension/skill904/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill904/desc.htm"
+      ]
+    },
+    {
+      "name": "skill801",
+      "path": "extra/card/skills/skill801/",
+      "templates": [
+        "include/modules/extra/card/skills/skill801/desc.htm"
+      ]
+    },
+    {
+      "name": "skill802",
+      "path": "extra/card/skills/skill802/",
+      "templates": [
+        "include/modules/extra/card/skills/skill802/desc.htm"
+      ]
+    },
+    {
+      "name": "skill716",
+      "path": "extra/card/skills/skill716/",
+      "templates": [
+        "include/modules/extra/card/skills/skill716/profilecmd.htm"
+      ]
+    },
+    {
+      "name": "skill718",
+      "path": "extra/card/skills/skill718/",
+      "templates": [
+        "include/modules/extra/card/skills/skill718/desc.htm"
+      ]
+    },
+    {
+      "name": "skill717",
+      "path": "extra/card/skills/skill717/",
+      "templates": [
+        "include/modules/extra/card/skills/skill717/desc.htm"
+      ]
+    },
+    {
+      "name": "skill719",
+      "path": "extra/card/skills/skill719/",
+      "templates": [
+        "include/modules/extra/card/skills/skill719/desc.htm"
+      ]
+    },
+    {
+      "name": "skill85",
+      "path": "extra/club/skills/skill85/",
+      "templates": [
+        "include/modules/extra/club/skills/skill85/desc.htm",
+        "include/modules/extra/club/skills/skill85/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill952",
+      "path": "extra/instance/instance10_rogue/skill952/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill952/profilecmd.htm",
+        "include/modules/extra/instance/instance10_rogue/skill952/castsk952.htm",
+        "include/modules/extra/instance/instance10_rogue/skill952/desc.htm"
+      ]
+    },
+    {
+      "name": "skill951",
+      "path": "extra/instance/instance10_rogue/skill951/",
+      "templates": []
+    },
+    {
+      "name": "skill724",
+      "path": "extra/card/skills/skill724/",
+      "templates": [
+        "include/modules/extra/card/skills/skill724/desc.htm"
+      ]
+    },
+    {
+      "name": "club25",
+      "path": "extra/club/clubs/club25/",
+      "templates": []
+    },
+    {
+      "name": "skill95",
+      "path": "extra/club/skills/skill95/",
+      "templates": [
+        "include/modules/extra/club/skills/skill95/desc.htm"
+      ]
+    },
+    {
+      "name": "club26",
+      "path": "extra/club/clubs/club26/",
+      "templates": []
+    },
+    {
+      "name": "skill725",
+      "path": "extra/card/skills/skill725/",
+      "templates": [
+        "include/modules/extra/card/skills/skill725/desc.htm"
+      ]
+    },
+    {
+      "name": "skill804",
+      "path": "extra/card/skills/skill804/",
+      "templates": [
+        "include/modules/extra/card/skills/skill804/desc.htm"
+      ]
+    },
+    {
+      "name": "skill728",
+      "path": "extra/card/skills/skill728/",
+      "templates": [
+        "include/modules/extra/card/skills/skill728/profilecmd.htm",
+        "include/modules/extra/card/skills/skill728/castsk728.htm"
+      ]
+    },
+    {
+      "name": "skill735",
+      "path": "extra/card/skills/skill735/",
+      "templates": []
+    },
+    {
+      "name": "skill736",
+      "path": "extra/card/skills/skill736/",
+      "templates": [
+        "include/modules/extra/card/skills/skill736/desc.htm"
+      ]
+    },
+    {
+      "name": "skill110",
+      "path": "extra/club/skills/skill110/",
+      "templates": [
+        "include/modules/extra/club/skills/skill110/desc.htm",
+        "include/modules/extra/club/skills/skill110/castsk110.htm"
+      ]
+    },
+    {
+      "name": "club27",
+      "path": "extra/club/clubs/club27/",
+      "templates": []
+    },
+    {
+      "name": "skill1013",
+      "path": "extra/gmskills/skill1013/",
+      "templates": [
+        "include/modules/extra/gmskills/skill1013/desc.htm",
+        "include/modules/extra/gmskills/skill1013/profilecmd.htm",
+        "include/modules/extra/gmskills/skill1013/sub_page.htm"
+      ]
+    },
+    {
+      "name": "skill743",
+      "path": "extra/card/skills/skill743/",
+      "templates": [
+        "include/modules/extra/card/skills/skill743/desc.htm"
+      ]
+    },
+    {
+      "name": "skill744",
+      "path": "extra/card/skills/skill744/",
+      "templates": [
+        "include/modules/extra/card/skills/skill744/desc.htm"
+      ]
+    },
+    {
+      "name": "skill_temp",
+      "path": "extra/skill_temp/",
+      "templates": []
+    },
+    {
+      "name": "skill606",
+      "path": "extra/club/skills/skill606/",
+      "templates": []
+    },
+    {
+      "name": "skill751",
+      "path": "extra/card/skills/skill751/",
+      "templates": [
+        "include/modules/extra/card/skills/skill751/desc.htm"
+      ]
+    },
+    {
+      "name": "skill752",
+      "path": "extra/card/skills/skill752/",
+      "templates": [
+        "include/modules/extra/card/skills/skill752/desc.htm"
+      ]
+    },
+    {
+      "name": "skill754",
+      "path": "extra/card/skills/skill754/",
+      "templates": [
+        "include/modules/extra/card/skills/skill754/desc.htm"
+      ]
+    },
+    {
+      "name": "skill755",
+      "path": "extra/card/skills/skill755/",
+      "templates": [
+        "include/modules/extra/card/skills/skill755/desc.htm"
+      ]
+    },
+    {
+      "name": "skill757",
+      "path": "extra/card/skills/skill757/",
+      "templates": [
+        "include/modules/extra/card/skills/skill757/desc.htm"
+      ]
+    },
+    {
+      "name": "skill805",
+      "path": "extra/card/skills/skill805/",
+      "templates": [
+        "include/modules/extra/card/skills/skill805/castsk805.htm"
+      ]
+    },
+    {
+      "name": "skill759",
+      "path": "extra/card/skills/skill759/",
+      "templates": []
+    },
+    {
+      "name": "skill768",
+      "path": "extra/card/skills/skill768/",
+      "templates": [
+        "include/modules/extra/card/skills/skill768/desc.htm"
+      ]
+    },
+    {
+      "name": "skill761",
+      "path": "extra/card/skills/skill761/",
+      "templates": [
+        "include/modules/extra/card/skills/skill761/desc.htm"
+      ]
+    },
+    {
+      "name": "skill762",
+      "path": "extra/card/skills/skill762/",
+      "templates": [
+        "include/modules/extra/card/skills/skill762/desc.htm"
+      ]
+    },
+    {
+      "name": "skill765",
+      "path": "extra/card/skills/skill765/",
+      "templates": [
+        "include/modules/extra/card/skills/skill765/desc.htm"
+      ]
+    },
+    {
+      "name": "wep_g",
+      "path": "base/weapon/wep_g/",
+      "templates": []
+    },
+    {
+      "name": "wep_j",
+      "path": "base/weapon/wep_j/",
+      "templates": []
+    },
+    {
+      "name": "skill273",
+      "path": "extra/club/skills/skill273/",
+      "templates": [
+        "include/modules/extra/club/skills/skill273/desc.htm"
+      ]
+    },
+    {
+      "name": "skill209",
+      "path": "extra/club/skills/skill209/",
+      "templates": [
+        "include/modules/extra/club/skills/skill209/desc.htm"
+      ]
+    },
+    {
+      "name": "skill5",
+      "path": "extra/attr/skills/skill5/",
+      "templates": []
+    },
+    {
+      "name": "skill6",
+      "path": "extra/attr/skills/skill6/",
+      "templates": []
+    },
+    {
+      "name": "skill7",
+      "path": "extra/attr/skills/skill7/",
+      "templates": []
+    },
+    {
+      "name": "skill8",
+      "path": "extra/attr/skills/skill8/",
+      "templates": []
+    },
+    {
+      "name": "skill9",
+      "path": "extra/attr/skills/skill9/",
+      "templates": []
+    },
+    {
+      "name": "poison",
+      "path": "base/items/poison/",
+      "templates": [
+        "include/modules/base/items/poison/poison.htm"
+      ]
+    },
+    {
+      "name": "armor",
+      "path": "base/armor/",
+      "templates": [
+        "include/modules/base/armor/profile_armor.htm",
+        "include/modules/base/armor/profile_armor_short.htm"
+      ]
+    },
+    {
+      "name": "rest",
+      "path": "base/rest/",
+      "templates": [
+        "include/modules/base/rest/rest_cmd.htm"
+      ]
+    },
+    {
+      "name": "item_uc",
+      "path": "base/items/item_uc/",
+      "templates": []
+    },
+    {
+      "name": "skill12",
+      "path": "extra/club/skills/skill12/",
+      "templates": [
+        "include/modules/extra/club/skills/skill12/desc.htm",
+        "include/modules/extra/club/skills/skill12/profilecmd.htm"
+      ]
+    },
+    {
+      "name": "skill223",
+      "path": "extra/club/skills/skill223/",
+      "templates": [
+        "include/modules/extra/club/skills/skill223/desc.htm",
+        "include/modules/extra/club/skills/skill223/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "event",
+      "path": "base/event/",
+      "templates": []
+    },
+    {
+      "name": "skill710",
+      "path": "extra/card/skills/skill710/",
+      "templates": [
+        "include/modules/extra/card/skills/skill710/desc.htm"
+      ]
+    },
+    {
+      "name": "skill745",
+      "path": "extra/card/skills/skill745/",
+      "templates": [
+        "include/modules/extra/card/skills/skill745/desc.htm"
+      ]
+    },
+    {
+      "name": "npcchat_bubble",
+      "path": "extra/misc/npcchat_bubble/",
+      "templates": [
+        "include/modules/extra/misc/npcchat_bubble/bubblepage.htm"
+      ]
+    },
+    {
+      "name": "item_slip",
+      "path": "extra/item_extra/item_slip/",
+      "templates": []
+    },
+    {
+      "name": "skill331",
+      "path": "extra/activities/halloween2017/skill331/",
+      "templates": [
+        "include/modules/extra/activities/halloween2017/skill331/desc.htm"
+      ]
+    },
+    {
+      "name": "skill19",
+      "path": "extra/club/skills/skill19/",
+      "templates": []
+    },
+    {
+      "name": "skill79",
+      "path": "extra/club/skills/skill79/",
+      "templates": [
+        "include/modules/extra/club/skills/skill79/desc.htm"
+      ]
+    },
+    {
+      "name": "skill31",
+      "path": "extra/club/skills/skill31/",
+      "templates": [
+        "include/modules/extra/club/skills/skill31/desc.htm"
+      ]
+    },
+    {
+      "name": "skill242",
+      "path": "extra/club/skills/skill242/",
+      "templates": [
+        "include/modules/extra/club/skills/skill242/desc.htm"
+      ]
+    },
+    {
+      "name": "skill53",
+      "path": "extra/club/skills/skill53/",
+      "templates": [
+        "include/modules/extra/club/skills/skill53/desc.htm"
+      ]
+    },
+    {
+      "name": "skill55",
+      "path": "extra/club/skills/skill55/",
+      "templates": [
+        "include/modules/extra/club/skills/skill55/desc.htm"
+      ]
+    },
+    {
+      "name": "skill72",
+      "path": "extra/club/skills/skill72/",
+      "templates": [
+        "include/modules/extra/club/skills/skill72/desc.htm"
+      ]
+    },
+    {
+      "name": "skill227",
+      "path": "extra/club/skills/skill227/",
+      "templates": [
+        "include/modules/extra/club/skills/skill227/desc.htm"
+      ]
+    },
+    {
+      "name": "skill472",
+      "path": "extra/card/skills/skill472/",
+      "templates": [
+        "include/modules/extra/card/skills/skill472/desc.htm"
+      ]
+    },
+    {
+      "name": "skill564",
+      "path": "extra/card/skills/skill564/",
+      "templates": [
+        "include/modules/extra/card/skills/skill564/desc.htm"
+      ]
+    },
+    {
+      "name": "skill475",
+      "path": "extra/instance/gtype2/skill475/",
+      "templates": [
+        "include/modules/extra/instance/gtype2/skill475/respawntimer.htm",
+        "include/modules/extra/instance/gtype2/skill475/corpseoption.htm",
+        "include/modules/extra/instance/gtype2/skill475/showwpt.htm",
+        "include/modules/extra/instance/gtype2/skill475/explanation.htm"
+      ]
+    },
+    {
+      "name": "skill59",
+      "path": "extra/club/skills/skill59/",
+      "templates": [
+        "include/modules/extra/club/skills/skill59/desc.htm"
+      ]
+    },
+    {
+      "name": "skill425",
+      "path": "extra/instance/gtype1/skill425/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill425/desc.htm"
+      ]
+    },
+    {
+      "name": "skill427",
+      "path": "extra/instance/gtype1/skill427/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill427/desc.htm"
+      ]
+    },
+    {
+      "name": "skill260",
+      "path": "extra/club/skills/skill260/",
+      "templates": [
+        "include/modules/extra/club/skills/skill260/desc.htm"
+      ]
+    },
+    {
+      "name": "skill261",
+      "path": "extra/club/skills/skill261/",
+      "templates": [
+        "include/modules/extra/club/skills/skill261/desc.htm"
+      ]
+    },
+    {
+      "name": "skill274",
+      "path": "extra/club/skills/skill274/",
+      "templates": [
+        "include/modules/extra/club/skills/skill274/desc.htm",
+        "include/modules/extra/club/skills/skill274/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill511",
+      "path": "extra/card/skills/skill511/",
+      "templates": [
+        "include/modules/extra/card/skills/skill511/desc.htm"
+      ]
+    },
+    {
+      "name": "skill545",
+      "path": "extra/card/skills/skill545/",
+      "templates": [
+        "include/modules/extra/card/skills/skill545/desc.htm"
+      ]
+    },
+    {
+      "name": "skill982",
+      "path": "extra/instance/instance12_dream/skill982/",
+      "templates": [
+        "include/modules/extra/instance/instance12_dream/skill982/desc.htm"
+      ]
+    },
+    {
+      "name": "skill760",
+      "path": "extra/card/skills/skill760/",
+      "templates": [
+        "include/modules/extra/card/skills/skill760/desc.htm"
+      ]
+    },
+    {
+      "name": "skill403",
+      "path": "extra/card/skills/skill403/",
+      "templates": [
+        "include/modules/extra/card/skills/skill403/desc.htm"
+      ]
+    },
+    {
+      "name": "skill203",
+      "path": "extra/club/skills/skill203/",
+      "templates": [
+        "include/modules/extra/club/skills/skill203/desc.htm",
+        "include/modules/extra/club/skills/skill203/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "ammunition",
+      "path": "base/items/ammunition/",
+      "templates": []
+    },
+    {
+      "name": "skill574",
+      "path": "extra/card/skills/skill574/",
+      "templates": [
+        "include/modules/extra/card/skills/skill574/desc.htm"
+      ]
+    },
+    {
+      "name": "skill901",
+      "path": "extra/instance/instance3_ascension/skill901/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill901/desc.htm"
+      ]
+    },
+    {
+      "name": "armor_art",
+      "path": "base/armor_art/",
+      "templates": [
+        "include/modules/base/armor_art/profile_armor_art.htm",
+        "include/modules/base/armor_art/profile_armor_art_short.htm"
+      ]
+    },
+    {
+      "name": "skill23",
+      "path": "extra/club/skills/skill23/",
+      "templates": [
+        "include/modules/extra/club/skills/skill23/desc.htm",
+        "include/modules/extra/club/skills/skill23/profilecmd.htm",
+        "include/modules/extra/club/skills/skill23/gemming.htm"
+      ]
+    },
+    {
+      "name": "skill517",
+      "path": "extra/card/skills/skill517/",
+      "templates": [
+        "include/modules/extra/card/skills/skill517/desc.htm",
+        "include/modules/extra/card/skills/skill517/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill407",
+      "path": "extra/card/skills/skill407/",
+      "templates": [
+        "include/modules/extra/card/skills/skill407/desc.htm"
+      ]
+    },
+    {
+      "name": "skill32",
+      "path": "extra/club/skills/skill32/",
+      "templates": [
+        "include/modules/extra/club/skills/skill32/desc.htm"
+      ]
+    },
+    {
+      "name": "skill202",
+      "path": "extra/club/skills/skill202/",
+      "templates": [
+        "include/modules/extra/club/skills/skill202/desc.htm"
+      ]
+    },
+    {
+      "name": "skill445",
+      "path": "extra/card/skills/skill445/",
+      "templates": [
+        "include/modules/extra/card/skills/skill445/desc.htm"
+      ]
+    },
+    {
+      "name": "skill557",
+      "path": "extra/card/skills/skill557/",
+      "templates": [
+        "include/modules/extra/card/skills/skill557/castsk557.htm"
+      ]
+    },
+    {
+      "name": "pose",
+      "path": "base/pose/",
+      "templates": [
+        "include/modules/base/pose/enemy_pose.htm",
+        "include/modules/base/pose/pose_profile.htm",
+        "include/modules/base/pose/pose_profile_cmd.htm"
+      ]
+    },
+    {
+      "name": "skill1",
+      "path": "base/skills/skill1/",
+      "templates": []
+    },
+    {
+      "name": "skill562",
+      "path": "extra/card/skills/skill562/",
+      "templates": []
+    },
+    {
+      "name": "skill600",
+      "path": "extra/club/skills/skill600/",
+      "templates": []
+    },
+    {
+      "name": "skill487",
+      "path": "extra/card/skills/skill487/",
+      "templates": [
+        "include/modules/extra/card/skills/skill487/desc.htm"
+      ]
+    },
+    {
+      "name": "skill20",
+      "path": "extra/club/skills/skill20/",
+      "templates": []
+    },
+    {
+      "name": "skill426",
+      "path": "extra/instance/gtype1/skill426/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill426/desc.htm"
+      ]
+    },
+    {
+      "name": "skill492",
+      "path": "extra/card/skills/skill492/",
+      "templates": [
+        "include/modules/extra/card/skills/skill492/desc.htm"
+      ]
+    },
+    {
+      "name": "skill723",
+      "path": "extra/card/skills/skill723/",
+      "templates": [
+        "include/modules/extra/card/skills/skill723/desc.htm"
+      ]
+    },
+    {
+      "name": "skill24",
+      "path": "extra/club/skills/skill24/",
+      "templates": []
+    },
+    {
+      "name": "skill33",
+      "path": "extra/club/skills/skill33/",
+      "templates": [
+        "include/modules/extra/club/skills/skill33/desc.htm"
+      ]
+    },
+    {
+      "name": "skill579",
+      "path": "extra/card/skills/skill579/",
+      "templates": [
+        "include/modules/extra/card/skills/skill579/desc.htm"
+      ]
+    },
+    {
+      "name": "tactic",
+      "path": "base/tactic/",
+      "templates": [
+        "include/modules/base/tactic/enemy_tactic.htm",
+        "include/modules/base/tactic/tactic_profile.htm",
+        "include/modules/base/tactic/tactic_profile_cmd.htm"
+      ]
+    },
+    {
+      "name": "skill906",
+      "path": "extra/instance/instance3_ascension/skill906/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill906/desc.htm"
+      ]
+    },
+    {
+      "name": "weather",
+      "path": "base/weather/",
+      "templates": [
+        "include/modules/base/weather/profile_weather.htm"
+      ]
+    },
+    {
+      "name": "npcinfo",
+      "path": "extra/misc/npcinfo/",
+      "templates": [
+        "include/modules/extra/misc/npcinfo/npcinfo.htm"
+      ]
+    },
+    {
+      "name": "skill502",
+      "path": "extra/card/skills/skill502/",
+      "templates": [
+        "include/modules/extra/card/skills/skill502/desc.htm"
+      ]
+    },
+    {
+      "name": "skill599",
+      "path": "extra/card/skills/skill599/",
+      "templates": [
+        "include/modules/extra/card/skills/skill599/desc.htm",
+        "include/modules/extra/card/skills/skill599/profilecmd.htm"
+      ]
+    },
+    {
+      "name": "cardbase",
+      "path": "extra/card/cardbase/",
+      "templates": [
+        "include/modules/extra/card/cardbase/cardflip_back.htm",
+        "include/modules/extra/card/cardbase/cardflip_result.htm",
+        "include/modules/extra/card/cardbase/card_frame.htm",
+        "include/modules/extra/card/cardbase/selectcard.htm",
+        "include/modules/extra/card/cardbase/profile_cardname.htm",
+        "include/modules/extra/card/cardbase/card_back_front_box.htm",
+        "include/modules/extra/card/cardbase/pack_frame.htm"
+      ]
+    },
+    {
+      "name": "instance6",
+      "path": "extra/instance/instance6/",
+      "templates": []
+    },
+    {
+      "name": "skill42",
+      "path": "extra/club/skills/skill42/",
+      "templates": [
+        "include/modules/extra/club/skills/skill42/desc.htm"
+      ]
+    },
+    {
+      "name": "addnpc",
+      "path": "base/addnpc/",
+      "templates": []
+    },
+    {
+      "name": "skill245",
+      "path": "extra/club/skills/skill245/",
+      "templates": [
+        "include/modules/extra/club/skills/skill245/desc.htm"
+      ]
+    },
+    {
+      "name": "skill252",
+      "path": "extra/club/skills/skill252/",
+      "templates": [
+        "include/modules/extra/club/skills/skill252/desc.htm"
+      ]
+    },
+    {
+      "name": "skill270",
+      "path": "extra/club/skills/skill270/",
+      "templates": [
+        "include/modules/extra/club/skills/skill270/desc.htm"
+      ]
+    },
+    {
+      "name": "skill588",
+      "path": "extra/card/skills/skill588/",
+      "templates": [
+        "include/modules/extra/card/skills/skill588/profilecmd.htm",
+        "include/modules/extra/card/skills/skill588/desc.htm"
+      ]
+    },
+    {
+      "name": "attrbase",
+      "path": "extra/attr/attrbase/",
+      "templates": []
+    },
+    {
+      "name": "instance8",
+      "path": "extra/instance/instance8_proud/",
+      "templates": []
+    },
+    {
+      "name": "instance7",
+      "path": "extra/instance/instance7_tutorial/",
+      "templates": []
+    },
+    {
+      "name": "kujibase",
+      "path": "extra/card/kujibase/",
+      "templates": []
+    },
+    {
+      "name": "set_gametype",
+      "path": "extra/misc/set_gametype/",
+      "templates": [
+        "include/modules/extra/misc/set_gametype/next_gametype.htm"
+      ]
+    },
+    {
+      "name": "gtype6",
+      "path": "extra/instance/gtype6_randomcard/",
+      "templates": []
+    },
+    {
+      "name": "skill67",
+      "path": "extra/club/skills/skill67/",
+      "templates": [
+        "include/modules/extra/club/skills/skill67/desc.htm"
+      ]
+    },
+    {
+      "name": "skill584",
+      "path": "extra/card/skills/skill584/",
+      "templates": []
+    },
+    {
+      "name": "skill592",
+      "path": "extra/card/skills/skill592/",
+      "templates": [
+        "include/modules/extra/card/skills/skill592/desc.htm"
+      ]
+    },
+    {
+      "name": "skill541",
+      "path": "extra/card/skills/skill541/",
+      "templates": [
+        "include/modules/extra/card/skills/skill541/desc.htm"
+      ]
+    },
+    {
+      "name": "npc_action",
+      "path": "extra/npc_action/",
+      "templates": []
+    },
+    {
+      "name": "skill720",
+      "path": "extra/card/skills/skill720/",
+      "templates": []
+    },
+    {
+      "name": "get_qiegao_in_battle",
+      "path": "extra/misc/get_qiegao_in_battle/",
+      "templates": []
+    },
+    {
+      "name": "skill734",
+      "path": "extra/card/skills/skill734/",
+      "templates": [
+        "include/modules/extra/card/skills/skill734/profilecmd.htm",
+        "include/modules/extra/card/skills/skill734/castsk734.htm",
+        "include/modules/extra/card/skills/skill734/playcard.htm"
+      ]
+    },
+    {
+      "name": "skill749",
+      "path": "extra/card/skills/skill749/",
+      "templates": [
+        "include/modules/extra/card/skills/skill749/desc.htm"
+      ]
+    },
+    {
+      "name": "instance12",
+      "path": "extra/instance/instance12_dream/",
+      "templates": []
+    },
+    {
+      "name": "gtype7",
+      "path": "extra/instance/gtype7_cardbrawl/",
+      "templates": []
+    },
+    {
+      "name": "skill43",
+      "path": "extra/club/skills/skill43/",
+      "templates": [
+        "include/modules/extra/club/skills/skill43/desc.htm"
+      ]
+    },
+    {
+      "name": "itemnumlist",
+      "path": "extra/item_extra/itemnumlist/",
+      "templates": []
+    },
+    {
+      "name": "skill56",
+      "path": "extra/club/skills/skill56/",
+      "templates": [
+        "include/modules/extra/club/skills/skill56/desc.htm",
+        "include/modules/extra/club/skills/skill56/profilecmd.htm",
+        "include/modules/extra/club/skills/skill56/mercpanel.htm"
+      ]
+    },
+    {
+      "name": "skill435",
+      "path": "extra/card/skills/skill435/",
+      "templates": [
+        "include/modules/extra/card/skills/skill435/desc.htm",
+        "include/modules/extra/card/skills/skill435/profilecmd.htm",
+        "include/modules/extra/card/skills/skill435/mercpanel.htm"
+      ]
+    },
+    {
+      "name": "skill329",
+      "path": "extra/activities/nationalday2017/skill329/",
+      "templates": [
+        "include/modules/extra/activities/nationalday2017/skill329/desc.htm"
+      ]
+    },
+    {
+      "name": "skill512",
+      "path": "extra/card/skills/skill512/",
+      "templates": [
+        "include/modules/extra/card/skills/skill512/desc.htm"
+      ]
+    },
+    {
+      "name": "addnpc_event",
+      "path": "extra/misc/addnpc_event/",
+      "templates": []
+    },
+    {
+      "name": "skill961",
+      "path": "extra/instance/instance10_rogue/skill961/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill961/desc.htm"
+      ]
+    },
+    {
+      "name": "supplycrate_event",
+      "path": "extra/misc/supplycrate_event/",
+      "templates": []
+    },
+    {
+      "name": "skill1011",
+      "path": "extra/gmskills/skill1011/",
+      "templates": [
+        "include/modules/extra/gmskills/skill1011/desc.htm",
+        "include/modules/extra/gmskills/skill1011/profilecmd.htm",
+        "include/modules/extra/gmskills/skill1011/cons_page.htm"
+      ]
+    },
+    {
+      "name": "skill593",
+      "path": "extra/card/skills/skill593/",
+      "templates": [
+        "include/modules/extra/card/skills/skill593/desc.htm"
+      ]
+    },
+    {
+      "name": "skill731",
+      "path": "extra/card/skills/skill731/",
+      "templates": [
+        "include/modules/extra/card/skills/skill731/desc.htm",
+        "include/modules/extra/card/skills/skill731/profilecmd.htm",
+        "include/modules/extra/card/skills/skill731/castsk731.htm"
+      ]
+    },
+    {
+      "name": "item_randskills",
+      "path": "extra/item_extra/item_randskills/",
+      "templates": [
+        "include/modules/extra/item_extra/item_randskills/use_skcore.htm"
+      ]
+    },
+    {
+      "name": "skill490",
+      "path": "extra/card/skills/skill490/",
+      "templates": [
+        "include/modules/extra/card/skills/skill490/desc.htm"
+      ]
+    },
+    {
+      "name": "skill430",
+      "path": "extra/card/skills/skill430/",
+      "templates": [
+        "include/modules/extra/card/skills/skill430/desc.htm"
+      ]
+    },
+    {
+      "name": "wep_b",
+      "path": "base/weapon/wep_b/",
+      "templates": []
+    },
+    {
+      "name": "ex_phy_def",
+      "path": "extra/attr/ex_phy_def/",
+      "templates": []
+    },
+    {
+      "name": "rage",
+      "path": "extra/attr/rage/",
+      "templates": []
+    },
+    {
+      "name": "skill30",
+      "path": "extra/club/skills/skill30/",
+      "templates": [
+        "include/modules/extra/club/skills/skill30/desc.htm",
+        "include/modules/extra/club/skills/skill30/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill441",
+      "path": "extra/card/skills/skill441/",
+      "templates": [
+        "include/modules/extra/card/skills/skill441/desc.htm"
+      ]
+    },
+    {
+      "name": "skill259",
+      "path": "extra/club/skills/skill259/",
+      "templates": [
+        "include/modules/extra/club/skills/skill259/desc.htm",
+        "include/modules/extra/club/skills/skill259/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "ex_rapid_attr",
+      "path": "extra/attr/ex_rapid_attr/",
+      "templates": []
+    },
+    {
+      "name": "ex_attr_silencer",
+      "path": "extra/attr/ex_attr_silencer/",
+      "templates": []
+    },
+    {
+      "name": "ex_dmg_att",
+      "path": "extra/attr/ex_dmg_att/",
+      "templates": []
+    },
+    {
+      "name": "ex_attr_charge",
+      "path": "extra/attr/ex_attr_charge/",
+      "templates": []
+    },
+    {
+      "name": "ex_hp_def",
+      "path": "extra/attr/ex_hp_def/",
+      "templates": []
+    },
+    {
+      "name": "ex_direct",
+      "path": "extra/attr/ex_direct/",
+      "templates": []
+    },
+    {
+      "name": "ex_seckill",
+      "path": "extra/attr/ex_seckill/",
+      "templates": []
+    },
+    {
+      "name": "ex_cursed",
+      "path": "extra/attr/ex_cursed/",
+      "templates": []
+    },
+    {
+      "name": "ex_def_down",
+      "path": "extra/attr/ex_def_down/",
+      "templates": []
+    },
+    {
+      "name": "ex_armor_crack",
+      "path": "extra/attr/ex_armor_crack/",
+      "templates": []
+    },
+    {
+      "name": "ex_attr_digit",
+      "path": "extra/attr/ex_attr_digit/",
+      "templates": []
+    },
+    {
+      "name": "ex_weapon_crack",
+      "path": "extra/attr/ex_weapon_crack/",
+      "templates": []
+    },
+    {
+      "name": "skill568",
+      "path": "extra/card/skills/skill568/",
+      "templates": []
+    },
+    {
+      "name": "skill585",
+      "path": "extra/card/skills/skill585/",
+      "templates": [
+        "include/modules/extra/card/skills/skill585/desc.htm"
+      ]
+    },
+    {
+      "name": "skill705",
+      "path": "extra/card/skills/skill705/",
+      "templates": [
+        "include/modules/extra/card/skills/skill705/desc.htm"
+      ]
+    },
+    {
+      "name": "skill89",
+      "path": "extra/club/skills/skill89/",
+      "templates": [
+        "include/modules/extra/club/skills/skill89/desc.htm"
+      ]
+    },
+    {
+      "name": "skill96",
+      "path": "extra/club/skills/skill96/",
+      "templates": [
+        "include/modules/extra/club/skills/skill96/desc.htm"
+      ]
+    },
+    {
+      "name": "skill102",
+      "path": "extra/club/skills/skill102/",
+      "templates": [
+        "include/modules/extra/club/skills/skill102/desc.htm",
+        "include/modules/extra/club/skills/skill102/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill103",
+      "path": "extra/club/skills/skill103/",
+      "templates": [
+        "include/modules/extra/club/skills/skill103/desc.htm",
+        "include/modules/extra/club/skills/skill103/profilecmd.htm",
+        "include/modules/extra/club/skills/skill103/castsk103.htm"
+      ]
+    },
+    {
+      "name": "skill104",
+      "path": "extra/club/skills/skill104/",
+      "templates": [
+        "include/modules/extra/club/skills/skill104/desc.htm",
+        "include/modules/extra/club/skills/skill104/profilecmd.htm",
+        "include/modules/extra/club/skills/skill104/castsk104.htm"
+      ]
+    },
+    {
+      "name": "skill732",
+      "path": "extra/card/skills/skill732/",
+      "templates": []
+    },
+    {
+      "name": "skill806",
+      "path": "extra/card/skills/skill806/",
+      "templates": [
+        "include/modules/extra/card/skills/skill806/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_deflect",
+      "path": "extra/attr/ex_deflect/",
+      "templates": []
+    },
+    {
+      "name": "skill1000",
+      "path": "extra/instance/instance7_tutorial/skill1000/",
+      "templates": []
+    },
+    {
+      "name": "skill711",
+      "path": "extra/card/skills/skill711/",
+      "templates": []
+    },
+    {
+      "name": "skill1007",
+      "path": "extra/npc_action/skill1007/",
+      "templates": []
+    },
+    {
+      "name": "skill418",
+      "path": "extra/card/skills/skill418/",
+      "templates": []
+    },
+    {
+      "name": "skill1003",
+      "path": "extra/club/skills/skill1003/",
+      "templates": []
+    },
+    {
+      "name": "randmix",
+      "path": "extra/misc/randmix/",
+      "templates": []
+    },
+    {
+      "name": "gtype1",
+      "path": "extra/instance/gtype1/main/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/main/showhacklevel.htm"
+      ]
+    },
+    {
+      "name": "skill57",
+      "path": "extra/club/skills/skill57/",
+      "templates": []
+    },
+    {
+      "name": "skill436",
+      "path": "extra/card/skills/skill436/",
+      "templates": []
+    },
+    {
+      "name": "skill963",
+      "path": "extra/instance/instance10_rogue/skill963/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill963/find_shopnpc.htm",
+        "include/modules/extra/instance/instance10_rogue/skill963/show_shopnpc_items.htm"
+      ]
+    },
+    {
+      "name": "skill729",
+      "path": "extra/card/skills/skill729/",
+      "templates": []
+    },
+    {
+      "name": "skill107",
+      "path": "extra/club/skills/skill107/",
+      "templates": [
+        "include/modules/extra/club/skills/skill107/desc.htm"
+      ]
+    },
+    {
+      "name": "dualwep",
+      "path": "base/weapon/dualwep/",
+      "templates": [
+        "include/modules/base/weapon/dualwep/sec_att_method.htm",
+        "include/modules/base/weapon/dualwep/dualwep_att_method_profile.htm"
+      ]
+    },
+    {
+      "name": "wep_b_extra_reloading",
+      "path": "extra/item_extra/wep_b_extra_reloading/",
+      "templates": [
+        "include/modules/extra/item_extra/wep_b_extra_reloading/reload_select.htm"
+      ]
+    },
+    {
+      "name": "skill28",
+      "path": "extra/club/skills/skill28/",
+      "templates": [
+        "include/modules/extra/club/skills/skill28/desc.htm"
+      ]
+    },
+    {
+      "name": "skill254",
+      "path": "extra/club/skills/skill254/",
+      "templates": [
+        "include/modules/extra/club/skills/skill254/desc.htm"
+      ]
+    },
+    {
+      "name": "skill763",
+      "path": "extra/card/skills/skill763/",
+      "templates": [
+        "include/modules/extra/card/skills/skill763/desc.htm"
+      ]
+    },
+    {
+      "name": "skill535",
+      "path": "extra/card/skills/skill535/",
+      "templates": [
+        "include/modules/extra/card/skills/skill535/desc.htm"
+      ]
+    },
+    {
+      "name": "skill37",
+      "path": "extra/club/skills/skill37/",
+      "templates": [
+        "include/modules/extra/club/skills/skill37/desc.htm"
+      ]
+    },
+    {
+      "name": "skill73",
+      "path": "extra/club/skills/skill73/",
+      "templates": [
+        "include/modules/extra/club/skills/skill73/desc.htm",
+        "include/modules/extra/club/skills/skill73/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill410",
+      "path": "extra/card/skills/skill410/",
+      "templates": [
+        "include/modules/extra/card/skills/skill410/desc.htm"
+      ]
+    },
+    {
+      "name": "skill570",
+      "path": "extra/card/skills/skill570/",
+      "templates": []
+    },
+    {
+      "name": "instance9",
+      "path": "extra/instance/instance9_rush/",
+      "templates": []
+    },
+    {
+      "name": "skill258",
+      "path": "extra/club/skills/skill258/",
+      "templates": [
+        "include/modules/extra/club/skills/skill258/desc.htm"
+      ]
+    },
+    {
+      "name": "skill444",
+      "path": "extra/card/skills/skill444/",
+      "templates": [
+        "include/modules/extra/card/skills/skill444/desc.htm"
+      ]
+    },
+    {
+      "name": "skill207",
+      "path": "extra/club/skills/skill207/",
+      "templates": [
+        "include/modules/extra/club/skills/skill207/desc.htm"
+      ]
+    },
+    {
+      "name": "skill65",
+      "path": "extra/club/skills/skill65/",
+      "templates": [
+        "include/modules/extra/club/skills/skill65/desc.htm"
+      ]
+    },
+    {
+      "name": "skill49",
+      "path": "extra/club/skills/skill49/",
+      "templates": [
+        "include/modules/extra/club/skills/skill49/desc.htm",
+        "include/modules/extra/club/skills/skill49/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill201",
+      "path": "extra/club/skills/skill201/",
+      "templates": [
+        "include/modules/extra/club/skills/skill201/desc.htm"
+      ]
+    },
+    {
+      "name": "skill248",
+      "path": "extra/club/skills/skill248/",
+      "templates": [
+        "include/modules/extra/club/skills/skill248/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_rapid_def",
+      "path": "extra/attr/ex_rapid_def/",
+      "templates": []
+    },
+    {
+      "name": "skill82",
+      "path": "extra/club/skills/skill82/",
+      "templates": [
+        "include/modules/extra/club/skills/skill82/desc.htm",
+        "include/modules/extra/club/skills/skill82/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill50",
+      "path": "extra/club/skills/skill50/",
+      "templates": [
+        "include/modules/extra/club/skills/skill50/desc.htm"
+      ]
+    },
+    {
+      "name": "skill741",
+      "path": "extra/card/skills/skill741/",
+      "templates": [
+        "include/modules/extra/card/skills/skill741/desc.htm"
+      ]
+    },
+    {
+      "name": "skill578",
+      "path": "extra/card/skills/skill578/",
+      "templates": [
+        "include/modules/extra/card/skills/skill578/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_attr_trap",
+      "path": "extra/attr/ex_attr_trap/",
+      "templates": []
+    },
+    {
+      "name": "skill422",
+      "path": "extra/card/skills/skill422/",
+      "templates": []
+    },
+    {
+      "name": "skill230",
+      "path": "extra/club/skills/skill230/",
+      "templates": [
+        "include/modules/extra/club/skills/skill230/profilecmd.htm",
+        "include/modules/extra/club/skills/skill230/desc.htm"
+      ]
+    },
+    {
+      "name": "skill222",
+      "path": "extra/club/skills/skill222/",
+      "templates": [
+        "include/modules/extra/club/skills/skill222/desc.htm",
+        "include/modules/extra/club/skills/skill222/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill218",
+      "path": "extra/club/skills/skill218/",
+      "templates": [
+        "include/modules/extra/club/skills/skill218/desc.htm"
+      ]
+    },
+    {
+      "name": "skill217",
+      "path": "extra/club/skills/skill217/",
+      "templates": [
+        "include/modules/extra/club/skills/skill217/desc.htm"
+      ]
+    },
+    {
+      "name": "skill219",
+      "path": "extra/club/skills/skill219/",
+      "templates": [
+        "include/modules/extra/club/skills/skill219/profilecmd.htm",
+        "include/modules/extra/club/skills/skill219/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_dmg_def",
+      "path": "extra/attr/ex_dmg_def/",
+      "templates": []
+    },
+    {
+      "name": "ex_dmg_nullify",
+      "path": "extra/attr/ex_dmg_nullify/",
+      "templates": []
+    },
+    {
+      "name": "skill25",
+      "path": "extra/club/skills/skill25/",
+      "templates": [
+        "include/modules/extra/club/skills/skill25/desc.htm"
+      ]
+    },
+    {
+      "name": "skill44",
+      "path": "extra/club/skills/skill44/",
+      "templates": [
+        "include/modules/extra/club/skills/skill44/desc.htm"
+      ]
+    },
+    {
+      "name": "skill47",
+      "path": "extra/club/skills/skill47/",
+      "templates": [
+        "include/modules/extra/club/skills/skill47/desc.htm",
+        "include/modules/extra/club/skills/skill47/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill48",
+      "path": "extra/club/skills/skill48/",
+      "templates": [
+        "include/modules/extra/club/skills/skill48/desc.htm",
+        "include/modules/extra/club/skills/skill48/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill54",
+      "path": "extra/club/skills/skill54/",
+      "templates": [
+        "include/modules/extra/club/skills/skill54/desc.htm"
+      ]
+    },
+    {
+      "name": "skill205",
+      "path": "extra/club/skills/skill205/",
+      "templates": [
+        "include/modules/extra/club/skills/skill205/desc.htm",
+        "include/modules/extra/club/skills/skill205/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill75",
+      "path": "extra/club/skills/skill75/",
+      "templates": [
+        "include/modules/extra/club/skills/skill75/desc.htm",
+        "include/modules/extra/club/skills/skill75/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill76",
+      "path": "extra/club/skills/skill76/",
+      "templates": [
+        "include/modules/extra/club/skills/skill76/desc.htm"
+      ]
+    },
+    {
+      "name": "skill210",
+      "path": "extra/club/skills/skill210/",
+      "templates": [
+        "include/modules/extra/club/skills/skill210/desc.htm"
+      ]
+    },
+    {
+      "name": "skill238",
+      "path": "extra/club/skills/skill238/",
+      "templates": [
+        "include/modules/extra/club/skills/skill238/desc.htm"
+      ]
+    },
+    {
+      "name": "skill434",
+      "path": "extra/card/skills/skill434/",
+      "templates": [
+        "include/modules/extra/card/skills/skill434/desc.htm"
+      ]
+    },
+    {
+      "name": "skill448",
+      "path": "extra/card/skills/skill448/",
+      "templates": [
+        "include/modules/extra/card/skills/skill448/desc.htm"
+      ]
+    },
+    {
+      "name": "skill463",
+      "path": "extra/card/skills/skill463/",
+      "templates": [
+        "include/modules/extra/card/skills/skill463/desc.htm"
+      ]
+    },
+    {
+      "name": "skill465",
+      "path": "extra/card/skills/skill465/",
+      "templates": [
+        "include/modules/extra/card/skills/skill465/desc.htm"
+      ]
+    },
+    {
+      "name": "skill478",
+      "path": "extra/card/skills/skill478/",
+      "templates": [
+        "include/modules/extra/card/skills/skill478/desc.htm"
+      ]
+    },
+    {
+      "name": "skill521",
+      "path": "extra/card/skills/skill521/",
+      "templates": [
+        "include/modules/extra/card/skills/skill521/desc.htm"
+      ]
+    },
+    {
+      "name": "skill522",
+      "path": "extra/card/skills/skill522/",
+      "templates": [
+        "include/modules/extra/card/skills/skill522/desc.htm"
+      ]
+    },
+    {
+      "name": "skill523",
+      "path": "extra/card/skills/skill523/",
+      "templates": [
+        "include/modules/extra/card/skills/skill523/desc.htm"
+      ]
+    },
+    {
+      "name": "skill524",
+      "path": "extra/card/skills/skill524/",
+      "templates": [
+        "include/modules/extra/card/skills/skill524/desc.htm"
+      ]
+    },
+    {
+      "name": "skill525",
+      "path": "extra/card/skills/skill525/",
+      "templates": [
+        "include/modules/extra/card/skills/skill525/desc.htm"
+      ]
+    },
+    {
+      "name": "skill526",
+      "path": "extra/card/skills/skill526/",
+      "templates": [
+        "include/modules/extra/card/skills/skill526/desc.htm"
+      ]
+    },
+    {
+      "name": "skill90",
+      "path": "extra/club/skills/skill90/",
+      "templates": [
+        "include/modules/extra/club/skills/skill90/desc.htm",
+        "include/modules/extra/club/skills/skill90/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill93",
+      "path": "extra/club/skills/skill93/",
+      "templates": [
+        "include/modules/extra/club/skills/skill93/desc.htm"
+      ]
+    },
+    {
+      "name": "skill803",
+      "path": "extra/card/skills/skill803/",
+      "templates": [
+        "include/modules/extra/card/skills/skill803/desc.htm"
+      ]
+    },
+    {
+      "name": "skill232",
+      "path": "extra/club/skills/skill232/",
+      "templates": [
+        "include/modules/extra/club/skills/skill232/desc.htm"
+      ]
+    },
+    {
+      "name": "skill432",
+      "path": "extra/card/skills/skill432/",
+      "templates": [
+        "include/modules/extra/card/skills/skill432/desc.htm"
+      ]
+    },
+    {
+      "name": "skill558",
+      "path": "extra/card/skills/skill558/",
+      "templates": [
+        "include/modules/extra/card/skills/skill558/desc.htm"
+      ]
+    },
+    {
+      "name": "skill758",
+      "path": "extra/card/skills/skill758/",
+      "templates": [
+        "include/modules/extra/card/skills/skill758/desc.htm"
+      ]
+    },
+    {
+      "name": "skill513",
+      "path": "extra/card/skills/skill513/",
+      "templates": [
+        "include/modules/extra/card/skills/skill513/desc.htm"
+      ]
+    },
+    {
+      "name": "item_uu",
+      "path": "extra/item_extra/item_uu/",
+      "templates": []
+    },
+    {
+      "name": "item_umb",
+      "path": "extra/item_extra/item_umb/",
+      "templates": []
+    },
+    {
+      "name": "skill726",
+      "path": "extra/card/skills/skill726/",
+      "templates": []
+    },
+    {
+      "name": "skill105",
+      "path": "extra/club/skills/skill105/",
+      "templates": [
+        "include/modules/extra/club/skills/skill105/desc.htm",
+        "include/modules/extra/club/skills/skill105/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill727",
+      "path": "extra/card/skills/skill727/",
+      "templates": [
+        "include/modules/extra/card/skills/skill727/desc.htm",
+        "include/modules/extra/card/skills/skill727/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "item_recipe",
+      "path": "extra/item_extra/item_recipe/",
+      "templates": [
+        "include/modules/extra/item_extra/item_recipe/recipe_profile.htm",
+        "include/modules/extra/item_extra/item_recipe/choose_recipe.htm",
+        "include/modules/extra/item_extra/item_recipe/use_recipe.htm",
+        "include/modules/extra/item_extra/item_recipe/use_learned_recipe.htm"
+      ]
+    },
+    {
+      "name": "skill580",
+      "path": "extra/card/skills/skill580/",
+      "templates": [
+        "include/modules/extra/card/skills/skill580/desc.htm"
+      ]
+    },
+    {
+      "name": "achievement_base",
+      "path": "extra/achievement/achievement_base/",
+      "templates": [
+        "include/modules/extra/achievement/achievement_base/common_desc.htm"
+      ]
+    },
+    {
+      "name": "opening",
+      "path": "base/opening/",
+      "templates": [
+        "include/modules/base/opening/storyboard.htm",
+        "include/modules/base/opening/storyboard_container.htm",
+        "include/modules/base/opening/cmd_skip_op.htm",
+        "include/modules/base/opening/storyboard_gt0.htm",
+        "include/modules/base/opening/storyboard_gt1.htm",
+        "include/modules/base/opening/storyboard_gt13.htm",
+        "include/modules/base/opening/storyboard_gt18.htm",
+        "include/modules/base/opening/storyboard_gt19.htm"
+      ]
+    },
+    {
+      "name": "ending",
+      "path": "base/ending/",
+      "templates": [
+        "include/modules/base/ending/storyboard.htm",
+        "include/modules/base/ending/storyboard_container.htm",
+        "include/modules/base/ending/next_gametype.htm",
+        "include/modules/base/ending/storyboard_wm2.htm",
+        "include/modules/base/ending/storyboard_wm3.htm",
+        "include/modules/base/ending/storyboard_wm5.htm",
+        "include/modules/base/ending/storyboard_wm7.htm",
+        "include/modules/base/ending/storyboard_wm8.htm"
+      ]
+    },
+    {
+      "name": "song",
+      "path": "base/items/song/",
+      "templates": [
+        "include/modules/base/items/song/song_profile.htm",
+        "include/modules/base/items/song/sing.htm"
+      ]
+    },
+    {
+      "name": "extra_event",
+      "path": "extra/misc/extra_event/",
+      "templates": [
+        "include/modules/extra/misc/extra_event/common_event_page.htm"
+      ]
+    },
+    {
+      "name": "news_observe",
+      "path": "extra/misc/news_observe/",
+      "templates": [
+        "include/modules/extra/misc/news_observe/observe_select.htm"
+      ]
+    },
+    {
+      "name": "skill764",
+      "path": "extra/card/skills/skill764/",
+      "templates": [
+        "include/modules/extra/card/skills/skill764/desc.htm"
+      ]
+    },
+    {
+      "name": "skill429",
+      "path": "extra/instance/gtype1/skill429/",
+      "templates": [
+        "include/modules/extra/instance/gtype1/skill429/desc.htm"
+      ]
+    },
+    {
+      "name": "skill108",
+      "path": "extra/club/skills/skill108/",
+      "templates": [
+        "include/modules/extra/club/skills/skill108/desc.htm"
+      ]
+    },
+    {
+      "name": "skill109",
+      "path": "extra/club/skills/skill109/",
+      "templates": [
+        "include/modules/extra/club/skills/skill109/desc.htm"
+      ]
+    },
+    {
+      "name": "skill111",
+      "path": "extra/club/skills/skill111/",
+      "templates": [
+        "include/modules/extra/club/skills/skill111/desc.htm"
+      ]
+    },
+    {
+      "name": "empowers",
+      "path": "base/items/empowers/",
+      "templates": []
+    },
+    {
+      "name": "skill70",
+      "path": "extra/club/skills/skill70/",
+      "templates": [
+        "include/modules/extra/club/skills/skill70/desc.htm"
+      ]
+    },
+    {
+      "name": "skill246",
+      "path": "extra/club/skills/skill246/",
+      "templates": [
+        "include/modules/extra/club/skills/skill246/desc.htm"
+      ]
+    },
+    {
+      "name": "skill598",
+      "path": "extra/card/skills/skill598/",
+      "templates": [
+        "include/modules/extra/card/skills/skill598/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_mhp_temp_up",
+      "path": "extra/attr/ex_mhp_temp_up/",
+      "templates": []
+    },
+    {
+      "name": "instance_close_button",
+      "path": "extra/instance/instance_close_button/",
+      "templates": [
+        "include/modules/extra/instance/instance_close_button/instance_close_button.htm"
+      ]
+    },
+    {
+      "name": "skill514",
+      "path": "extra/card/skills/skill514/",
+      "templates": [
+        "include/modules/extra/card/skills/skill514/desc.htm"
+      ]
+    },
+    {
+      "name": "skill206",
+      "path": "extra/club/skills/skill206/",
+      "templates": [
+        "include/modules/extra/club/skills/skill206/desc.htm"
+      ]
+    },
+    {
+      "name": "miracletrap",
+      "path": "base/items/miracletrap/",
+      "templates": []
+    },
+    {
+      "name": "skill231",
+      "path": "extra/club/skills/skill231/",
+      "templates": []
+    },
+    {
+      "name": "skill742",
+      "path": "extra/card/skills/skill742/",
+      "templates": []
+    },
+    {
+      "name": "skill220",
+      "path": "extra/club/skills/skill220/",
+      "templates": [
+        "include/modules/extra/club/skills/skill220/profilecmd.htm",
+        "include/modules/extra/club/skills/skill220/poisoncheck.htm",
+        "include/modules/extra/club/skills/skill220/desc.htm"
+      ]
+    },
+    {
+      "name": "skill224",
+      "path": "extra/club/skills/skill224/",
+      "templates": []
+    },
+    {
+      "name": "skill243",
+      "path": "extra/club/skills/skill243/",
+      "templates": [
+        "include/modules/extra/club/skills/skill243/desc.htm"
+      ]
+    },
+    {
+      "name": "skill208",
+      "path": "extra/club/skills/skill208/",
+      "templates": [
+        "include/modules/extra/club/skills/skill208/desc.htm",
+        "include/modules/extra/club/skills/skill208/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill215",
+      "path": "extra/club/skills/skill215/",
+      "templates": [
+        "include/modules/extra/club/skills/skill215/desc.htm",
+        "include/modules/extra/club/skills/skill215/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill271",
+      "path": "extra/club/skills/skill271/",
+      "templates": [
+        "include/modules/extra/club/skills/skill271/desc.htm"
+      ]
+    },
+    {
+      "name": "skill112",
+      "path": "extra/club/skills/skill112/",
+      "templates": [
+        "include/modules/extra/club/skills/skill112/desc.htm",
+        "include/modules/extra/club/skills/skill112/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "tutorial",
+      "path": "extra/instance/instance7_tutorial/tutorial/",
+      "templates": [
+        "include/modules/extra/instance/instance7_tutorial/tutorial/tutorial.htm",
+        "include/modules/extra/instance/instance7_tutorial/tutorial/tutorial_cmd.htm",
+        "include/modules/extra/instance/instance7_tutorial/tutorial/tutorial_corpse.htm"
+      ]
+    },
+    {
+      "name": "skill51",
+      "path": "extra/club/skills/skill51/",
+      "templates": [
+        "include/modules/extra/club/skills/skill51/desc.htm"
+      ]
+    },
+    {
+      "name": "skill493",
+      "path": "extra/card/skills/skill493/",
+      "templates": [
+        "include/modules/extra/card/skills/skill493/desc.htm"
+      ]
+    },
+    {
+      "name": "skill981",
+      "path": "extra/instance/instance12_dream/skill981/",
+      "templates": [
+        "include/modules/extra/instance/instance12_dream/skill981/desc.htm",
+        "include/modules/extra/instance/instance12_dream/skill981/showtrainstage.htm",
+        "include/modules/extra/instance/instance12_dream/skill981/use_prizebox.htm"
+      ]
+    },
+    {
+      "name": "randrecipe",
+      "path": "extra/instance/instance10_rogue/randrecipe/",
+      "templates": []
+    },
+    {
+      "name": "skill100",
+      "path": "extra/club/skills/skill100/",
+      "templates": [
+        "include/modules/extra/club/skills/skill100/desc.htm"
+      ]
+    },
+    {
+      "name": "skill101",
+      "path": "extra/club/skills/skill101/",
+      "templates": [
+        "include/modules/extra/club/skills/skill101/desc.htm"
+      ]
+    },
+    {
+      "name": "skill98",
+      "path": "extra/club/skills/skill98/",
+      "templates": [
+        "include/modules/extra/club/skills/skill98/desc.htm"
+      ]
+    },
+    {
+      "name": "skill99",
+      "path": "extra/club/skills/skill99/",
+      "templates": [
+        "include/modules/extra/club/skills/skill99/desc.htm"
+      ]
+    },
+    {
+      "name": "skill97",
+      "path": "extra/club/skills/skill97/",
+      "templates": [
+        "include/modules/extra/club/skills/skill97/desc.htm"
+      ]
+    },
+    {
+      "name": "skill302",
+      "path": "extra/achievement/skills/skill302/",
+      "templates": []
+    },
+    {
+      "name": "skill303",
+      "path": "extra/achievement/skills/skill303/",
+      "templates": []
+    },
+    {
+      "name": "skill304",
+      "path": "extra/achievement/skills/skill304/",
+      "templates": []
+    },
+    {
+      "name": "skill325",
+      "path": "extra/achievement/skills/skill325/",
+      "templates": []
+    },
+    {
+      "name": "skill326",
+      "path": "extra/achievement/skills/skill326/",
+      "templates": [
+        "include/modules/extra/achievement/skills/skill326/desc.htm"
+      ]
+    },
+    {
+      "name": "skill315",
+      "path": "extra/achievement/skills/skill315/",
+      "templates": []
+    },
+    {
+      "name": "skill313",
+      "path": "extra/achievement/skills/skill313/",
+      "templates": []
+    },
+    {
+      "name": "skill300",
+      "path": "extra/achievement/skills/skill300/",
+      "templates": []
+    },
+    {
+      "name": "skill332",
+      "path": "extra/achievement/skills/skill332/",
+      "templates": []
+    },
+    {
+      "name": "skill333",
+      "path": "extra/achievement/skills/skill333/",
+      "templates": []
+    },
+    {
+      "name": "skill334",
+      "path": "extra/achievement/skills/skill334/",
+      "templates": []
+    },
+    {
+      "name": "skill335",
+      "path": "extra/achievement/skills/skill335/",
+      "templates": []
+    },
+    {
+      "name": "skill336",
+      "path": "extra/achievement/skills/skill336/",
+      "templates": []
+    },
+    {
+      "name": "skill337",
+      "path": "extra/achievement/skills/skill337/",
+      "templates": []
+    },
+    {
+      "name": "skill338",
+      "path": "extra/achievement/skills/skill338/",
+      "templates": []
+    },
+    {
+      "name": "skill339",
+      "path": "extra/achievement/skills/skill339/",
+      "templates": []
+    },
+    {
+      "name": "skill340",
+      "path": "extra/achievement/skills/skill340/",
+      "templates": []
+    },
+    {
+      "name": "skill341",
+      "path": "extra/achievement/skills/skill341/",
+      "templates": []
+    },
+    {
+      "name": "skill342",
+      "path": "extra/achievement/skills/skill342/",
+      "templates": []
+    },
+    {
+      "name": "skill343",
+      "path": "extra/achievement/skills/skill343/",
+      "templates": []
+    },
+    {
+      "name": "skill344",
+      "path": "extra/achievement/skills/skill344/",
+      "templates": []
+    },
+    {
+      "name": "skill345",
+      "path": "extra/achievement/skills/skill345/",
+      "templates": []
+    },
+    {
+      "name": "skill346",
+      "path": "extra/achievement/skills/skill346/",
+      "templates": []
+    },
+    {
+      "name": "skill347",
+      "path": "extra/achievement/skills/skill347/",
+      "templates": []
+    },
+    {
+      "name": "skill348",
+      "path": "extra/achievement/skills/skill348/",
+      "templates": []
+    },
+    {
+      "name": "skill349",
+      "path": "extra/achievement/skills/skill349/",
+      "templates": []
+    },
+    {
+      "name": "skill350",
+      "path": "extra/achievement/skills/skill350/",
+      "templates": []
+    },
+    {
+      "name": "skill353",
+      "path": "extra/achievement/skills/skill353/",
+      "templates": []
+    },
+    {
+      "name": "skill354",
+      "path": "extra/achievement/skills/skill354/",
+      "templates": []
+    },
+    {
+      "name": "skill355",
+      "path": "extra/achievement/skills/skill355/",
+      "templates": []
+    },
+    {
+      "name": "skill356",
+      "path": "extra/achievement/skills/skill356/",
+      "templates": []
+    },
+    {
+      "name": "skill357",
+      "path": "extra/achievement/skills/skill357/",
+      "templates": []
+    },
+    {
+      "name": "skill358",
+      "path": "extra/achievement/skills/skill358/",
+      "templates": []
+    },
+    {
+      "name": "skill359",
+      "path": "extra/achievement/skills/skill359/",
+      "templates": []
+    },
+    {
+      "name": "skill360",
+      "path": "extra/activities/lunany2018/skill360/",
+      "templates": []
+    },
+    {
+      "name": "skill364",
+      "path": "extra/achievement/skills/skill364/",
+      "templates": []
+    },
+    {
+      "name": "activity_ranking",
+      "path": "extra/activities/activity_ranking/",
+      "templates": []
+    },
+    {
+      "name": "aprilfool2018",
+      "path": "extra/activities/aprilfool2018/main/",
+      "templates": []
+    },
+    {
+      "name": "skill367",
+      "path": "extra/achievement/skills/skill367/",
+      "templates": []
+    },
+    {
+      "name": "skill368",
+      "path": "extra/achievement/skills/skill368/",
+      "templates": []
+    },
+    {
+      "name": "skill369",
+      "path": "extra/achievement/skills/skill369/",
+      "templates": []
+    },
+    {
+      "name": "skill370",
+      "path": "extra/achievement/skills/skill370/",
+      "templates": []
+    },
+    {
+      "name": "skill530",
+      "path": "extra/card/skills/skill530/",
+      "templates": [
+        "include/modules/extra/card/skills/skill530/desc.htm"
+      ]
+    },
+    {
+      "name": "skill372",
+      "path": "extra/achievement/skills/skill372/",
+      "templates": []
+    },
+    {
+      "name": "skill373",
+      "path": "extra/achievement/skills/skill373/",
+      "templates": []
+    },
+    {
+      "name": "skill374",
+      "path": "extra/achievement/skills/skill374/",
+      "templates": []
+    },
+    {
+      "name": "skill377",
+      "path": "extra/achievement/skills/skill377/",
+      "templates": []
+    },
+    {
+      "name": "skill378",
+      "path": "extra/achievement/skills/skill378/",
+      "templates": []
+    },
+    {
+      "name": "skill380",
+      "path": "extra/achievement/skills/skill380/",
+      "templates": []
+    },
+    {
+      "name": "skill375",
+      "path": "extra/achievement/skills/skill375/",
+      "templates": []
+    },
+    {
+      "name": "skill382",
+      "path": "extra/achievement/skills/skill382/",
+      "templates": []
+    },
+    {
+      "name": "skill351",
+      "path": "extra/achievement/skills/skill351/",
+      "templates": []
+    },
+    {
+      "name": "skill352",
+      "path": "extra/achievement/skills/skill352/",
+      "templates": []
+    },
+    {
+      "name": "skill383",
+      "path": "extra/achievement/skills/skill383/",
+      "templates": []
+    },
+    {
+      "name": "skill384",
+      "path": "extra/achievement/skills/skill384/",
+      "templates": []
+    },
+    {
+      "name": "skill385",
+      "path": "extra/achievement/skills/skill385/",
+      "templates": []
+    },
+    {
+      "name": "skill386",
+      "path": "extra/achievement/skills/skill386/",
+      "templates": []
+    },
+    {
+      "name": "skill387",
+      "path": "extra/achievement/skills/skill387/",
+      "templates": []
+    },
+    {
+      "name": "skill504",
+      "path": "extra/card/skills/skill504/",
+      "templates": [
+        "include/modules/extra/card/skills/skill504/anime.htm",
+        "include/modules/extra/card/skills/skill504/okotta.htm"
+      ]
+    },
+    {
+      "name": "user_settings",
+      "path": "extra/misc/user_settings/",
+      "templates": []
+    },
+    {
+      "name": "skill740",
+      "path": "extra/card/skills/skill740/",
+      "templates": []
+    },
+    {
+      "name": "instance3",
+      "path": "extra/instance/instance3_ascension/",
+      "templates": []
+    },
+    {
+      "name": "ex_uselog",
+      "path": "extra/attr/ex_uselog/",
+      "templates": []
+    },
+    {
+      "name": "skill182",
+      "path": "extra/club/skills/skill182/",
+      "templates": []
+    },
+    {
+      "name": "cooldown",
+      "path": "base/cooldown/",
+      "templates": []
+    },
+    {
+      "name": "skill458",
+      "path": "extra/card/skills/skill458/",
+      "templates": [
+        "include/modules/extra/card/skills/skill458/profilecmd.htm",
+        "include/modules/extra/card/skills/skill458/castsk458.htm",
+        "include/modules/extra/card/skills/skill458/desc.htm"
+      ]
+    },
+    {
+      "name": "skill498",
+      "path": "extra/card/skills/skill498/",
+      "templates": [
+        "include/modules/extra/card/skills/skill498/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_attr_song",
+      "path": "extra/attr/ex_attr_song/",
+      "templates": []
+    },
+    {
+      "name": "skill181",
+      "path": "extra/club/skills/skill181/",
+      "templates": []
+    },
+    {
+      "name": "skill376",
+      "path": "extra/achievement/skills/skill376/",
+      "templates": []
+    },
+    {
+      "name": "skill381",
+      "path": "extra/achievement/skills/skill381/",
+      "templates": []
+    },
+    {
+      "name": "skill88",
+      "path": "extra/club/skills/skill88/",
+      "templates": [
+        "include/modules/extra/club/skills/skill88/desc.htm"
+      ]
+    },
+    {
+      "name": "skill91",
+      "path": "extra/club/skills/skill91/",
+      "templates": [
+        "include/modules/extra/club/skills/skill91/desc.htm"
+      ]
+    },
+    {
+      "name": "skill92",
+      "path": "extra/club/skills/skill92/",
+      "templates": [
+        "include/modules/extra/club/skills/skill92/desc.htm"
+      ]
+    },
+    {
+      "name": "skill739",
+      "path": "extra/card/skills/skill739/",
+      "templates": [
+        "include/modules/extra/card/skills/skill739/desc.htm"
+      ]
+    },
+    {
+      "name": "skill747",
+      "path": "extra/card/skills/skill747/",
+      "templates": []
+    },
+    {
+      "name": "instance11",
+      "path": "extra/instance/instance11_observe/",
+      "templates": []
+    },
+    {
+      "name": "wepchange",
+      "path": "extra/attr/wepchange/",
+      "templates": [
+        "include/modules/extra/attr/wepchange/wepchange_profile.htm"
+      ]
+    },
+    {
+      "name": "skill77",
+      "path": "extra/club/skills/skill77/",
+      "templates": [
+        "include/modules/extra/club/skills/skill77/desc.htm"
+      ]
+    },
+    {
+      "name": "skill379",
+      "path": "extra/achievement/skills/skill379/",
+      "templates": []
+    },
+    {
+      "name": "skill244",
+      "path": "extra/club/skills/skill244/",
+      "templates": [
+        "include/modules/extra/club/skills/skill244/desc.htm",
+        "include/modules/extra/club/skills/skill244/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill508",
+      "path": "extra/card/skills/skill508/",
+      "templates": [
+        "include/modules/extra/card/skills/skill508/desc.htm"
+      ]
+    },
+    {
+      "name": "skill233",
+      "path": "extra/club/skills/skill233/",
+      "templates": [
+        "include/modules/extra/club/skills/skill233/desc.htm"
+      ]
+    },
+    {
+      "name": "smartmix",
+      "path": "extra/misc/smartmix/",
+      "templates": [
+        "include/modules/extra/misc/smartmix/itemmix.htm",
+        "include/modules/extra/misc/smartmix/mixhint_main.htm"
+      ]
+    },
+    {
+      "name": "skill371",
+      "path": "extra/achievement/skills/skill371/",
+      "templates": []
+    },
+    {
+      "name": "skill983",
+      "path": "extra/instance/instance12_dream/skill983/",
+      "templates": [
+        "include/modules/extra/instance/instance12_dream/skill983/desc.htm"
+      ]
+    },
+    {
+      "name": "skill984",
+      "path": "extra/instance/instance12_dream/skill984/",
+      "templates": [
+        "include/modules/extra/instance/instance12_dream/skill984/desc.htm"
+      ]
+    },
+    {
+      "name": "skill985",
+      "path": "extra/instance/instance12_dream/skill985/",
+      "templates": [
+        "include/modules/extra/instance/instance12_dream/skill985/skcmd985.htm"
+      ]
+    },
+    {
+      "name": "skill363",
+      "path": "extra/achievement/skills/skill363/",
+      "templates": []
+    },
+    {
+      "name": "instance5",
+      "path": "extra/instance/instance5/",
+      "templates": []
+    },
+    {
+      "name": "skill361",
+      "path": "extra/activities/lunany2018/skill361/",
+      "templates": []
+    },
+    {
+      "name": "skill362",
+      "path": "extra/activities/lunany2018/skill362/",
+      "templates": []
+    },
+    {
+      "name": "skill365",
+      "path": "extra/activities/aprilfool2018/skill365/",
+      "templates": [
+        "include/modules/extra/activities/aprilfool2018/skill365/ranking.htm"
+      ]
+    },
+    {
+      "name": "logistics",
+      "path": "extra/misc/logistics/",
+      "templates": [
+        "include/modules/extra/misc/logistics/use_gameitem_recorder.htm"
+      ]
+    },
+    {
+      "name": "autopower",
+      "path": "extra/misc/autopower/",
+      "templates": []
+    },
+    {
+      "name": "skill601",
+      "path": "extra/club/skills/skill601/",
+      "templates": []
+    },
+    {
+      "name": "skill602",
+      "path": "extra/club/skills/skill602/",
+      "templates": []
+    },
+    {
+      "name": "skill603",
+      "path": "extra/club/skills/skill603/",
+      "templates": []
+    },
+    {
+      "name": "item_uys",
+      "path": "extra/item_extra/item_uys/",
+      "templates": [
+        "include/modules/extra/item_extra/item_uys/use_sewingkit.htm"
+      ]
+    },
+    {
+      "name": "searchmemory",
+      "path": "extra/searchmemory/",
+      "templates": [
+        "include/modules/extra/searchmemory/smemorylist.htm"
+      ]
+    },
+    {
+      "name": "skill738",
+      "path": "extra/card/skills/skill738/",
+      "templates": [
+        "include/modules/extra/card/skills/skill738/desc.htm"
+      ]
+    },
+    {
+      "name": "skill87",
+      "path": "extra/club/skills/skill87/",
+      "templates": [
+        "include/modules/extra/club/skills/skill87/desc.htm"
+      ]
+    },
+    {
+      "name": "skill94",
+      "path": "extra/club/skills/skill94/",
+      "templates": [
+        "include/modules/extra/club/skills/skill94/profilecmd.htm",
+        "include/modules/extra/club/skills/skill94/desc.htm",
+        "include/modules/extra/club/skills/skill94/castsk94.htm"
+      ]
+    },
+    {
+      "name": "instance_quit_button",
+      "path": "extra/instance/instance_quit_button/",
+      "templates": [
+        "include/modules/extra/instance/instance_quit_button/instance_quit_button.htm"
+      ]
+    },
+    {
+      "name": "skill497",
+      "path": "extra/card/skills/skill497/",
+      "templates": [
+        "include/modules/extra/card/skills/skill497/desc.htm"
+      ]
+    },
+    {
+      "name": "skill503",
+      "path": "extra/card/skills/skill503/",
+      "templates": [
+        "include/modules/extra/card/skills/skill503/desc.htm",
+        "include/modules/extra/card/skills/skill503/ueecmd.htm"
+      ]
+    },
+    {
+      "name": "skill559",
+      "path": "extra/card/skills/skill559/",
+      "templates": [
+        "include/modules/extra/card/skills/skill559/desc.htm"
+      ]
+    },
+    {
+      "name": "skill544",
+      "path": "extra/card/skills/skill544/",
+      "templates": []
+    },
+    {
+      "name": "skill366",
+      "path": "extra/activities/aprilfool2018/skill366/",
+      "templates": []
+    },
+    {
+      "name": "skill721",
+      "path": "extra/card/skills/skill721/",
+      "templates": [
+        "include/modules/extra/card/skills/skill721/desc.htm"
+      ]
+    },
+    {
+      "name": "skill228",
+      "path": "extra/club/skills/skill228/",
+      "templates": [
+        "include/modules/extra/club/skills/skill228/desc.htm",
+        "include/modules/extra/club/skills/skill228/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill236",
+      "path": "extra/club/skills/skill236/",
+      "templates": [
+        "include/modules/extra/club/skills/skill236/desc.htm",
+        "include/modules/extra/club/skills/skill236/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill237",
+      "path": "extra/club/skills/skill237/",
+      "templates": [
+        "include/modules/extra/club/skills/skill237/desc.htm",
+        "include/modules/extra/club/skills/skill237/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill35",
+      "path": "extra/club/skills/skill35/",
+      "templates": [
+        "include/modules/extra/club/skills/skill35/desc.htm"
+      ]
+    },
+    {
+      "name": "skill467",
+      "path": "extra/card/skills/skill467/",
+      "templates": [
+        "include/modules/extra/card/skills/skill467/desc.htm"
+      ]
+    },
+    {
+      "name": "skill468",
+      "path": "extra/card/skills/skill468/",
+      "templates": [
+        "include/modules/extra/card/skills/skill468/desc.htm"
+      ]
+    },
+    {
+      "name": "skill481",
+      "path": "extra/card/skills/skill481/",
+      "templates": [
+        "include/modules/extra/card/skills/skill481/desc.htm"
+      ]
+    },
+    {
+      "name": "skill482",
+      "path": "extra/card/skills/skill482/",
+      "templates": [
+        "include/modules/extra/card/skills/skill482/desc.htm"
+      ]
+    },
+    {
+      "name": "skill596",
+      "path": "extra/card/skills/skill596/",
+      "templates": [
+        "include/modules/extra/card/skills/skill596/desc.htm"
+      ]
+    },
+    {
+      "name": "skill595",
+      "path": "extra/card/skills/skill595/",
+      "templates": [
+        "include/modules/extra/card/skills/skill595/desc.htm",
+        "include/modules/extra/card/skills/skill595/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill500",
+      "path": "extra/card/skills/skill500/",
+      "templates": [
+        "include/modules/extra/card/skills/skill500/desc.htm"
+      ]
+    },
+    {
+      "name": "blessstone",
+      "path": "extra/attr/blessstone/",
+      "templates": [
+        "include/modules/extra/attr/blessstone/use_blessstone.htm"
+      ]
+    },
+    {
+      "name": "skill701",
+      "path": "extra/card/skills/skill701/",
+      "templates": [
+        "include/modules/extra/card/skills/skill701/desc.htm"
+      ]
+    },
+    {
+      "name": "item_ext_armor",
+      "path": "extra/item_extra/item_ext_armor/",
+      "templates": []
+    },
+    {
+      "name": "skill567",
+      "path": "extra/card/skills/skill567/",
+      "templates": [
+        "include/modules/extra/card/skills/skill567/desc.htm"
+      ]
+    },
+    {
+      "name": "skill80",
+      "path": "extra/club/skills/skill80/",
+      "templates": [
+        "include/modules/extra/club/skills/skill80/desc.htm"
+      ]
+    },
+    {
+      "name": "skill551",
+      "path": "extra/card/skills/skill551/",
+      "templates": [
+        "include/modules/extra/card/skills/skill551/desc.htm"
+      ]
+    },
+    {
+      "name": "skill554",
+      "path": "extra/card/skills/skill554/",
+      "templates": []
+    },
+    {
+      "name": "skill1006",
+      "path": "extra/club/skills/skill1006/",
+      "templates": [
+        "include/modules/extra/club/skills/skill1006/beaconlist.htm"
+      ]
+    },
+    {
+      "name": "skill542",
+      "path": "extra/card/skills/skill542/",
+      "templates": [
+        "include/modules/extra/card/skills/skill542/desc.htm"
+      ]
+    },
+    {
+      "name": "skill905",
+      "path": "extra/instance/instance3_ascension/skill905/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill905/desc.htm"
+      ]
+    },
+    {
+      "name": "skill605",
+      "path": "extra/club/skills/skill605/",
+      "templates": []
+    },
+    {
+      "name": "skill563",
+      "path": "extra/card/skills/skill563/",
+      "templates": []
+    },
+    {
+      "name": "skill36",
+      "path": "extra/club/skills/skill36/",
+      "templates": [
+        "include/modules/extra/club/skills/skill36/desc.htm",
+        "include/modules/extra/club/skills/skill36/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill38",
+      "path": "extra/club/skills/skill38/",
+      "templates": [
+        "include/modules/extra/club/skills/skill38/desc.htm",
+        "include/modules/extra/club/skills/skill38/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill34",
+      "path": "extra/club/skills/skill34/",
+      "templates": [
+        "include/modules/extra/club/skills/skill34/desc.htm"
+      ]
+    },
+    {
+      "name": "skill538",
+      "path": "extra/card/skills/skill538/",
+      "templates": [
+        "include/modules/extra/card/skills/skill538/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_phy_nullify",
+      "path": "extra/attr/ex_phy_nullify/",
+      "templates": []
+    },
+    {
+      "name": "ex_equipskill",
+      "path": "extra/attr/ex_equipskill/",
+      "templates": []
+    },
+    {
+      "name": "ex_storage",
+      "path": "extra/attr/ex_storage/",
+      "templates": [
+        "include/modules/extra/attr/ex_storage/storage_profile.htm",
+        "include/modules/extra/attr/ex_storage/open_storage.htm"
+      ]
+    },
+    {
+      "name": "item_armor_empower",
+      "path": "extra/item_extra/item_armor_empower/",
+      "templates": [
+        "include/modules/extra/item_extra/item_armor_empower/use_armor_empower.htm"
+      ]
+    },
+    {
+      "name": "item_uvo_extra",
+      "path": "extra/item_extra/item_uvo_extra/",
+      "templates": [
+        "include/modules/extra/item_extra/item_uvo_extra/uvo_extra_profile.htm",
+        "include/modules/extra/item_extra/item_uvo_extra/uvo_extra_use.htm",
+        "include/modules/extra/item_extra/item_uvo_extra/uvo_extra_mix.htm",
+        "include/modules/extra/item_extra/item_uvo_extra/uvo_extra_cardsend.htm"
+      ]
+    },
+    {
+      "name": "skill272",
+      "path": "extra/club/skills/skill272/",
+      "templates": [
+        "include/modules/extra/club/skills/skill272/desc.htm",
+        "include/modules/extra/club/skills/skill272/skill272_command.htm"
+      ]
+    },
+    {
+      "name": "skill707",
+      "path": "extra/card/skills/skill707/",
+      "templates": [
+        "include/modules/extra/card/skills/skill707/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_residue",
+      "path": "extra/attr/ex_residue/",
+      "templates": []
+    },
+    {
+      "name": "skill576",
+      "path": "extra/card/skills/skill576/",
+      "templates": [
+        "include/modules/extra/card/skills/skill576/desc.htm"
+      ]
+    },
+    {
+      "name": "skill575",
+      "path": "extra/card/skills/skill575/",
+      "templates": [
+        "include/modules/extra/card/skills/skill575/desc.htm",
+        "include/modules/extra/card/skills/skill575/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill597",
+      "path": "extra/card/skills/skill597/",
+      "templates": [
+        "include/modules/extra/card/skills/skill597/desc.htm",
+        "include/modules/extra/card/skills/skill597/profilecmd.htm",
+        "include/modules/extra/card/skills/skill597/castsk597.htm"
+      ]
+    },
+    {
+      "name": "skill713",
+      "path": "extra/card/skills/skill713/",
+      "templates": [
+        "include/modules/extra/card/skills/skill713/desc.htm"
+      ]
+    },
+    {
+      "name": "skill712",
+      "path": "extra/card/skills/skill712/",
+      "templates": [
+        "include/modules/extra/card/skills/skill712/desc.htm"
+      ]
+    },
+    {
+      "name": "skill587",
+      "path": "extra/card/skills/skill587/",
+      "templates": [
+        "include/modules/extra/card/skills/skill587/desc.htm",
+        "include/modules/extra/card/skills/skill587/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill543",
+      "path": "extra/card/skills/skill543/",
+      "templates": []
+    },
+    {
+      "name": "skill733",
+      "path": "extra/card/skills/skill733/",
+      "templates": [
+        "include/modules/extra/card/skills/skill733/profilecmd.htm",
+        "include/modules/extra/card/skills/skill733/castsk733.htm"
+      ]
+    },
+    {
+      "name": "skill183",
+      "path": "extra/club/skills/skill183/",
+      "templates": []
+    },
+    {
+      "name": "skill566",
+      "path": "extra/card/skills/skill566/",
+      "templates": [
+        "include/modules/extra/card/skills/skill566/desc.htm"
+      ]
+    },
+    {
+      "name": "skill604",
+      "path": "extra/club/skills/skill604/",
+      "templates": []
+    },
+    {
+      "name": "ex_gender_attr",
+      "path": "extra/attr/ex_gender_attr/",
+      "templates": []
+    },
+    {
+      "name": "ex_attr_pierce",
+      "path": "extra/attr/ex_attr_pierce/",
+      "templates": []
+    },
+    {
+      "name": "skill903",
+      "path": "extra/instance/instance3_ascension/skill903/",
+      "templates": [
+        "include/modules/extra/instance/instance3_ascension/skill903/desc.htm"
+      ]
+    },
+    {
+      "name": "skill756",
+      "path": "extra/card/skills/skill756/",
+      "templates": [
+        "include/modules/extra/card/skills/skill756/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_alternative",
+      "path": "extra/attr/ex_alternative/",
+      "templates": [
+        "include/modules/extra/attr/ex_alternative/use_alternative.htm"
+      ]
+    },
+    {
+      "name": "skill730",
+      "path": "extra/card/skills/skill730/",
+      "templates": [
+        "include/modules/extra/card/skills/skill730/desc.htm"
+      ]
+    },
+    {
+      "name": "skill746",
+      "path": "extra/card/skills/skill746/",
+      "templates": [
+        "include/modules/extra/card/skills/skill746/desc.htm",
+        "include/modules/extra/card/skills/skill746/profilecmd.htm",
+        "include/modules/extra/card/skills/skill746/castsk746.htm"
+      ]
+    },
+    {
+      "name": "skill505",
+      "path": "extra/card/skills/skill505/",
+      "templates": [
+        "include/modules/extra/card/skills/skill505/desc.htm"
+      ]
+    },
+    {
+      "name": "skill960",
+      "path": "extra/instance/instance10_rogue/skill960/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill960/profilecmd.htm",
+        "include/modules/extra/instance/instance10_rogue/skill960/castsk960.htm",
+        "include/modules/extra/instance/instance10_rogue/skill960/desc.htm"
+      ]
+    },
+    {
+      "name": "skill964",
+      "path": "extra/instance/instance10_rogue/skill964/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill964/desc.htm"
+      ]
+    },
+    {
+      "name": "skill106",
+      "path": "extra/club/skills/skill106/",
+      "templates": [
+        "include/modules/extra/club/skills/skill106/desc.htm"
+      ]
+    },
+    {
+      "name": "skill709",
+      "path": "extra/card/skills/skill709/",
+      "templates": [
+        "include/modules/extra/card/skills/skill709/desc.htm",
+        "include/modules/extra/card/skills/skill709/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill722",
+      "path": "extra/card/skills/skill722/",
+      "templates": [
+        "include/modules/extra/card/skills/skill722/desc.htm",
+        "include/modules/extra/card/skills/skill722/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill737",
+      "path": "extra/card/skills/skill737/",
+      "templates": [
+        "include/modules/extra/card/skills/skill737/desc.htm",
+        "include/modules/extra/card/skills/skill737/profilecmd.htm",
+        "include/modules/extra/card/skills/skill737/castsk737.htm"
+      ]
+    },
+    {
+      "name": "skill714",
+      "path": "extra/card/skills/skill714/",
+      "templates": [
+        "include/modules/extra/card/skills/skill714/desc.htm"
+      ]
+    },
+    {
+      "name": "ex_purity",
+      "path": "extra/attr/ex_purity/",
+      "templates": []
+    },
+    {
+      "name": "skill26",
+      "path": "extra/club/skills/skill26/",
+      "templates": [
+        "include/modules/extra/club/skills/skill26/desc.htm",
+        "include/modules/extra/club/skills/skill26/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill265",
+      "path": "extra/club/skills/skill265/",
+      "templates": [
+        "include/modules/extra/club/skills/skill265/desc.htm",
+        "include/modules/extra/club/skills/skill265/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "skill507",
+      "path": "extra/card/skills/skill507/",
+      "templates": [
+        "include/modules/extra/card/skills/skill507/desc.htm"
+      ]
+    },
+    {
+      "name": "skill113",
+      "path": "extra/club/skills/skill113/",
+      "templates": [
+        "include/modules/extra/club/skills/skill113/desc.htm"
+      ]
+    },
+    {
+      "name": "instance10",
+      "path": "extra/instance/instance10_rogue/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/showroguestage.htm"
+      ]
+    },
+    {
+      "name": "skill748",
+      "path": "extra/card/skills/skill748/",
+      "templates": [
+        "include/modules/extra/card/skills/skill748/desc.htm"
+      ]
+    },
+    {
+      "name": "skill965",
+      "path": "extra/instance/instance10_rogue/skill965/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill965/desc.htm"
+      ]
+    },
+    {
+      "name": "skill27",
+      "path": "extra/club/skills/skill27/",
+      "templates": [
+        "include/modules/extra/club/skills/skill27/desc.htm"
+      ]
+    },
+    {
+      "name": "skill489",
+      "path": "extra/card/skills/skill489/",
+      "templates": [
+        "include/modules/extra/card/skills/skill489/desc.htm"
+      ]
+    },
+    {
+      "name": "skill266",
+      "path": "extra/club/skills/skill266/",
+      "templates": [
+        "include/modules/extra/club/skills/skill266/desc.htm"
+      ]
+    },
+    {
+      "name": "skill81",
+      "path": "extra/club/skills/skill81/",
+      "templates": [
+        "include/modules/extra/club/skills/skill81/desc.htm"
+      ]
+    },
+    {
+      "name": "skill509",
+      "path": "extra/card/skills/skill509/",
+      "templates": [
+        "include/modules/extra/card/skills/skill509/desc.htm"
+      ]
+    },
+    {
+      "name": "skill510",
+      "path": "extra/card/skills/skill510/",
+      "templates": [
+        "include/modules/extra/card/skills/skill510/desc.htm"
+      ]
+    },
+    {
+      "name": "skill68",
+      "path": "extra/club/skills/skill68/",
+      "templates": [
+        "include/modules/extra/club/skills/skill68/desc.htm"
+      ]
+    },
+    {
+      "name": "skill962",
+      "path": "extra/instance/instance10_rogue/skill962/",
+      "templates": [
+        "include/modules/extra/instance/instance10_rogue/skill962/desc.htm"
+      ]
+    },
+    {
+      "name": "skill750",
+      "path": "extra/card/skills/skill750/",
+      "templates": []
+    },
+    {
+      "name": "skill753",
+      "path": "extra/card/skills/skill753/",
+      "templates": [
+        "include/modules/extra/card/skills/skill753/desc.htm"
+      ]
+    },
+    {
+      "name": "bubblebox",
+      "path": "extra/misc/bubblebox/",
+      "templates": [
+        "include/modules/extra/misc/bubblebox/start.htm",
+        "include/modules/extra/misc/bubblebox/end.htm"
+      ]
+    },
+    {
+      "name": "skill86",
+      "path": "extra/club/skills/skill86/",
+      "templates": [
+        "include/modules/extra/club/skills/skill86/desc.htm",
+        "include/modules/extra/club/skills/skill86/battlecmd_desc.htm"
+      ]
+    },
+    {
+      "name": "gtype2",
+      "path": "extra/instance/gtype2/main/",
+      "templates": []
+    },
+    {
+      "name": "gtype3",
+      "path": "extra/instance/gtype3/main/",
+      "templates": []
+    },
+    {
+      "name": "gtype5",
+      "path": "extra/instance/gtype5/main/",
+      "templates": []
+    },
+    {
+      "name": "skill1005",
+      "path": "extra/instance/gtype5/skill1005/",
+      "templates": [
+        "include/modules/extra/instance/gtype5/skill1005/profilecmd.htm",
+        "include/modules/extra/instance/gtype5/skill1005/desc.htm"
+      ]
+    },
+    {
+      "name": "skill1004",
+      "path": "extra/instance/gtype5/skill1004/",
+      "templates": [
+        "include/modules/extra/instance/gtype5/skill1004/desc.htm"
+      ]
+    },
+    {
+      "name": "glowbutton",
+      "path": "extra/misc/glowbutton/",
+      "templates": [
+        "include/modules/extra/misc/glowbutton/start.htm",
+        "include/modules/extra/misc/glowbutton/end.htm"
+      ]
+    },
+    {
+      "name": "halloween2017",
+      "path": "extra/activities/halloween2017/main/",
+      "templates": []
+    }
+  ]
+}

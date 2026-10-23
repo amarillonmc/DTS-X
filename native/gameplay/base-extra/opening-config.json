@@ -1,0 +1,17 @@
+{
+  "source": "engine/include/modules/base/opening/config/opening.config.php",
+  "sha256": "ff4a9b3d9ed2a22be5d208d3ffadbd69a467fcdf68e05e6c01082b86ef1a4ce9",
+  "values": {
+    "opening_by_shootings": true,
+    "opening_by_shootings_gametype": [
+      0,
+      4,
+      6,
+      1,
+      13,
+      18,
+      19,
+      5
+    ]
+  }
+}

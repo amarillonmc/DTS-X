@@ -1,0 +1,442 @@
+{
+  "outputs": [
+    {
+      "name": "command_roomcmd",
+      "source": "include/pages/command_roomcmd.php",
+      "sourceHash": "edb3bd4df4839dba35acec0bc849dcf965c9ebb46294d1f8cddc945dbc49b71b",
+      "generatedHash": "9d4713f48b113949fbd25a43c51e7ba112e19908b34ba68501659ed22f1346ec",
+      "calls": [
+        "addnews",
+        "array_keys",
+        "define",
+        "defined",
+        "enter_battlefield",
+        "fetch_roomdata",
+        "fetch_udata_multilist",
+        "file_exists",
+        "gdecode",
+        "gencode",
+        "gexit",
+        "implode",
+        "in_array",
+        "is_numeric",
+        "max",
+        "min",
+        "room_auto_kick_check",
+        "room_check_game_option",
+        "room_check_subroom",
+        "room_create",
+        "room_creater_check",
+        "room_enter",
+        "room_get_vars",
+        "room_getteamhtml",
+        "room_init",
+        "room_new_chat",
+        "room_prefix2id",
+        "room_refresh_team_pos",
+        "room_save_broadcast",
+        "room_set_game_option",
+        "room_team_leader_check",
+        "room_timestamp_tick",
+        "room_upos_check",
+        "roomdata_save",
+        "save_gameinfo",
+        "set_current_roomid",
+        "sizeof",
+        "strpos",
+        "sys\\routine",
+        "systemputchat",
+        "update_roomstate"
+      ]
+    },
+    {
+      "name": "command_winner",
+      "source": "include/pages/command_winner.php",
+      "sourceHash": "55c10abe702f95d30b1cd2405beaccad549d8fdedc6b3ab41eaf8611c8460561",
+      "generatedHash": "13e36e8b6722d528164a900ad79ea921b53f72ff1c00ceda981fff501acc2de4",
+      "calls": [
+        "apm\\calc_winner_apm",
+        "array_keys",
+        "array_search",
+        "date",
+        "defined",
+        "file_exists",
+        "floor",
+        "function_exists",
+        "gdecode",
+        "implode",
+        "in_array",
+        "max",
+        "min",
+        "ob_end_flush",
+        "ob_start",
+        "player\\icon_parser_shell",
+        "player\\init_playerdata",
+        "player\\load_playerdata",
+        "player\\parse_interface_profile",
+        "readover",
+        "room_check_subroom",
+        "room_prefix_kind",
+        "sizeof",
+        "str_replace",
+        "template"
+      ]
+    },
+    {
+      "name": "command_help",
+      "source": "include/pages/command_help.php",
+      "sourceHash": "2cfd3c2b2ebf25c45ea66efec09f75152d7aa33de5856f4cabd07936abda6e96",
+      "generatedHash": "fcf35080080970d08563ac188cccccbcc3938f80924f2b1d4da989bdcdb09360",
+      "calls": [
+        "array_combine",
+        "array_slice",
+        "attrbase\\config_process_encode_comp_itmsk",
+        "defined",
+        "dump_template",
+        "explode",
+        "file_exists",
+        "filemtime",
+        "get_item_place_single",
+        "get_resultjwords",
+        "in_array",
+        "init_item_place",
+        "itemmain\\get_itmsk_array",
+        "itemmain\\get_itmsk_desc_single",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "openfile",
+        "player\\create_dummy_playerdata",
+        "preg_replace",
+        "strpos",
+        "substr",
+        "template",
+        "writeover"
+      ]
+    },
+    {
+      "name": "command_logistics",
+      "source": "include/pages/command_logistics.php",
+      "sourceHash": "09d8cedeb97eaebd4a433ad7fb8704bb8650513ff0d82b7791306d53da59940d",
+      "generatedHash": "c9dff5a41448e3a0ab0c5cecd2eead25d8fa460bd0dc2c2609b8d37858259112",
+      "calls": [
+        "cardbase\\get_cardlist_energy_from_udata",
+        "defined",
+        "fetch_udata_by_username",
+        "gexit",
+        "logistics\\get_cardshop_list",
+        "logistics\\get_showcase_cardlist_from_udata",
+        "logistics\\get_showcase_gameitemlist_from_udata",
+        "logistics\\get_showcase_logitemlist_from_udata",
+        "logistics\\logistics_buy",
+        "logistics\\logistics_get_itemlist_from_udata",
+        "logistics\\logistics_itemuse",
+        "logistics\\set_showcase_card",
+        "logistics\\set_showcase_logitem",
+        "ob_end_flush",
+        "ob_start",
+        "template",
+        "udata_check"
+      ]
+    },
+    {
+      "name": "command_aranking",
+      "source": "include/pages/command_aranking.php",
+      "sourceHash": "3e55138a01f4c4624679457c45acb27bc536c554d5a48c701e80d44dfbcdfb7d",
+      "generatedHash": "55dd427767320305bb37d2ba499c7f6da75536625141b2fbc41961856473af1b",
+      "calls": [
+        "activity_ranking\\load_aranking",
+        "activity_ranking\\save_ulist_aranking",
+        "compare_ts_pass",
+        "defined",
+        "gdecode",
+        "gencode"
+      ]
+    },
+    {
+      "name": "index",
+      "source": "index.php",
+      "sourceHash": "0d00a760af90c7ed658c4b69d466a751ae76743adebf6702e9131a2a01053474",
+      "generatedHash": "5c46f9ba5d70d4543dc226984a03e396aab020597a53e422836bd1b614960fb6",
+      "calls": [
+        "curl_post",
+        "define",
+        "file_exists",
+        "file_get_contents",
+        "gdecode",
+        "map\\get_area_interval",
+        "room_auto_kick_check",
+        "room_get_vars",
+        "room_participant_get",
+        "room_save_broadcast",
+        "template",
+        "unlink",
+        "update_roomstate",
+        "url_dir"
+      ]
+    },
+    {
+      "name": "replay",
+      "source": "replay.php",
+      "sourceHash": "51781551eaba5d56a84fbfa510d7dca2c086df269954798aad6c5d2ada3bd4b7",
+      "generatedHash": "bc08f81fb32d46b6b2191a329630a673df79f50cc090399611a39bb163ba6537",
+      "calls": [
+        "base64_decode",
+        "count",
+        "define",
+        "explode",
+        "file_exists",
+        "file_get_contents",
+        "gencode",
+        "header",
+        "is_numeric",
+        "json_decode",
+        "player\\create_dummy_playerdata",
+        "player\\init_playerdata",
+        "player\\parse_interface_profile",
+        "replay\\get_ident_textcolor",
+        "replay\\get_replay_remote",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "unfold"
+      ]
+    },
+    {
+      "name": "replay_receive",
+      "source": "replay_receive.php",
+      "sourceHash": "1ca5aeba5024d4ddbd9fafeb7994f887620c24f8e86be60957b57f202913b202",
+      "generatedHash": "f3c1173a7f752c8f4f65183d2fb89f241cd19a4a26849ffdc27428c1083beb9b",
+      "calls": [
+        "curl_post",
+        "define",
+        "defined",
+        "dir_init",
+        "dirname",
+        "file_exists",
+        "file_get_contents",
+        "file_put_contents",
+        "ignore_user_abort",
+        "ob_clean",
+        "str_replace",
+        "strpos"
+      ]
+    },
+    {
+      "name": "aranking_receive",
+      "source": "aranking_receive.php",
+      "sourceHash": "e77d509abf10d26c1425c7fd31b1e3da38119414d670c4fc64283cca41e8b40d",
+      "generatedHash": "292069af43f940aa8441c9e611320038cbad2b00b5ff708baca9754a30b8973e",
+      "calls": [
+        "define",
+        "defined",
+        "dirname",
+        "ignore_user_abort",
+        "real_ip",
+        "render_page"
+      ]
+    },
+    {
+      "name": "updatelist",
+      "source": "updatelist.php",
+      "sourceHash": "29b171a4d2dbb389d08d12015b04815fe10d7900a2876bfb016d751097ca25da",
+      "generatedHash": "475ad327482b47152b5db013eab5f70c849d6b2a8e216c5922fea40fc450da60",
+      "calls": [
+        "define",
+        "gencode",
+        "in_array",
+        "ob_clean",
+        "ob_end_flush",
+        "ob_get_contents",
+        "ob_start",
+        "template"
+      ]
+    },
+    {
+      "name": "error",
+      "source": "error.php",
+      "sourceHash": "6c7deef282a2a9fa74cfffa14d419d26888c390d3cfc9114a3c04ec61d1f8aef",
+      "generatedHash": "ee48f3b788cd05b9edb62e5210aa5d45a445e0e26ab1c0c91e546cec61e4fab0",
+      "calls": [
+        "define",
+        "template"
+      ]
+    },
+    {
+      "name": "gencode_transformer",
+      "source": "gencode_transformer.php",
+      "sourceHash": "dadf57237132177a0b893d39e11b7bc8de7c011a1ccdc56abc2137dc66f1fc80",
+      "generatedHash": "9d8f7f15e3fbce9cf2815c85008144502db53853abb8995760c26050b4f18112",
+      "calls": [
+        "base64_decode",
+        "base64_encode",
+        "decode_achievements_o",
+        "encode_achievements_o",
+        "explode",
+        "getenv",
+        "gzencode",
+        "gzinflate",
+        "is_string",
+        "json_decode",
+        "json_encode",
+        "substr",
+        "trim",
+        "var_export"
+      ]
+    },
+    {
+      "name": "map",
+      "source": "map.php",
+      "sourceHash": "77f6ad2dfe25841c5c7c0aeb5948e5a335d6fc50559311b1b3064970c267dd6a",
+      "generatedHash": "8420d072d35be2cf5730acb7cff575c9b0aae3c20becc3503393fe265581461a",
+      "calls": [
+        "define",
+        "template"
+      ]
+    },
+    {
+      "name": "cardbook",
+      "source": "cardbook.php",
+      "sourceHash": "aa6095849722bfb83f24452ec04c9f9fd23ed44656ca6f6a61d94f21bc80e682",
+      "generatedHash": "99a8fc0aac11c34a6662e1af7578477d45204447688a83f6751a4fa711785ba5",
+      "calls": [
+        "achievement_base\\decode_achievements",
+        "array_diff_key",
+        "array_key_exists",
+        "cardbase\\card_sort",
+        "cardbase\\get_card_pack",
+        "cardbase\\get_energy_recover_rate",
+        "cardbase\\get_user_cardinfo",
+        "cardbase\\in_card_pack",
+        "cardbase\\pack_filter",
+        "cardbase\\parse_card_gaining_method",
+        "cardbase\\parse_card_index",
+        "count",
+        "define",
+        "defined",
+        "fetch_udata_by_username",
+        "file_exists",
+        "gexit",
+        "gstrfilter",
+        "template",
+        "udata_check",
+        "urldecode"
+      ]
+    },
+    {
+      "name": "kuji",
+      "source": "kuji.php",
+      "sourceHash": "efe0828c83862216da365f9c91a40add4204067bf20a2db22b36f0d1e3c371e7",
+      "generatedHash": "65f9d2e4389881b294a61f39cfdb2fe29947304a25f8c65811985fd4c020ac85",
+      "calls": [
+        "array_reverse",
+        "cardbase\\get_user_cardinfo",
+        "cardbase\\kuji",
+        "cardbase\\parse_card_index",
+        "define",
+        "explode",
+        "gexit",
+        "gstrfilter",
+        "in_array",
+        "is_array",
+        "strpos",
+        "template",
+        "udata_check"
+      ]
+    },
+    {
+      "name": "kujilist",
+      "source": "kujilist.php",
+      "sourceHash": "50365c6339996326906b94db99cfbad851e4d81f945fe6e2c60853cbdbd3ff50",
+      "generatedHash": "65b9cbbb7b050c4cb015a572470738235d8d3af1a7845829391a1be4e5a34c31",
+      "calls": [
+        "define",
+        "gexit",
+        "template",
+        "udata_check"
+      ]
+    },
+    {
+      "name": "showcase",
+      "source": "showcase.php",
+      "sourceHash": "d7e641277c60a6489b30770c678ae6171b86d433e7724d84801c1adfc5987ee7",
+      "generatedHash": "bd101982d9fee9552041c24e5390fe05137c9f6d3d1546f6c1a86a66697f427b",
+      "calls": [
+        "cardbase\\get_cardlist_energy_from_udata",
+        "define",
+        "fetch_udata_by_username",
+        "gexit",
+        "gstrfilter",
+        "logistics\\get_showcase_cardlist_from_udata",
+        "logistics\\get_showcase_gameitemlist_from_udata",
+        "logistics\\get_showcase_logitemlist_from_udata",
+        "template",
+        "udata_check",
+        "urldecode"
+      ]
+    },
+    {
+      "name": "itemhelp",
+      "source": "itemhelp.php",
+      "sourceHash": "17abc215e934b4ceb0e78031368453adb8a82aa1bbd96a003ad066d661061bff",
+      "generatedHash": "4b271eae36540b53d485f0ae8f2c7733c06e1d061e9061cc72a47cee40ee3bf8",
+      "calls": [
+        "check_filemtime_expired",
+        "define",
+        "dump_template",
+        "explode",
+        "file_get_contents",
+        "itemmain\\parse_itmk_words",
+        "itemmain\\parse_itmsk_words",
+        "openfile",
+        "sizeof",
+        "strlen",
+        "strpos",
+        "substr",
+        "template",
+        "writeover"
+      ]
+    },
+    {
+      "name": "donate",
+      "source": "donate.php",
+      "sourceHash": "62a71e7eba0154e7b40973a356a3a630ecf09c6b916a6b88750c8f9f53a70596",
+      "generatedHash": "3fea1067acba614cfdd96d9f94d9ae9205d1014f4f51cc78fdb7874025618831",
+      "calls": [
+        "define",
+        "template"
+      ]
+    },
+    {
+      "name": "instance8_testing_intro",
+      "source": "instance8_testing_intro.php",
+      "sourceHash": "6ccdb75f54222efb0b3984c4fd4d3fecf079a553171962c006dcdded033456cc",
+      "generatedHash": "a9dade856ff169601cfc6753c43fca5a95c7a5f0b02f571b9aca3fd33bb16fa7",
+      "calls": [
+        "define",
+        "template"
+      ]
+    },
+    {
+      "name": "instance10_intro",
+      "source": "instance10_intro.php",
+      "sourceHash": "0c3d868dadbd478a6a0d2c91a71ba109df9ac012fe11d047b122e13047f79e3a",
+      "generatedHash": "0cec1a554c90a4eee036f152a5caf05d6ce0cf6ca1070d595b42ee06db3efc46",
+      "calls": [
+        "define",
+        "template"
+      ]
+    },
+    {
+      "name": "instance12_intro",
+      "source": "instance12_intro.php",
+      "sourceHash": "4134def337add3a7512f95131101a05f59037a43858d5a8e1cbde4d414d22265",
+      "generatedHash": "6e602068fa79c35b003a91f31e9830dd92676358a67dba77324ba94b1db5f860",
+      "calls": [
+        "define",
+        "template"
+      ]
+    }
+  ],
+  "failures": []
+}
