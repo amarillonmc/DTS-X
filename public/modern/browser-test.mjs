@@ -50,7 +50,10 @@ const server = createServer(async (req, res) => {
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const origin = 'http://127.0.0.1:' + server.address().port;
 const profile = await mkdtemp(path.join(output, 'profile-'));
-const child = spawn(browserPath, ['--headless=new', '--disable-gpu', ...(process.env.DTS_BROWSER_NO_SANDBOX === '1' ? ['--no-sandbox'] : []), '--no-first-run', '--no-default-browser-check',
+// Preserve the tracked process/DevTools pipe when Windows Edge uses its
+// compatibility launcher. This does not disable the browser sandbox.
+const edgeFlags = process.platform === 'win32' && path.basename(browserPath).toLowerCase() === 'msedge.exe' ? ['--edge-skip-compat-layer-relaunch'] : [];
+const child = spawn(browserPath, [...edgeFlags, '--headless=new', '--disable-gpu', ...(process.env.DTS_BROWSER_NO_SANDBOX === '1' ? ['--no-sandbox'] : []), '--no-first-run', '--no-default-browser-check',
   '--disable-background-networking', '--remote-debugging-port=0', '--user-data-dir=' + profile, '--window-size=1440,1000', 'about:blank'],
   { windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] });
 let socket;
@@ -88,6 +91,11 @@ try {
   await send('Page.navigate', { url: origin + '/fixture.html' });
   await waitFor('!!window.DTSModern && !!document.getElementById("dts-mode-toggle")');
   assert.equal(await evaluate('DTSModern.getState().modern'), false, 'classic remains default');
+  await evaluate(`window.nestedControl=document.createElement('input');nestedControl.type='button';
+    $('packs').rows[0].cells[0].firstElementChild.rows[1].cells[1].append(nestedControl);
+    window.recordableNodes=Array.from($('game_interface').querySelectorAll('input,select,option'));
+    window.recordedPaths=()=>recordableNodes.map(node=>{$('oprecorder').value='';last_sender='';replay_record_DOM_path(node);return $('oprecorder').value});
+    window.classicPaths=recordedPaths();`);
   await evaluate(`window.originalMain=$('main');window.originalForm=$('gamecmd');window.originalChat=$('chatmsg');window.originalButton=$('zz');
     window.originalTree=$('game_interface').innerHTML;window.listenerClicks=0;$('zz').addEventListener('click',()=>listenerClicks++);
     $('oprecorder').value='';last_sender='';replay_record_DOM_path($('zz'));window.classicPath=$('oprecorder').value;
@@ -97,7 +105,25 @@ try {
     focus:document.activeElement===originalChat,selection:[originalChat.selectionStart,originalChat.selectionEnd],draft:originalChat.value})`),
     { modern: true, main: true, form: true, chat: true, focus: true, selection: [2, 7], draft: 'unsent draft' });
   await waitFor(`document.querySelector('.dts-map-frame').contentDocument?.getElementById('map_display')?.getBoundingClientRect().height > 0`);
+  // A real press/release must leave the native picker open. Programmatic
+  // select.value or click() alone cannot reproduce the reported regression.
+  await evaluate(`$('destination').scrollIntoView({block:'center'});window.selectRemovals=0;
+    window.selectObserver=new MutationObserver(records=>{for(const record of records)for(const node of record.removedNodes)if(node.contains?.($('destination')))selectRemovals++;});
+    selectObserver.observe(document.body,{childList:true,subtree:true});`);
+  const selectPoint=await evaluate(`(()=>{const r=$('destination').getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()`);
+  await send('Input.dispatchMouseEvent',{type:'mousePressed',...selectPoint,button:'left',clickCount:1});
+  await send('Input.dispatchMouseEvent',{type:'mouseReleased',...selectPoint,button:'left',clickCount:1});
+  assert.equal(await evaluate(`selectRemovals`),0,'recording a click must not detach the open select or any ancestor');
+  assert.equal(await evaluate(`$('destination').matches(':open')`),true,'native select stays open after mouse release');
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowDown',code:'ArrowDown',windowsVirtualKeyCode:40});
+  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowDown',code:'ArrowDown',windowsVirtualKeyCode:40});
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  assert.equal(await evaluate(`$('destination').value`),'1','open picker accepts a new destination');
+  await evaluate(`selectObserver.disconnect();$('destination').value='0';window.scrollTo(0,0);`);
   assert.equal(await evaluate(`$('oprecorder').value='';last_sender='';replay_record_DOM_path($('zz'));$('oprecorder').value===classicPath`), true, 'replay recording path unchanged');
+  assert.deepEqual(await evaluate('recordedPaths()'),await evaluate('classicPaths'),'all control paths match upstream, including nested moved equipment and OPTION pauses');
+  assert.equal(await evaluate(`$('oprecorder').value='';last_sender='';replay_record_DOM_path($('destination').options[1]);const once=$('oprecorder').value;replay_record_DOM_path($('destination').options[1]);once.endsWith(',e,')&&$('oprecorder').value===once`),true,'OPTION pause and duplicate suppression survive');
   await evaluate(`in_replay_mode=1;replay_stimulate_click(classicPath.replace(/,$/,'').split('.').filter(Boolean));in_replay_mode=0;`);
   assert.equal(await evaluate('window.listenerClicks'), 1, 'replay clicks the original node and its event listener');
   assert.equal(await evaluate(`new FormData($('gamecmd')).get('destination')`), '0', 'form control ownership preserved');
@@ -160,7 +186,7 @@ try {
   await evaluate(`DTSModern.resetLayout();window.scrollTo(0,0);`);
   await writeFile(path.join(output, 'mobile.png'), Buffer.from((await send('Page.captureScreenshot', { format: 'png' })).data, 'base64'));
   assert.deepEqual(errors, [], 'no browser runtime exceptions');
-  const report = { result: 'PASS', checks: ['legacy identity and event listeners', 'draft/focus/selection', 'recording path', 'replay target', 'form ownership and command submission', 'chat/news requests', 'minimize/restore', 'keyboard movement and minimization', 'pointer drag/resize', 'classic restoration', 'whole-root AJAX replacement', 'mode and geometry persistence', 'real map iframe', 'mobile overflow', 'touch reordering'], screenshots: ['desktop.png', 'mobile.png'] };
+  const report = { result: 'PASS', checks: ['legacy identity and event listeners', 'draft/focus/selection', 'native select press/release and selection', 'all recording paths and OPTION pauses', 'replay target', 'form ownership and command submission', 'chat/news requests', 'minimize/restore', 'keyboard movement and minimization', 'pointer drag/resize', 'classic restoration', 'whole-root AJAX replacement', 'mode and geometry persistence', 'real map iframe', 'mobile overflow', 'touch reordering'], screenshots: ['desktop.png', 'mobile.png'] };
   await writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report, null, 2));
   await cdp('Browser.close').catch(() => {});

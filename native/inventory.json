@@ -21,7 +21,7 @@
   },
   "migration": {
     "statusFile": "native/migration-status.json",
-    "statusSha256": "f662d86c8a759ef35efb6553c5d4e63e9d7d8e9878b87e940a5f7c65e12b07fe",
+    "statusSha256": "823574958b7b803c60f141202450de8765264b7bdf352c0e402a8983fd557f60",
     "nativeGameReady": true,
     "note": "Readiness is an explicitly recorded acceptance result, not inferred from static inventory or file counts. This command does not rerun behavioral tests.",
     "counts": {
@@ -9692,6 +9692,11 @@
           {
             "test": "tests/native-full-gameplay.test.mjs",
             "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-tutorial-http.test.mjs",
+            "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
             "result": "passed"
           }
         ],
@@ -52791,6 +52796,11 @@
             "test": "tests/native-full-gameplay.test.mjs",
             "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
             "result": "passed"
+          },
+          {
+            "test": "tests/native-tutorial-http.test.mjs",
+            "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
+            "result": "passed"
           }
         ],
         "remaining": [
@@ -66380,6 +66390,11 @@
           {
             "test": "tests/native-full-gameplay.test.mjs",
             "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-tutorial-http.test.mjs",
+            "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
             "result": "passed"
           }
         ],

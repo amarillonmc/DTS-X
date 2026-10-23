@@ -909,6 +909,11 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-tutorial-http.test.mjs",
+          "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -8027,6 +8032,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-tutorial-http.test.mjs",
+          "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
           "result": "passed"
         }
       ],
@@ -15798,6 +15808,11 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-tutorial-http.test.mjs",
+          "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -16550,11 +16565,40 @@
         "command": "npm run verify:source",
         "files": 3578,
         "changedOrMissing": 0
+      },
+      {
+        "command": "node --test tests/native-tutorial-http.test.mjs",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "真实独立MySQL/教程房间/770模块/Edge；两主题×经典现代四组合，面包推进至疗伤、50体力拒绝、充足体力成功、技能移除、教程进度和体力重载，保留教程录像排除；未穷举整个教程。"
+      },
+      {
+        "command": "node public/modern/browser-test.mjs",
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "16组真实Edge检查，含下拉框按下松开与选择、全部原控件路径、嵌套搬移、OPTION暂停和重复过滤；保留浏览器沙箱"
+      },
+      {
+        "command": "npm test -- --test-concurrency=4",
+        "passed": 1238,
+        "failed": 2,
+        "skipped": 0,
+        "scope": "交互修复首轮全量：双账号HTTP地图请求500及PHP模板对照45秒超时；两项单独复测通过。完整日志见var/tests/interaction-full-suite.log。"
+      },
+      {
+        "command": "npm test -- --test-concurrency=2",
+        "passed": 1239,
+        "failed": 1,
+        "skipped": 0,
+        "scope": "交互修复复核：全部原生测试通过，唯一失败为旧runtime生命周期临时server.config.php原子重命名EPERM；该项单独复测通过。完整日志见var/tests/interaction-full-suite-2.log；不宣称完整套件全绿。"
       }
     ],
     "limits": [
       "未穷举技能组合、随机种子、竞态和全部结局。",
-      "本机为Windows/Node26.5.0/PHP7.4.33/Edge，Docker与Linux未实际验证。"
+      "本机为Windows/Node26.5.0/PHP7.4.33/Edge，Docker与Linux未实际验证。",
+      "交互修复本轮全量测试存在未稳定复现的HTTP地图500、PHP对照超时和旧runtime Windows原子重命名EPERM；单独复测通过，来源尚未全部确认，详见doc/NATIVE-MIGRATION.md。"
     ]
   }
 }

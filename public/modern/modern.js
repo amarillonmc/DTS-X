@@ -242,6 +242,23 @@
     }
     state.moves = [];
   }
+  function legacyDOMPath(node) {
+    var path = [], game = byId('game_interface');
+    while (node && node !== game && node !== document) {
+      // A moved root occupies its comment anchor's position in the original
+      // tree. Other anchors still count as their original element siblings.
+      // Walking this virtual tree keeps native select popups and focus intact.
+      var moved = state.moves.find(function (record) { return record.node === node; });
+      var position = moved ? moved.anchor : node, parent = position.parentNode;
+      if (!parent) return null;
+      var index = 0;
+      for (var sibling = parent.firstChild; sibling && sibling !== position; sibling = sibling.nextSibling) {
+        if (sibling.nodeType === 1 || state.moves.some(function (record) { return record.anchor === sibling; })) index++;
+      }
+      path.unshift(index); node = parent;
+    }
+    return node === game && game ? path.join('.') + '.' : null;
+  }
   function rememberFocus() {
     var focused = document.activeElement;
     var selection;
@@ -291,8 +308,17 @@
     window[name] = wrapped;
   }
   function installHooks() {
-    ['showData', 'postCmd', 'replay_record_DOM_path'].forEach(function (name) {
+    ['showData', 'postCmd'].forEach(function (name) {
       wrap(name, function (original, context, args) { return withLegacy(original, context, args); });
+    });
+    wrap('replay_record_DOM_path', function (original, context, args) {
+      if (!state.active || state.depth) return original.apply(context, args);
+      var sender = args[0];
+      if (!sender || !/^(INPUT|SELECT|OPTION)$/.test(sender.tagName)) return;
+      if (sender === window.last_sender) return;
+      window.last_sender = sender;
+      var path = legacyDOMPath(sender), recorder = byId('oprecorder');
+      if (path !== null && recorder) recorder.value += path + ',' + (sender.tagName === 'OPTION' ? 'e,' : '');
     });
     wrap('hotkey', function (original, context, args) {
       var target = document.activeElement;

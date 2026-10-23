@@ -79,6 +79,7 @@ test('full native HTTP preserves two accounts, original room controls and persis
   const response=await browser.evaluate(`nativeCommandResponses.find(response=>response.command==='menu'&&response.url.endsWith('/command.php'))`);assert.equal(response.status,200);
   const commandResponse=gdecode(response.body);assert.ok(commandResponse.innerHTML,JSON.stringify({keys:Object.keys(commandResponse),url:commandResponse.url,error:commandResponse.errormsg}));
   assert.deepEqual(browser.errors,[]);
+  assert.equal(errors.length,0,errors.map(error=>error.stack).join('\n'));
   assert.deepEqual(browser.networkErrors,[]);
   await browser.close();
   await send(1,'/roomcmd.php',{command:'leave'});assert.equal(jars[1].get('bra_roomid'),'0');

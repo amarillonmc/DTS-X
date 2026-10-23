@@ -37,6 +37,8 @@
 
 `/healthz` 用于进程就绪检查；它不代替数据库诊断或玩法回归。`npm run doctor` 验证归属、必需表、主局、模块/模板和锁支持，报告不包含凭据；除私有锁探测文件外不写业务数据。公开网页安装器 `install_NEW.php` 不启用。
 
+`game.php`、`command.php`、`map.php` 等 URL 是保留的原协议入口，由 `native/http/` 的 Node 控制器处理；链接中的 `.php` 不表示服务器执行 PHP。反向代理应将这些请求原样交给 Node。`doctor` 通过也不代表浏览器点击、下拉框或每个教程步骤已经验收。
+
 ## 反向代理与跨服回调
 
 应用端口只绑定回环地址，在受控 nginx `server` 中可使用：
@@ -114,6 +116,8 @@ docker compose start app
 先保留旧服数据库、完整持久目录、`.env` 和代码版本备份。在局间安排切换窗口，使用独立的新原生数据库和状态路径验证账号、配置、模块差异、历史录像与其他数据的迁移方案；保留旧实例的完整回退副本。未完成该实例的数据核对前，不把玩家流量切到新服。不要为绕过安装保护而复制或修改 owner 标记。
 
 正常原生更新先备份、停服、替换代码并按 lockfile 安装依赖，然后运行 `npm run compile`、`npm run doctor`，再启动。`compile` 只验证已交付的原生模块和静态模板，不重新执行 PHP 编译器，也不重生覆盖 JavaScript。管理页面保存并通过检查的候选可在停服后用 `npm run compile -- --staged` 应用；没有有效候选或构建指纹变化就拒绝。更改 JavaScript 实现后需要重启 Node。
+
+更新现代界面脚本后，在浏览器用 Ctrl+F5 强制刷新；若自行配置了代理或 CDN 静态资源缓存，也需刷新对应的 `/modern/modern.js` 缓存。2026-10-23 的教学疗伤与移动下拉框修复不需要数据库迁移：保留现有 `.env`、数据库与状态目录，更新代码、停服校验、重启即可，已保存的教程进度可继续使用。
 
 默认开发修改 `native/`。部分规则、页面和模板是由开发期工具生成的静态 JavaScript；运行 `scripts/native-compiler/build-*.mjs` 会覆盖相应生成文件，不能当作日常启动/编译步骤。维护方式见 [ARCHITECTURE.md](ARCHITECTURE.md) 与 [DEVELOPMENT.md](DEVELOPMENT.md)。
 

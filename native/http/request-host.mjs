@@ -60,6 +60,9 @@ export async function createNativeRequestHost({ configuration, additionalModules
     GAMENAME: 'bra', STYLEID: '1', TEMPLATEID: '1', TPLDIR: './templates/default', IN_GAME_CHECK_STR: "<?php if(!defined('IN_GAME')) exit('Access Denied'); ?>\r\n" });
   const host = { output, globals, functions, constants, cookies, headers:Object.create(null), status:200, broadcast, maintenance, remoteUsers, request, clock, config };
   Object.assign(globals,{_GET:request.get??{},_POST:request.post??request.input.post??{},_COOKIE:request.cookies??request.input.cookies??{},_SERVER:request.server??{},_FILES:request.files??{}});
+  // Upstream command.php renders game fragments with CURSCRIPT='game'. Keep
+  // that context for the native act alias too, or AJAX removes wound handlers.
+  if (script === 'command' || script === 'act') constants.CURSCRIPT='game';
   if (script === 'replay') { constants.CURSCRIPT='game'; constants.IN_REPLAY=true; }
   host.close = async () => {
     if (closed) return; closed = true;

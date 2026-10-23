@@ -11,7 +11,10 @@ export async function launchNativeBrowser(t,{outputRoot}) {
   }
   if(!executable)throw new Error('Native browser acceptance requires CHROME_PATH or installed Chromium/Edge');
   await mkdir(outputRoot,{recursive:true});const profile=await mkdtemp(path.join(outputRoot,'browser-'));
-  const child=spawn(executable,['--headless=new','--disable-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking','--remote-debugging-port=0',`--user-data-dir=${profile}`,'--window-size=1440,1000','about:blank'],{windowsHide:true,stdio:['ignore','ignore','pipe']});
+  // Windows Edge's compatibility relaunch exits the tracked process and loses
+  // its DevTools stderr pipe. Keep this isolated test browser in that process.
+  const edgeFlags=process.platform==='win32'&&path.basename(executable).toLowerCase()==='msedge.exe'?['--edge-skip-compat-layer-relaunch']:[];
+  const child=spawn(executable,[...edgeFlags,'--headless=new','--disable-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking','--remote-debugging-port=0',`--user-data-dir=${profile}`,'--window-size=1440,1000','about:blank'],{windowsHide:true,stdio:['ignore','ignore','pipe']});
   let socket,closing;const errors=[],networkErrors=[],pending=new Map();let sequence=0;
   const close=()=>closing??=(async()=>{
     socket?.close();for(const job of pending.values()){clearTimeout(job.timer);job.reject(new Error('Browser closed'));}pending.clear();

@@ -30,4 +30,19 @@ test('request host assembles actual database, modules, account, files and templa
   const second=await createNativeRequestHost({...options,request:{...request,input:prepareInputRequest()}});hosts.push(second);
   assert.equal(second.scope.custom_host_probe,undefined);assert.equal(second.scope.cuser,null);assert.equal(second.scope.gamevars?.probe,undefined);
   assert.equal(second.output.peek(),'');
+  // command.php defines CURSCRIPT='game' upstream, independently of its URL.
+  // Otherwise the next AJAX profile silently loses all wound onclick handlers.
+  for (const pathname of ['/command.php','/act.php','/replay.php','/index.php']) {
+    const host=await createNativeRequestHost({...options,request:{...request,pathname,input:prepareInputRequest()}});hosts.push(host);
+    const game=pathname!=='/index.php';
+    assert.equal(host.constants.CURSCRIPT,game?'game':'index',pathname);
+    for(const theme of [1,2])for(const mode of ['command','combat']) {
+      const profile=await host.templates.render('MOD_WOUND_WOUND_PICTURE',{inf:'hbaf',mode},theme);
+      for(const mark of 'hbaf') {
+        const image=profile.match(new RegExp('<img id="inf'+mark+'"[^>]*>'))?.[0];assert.ok(image);
+        assert.equal(image.includes('onclick='),game&&mode==='command',`${pathname} theme ${theme} ${mode} ${mark}`);
+      }
+    }
+    await host.close();
+  }
 });
