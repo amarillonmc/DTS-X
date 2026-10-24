@@ -45,4 +45,29 @@ test('request host assembles actual database, modules, account, files and templa
     }
     await host.close();
   }
+  await t.test('area countdown follows the dispatched game page and remains disabled outside play', async () => {
+    const cases = [
+      ['/game.php', {}, true], ['/act.php', {}, true], ['/command.php', {}, true],
+      ['/command.php', { page: 'command' }, true], ['/command.php', { page: 'command_game' }, true],
+      ['/command.php', { command: 'area_timing_refresh' }, true],
+      ['/command.php', { page: 'command_news' }, false], ['/command.php', { page: 'command_end' }, false],
+      ['/news.php', {}, false], ['/index.php', {}, false], ['/replay.php', {}, false],
+      ['/replay.php', { page: 'command_game' }, false],
+    ];
+    for (const [pathname, post, on] of cases) {
+      const host = await createNativeRequestHost({ ...options, request: { ...request, pathname, input: prepareInputRequest({ post }) } });
+      hosts.push(host);
+      try {
+        assert.equal(host.services.system.request.inReplay, pathname === '/replay.php');
+        const sys = host.session.state('sys'); sys.uip = null; sys.areatime = sys.now + 90;
+        await host.session.call('map', 'init_areatiming');
+        assert.deepEqual(sys.uip.timing.area_timing, { on, mode: 0, timing: 90000, timing_r: '01:30' }, pathname + JSON.stringify(post));
+        for (const theme of [1, 2]) {
+          const html = await host.templates.render('MOD_MAP_PROFILE_AREAINFO', host.scope, theme);
+          assert.equal(html.includes('????'), !on, `${pathname}/${theme}`);
+          assert.equal(html.includes("updateTime('area_timing', 90000, 0)"), on, `${pathname}/${theme}`);
+        }
+      } finally { await host.close(); }
+    }
+  });
 });

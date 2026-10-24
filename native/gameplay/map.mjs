@@ -52,7 +52,7 @@ export const mapModule = {
       let formatted = padTwo(Math.floor(timing / 60)) + ':' + padTwo(Math.trunc(timing) % 60);
       if (timing < 10) formatted = '<span class="red b">' + formatted + '</span>';
       else if (timing < 60) formatted = '<span class="yellow b">' + formatted + '</span>';
-      s.uip.timing.area_timing = { on: !request?.inReplay && ['GAME', 'ACT'].includes(request?.script), mode: 0, timing: timing * 1000, timing_r: formatted };
+      s.uip.timing.area_timing = { on: !request?.inReplay && ['GAME', 'ACT'].includes(request?.currentScript ?? request?.script), mode: 0, timing: timing * 1000, timing_r: formatted };
     },
     async get_area_interval(ctx) { return ctx.state().areainterval[sys(ctx).gametype] ?? ctx.state().areainterval[0]; },
     async get_safe_plslist(ctx, noDangerousZone = true, type = 0) {

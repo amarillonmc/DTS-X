@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdir,mkdtemp,rm } from 'node:fs/promises';
+import { mkdir,mkdtemp,readFile,readdir,rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import inventory from '../native/inventory.json' with {type:'json'};
@@ -23,7 +23,8 @@ test('full native HTTP preserves two accounts, original room controls and persis
   t.after(async()=>{await app?.close();assert.ok(path.resolve(stateRoot).startsWith(path.resolve(parent)+path.sep));await rm(stateRoot,{recursive:true,force:true});});
   await installNative({database:db.database,stateRoot,admin:{username:'全服管理',password:'FullHttpAdmin!'}});
   const manual=new Set(nativeGameplayModules.map(module=>module.name));
-  const now=1700000000,verification=await createVerificationService({gameUrl:'http://127.0.0.1',clock:()=>now});
+  let now=1700000000;
+  const verification=await createVerificationService({gameUrl:'http://127.0.0.1',clock:()=>now});
   app=createNativeApplication({configuration:inventory.modules.map(({name,enabled})=>({name,enabled})),additionalModules:[...skills,...remaining].filter(module=>!manual.has(module.name)),infoById,
     pages:{roomcmd:(host,scope)=>renderPage('roomcmd',host,scope)},databaseOptions:db.credentials,sourceRoot:path.join(root,'engine'),stateRoot,publicUrl:'http://127.0.0.1',modernRoot:path.join(root,'public/modern'),modern:true,schedulerIntervalMs:0,
     onError:error=>errors.push(error),clock:{now:()=>now},randomSeed:41,systemConfig:{gtablepre:'bra_',gamefounder:'全服管理'}});
@@ -64,20 +65,48 @@ test('full native HTTP preserves two accounts, original room controls and persis
   const players=await db.database.query('SELECT name,hp FROM bra_s1_players WHERE type=0 ORDER BY name');
   assert.deepEqual(players.map(player=>player.name),['房间玩家0','房间玩家1']);assert.ok(players.every(player=>Number(player.hp)>0));
   const game=await send(0,'/game.php');assert.equal(game.response.status,200);assert.match(game.body,/cmd_interface/);
+  const initialTiming=Number(game.body.match(/updateTime\('area_timing', (\d+), 0\)/)?.[1]);
+  assert.ok(initialTiming>0,'normal room initially renders an enabled forbidden-area countdown');
+  const forwardedGame=await send(0,'/command.php',{page:'command_game'});
+  assert.ok(forwardedGame.body.includes(`updateTime('area_timing', ${initialTiming}, 0)`));
+  const refresh=await send(0,'/command.php',{command:'area_timing_refresh'});
+  assert.equal(gdecode(refresh.body).timing.area_timing.on,true);
+  assert.equal(gdecode(refresh.body).timing.area_timing.timing,initialTiming);
   const browser=await launchNativeBrowser(t,{outputRoot:parent});
-  await browser.send('Network.setCookies',{cookies:[...jars[0]].map(([name,value])=>({name,value,url:base}))});
-  await browser.send('Page.navigate',{url:base+'/game.php'});
-  await browser.waitFor('!!window.DTSModern && !!document.getElementById("gamecmd") && !!document.getElementById("cmd_interface")');
-  assert.equal(await browser.evaluate('DTSModern.getState().modern'),false);
-  await browser.evaluate(`window.originalGameForm=document.getElementById('gamecmd');window.originalMain=document.getElementById('main');DTSModern.setMode(true);`);
-  assert.equal(await browser.evaluate(`document.querySelectorAll('#gamecmd').length===1 && document.getElementById('gamecmd')===originalGameForm && document.getElementById('main')===originalMain`),true);
-  assert.equal(await browser.evaluate(`new FormData(document.getElementById('gamecmd')).has('command')`),true);
-  await browser.evaluate('DTSModern.setMode(false)');
-  await browser.waitFor(`document.getElementById('command') && document.getElementById('log')`);
-  await browser.evaluate(`window.nativeCommandResponses=[];const send=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.send=function(...args){const command=new URLSearchParams(args[0]).get('command');this.addEventListener('loadend',()=>nativeCommandResponses.push({url:this.responseURL,command,status:this.status,body:this.responseText}),{once:true});return send.apply(this,args);};document.getElementById('command').value='menu';postCmd('gamecmd','command.php');`);
-  await browser.waitFor(`nativeCommandResponses.some(response=>response.command==='menu'&&response.url.endsWith('/command.php')) && document.getElementById('cmd') && document.getElementById('main').textContent.length>0`);
-  const response=await browser.evaluate(`nativeCommandResponses.find(response=>response.command==='menu'&&response.url.endsWith('/command.php'))`);assert.equal(response.status,200);
-  const commandResponse=gdecode(response.body);assert.ok(commandResponse.innerHTML,JSON.stringify({keys:Object.keys(commandResponse),url:commandResponse.url,error:commandResponse.errormsg}));
+  await browser.send('Page.addScriptToEvaluateOnNewDocument',{source:`window.nativeCommandResponses=[];
+    const send=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.send=function(...args){
+      const command=new URLSearchParams(args[0]).get('command');
+      this.addEventListener('loadend',()=>{if(this.responseURL.endsWith('/command.php'))nativeCommandResponses.push({command,status:this.status,body:this.responseText});},{once:true});
+      return send.apply(this,args);};`});
+  const recordedResponses=[];
+  for(const theme of [1,2])for(const modern of [false,true]) {
+    await browser.send('Network.setCookies',{cookies:[...jars[0],['templateid',String(theme)]].map(([name,value])=>({name,value,url:base}))});
+    await browser.send('Page.navigate',{url:base+'/game.php'});
+    await browser.waitFor('document.readyState==="complete" && !!window.DTSModern && nativeCommandResponses.some(response=>response.command==="enter") && !!document.getElementById("gamecmd") && !!document.getElementById("cmd_interface")');
+    if(theme===1&&!modern)assert.equal(await browser.evaluate('DTSModern.getState().modern'),false);
+    await browser.evaluate(`window.originalGameForm=document.getElementById('gamecmd');window.originalMain=document.getElementById('main');DTSModern.setMode(${modern});`);
+    assert.equal(await browser.evaluate(`document.querySelectorAll('#gamecmd').length===1 && document.getElementById('gamecmd')===originalGameForm && document.getElementById('main')===originalMain`),true,`theme ${theme}, modern ${modern}: switching shells preserves controls`);
+    assert.equal(await browser.evaluate(`new FormData(document.getElementById('gamecmd')).has('command')`),true);
+    assert.equal(await browser.evaluate(`document.querySelectorAll('#area_timing').length`),1);
+    const before=await browser.evaluate(`({text:$('area_timing').textContent,time:timinglist.area_timing.timing})`);
+    assert.match(before.text,/^\d+:\d{2}$/);assert.ok(before.time>0);
+    await browser.waitFor(`timinglist.area_timing.timing < ${before.time} && $('area_timing').textContent !== ${JSON.stringify(before.text)}`);
+    now+=5;
+    await browser.evaluate(`document.getElementById('command').value='menu';postCmd('gamecmd','command.php');`);
+    await browser.waitFor(`nativeCommandResponses.some(response=>response.command==='menu') && document.getElementById('cmd') && document.getElementById('main').textContent.length>0`);
+    const response=await browser.evaluate(`nativeCommandResponses.find(response=>response.command==='menu')`);assert.equal(response.status,200);
+    const commandResponse=gdecode(response.body);assert.ok(commandResponse.innerHTML,JSON.stringify({keys:Object.keys(commandResponse),url:commandResponse.url,error:commandResponse.errormsg}));
+    const timer=commandResponse.timing.area_timing;
+    assert.equal(timer.on,true);assert.equal(timer.timing,initialTiming-(now-1700000000)*1000);
+    assert.equal(await browser.evaluate('timinglist.area_timing.o_t'),timer.timing);
+    assert.equal(await browser.evaluate(`document.querySelectorAll('#area_timing').length`),1);
+    assert.match(await browser.evaluate(`$('area_timing').textContent`),/^\d+:\d{2}$/);
+    await browser.waitFor(`timinglist.area_timing.timing < ${timer.timing}`);
+    recordedResponses.push(response.body);
+  }
+  const responseDirectory=path.join(stateRoot,'gamedata/tmp/response/1_');
+  const savedResponses=await Promise.all((await readdir(responseDirectory)).map(name=>readFile(path.join(responseDirectory,name),'utf8')));
+  for(const response of recordedResponses)assert.ok(savedResponses.includes(response),'room countdown response is recorded verbatim');
   assert.deepEqual(browser.errors,[]);
   assert.equal(errors.length,0,errors.map(error=>error.stack).join('\n'));
   assert.deepEqual(browser.networkErrors,[]);

@@ -65,6 +65,8 @@ node scripts/native-compiler/build-templates.mjs
 
 经典界面和原协议保留。现代界面移动原 DOM，不复制控件；必须保留 ID、表单归属、快捷键和录像 DOM 路径。改变 UI 后检查两种界面、异步刷新、真实表单发送和录像点击回放。素材仍保留来源，设定中明确保密的内容不得写进公开界面。
 
+页面上下文有不同用途：`system.request.script` 是小写 URL 路由名；`system.request.currentScript` 对应原版 `___CURSCRIPT`，按实际分发页面提供 `GAME`、`ACT` 等标识；模板常量 `CURSCRIPT` 则在游戏片段中保持 `game`。禁区倒计时使用 `currentScript` 和 `inReplay`，不要用 `command.php` 的路由名或模板常量替代实际页面判断。相关回归在 `native-request-host`、`native-full-http` 和 `native-full-gameplay` 中，覆盖整页进入、异步刷新和原录像播放器。
+
 部署与恢复见 [DEPLOYMENT.md](DEPLOYMENT.md)，测试范围与主动差异见 [NATIVE-MIGRATION.md](NATIVE-MIGRATION.md)。
 
 ## 原生请求性能基准

@@ -21,7 +21,7 @@
   },
   "migration": {
     "statusFile": "native/migration-status.json",
-    "statusSha256": "21d8523e07dc4faf22759ca8099387444b0e393e9a0587898ac45e10230ca06a",
+    "statusSha256": "0ca4640ba6629e38a2d0a3bdd6da48e3c19db3c2a7c4c178a4e9ddcb54740ab3",
     "nativeGameReady": true,
     "note": "Readiness is an explicitly recorded acceptance result, not inferred from static inventory or file counts. This command does not rerun behavioral tests.",
     "counts": {
@@ -893,6 +893,16 @@
           {
             "test": "tests/native-map.test.mjs",
             "scope": "37组原PHP序列：完整配置、禁区边界、危险区域筛选键、时间/警告/结束顺序、洗牌及下一随机值。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-request-host.test.mjs",
+            "scope": "2026-10-24倒计时回归：12种真实宿主页面上下文、初始空uip、两主题模板；游戏页、操作与刷新开启，新闻/结束/录像关闭，原伤口模板上下文保持。",
+            "result": "passed"
+          },
+          {
+            "test": "tests/native-full-http.test.mjs",
+            "scope": "2026-10-24普通双人房间真实HTTP/Edge：两个主题×经典现代、整页进入与command_game转发、刷新协议、持续倒数、操作后服务器时间同步、控件唯一与录像响应原样保存。",
             "result": "passed"
           },
           {

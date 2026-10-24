@@ -52,6 +52,13 @@ export async function createNativeRequestHost({ configuration, additionalModules
   const config = sysDefaultState(effectiveSystem);
   config.server_address = new URL(publicUrl).origin; config.dbpass = ''; config.dbpw = '';
   const script = request.pathname.slice(1, -4), page = ['act','game','valid','end','news','rank','alive','roomcmd','winner','help'].includes(script) ? `command_${script}` : '';
+  // Rules use the dispatched ___CURSCRIPT (GAME/ACT/etc.), independently of
+  // the URL and the template CURSCRIPT='game' shared by command.php fragments.
+  const commandPage = request.input.values.page;
+  const currentScript = script === 'command'
+    ? commandPage == null || commandPage === 'command' ? 'ACT'
+      : typeof commandPage === 'string' && commandPage.startsWith('command_') ? commandPage.slice(8).toUpperCase() : ''
+    : script.toUpperCase();
   let session, database, locks, users, closed = false;
   const output = createOutput(), globals = Object.create(null), functions = Object.create(null), cookies = [];
   const constants = Object.assign(Object.create(null), { IN_GAME: true, IN_COMMAND: true, CURSCRIPT: script, GAME_ROOT: sourceRoot.replaceAll('\\','/') + '/',
@@ -186,7 +193,7 @@ export async function createNativeRequestHost({ configuration, additionalModules
     });
     const services = host.services = { input: request.input, database, output, templates: host.templates, random, files, inCommand: true, playerSchema, playerIconCatalog,
       playerLocks: locks.playerLocks, playerAssets: await createPlayerAssets(path.join(sourceRoot,'img'),{indexNames:true}), skills,
-      system: { config: systemConfig, request: { cookies: request.input.cookies, post: request.input.post, script, page, pageStartTime: request.pageStartTime, daemon: false },
+      system: { config: systemConfig, request: { cookies: request.input.cookies, post: request.input.post, script, page, currentScript, inReplay: !!constants.IN_REPLAY, pageStartTime: request.pageStartTime, daemon: false },
         files, locks: locks.locks, users, rooms: host.rooms, messages: host.messages, clock } };
     services.system.config = { ...effectiveSystem, server_address: config.server_address };
     services.generated = createGeneratedServices({ constants, globals, functions, files, clock:{nowSeconds:now}, random, output, templates:host.templates, capabilities:{replayRecording:true} });

@@ -117,6 +117,18 @@ Git 属性对 `engine/` 禁用换行转换，原生静态构建固定 LF，以�
 
 更新服务器时保留 `.env`、数据库和状态目录，停服后更新代码，执行 `npm run compile`，再启动 `npm start`；无数据库结构迁移。原陷阱流程先插入地图陷阱再结算经验，因此此前返回 500 的尝试可能已留下陷阱行；本次没有猜测归属或自动删除历史玩家数据。未穷举全部技能叠加、随机种子和结局，也未实际验证 Docker/Linux。
 
+## 2026-10-24 普通房间禁区倒计时
+
+已用真实请求宿主复现“距离禁区：????”：`map.init_areatiming` 的时间数值正确，但开启条件按原 PHP 的 `___CURSCRIPT=GAME/ACT` 判断，而宿主只提供小写 URL 路由名；`command.php` 又需要按实际分发页面区分游戏操作和新闻等内容。原生宿主现在提供独立的 `system.request.currentScript` 与 `inReplay`，地图模块据此判断。原有 `script` 路由、模板 `CURSCRIPT=game`、禁区规则、模块覆盖链和前端计时协议保持原语义；未改 `engine/` 或来源清单。
+
+针对性验证共 **5/5 通过，无跳过**：`native-map` 的 37 组 PHP 对照一致；`native-request-host` 覆盖 12 种上下文、初始空 `uip` 和两个主题模板；`native-full-http` 用独立 MariaDB、默认 770 模块、真实双人普通房间和 Edge，检查首次进入、`command_game` 转发、`area_timing_refresh`、两个主题 × 经典/现代四组合的持续倒数和操作后时间同步、唯一 DOM 控件及录像响应字节；`native-full-gameplay` 检查主局 `act.php`、真实操作与持久化、归档及原录像播放器，确认录像里的计时器不会按现实时间继续倒数。
+
+首轮沙箱内两项浏览器测试均在 `Runtime.enable` 初始化超时，随后在沙箱外用独立 profile、保留 Edge 自身沙箱运行。普通房间测试还补齐等待页面自动 `enter` 请求完成的条件，避免把正常异步替换误判为界面切换复制控件；没有放宽控件或倒计时断言。日志在忽略目录 `var/tests/area-timing-context.log`、`area-timing-browser.log` 和 `area-timing-http-recheck.log`，其中 `area-timing-browser.log` 如实保留那次主局通过、房间同步检查失败的结果。
+
+最终完整 `npm test -- --test-concurrency=2` **1327/1327 通过，零失败、零跳过**（505.0 秒），包含本轮新增回归、全部既有模式矩阵、实际 Edge 交互与原录像、PHP 差分、安装和持久化检查。日志为 `var/tests/area-timing-full-suite.log`。`npm run compile` 校验 770 模块和 882 模板通过；`native:inventory`、`verify:native` 通过；`verify:source` 确认 3,578 个来源文件均未改动/缺失。
+
+更新方式：保留 `.env`、数据库和状态目录，停服更新代码，运行 `npm run compile`，再 `npm start`；已打开的游戏页面刷新后生效。没有数据库结构迁移或玩家存档修复步骤。这次修复恢复页面显示，不代表所有模式、技能组合或禁区阶段已穷举，也未验证 Docker/Linux。
+
 ## 明确差异与保留边界
 
 2026-10-23 教学疗伤和现代移动下拉框回归：`command.php`（含原生 `act.php` 别名）的 `CURSCRIPT` 恢复为原版的 `game`，防止异步人物面板省略伤口点击事件。现代点击录像沿占位节点计算原 DOM 路径，避免重挂载控件导致原生下拉框在鼠标松开时关闭；原素材和模板未改动。

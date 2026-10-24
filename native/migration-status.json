@@ -485,6 +485,16 @@
           "result": "passed"
         },
         {
+          "test": "tests/native-request-host.test.mjs",
+          "scope": "2026-10-24倒计时回归：12种真实宿主页面上下文、初始空uip、两主题模板；游戏页、操作与刷新开启，新闻/结束/录像关闭，原伤口模板上下文保持。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-full-http.test.mjs",
+          "scope": "2026-10-24普通双人房间真实HTTP/Edge：两个主题×经典现代、整页进入与command_game转发、刷新协议、持续倒数、操作后服务器时间同步、控件唯一与录像响应原样保存。",
+          "result": "passed"
+        },
+        {
           "test": "tests/native-persistent-combat.test.mjs",
           "scope": "4个独立真实DB/OS锁场景：枪击反击、致死、投掷耗尽、探索→遭遇→保存现场→新请求战斗；重开连接逐字段重载、实际经验/技能存储、尸体金钱物品拾取、日志字节保存及消费删除、原图像服务。sys新闻/元数据、HTTP和模板renderer仍为明确边界。",
           "result": "passed"

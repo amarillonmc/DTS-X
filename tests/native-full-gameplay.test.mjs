@@ -63,6 +63,8 @@ test('full original gameplay starts, joins, acts, persists across requests and a
   const active=await createNativeRequestHost({...options,request:actRequest});hosts.push(active);await active.session.call('sys','routine');
   const recorded=[];
   const initialEncoded=await commandAct(active,active.scope);const response=gdecode(initialEncoded);recorded.push({encoded:initialEncoded,payload:response,record:await recordReplayResponse(active,initialEncoded)});assert.ok(response.innerHTML.main);assert.ok(response.innerHTML.cmd);
+  assert.equal(response.timing.area_timing.on,true,'main game act alias enables the area countdown');
+  assert.equal(response.timing.area_timing.timing,(Number(active.scope.areatime)-Number(active.scope.now))*1000);
   assert.equal((await db.database.query("SELECT hp FROM bra_players WHERE pid='"+joined.pid+"'"))[0].hp,joined.hp);
   await active.close();
   let now=1700000005;
@@ -143,6 +145,8 @@ test('full original gameplay starts, joins, acts, persists across requests and a
   assert.equal(await browser.evaluate('replay_header.replay_player'),'全量测试');
   await browser.evaluate('replay_pause_handler(); replay_force_refresh=1; replay_set_time(replay_header.replay_optime[0]);');
   assert.ok(await browser.evaluate('document.getElementById("main").innerHTML.length>0'));
+  assert.equal(await browser.evaluate('timingforbidden.area_timing'),1,'recorded live timers must not run against wall time during replay');
+  assert.match(await browser.evaluate('document.getElementById("area_timing").textContent'),/^\d+:\d{2}$/);
   assert.equal(await browser.evaluate('typeof ___datalib'),'undefined');
   assert.equal(await browser.evaluate('datalib_decode("完整原样内容<&>")'),'完整原样内容<&>');
   // Traverse the original rendered tree in both directions: the unchanged
