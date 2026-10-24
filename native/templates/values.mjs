@@ -17,6 +17,13 @@ const sealedLazyValues = new WeakMap();
 // boundary retaining PHP aliases must exclude these private lazy getters.
 export const isReferenceDescriptor = descriptor => !!descriptor?.get && !!descriptor?.set && !lazyCopies.has(descriptor.get);
 
+// Optional record parameters can arrive as a reference to null through a
+// generated hook. Read the slot before testing for the current player; never
+// mutate the frozen wrapper or mistake an ordinary { value: ... } record for it.
+export function referenceValue(value) {
+  return value != null && isReferenceDescriptor(Object.getOwnPropertyDescriptor(value, 'value')) ? value.value : value;
+}
+
 /** Build-time selected array literals are inert templates, never request state.
  * Preparing them once lets a value copy defer untouched nested tables without
  * proxies (the resulting values still support structuredClone/JSON normally). */

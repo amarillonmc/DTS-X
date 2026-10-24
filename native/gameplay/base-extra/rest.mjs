@@ -28,7 +28,7 @@ export const restModule = {
         } else if (present(player.inf)) appendLog(ctx, '也许是时间不够吧……你没有治好任何异常状态。<br>');
       }
     },
-    async init_rest_timing(ctx) { const sys = ctx.state('sys'); sys.uip.timing ??= {}; sys.uip.timing.rest_timing = { on: true, mode: 1, timing: 0, timing_r: '00:00', format: 'mm:ss' }; },
+    async init_rest_timing(ctx) { const sys = ctx.state('sys'); sys.uip ??= {}; sys.uip.timing ??= {}; sys.uip.timing.rest_timing = { on: true, mode: 1, timing: 0, timing_r: '00:00', format: 'mm:ss' }; },
     async act(ctx) {
       const sys = ctx.state('sys'), player = ctx.state('player');
       if (eq(sys.mode, 'command') && ['rest1', 'rest2', 'rest3'].some(command => eq(sys.command, command))) {

@@ -159,7 +159,7 @@ namespace {
  }
  if($mode==='player'||$mode==='database'){$pa=\player\fetch_playerdata_by_pid($pa['pid']);\player\load_playerdata($pa);$sdata=&get_var_in_module('sdata','player');}
  else \skillbase\skillbase_load($pa,$input['dummy']??false);
- foreach(($input['operations']??[]) as $operation){$fn='skillbase\\'.$operation['fn'];$args=$operation['args'];$slot=substr($operation['target']??'',-4)==='Slot';if($slot){$target=$operation['target']==='emptySlot'?[]:null;}elseif(($operation['target']??'')==='self'){$target=null;}elseif(($operation['target']??'')==='sdata'){$target=&$sdata;}else{$target=&$pa;}$args[]=&$target;if(isset($operation['noCover']))$args[]=$operation['noCover'];$value=call_user_func_array($fn,$args);$result[]=$slot?[$value,normalized(array_clone($target))]:$value;unset($target);}
+ foreach(($input['operations']??[]) as $operation){$fn='skillbase\\'.$operation['fn'];$args=$operation['args'];$slot=substr($operation['target']??'',-4)==='Slot';if($slot){$target=$operation['target']==='emptySlot'?[]:null;}elseif(($operation['target']??'')==='self'){$target=null;}elseif(($operation['target']??'')==='sdata'){$target=&$sdata;}else{$target=&$pa;}$args[]=&$target;if(isset($operation['noCover']))$args[]=$operation['noCover'];$value=call_user_func_array($fn,$args);$result[]=$slot?[$value,normalized($target===NULL?NULL:array_clone($target))]:$value;unset($target);}
  if($mode==='player'||$mode==='database')\player\player_save($sdata,$input['inProc']??0);
  else{if(!empty($input['enter']))\skillbase\post_enterbattlefield_events($pa);if(($input['save']??true)!==false)\skillbase\skillbase_save($pa,$input['inProc']??0);}
  if($mode==='database'){echo json_encode(['row'=>$db->fetch_array($db->query("SELECT * FROM bra_players WHERE pid='1'"))]);exit;}
@@ -231,6 +231,8 @@ test('skill acquisition, loss, metadata, early hooks and player aliases agree wi
     { pa: basePlayer(1, { skills: { 20: 0, 2: -1 }, o_card: 0, card: 222 }), enter: true, validSkills: { 0: [64] } },
     ...[false, true].map(inProc => ({ mode: 'player', onload: true, onsave: true, inProc, operations: ops.map(op => ({ ...op, target: 'sdata' })) })),
     { mode: 'player', operations: ops.map(op => ({ ...op, target: 'self' })) },
+    { mode: 'player', operations: ops.map(op => ({ ...op, target: 'nullSlot' })) },
+    { mode: 'player', operations: ops.map(op => ({ ...op, target: 'emptySlot' })) },
     { dummy: true, save: false, operations: [{ fn: 'skill_query', args: [2] }, { fn: 'skill_getvalue', args: [2, 'lvl'] }] },
     { currentPid: 0, pa: basePlayer(0), operations: ops },
     { mode: 'player', operations: [

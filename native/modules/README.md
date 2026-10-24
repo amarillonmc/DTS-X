@@ -50,4 +50,6 @@ const amount = await session.call('base', 'damage', attacker, defender);
 
 原引用参数的对象沿调用链保留同一个对象；标量引用用 `reference(object, key)` 或 `ctx.reference(module, key)` 创建的 `{ value }` 槽。例如 `wep_b_clean_arrow_sk` 接收这样的槽。原按值参数需要在函数边界显式复制数据；本注册器不会猜测任意 JavaScript 对象是否对应 PHP 数组，也不会把所有对象参数偷偷改为值传递。
 
+可选玩家引用也可能是槽，尤其是生成钩子传下来的空参数。手写函数读取它之前用 `native/templates/values.mjs` 的 `referenceValue()` 解包，再判断原函数规定的 `null` / 空数组语义；不要向冻结的包装对象写玩家字段。仅在函数确实替换参数值时保留槽并写 `.value`。原 PHP 的 `$pa = &$sdata` 是局部引用重绑定，不应把调用者的空槽改成玩家对象；`$pa = $sdata` 则可能需要写回，须以原源码和差分为准。
+
 验证命令：`node --test tests/native-modules.test.mjs tests/native-weapon-kinds.test.mjs`。PHP 7.4 仅作为开发差分基准，缺少时相应测试明确跳过。原生运行模块没有 PHP 依赖。这两项测试覆盖分派、递归、引用、初始化及限定的武器分支；完整数据库、模板、整局和浏览器的独立验证见 doc/NATIVE-MIGRATION.md。

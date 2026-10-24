@@ -1,4 +1,4 @@
-import { isReferenceDescriptor } from '../templates/values.mjs';
+import { isReferenceDescriptor, referenceValue } from '../templates/values.mjs';
 import { readFile } from 'node:fs/promises';
 import { isNumeric, number as n, present, round, sameDurability, text } from './numbers.mjs';
 
@@ -212,6 +212,7 @@ export const playerModule = {
       return Object.fromEntries(Object.entries(ctx.state().db_player_structure_types).map(([key, type]) => [key, type.includes('int') ? 0 : '']));
     },
     async icon_parser_valid(ctx, data = null) {
+      data = referenceValue(data);
       if (!filled(data)) data = field(ctx, 'sdata');
       const gender = data.gender ?? data.gd ?? 'x', range = field(ctx, 'pc_icon_range')[gender];
       return filled(data.type) || (isNumeric(data.icon) && Math.trunc(n(data.icon)) === n(data.icon) && isset(range) && n(data.icon) <= n(range[1]) && n(data.icon) >= n(range[0]));
@@ -266,6 +267,7 @@ export const playerModule = {
       return copy(state.icon_list);
     },
     async icon_parser_shell(ctx, data = null) {
+      data = referenceValue(data);
       if (!filled(data)) data = field(ctx, 'sdata');
       if (!filled(await call(ctx, 'icon_parser_valid', data))) return ['punish.png', '', 0];
       return call(ctx, 'icon_parser', data.type ?? 0, data.gender ?? data.gd ?? 'f', data.icon);

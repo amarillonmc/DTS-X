@@ -49,6 +49,7 @@ function scenarios() {
   add('healing pose improves rest and recovery cutoff', [op('rest', 'rest', 'rest')], { player: { state: '3', inf: 'bhaf', pose: '5' }, sys: { now: 1061 } });
   add('full resources retain database string types', [op('rest', 'rest', 'rest')], { player: { state: '3', hp: '100', sp: '100', inf: '' } });
   add('timer preserves existing fields', [op('rest', 'init_rest_timing')], { sys: { uip: { timing: { existing: true }, retained: 1 } } });
+  add('timer initializes fresh request UI', [op('rest', 'init_rest_timing')], { sys: { uip: null } });
   for (const command of ['rest1', 'rest2', 'rest3', 'other']) for (const pls of ['11', '7']) add(`start rest ${command}/${pls}`, [op('rest', 'act')], { sys: { mode: 'command', command }, player: { pls } });
   for (const command of ['rest', 'back']) add(`rest action ${command}`, [op('rest', 'act')], { sys: { mode: 'rest', command }, player: { state: '3' } });
   for (const mark of ['b', 'h', 'a', 'f', 'u']) add(`injury add/remove ${mark}`, [op('wound', 'get_inf', mark, '@pa'), op('wound', 'get_inf', mark, '@pa'), op('wound', 'heal_inf', mark, '@pa'), op('wound', 'get_inf', mark), op('wound', 'heal_inf', mark)], { pa: fighter({ inf: 'bhb' }), player: { inf: 'h' } });

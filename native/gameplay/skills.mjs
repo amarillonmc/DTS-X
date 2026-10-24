@@ -1,4 +1,4 @@
-import { isReferenceDescriptor } from '../templates/values.mjs';
+import { isReferenceDescriptor, referenceValue } from '../templates/values.mjs';
 import { number as n, present, sameDurability, text } from './numbers.mjs';
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-';
@@ -204,6 +204,7 @@ export const skillbaseModule = {
       }
     },
     async skill_query(ctx, skillid, pa = null) {
+      pa = referenceValue(pa);
       skillid = id(skillid);
       const self = await current(ctx, pa), owner = self ? ctx.state() : pa;
       return filled(list(owner, 'acquired_list').get(skillid)) && !!await call(ctx, 'skill_enabled', skillid, self ? ctx.state('player').sdata : pa);
@@ -211,21 +212,25 @@ export const skillbaseModule = {
     async skill_enabled(ctx, skillid, pa) { return call(ctx, 'skill_enabled_core', skillid, pa); },
     async skill_enabled_core() { return true; },
     async check_have_skill_info(ctx, tag, pa = null) {
+      pa = referenceValue(pa);
       const owner = await current(ctx, pa) ? ctx.state() : pa;
       // Source deliberately inspects every retained key, including lost (0).
       for (const key of list(owner, 'acquired_list').keys()) if (await call(ctx, 'check_skill_info', key, tag)) return 1;
       return 0;
     },
     async get_acquired_skill_array(ctx, pa = null) {
+      pa = referenceValue(pa);
       const owner = await current(ctx, pa) ? ctx.state() : pa;
       return [...list(owner, 'acquired_list')].filter(([, value]) => equal(value, 1)).map(([key]) => key);
     },
     async skill_setvalue(ctx, skillid, key, value, pa = null) {
+      pa = referenceValue(pa);
       if (value != null && typeof value === 'object' && !ArrayBuffer.isView(value)) throw new TypeError('Skill parameter values must be scalars or byte arrays');
       const owner = await current(ctx, pa) ? ctx.state() : pa;
       list(owner, 'parameter_list', true).set(`${text(skillid)}_${text(key)}`, value == null ? null : structuredClone(value));
     },
     async skill_getvalue(ctx, skillid, key, pa = null) {
+      pa = referenceValue(pa);
       const owner = await current(ctx, pa) ? ctx.state() : pa;
       return structuredClone(list(owner, 'parameter_list').get(`${text(skillid)}_${text(key)}`) ?? null);
     },
@@ -233,10 +238,12 @@ export const skillbaseModule = {
       return (await call(ctx, 'parse_skill_parameter_data', data)).get(`${text(skillid)}_${text(key)}`) ?? null;
     },
     async skill_delvalue(ctx, skillid, key, pa = null) {
+      pa = referenceValue(pa);
       const owner = await current(ctx, pa, true) ? ctx.state() : pa;
       list(owner, 'parameter_list').delete(`${text(skillid)}_${text(key)}`);
     },
     async skill_check_unlocked(ctx, skillid, pa = null) {
+      pa = referenceValue(pa);
       const functionName = `check_unlocked${text(skillid)}`;
       if (!catalog(ctx).hasFunction(skillid, functionName)) return true;
       return ctx.call(`skill${text(skillid)}`, functionName, emptyPlayer(pa) ? ctx.state('player').sdata : pa);

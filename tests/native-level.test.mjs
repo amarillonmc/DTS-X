@@ -12,6 +12,8 @@ import { createPhp74Random } from '../native/random.mjs';
 import { createDatabase } from '../native/storage/database.mjs';
 import { createLockServices } from '../native/storage/locks.mjs';
 import { isolatedDatabase } from './helpers/native-database.mjs';
+import skill108 from '../native/generated/modules/skill108.mjs';
+import skill181 from '../native/generated/modules/skill181.mjs';
 
 const project = fileURLToPath(new URL('../', import.meta.url));
 const record = extra => ({ pid: '1', name: '甲', type: '0', lvl: '1', exp: '0', hp: '80', mhp: '100', sp: '50', msp: '100', att: '20', def: '15', skillpoint: '0', upexp: '27', ...extra });
@@ -87,6 +89,10 @@ async function native(input) {
       async init_playerdata(ctx) { trace.push(['init', ctx.state().upexp, ctx.state().lvlupexp]); },
     } }, loggerModule, levelModule,
   ];
+  if (input.generatedHooks) definitions.push(
+    { name: 'skillbase', functions: { skill_query() { return false; } } },
+    { name: 'clubbase' }, { name: 'song' }, { name: 'enemy' }, { name: 'attack' }, { name: 'skill107' }, skill108, skill181,
+  );
   if (input.hook || input.limit !== undefined) definitions.push({ name: 'fixture_level', dependencies: ['lvlctl'], functions: {
     ...(input.hook ? { async lvlup(ctx, pa) { await Promise.resolve(); await ctx.next(pa); ctx.state('lvlctl').lvuphp += 3; ctx.state('lvlctl').sklog = '，额外训练'; trace.push(['level-hook', pa.lvl]); } } : {}),
     ...(input.limit !== undefined ? { async get_lvllimit() { await Promise.resolve(); return input.limit; } } : {}),
@@ -110,6 +116,8 @@ test('native lvlctl preserves complete source leveling, references, logging and 
     { label: 'exact threshold', calls: [['getexp', '27']] },
     { label: 'negative experience', calls: [['getexp', -12]] },
     { label: 'current player saves and reloads', useCurrent: true, calls: [['getexp', 80]] },
+    ...[1, 27, 80].map(value => ({ label: `generated skill108/181 current-player bridge ${value}`, generatedHooks: true, useCurrent: true, calls: [['getexp', value]] })),
+    { label: 'generated skill108/181 explicit player bridge', generatedHooks: true, calls: [['getexp', 80]] },
     { label: 'strict pid prevents equal numeric pid local logging', currentPid: 1, calls: [['getexp', 27]] },
     { label: 'other human receives persistent log', pa: record({ pid: '2' }), calls: [['checklvlup', 100]] },
     { label: 'NPC gets stats without message', pa: record({ pid: '2', type: '1' }), calls: [['getexp', 100]] },

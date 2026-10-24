@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { playerModule } from '../native/gameplay/player.mjs';
-import { ModuleRegistry } from '../native/modules/registry.mjs';
+import { ModuleRegistry, reference } from '../native/modules/registry.mjs';
 import { createPhp74Random } from '../native/random.mjs';
 import { isolatedDatabase } from './helpers/native-database.mjs';
 
@@ -175,6 +175,20 @@ async function runNative(input, actualDatabase = null) {
   }
   return plain({ result, trace, next: rng.rand(), sys: Object.fromEntries(['pdata_pool', 'pdata_origin_pool', 'pdata_lock_pool', 'deathnum', 'alivenum', 'validnum', 'uip', 'mode'].map(key => [key, sys[key]])) });
 }
+
+test('optional avatar references use the current player without replacing the caller slot', async () => {
+  const { session } = await nativeSession({});
+  await session.call('player', 'load_playerdata', sample());
+  for (const name of ['icon_parser_valid', 'icon_parser_shell']) {
+    const expected = await session.call('player', name);
+    for (const value of [null, {}, sample(), sample('2', { icon: '999' })]) {
+      const holder = { value }, before = structuredClone(value);
+      const actual = await session.call('player', name, reference(holder, 'value'));
+      assert.deepEqual(actual, value?.pid ? await session.call('player', name, value) : expected);
+      assert.deepEqual(holder.value, before, 'local source reference rebinding leaves caller unchanged');
+    }
+  }
+});
 
 const phpFixture = String.raw`<?php
 namespace sys {

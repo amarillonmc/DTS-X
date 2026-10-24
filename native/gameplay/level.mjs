@@ -1,4 +1,5 @@
 import { number as n, present, round, text } from './numbers.mjs';
+import { referenceValue } from '../templates/values.mjs';
 
 const call = (ctx, method, ...args) => ctx.call('lvlctl', method, ...args);
 const isset = value => value !== null && value !== undefined;
@@ -16,6 +17,7 @@ export const levelModule = {
   state: { baseexp: 9, lvuphp: null, lvupatt: null, lvupdef: null, lvupskill: null, lvupsp: null, lvupspref: null, lvupskpt: null, sklog: null },
   functions: {
     async getexp(ctx, value, player = null) {
+      player = referenceValue(player);
       const current = player === null;
       if (current) { await ctx.call('player', 'update_sdata'); player = ctx.state('player').sdata; }
       const result = await call(ctx, 'checklvlup', value, player);

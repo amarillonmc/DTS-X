@@ -462,6 +462,11 @@
           "test": "tests/native-player-schema.test.mjs",
           "scope": "玩家表列定义缓存的失败重试、失效竞态、请求和应用隔离；两个真实HTTP应用对不同元数据的行为。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-player.test.mjs",
+          "scope": "2026-10-24：可选头像参数的null/空数组引用槽、有效/无效显式玩家均与直接调用一致，局部重绑定不替换调用者；原54个PHP人物场景和真实持久化同时通过。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -597,6 +602,16 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-level.test.mjs",
+          "scope": "2026-10-24：复现并修复skill108/181传递当前玩家空引用的冻结对象TypeError；39个PHP经验场景含新增4个真实生成钩子边界，保存/重载/随机顺序保持原语义。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -726,6 +741,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-skills.test.mjs",
+          "scope": "2026-10-24：全部26个PHP技能边界场景通过；新增null/空数组引用槽的查询、参数读写/删除、解锁、获得/失去完整序列，保留调用者槽及真实参数替换。",
           "result": "passed"
         }
       ],
@@ -874,6 +894,11 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-base-extra.test.mjs",
+          "scope": "2026-10-24：新增uip=null首次写休息计时器边界；681个PHP装备/姿态/休息/伤口场景通过。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -962,6 +987,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
           "result": "passed"
         }
       ],
@@ -1223,6 +1253,11 @@
         {
           "test": "tests/native-base-extra-itemmix.test.mjs",
           "scope": "676个PHP差分场景及惰性默认配方、显式空值覆盖、导出字段顺序、真实模板和库存引用边界。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
           "result": "passed"
         }
       ],
@@ -1645,6 +1680,11 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -1896,6 +1936,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
           "result": "passed"
         }
       ],
@@ -6328,6 +6373,11 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -6852,6 +6902,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
           "result": "passed"
         }
       ],
@@ -9530,6 +9585,11 @@
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
           "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
+          "result": "passed"
         }
       ],
       "remaining": [
@@ -11335,6 +11395,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
           "result": "passed"
         }
       ],
@@ -13897,6 +13962,11 @@
         {
           "test": "tests/native-full-gameplay.test.mjs",
           "scope": "默认全部770模块、真实MySQL/OS锁/模板/原生HTTP、整局持久化和原Edge录像播放；不是所有技能分支的穷举。",
+          "result": "passed"
+        },
+        {
+          "test": "tests/native-interactions-http.test.mjs",
+          "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。",
           "result": "passed"
         }
       ],
@@ -16569,7 +16639,7 @@
   "acceptance": {
     "nativeGameReady": true,
     "defaultEntry": "native",
-    "date": "2026-10-23",
+    "date": "2026-10-24",
     "note": "Readiness records implementation and the scoped acceptance below; it does not claim exhaustive gameplay combinations.",
     "validation": [
       {
@@ -16646,6 +16716,20 @@
         "failed": 0,
         "skipped": 0,
         "scope": "2026-10-23 合成提交500回归：独立MySQL/770模块/真实Edge，教学17与普通局0×两主题×经典现代八组合；空选择和错误配方拒绝、材料扣除/产物/教程3200→3300→3400跨请求及整页重载，普通局真实录像响应及三次点击，保留教程录像排除；未穷举全部扩展。日志var/tests/itemmix-http.log。本轮未重新执行完整npm test。"
+      },
+      {
+        "command": "node --test tests/native-interactions-http.test.mjs",
+        "passed": 35,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "2026-10-24：默认770模块/独立MariaDB/真实HTTP/OS锁，35项成功与拒绝、实际状态保存和原录像响应校验；覆盖全部6条省略玩家的静态经验调用路径（陷阱、skill19、经验药、skill23强化、skill431合成、skill437取消战斗），低/高理智、升级歌魂及满级。重启后真实Edge两主题×经典现代点击陷阱/经验药并重载。范围见doc/NATIVE-MIGRATION.md；未穷举所有技能叠加。 日志var/tests/trap-interactions-browser.log；Codex沙箱内Edge启动退出后，在沙箱外使用独立profile和Edge自身沙箱验证通过。"
+      },
+      {
+        "command": "npm test -- --test-concurrency=1",
+        "passed": 1326,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "2026-10-24陷阱500及同类交互修复完整串行回归；包含新增HTTP/Edge交互、PHP差分、完整玩法/战斗/持久化/原录像、教学合成与疗伤、模式矩阵、安装重启和旧兼容测试。Windows/Node26.5.0，独立测试数据库，日志var/tests/trap-full-suite.log。未穷举所有技能组合或验证Docker/Linux。"
       }
     ],
     "performanceValidation": [
